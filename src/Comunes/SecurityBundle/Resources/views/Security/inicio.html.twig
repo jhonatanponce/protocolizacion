@@ -1,0 +1,134 @@
+{% extends '::base.html.twig' %}
+
+{#
+-----------------------------------
+Nombre del Archivo: inicio.html.twig
+Ruta del Archivo: /var/www/sisprov/src/Comunes/SecurityBundle/Resources/views/Security/inicio.html.twig
+Version:0.1
+Fecha:0
+Autor:GTI Banavih
+Descripcion: Pantalla de Inicio. Luego de autenticar. Está por definirse
+Observaciones: 
+Historial de Revision:
+-----------------------------------
+#}
+
+{% block main %}
+{#    <div>
+        <div class="panel-body">
+            {% if app.session.get('opcionesPadres') is defined %}
+                <div class="row">
+                    {% for key,opcion in app.session.get('opcionesPadre')%}
+                        {% if opcion.topcionMenu.getId() is not defined %}
+                            <div class="col-sm-3 col-md-4">
+                                <div class="table-hover" align="center">
+                                    <img src="{{asset('img/'~opcion.icono)}}" alt="{{ opcion.nombre }}" class="img-rounded">
+                                    <div class="caption" align="center">
+                                        <h3>{{ opcion.nombre }}</h3>
+                                        <p>{{ opcion.descripcion }}</p>
+                                        <p><a href="{{ path(opcion.ruta)}}" class="btn btn-primary" role="button">Ir >></a></p>
+                                        <p><br/><br/></p>
+                                    </div>
+                                </div>
+                            </div>                            
+                        {% endif %}
+                    {% endfor %} 
+                </div>
+                <div class="page-header"></div>                
+            {% endif %} 
+        </div>
+    </div>
+    #}
+
+    <div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-3 col-md-4">
+                    <!--<div class="thumbnail">-->
+                    <div class="table-hover" align="center">
+                        <img src="{{asset('img/fases.jpg')}}" alt="ANALISTA DE COSTOS" class="img-rounded">
+                        <div class="caption" align="center">
+                            <h3>Parametrizar Fases</h3>
+                            <p>Permite configurar la maquinaria, materia prima, insumos y personal por fase</p>
+                            {% if is_granted("ROLE_COSTOS") %}
+                                <p><a href="{{ path('parametrizar_fase')}}" class="btn btn-primary" role="button">Ir >></a></p>
+                            {% endif %}
+                            </div>
+                    </div>
+                </div>                            
+
+                <div class="col-sm-3 col-md-4">
+                    <div class="table-hover" align="center">
+                        <img src="{{asset('img/depreciacion.png')}}" alt="ANALISTA DE COSTOS" class="img-rounded">
+                        <div class="caption" align="center">
+                            <h3>Depreciacion y Activo Fijo</h3>
+                            <p>Permite carga la informacion y el calculo de la depreciacion de Activos Fijos</p>
+                            {% if is_granted("ROLE_COSTOS") %}
+                                <p><a href="#" class="btn btn-primary" role="button">Ir >></a></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3 col-md-4">
+                    <div class="table-hover" align="center">
+                        <img src="{{asset('img/maquinaria.jpg')}}" alt="ANALISTA DE COSTOS" class="img-rounded">
+                        <div class="caption"align="center">
+                            <h3>Mantenimiento de Maquinaria y Transporte</h3>
+                            <p>Permite cargar los diferentes conceptos de mantenimientos de maquinarias y vehículos</p>
+                            {% if is_granted("ROLE_COSTOS") %}
+                                <p><a href="#" class="btn btn-primary" role="button">Ir >></a></p>
+                            {% endif %}
+                           </div>
+                    </div>
+                </div>
+            </div>  
+            <div class="page-header">
+            </div>
+
+            <div class="row">
+                {% if is_granted("ROLE_CALIDAD") or is_granted("ROLE_COSTOS") %}
+                <div class="col-sm-3 col-md-4">
+                    <div class="table-hover" align="center">
+                        <img src="{{asset('img/reportes.jpg')}}" alt="ANALISTA DE CALIDAD, ANALISTA DE COSTOS, SUPERVISOR DE TURNO, OPERADOR" class="img-rounded">
+                        <div class="caption" align="center">
+                            <h3>Reportes de Costos</h3>
+                            <p>Permite Generar Los Reportes de Cada Fase del Proceso Productivo</p>
+                            {% if is_granted("ROLE_CALIDAD") or is_granted("ROLE_COSTOS") %}
+                                <p><a href="#" class="btn btn-primary" role="button">Ir >></a></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>                                  
+                 {% endif %}
+                <div class="col-sm-3 col-md-4">
+                    <div class="table-hover" align="center">
+                        <img src="{{asset('img/fases.jpg')}}" alt="SUPERVISOR DE TURNO" class="img-rounded">
+                        <div class="caption"align="center">
+                            <h3>Parametrizar Jornada de Trabajo</h3>
+                            <p>Permite configurar la Jornada de Trabajo por turnos en cada fase</p>
+                            {% if is_granted("ROLE_SUPERV") or is_granted("ROLE_CALIDAD") %}
+                                <p><a href="{{path(app.session.get('tfase'))}}" class="btn btn-primary" role="button">Ir >></a></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>                              
+                                           
+                {% if is_granted("ROLE_ADMIN") %}                                 
+                <div class="col-sm-3 col-md-4">
+                    <div class="table-hover" align="center">
+                        <img src="{{asset('img/seguridad-it.jpg')}}" alt="SUPERVISOR DE TURNO, ANALISTA DE CALIDAD, OPERADOR" class="img-rounded" width="181" height="171">
+                        <div class="caption" align="center">
+                            <h3>Seguridad</h3>
+                            <p>Permite Crear/Modificar/Ver/Eliminar los usuarios de aplicacion</p>
+                            {% if is_granted("ROLE_ADMIN")%}
+                                <p><a href="{{path('tusuariosiscoco')}}" class="btn btn-primary" role="button">Ir >></a></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>                              
+              {% endif %}                              
+            </div>
+        </div>                   
+    </div>
+{% endblock %}

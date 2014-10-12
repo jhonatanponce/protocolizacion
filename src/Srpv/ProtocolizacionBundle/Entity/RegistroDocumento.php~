@@ -1,0 +1,122 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RegistroDocumento
+ *
+ * @ORM\Table(name="REGISTRO_DOCUMENTO", indexes={@ORM\Index(name="IDX_86B02DE824EFDE46", columns={"ANALISIS_CREDITO_ID"}), @ORM\Index(name="IDX_86B02DE879F45E9B", columns={"FUENTE_DATOS_ENTRADA_ID"}), @ORM\Index(name="IDX_86B02DE8E8EA1841", columns={"USUARIO_ID"}), @ORM\Index(name="IDX_86B02DE8EB2FD0C6", columns={"REGISTRO_PUBLICO_ID"})})
+ * @ORM\Entity
+ */
+class RegistroDocumento
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="REGISTRO_DOCUMENTO_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ANO", type="integer", nullable=true)
+     */
+    private $ano;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=true)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_MODIFICACION", type="date", nullable=true)
+     */
+    private $fechaModificacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_REGISTRO", type="date", nullable=false)
+     */
+    private $fechaRegistro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NRO_MATRICULA", type="string", length=100, nullable=true)
+     */
+    private $nroMatricula;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NRO_PROTOCOLO", type="string", length=50, nullable=true)
+     */
+    private $nroProtocolo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NRO_REGISTRO", type="string", length=50, nullable=false)
+     */
+    private $nroRegistro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TOMO", type="string", length=50, nullable=true)
+     */
+    private $tomo;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\AnalisisCredito
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\AnalisisCredito")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ANALISIS_CREDITO_ID", referencedColumnName="id")
+     * })
+     */
+    private $analisisCredito;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FUENTE_DATOS_ENTRADA_ID", referencedColumnName="id")
+     * })
+     */
+    private $fuenteDatosEntrada;
+
+    /**
+     * @var \Comunes\SecurityBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="USUARIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\RegistroPublico
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\RegistroPublico")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="REGISTRO_PUBLICO_ID", referencedColumnName="id")
+     * })
+     */
+    private $registroPublico;
+
+
+}

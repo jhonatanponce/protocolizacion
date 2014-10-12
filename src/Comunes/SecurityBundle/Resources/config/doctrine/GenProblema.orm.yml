@@ -1,0 +1,29 @@
+Comunes\SecurityBundle\Entity\GenProblema:
+    type: entity
+    table: GEN_PROBLEMA
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        descripcion:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'descripción del problema'
+            column: DESCRIPCION
+        solucion:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: 'solución al problema'
+            column: SOLUCION
+    lifecycleCallbacks: {  }

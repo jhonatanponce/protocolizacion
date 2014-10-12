@@ -1,0 +1,222 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Desarrollo
+ *
+ * @ORM\Table(name="DESARROLLO", indexes={@ORM\Index(name="IDX_DAC6569CAB9CF394", columns={"FUENTE_FINANCIAMIENTO_ID"}), @ORM\Index(name="IDX_DAC6569C6F3929D7", columns={"GEO_ESTADO_ID"}), @ORM\Index(name="IDX_DAC6569C7181F310", columns={"GEO_MUNICIPIO_ID"}), @ORM\Index(name="IDX_DAC6569C5D9234E7", columns={"GEO_PARROQUIA_ID"}), @ORM\Index(name="IDX_DAC6569CE8EA1841", columns={"USUARIO_ID"}), @ORM\Index(name="IDX_DAC6569C38D19D78", columns={"ENTE_EJECUTOR_ID"}), @ORM\Index(name="IDX_DAC6569C79F45E9B", columns={"FUENTE_DATOS_ENTRADA_ID"})})
+ * @ORM\Entity
+ */
+class Desarrollo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="DESARROLLO_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AV_CALL_ESQ_CARR", type="string", length=200, nullable=true)
+     */
+    private $avCallEsqCarr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="COORDENADAS", type="string", length=200, nullable=true)
+     */
+    private $coordenadas;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCION", type="string", length=300, nullable=true)
+     */
+    private $descripcion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ESTATUS_DESARROLLO_ID", type="integer", nullable=false)
+     */
+    private $estatusDesarrolloId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
+     */
+    private $fechaActualizacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=false)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_TRANSFERENCIA", type="date", nullable=true)
+     */
+    private $fechaTransferencia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LINDERO_ESTE", type="string", length=200, nullable=true)
+     */
+    private $linderoEste;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LINDERO_NORTE", type="string", length=200, nullable=true)
+     */
+    private $linderoNorte;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LINDERO_OESTE", type="string", length=200, nullable=true)
+     */
+    private $linderoOeste;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LINDERO_SUR", type="string", length=200, nullable=true)
+     */
+    private $linderoSur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LOTE_TERRENO_MT2", type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $loteTerrenoMt2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE", type="string", length=200, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TITULARIDAD_DEL_TERRENO", type="string", length=1, nullable=true)
+     */
+    private $titularidadDelTerreno;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="TOTAL_VIVIENDAS", type="integer", nullable=true)
+     */
+    private $totalViviendas;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="TOTAL_VIVIENDAS_PROTOCOLIZADAS", type="integer", nullable=true)
+     */
+    private $totalViviendasProtocolizadas;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="URBAN_BARRIO", type="string", length=200, nullable=true)
+     */
+    private $urbanBarrio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ZONA", type="string", length=200, nullable=true)
+     */
+    private $zona;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\FuenteFinanciamiento
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\FuenteFinanciamiento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FUENTE_FINANCIAMIENTO_ID", referencedColumnName="id")
+     * })
+     */
+    private $fuenteFinanciamiento;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\GeoEstado
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GeoEstado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GEO_ESTADO_ID", referencedColumnName="id")
+     * })
+     */
+    private $geoEstado;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\GeoMunicipio
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GeoMunicipio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GEO_MUNICIPIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $geoMunicipio;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\GeoParroquia
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GeoParroquia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GEO_PARROQUIA_ID", referencedColumnName="id")
+     * })
+     */
+    private $geoParroquia;
+
+    /**
+     * @var \Comunes\SecurityBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="USUARIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\EnteEjecutor
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\EnteEjecutor")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ENTE_EJECUTOR_ID", referencedColumnName="id")
+     * })
+     */
+    private $enteEjecutor;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FUENTE_DATOS_ENTRADA_ID", referencedColumnName="id")
+     * })
+     */
+    private $fuenteDatosEntrada;
+
+
+}

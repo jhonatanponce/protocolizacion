@@ -1,0 +1,29 @@
+Comunes\TablasBundle\Entity\GenSexo:
+    type: entity
+    table: GEN_SEXO
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        abrevGenero:
+            type: string
+            nullable: true
+            length: 1
+            fixed: false
+            comment: ''
+            column: ABREV_GENERO
+        nombre:
+            type: string
+            nullable: true
+            length: 40
+            fixed: false
+            comment: 'nombre del género sexual'
+            column: NOMBRE
+    lifecycleCallbacks: {  }

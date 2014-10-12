@@ -1,0 +1,114 @@
+Srpv\ProtocolizacionBundle\Entity\RegistroDocumento:
+    type: entity
+    table: REGISTRO_DOCUMENTO
+    indexes:
+        IDX_86B02DE824EFDE46:
+            columns:
+                - ANALISIS_CREDITO_ID
+        IDX_86B02DE879F45E9B:
+            columns:
+                - FUENTE_DATOS_ENTRADA_ID
+        IDX_86B02DE8E8EA1841:
+            columns:
+                - USUARIO_ID
+        IDX_86B02DE8EB2FD0C6:
+            columns:
+                - REGISTRO_PUBLICO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        ano:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: ANO
+        fechaCreacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_CREACION
+        fechaModificacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_MODIFICACION
+        fechaRegistro:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_REGISTRO
+        nroMatricula:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+            column: NRO_MATRICULA
+        nroProtocolo:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: NRO_PROTOCOLO
+        nroRegistro:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: NRO_REGISTRO
+        tomo:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: TOMO
+    manyToOne:
+        analisisCredito:
+            targetEntity: AnalisisCredito
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ANALISIS_CREDITO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fuenteDatosEntrada:
+            targetEntity: FuenteDatosEntrada
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                FUENTE_DATOS_ENTRADA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        registroPublico:
+            targetEntity: RegistroPublico
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                REGISTRO_PUBLICO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

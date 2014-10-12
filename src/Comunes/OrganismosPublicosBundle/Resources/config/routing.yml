@@ -1,0 +1,3 @@
+comunes_organismos_publicos_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ComunesOrganismosPublicosBundle:Default:index }

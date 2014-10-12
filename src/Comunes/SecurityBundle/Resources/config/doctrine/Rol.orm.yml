@@ -1,0 +1,67 @@
+Comunes\SecurityBundle\Entity\Rol:
+    type: entity
+    table: ROL
+    indexes:
+        IDX_98F27DBD99C94272:
+            columns:
+                - GEN_TIPO_USUARIO_ID
+        IDX_98F27DBD619CCE83:
+            columns:
+                - SYS_APP_ID
+        IDX_98F27DBD63F89AA7:
+            columns:
+                - SYS_SISTEMA_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        descripcion:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'descripción de las funciones de cada rol'
+            column: DESCRIPCION
+        nombre:
+            type: string
+            nullable: true
+            length: 40
+            fixed: false
+            comment: 'nombre del rol'
+            column: NOMBRE
+    manyToOne:
+        genTipoUsuario:
+            targetEntity: Comunes\SecurityBundle\Entity\GenTipoUsuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_TIPO_USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        sysApp:
+            targetEntity: Comunes\SecurityBundle\Entity\SysApp
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                SYS_APP_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        sysSistema:
+            targetEntity: Comunes\SecurityBundle\Entity\SysSistema
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                SYS_SISTEMA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,96 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ControlArchivos
+ *
+ * @ORM\Table(name="CONTROL_ARCHIVOS")
+ * @ORM\Entity
+ */
+class ControlArchivos
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="CONTROL_ARCHIVOS_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="CANTIDAD_LINEAS", type="integer", nullable=true)
+     */
+    private $cantidadLineas;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CODIGO_ESTATUS", type="string", length=2, nullable=true)
+     */
+    private $codigoEstatus;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CODIGO_SUDEBAN", type="string", length=10, nullable=true)
+     */
+    private $codigoSudeban;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CORREO_CONTACTO", type="string", length=70, nullable=true)
+     */
+    private $correoContacto;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=true)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_EJECUCION", type="date", nullable=true)
+     */
+    private $fechaEjecucion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE_ARCHIVO", type="string", length=50, nullable=true)
+     */
+    private $nombreArchivo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="OBSERVACION", type="string", length=4000, nullable=true)
+     */
+    private $observacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="PERIODO", type="date", nullable=true)
+     */
+    private $periodo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TIPO_ARCHIVO", type="string", length=10, nullable=true)
+     */
+    private $tipoArchivo;
+
+
+}

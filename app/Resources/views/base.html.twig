@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+{#
+-----------------------------------
+Nombre del Archivo: base.html.twig
+Ruta del Archivo: /var/www/sisprov/app/Resources/views/
+Version:0.1
+Fecha:0
+21-08-2014
+Autor:GTI Banavih
+Descripcion: Base de la plantilla. Incluye img de cintillos de encabezado, Menu, Pie de Página y Bloques para funcionalidades del sistema
+Observaciones: OK AA
+Historial de Revision:
+        0.1/01-08-2014/:Version Original
+        0.2/15-08-2014/: Se añadieron estilos bootstrap
+-----------------------------------
+#}
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}.:: SISPROV - Sistema de Protocolización de Viviendas ::. .:: Banavih ::.{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <!-- ******************************************************************************* -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+
+        <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+        {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+        <!-- ******************************************************************************* -->
+        {% block javascripts %}{% endblock %}
+    </head>
+    
+    <body>
+    
+        <div class="container">         
+            <div class="span12">
+
+                <!-- Cintillo Encabezado -->
+                <div id="content"><img src="{{ asset('img/cintillo_gb60.png') }}" alt="Gobierno Bolivariano!"/></div>
+                <!-- Fin Cintillo Encabezado -->
+
+                <!-- Menu -->
+                {% block menu %}
+                <br/>
+                <div class="navbar navbar-default">
+                    <div class="navbar-collapse collapse navbar-inverse-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ path('_welcome') }}">Inicio</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tasas<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('tasafongar') }}">Fongar</a></li>
+                                    <li><a href="#">FAOV</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Dropdown header</li>
+                                    <li><a href="#">Separated link</a></li>
+                                    <li><a href="#">One more separated link</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- Usuario y Salir -->
+                        <div class="text-right text-danger:over">
+
+                            {% block user %}
+                                <span class="glyphicon glyphicon-off">
+                                   <a href="{#{ path('_logout') }#}" class="text-info">Salir</a>
+                                </span>
+                                <br>
+                                asdasd
+                                {% if app.user.nombre is defined %}
+                                    <span class="glyphicon glyphicon-user">&nbsp;app.user.nombre</span>
+                                {% endif %}
+
+                            {% endblock %}
+
+                        </div>
+                        <!-- Fin Usuario y Salir -->                            
+                    </div>
+                </div>
+
+                {% endblock %}
+                <!-- Fin Menu -->   
+             </div>  
+
+            <!-- Body -->
+            {% block body %}
+                {% if msg is defined %}
+                    <div class="alert alert-dismissable {% if css_msg is defined %}{{css_msg}}{% endif %}">   
+                    
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        {{msg}}
+                    
+                    </div>
+                {% endif %}
+                {% block main %}
+
+                {% endblock %}
+            <!-- Fin de Body -->
+
+            {% endblock %}
+
+            <!-- Pie de Página -->
+            {% block footer %}
+                <br/>
+                <div class="panel-footer" align="right">
+                    <strong>Sistema de Protocolización de Viviendas</strong>
+                    <h6>Desarrollado por: GTI Banavih</h6></div>
+            {% endblock %}
+            <!-- Fin Pie de Página -->
+
+        </div>
+
+    <!-- ******************************************************************************* -->
+    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <!-- Include all JavaScripts, compiled by Assetic -->
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+    <!-- ******************************************************************************* -->
+
+    </body>
+</html>

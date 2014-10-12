@@ -1,0 +1,53 @@
+Srpv\ProtocolizacionBundle\Entity\CondicionUnidadFamiliar:
+    type: entity
+    table: CONDICION_UNIDAD_FAMILIAR
+    indexes:
+        IDX_B7787EDBE8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        estatus:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: ESTATUS
+        fechaCreacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_CREACION
+        fechaModificacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_MODIFICACION
+        nombre:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+            column: NOMBRE
+    manyToOne:
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

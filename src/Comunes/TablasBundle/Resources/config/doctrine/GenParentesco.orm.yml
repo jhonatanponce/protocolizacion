@@ -1,0 +1,22 @@
+Comunes\TablasBundle\Entity\GenParentesco:
+    type: entity
+    table: GEN_PARENTESCO
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 40
+            fixed: false
+            comment: 'nombre del parentesco'
+            column: NOMBRE
+    lifecycleCallbacks: {  }

@@ -1,0 +1,22 @@
+Comunes\SecurityBundle\Entity\SysSistema:
+    type: entity
+    table: SYS_SISTEMA
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: 'nombre del sistema'
+            column: NOMBRE
+    lifecycleCallbacks: {  }

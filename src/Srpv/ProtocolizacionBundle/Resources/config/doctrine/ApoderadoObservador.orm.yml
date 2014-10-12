@@ -1,0 +1,84 @@
+Srpv\ProtocolizacionBundle\Entity\ApoderadoObservador:
+    type: entity
+    table: APODERADO_OBSERVADOR
+    indexes:
+        IDX_1B52E0CC78F5C1EC:
+            columns:
+                - PRESONA_ID
+        IDX_1B52E0CC6F3929D7:
+            columns:
+                - GEO_ESTADO_ID
+        IDX_1B52E0CCE8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        apoderado:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: ''
+            column: APODERADO
+        estatus:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: ''
+            column: ESTATUS
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_CREACION
+        observaciones:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: OBSERVACIONES
+    manyToOne:
+        persona:
+            targetEntity: Comunes\TablasBundle\Entity\Persona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PRESONA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoEstado:
+            targetEntity: Comunes\TablasBundle\Entity\GeoEstado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_ESTADO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

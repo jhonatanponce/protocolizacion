@@ -1,0 +1,177 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UnidadHabitacional
+ *
+ * @ORM\Table(name="UNIDAD_HABITACIONAL", indexes={@ORM\Index(name="IDX_D3ABAFC479F45E9B", columns={"FUENTE_DATOS_ENTRADA_ID"}), @ORM\Index(name="IDX_D3ABAFC4A2441D43", columns={"DESARROLLO_ID"}), @ORM\Index(name="IDX_D3ABAFC428319DDA", columns={"ESTATUS_UNIDAD_HABITACIONAL_ID"}), @ORM\Index(name="IDX_D3ABAFC499CB0E9D", columns={"GEN_TIPO_INMUEBLE_ID"}), @ORM\Index(name="IDX_D3ABAFC427D19144", columns={"TIPO_DOCUMENTO_ID"}), @ORM\Index(name="IDX_D3ABAFC4E8EA1841", columns={"USUARIO_ID"})})
+ * @ORM\Entity
+ */
+class UnidadHabitacional
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="UNIDAD_HABITACIONAL_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ANO", type="integer", nullable=true)
+     */
+    private $ano;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ASIENTO_REGISTRAL", type="integer", nullable=true)
+     */
+    private $asientoRegistral;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
+     */
+    private $fechaActualizacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=false)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_REGISTRO", type="date", nullable=true)
+     */
+    private $fechaRegistro;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="FOLIO_REAL", type="integer", nullable=true)
+     */
+    private $folioReal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE", type="string", length=100, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NRO_DOCUMENTO", type="string", length=50, nullable=true)
+     */
+    private $nroDocumento;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NRO_MATRICULA", type="string", length=100, nullable=true)
+     */
+    private $nroMatricula;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NRO_PROTOCOLO", type="string", length=50, nullable=true)
+     */
+    private $nroProtocolo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="REGISTRO_PUBLICO_ID", type="integer", nullable=false)
+     */
+    private $registroPublicoId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TOMO", type="string", length=50, nullable=true)
+     */
+    private $tomo;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="TOTAL_UNIDADES", type="integer", nullable=false)
+     */
+    private $totalUnidades;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FUENTE_DATOS_ENTRADA_ID", referencedColumnName="id")
+     * })
+     */
+    private $fuenteDatosEntrada;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\Desarrollo
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\Desarrollo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="DESARROLLO_ID", referencedColumnName="id")
+     * })
+     */
+    private $desarrollo;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\EstatusUnidadHabitacional
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\EstatusUnidadHabitacional")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ESTATUS_UNIDAD_HABITACIONAL_ID", referencedColumnName="id")
+     * })
+     */
+    private $estatusUnidadHabitacional;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\GenTipoInmueble
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GenTipoInmueble")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GEN_TIPO_INMUEBLE_ID", referencedColumnName="id")
+     * })
+     */
+    private $genTipoInmueble;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\TipoDocumento
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\TipoDocumento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="TIPO_DOCUMENTO_ID", referencedColumnName="id")
+     * })
+     */
+    private $tipoDocumento;
+
+    /**
+     * @var \Comunes\SecurityBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="USUARIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+
+}

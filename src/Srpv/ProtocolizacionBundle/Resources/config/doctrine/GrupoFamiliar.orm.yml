@@ -1,0 +1,100 @@
+Srpv\ProtocolizacionBundle\Entity\GrupoFamiliar:
+    type: entity
+    table: GRUPO_FAMILIAR
+    indexes:
+        IDX_AB000D05FCDDCCF6:
+            columns:
+                - GEN_PARENTESCO_ID
+        IDX_AB000D0579F45E9B:
+            columns:
+                - FUENTE_DATOS_ENTRADA_ID
+        IDX_AB000D05C62AD666:
+            columns:
+                - PERSONA_ID
+        IDX_AB000D05E8EA1841:
+            columns:
+                - USUARIO_ID
+        IDX_AB000D059949B9D8:
+            columns:
+                - UNIDAD_FAMILIAR_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        ingresoMensual:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            comment: ''
+            column: INGRESO_MENSUAL
+        tipoSujetoAtencion:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: TIPO_SUJETO_ATENCION
+    manyToOne:
+        genParentesco:
+            targetEntity: Comunes\TablasBundle\Entity\GenParentesco
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_PARENTESCO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fuenteDatosEntrada:
+            targetEntity: FuenteDatosEntrada
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                FUENTE_DATOS_ENTRADA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        persona:
+            targetEntity: Comunes\TablasBundle\Entity\Persona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PERSONA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        unidadFamiliar:
+            targetEntity: UnidadFamiliar
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                UNIDAD_FAMILIAR_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

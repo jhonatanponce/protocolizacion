@@ -1,0 +1,64 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CondicionUnidadFamiliar
+ *
+ * @ORM\Table(name="CONDICION_UNIDAD_FAMILIAR", indexes={@ORM\Index(name="IDX_B7787EDBE8EA1841", columns={"USUARIO_ID"})})
+ * @ORM\Entity
+ */
+class CondicionUnidadFamiliar
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="CONDICION_UNIDAD_FAMILIAR_id_s", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTATUS", type="string", length=1, nullable=false)
+     */
+    private $estatus;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=true)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_MODIFICACION", type="date", nullable=true)
+     */
+    private $fechaModificacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE", type="string", length=200, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var \Comunes\SecurityBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="USUARIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+
+}

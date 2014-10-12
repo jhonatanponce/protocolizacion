@@ -1,0 +1,101 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Abogados
+ *
+ * @ORM\Table(name="ABOGADOS", indexes={@ORM\Index(name="IDX_96E40C6AB9546268", columns={"OFICINA_ID"}), @ORM\Index(name="IDX_96E40C6AE8EA1841", columns={"USUARIO_ID"}), @ORM\Index(name="IDX_96E40C6AC62AD666", columns={"PERSONA_ID"}), @ORM\Index(name="IDX_96E40C6AF10517DF", columns={"TIPO_ABOGADO_ID"})})
+ * @ORM\Entity
+ */
+class Abogados
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="ABOGADOS_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTATUS", type="string", length=1, nullable=true)
+     */
+    private $estatus;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
+     */
+    private $fechaActualizacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=true)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="INPREABOGADO", type="string", length=20, nullable=true)
+     */
+    private $inpreabogado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="OBSERVACIONES", type="string", length=200, nullable=true)
+     */
+    private $observaciones;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\Oficina
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\Oficina")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="OFICINA_ID", referencedColumnName="id")
+     * })
+     */
+    private $oficina;
+
+    /**
+     * @var \Comunes\SecurityBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="USUARIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\Persona
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\Persona")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="PERSONA_ID", referencedColumnName="id")
+     * })
+     */
+    private $persona;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\TipoAbogado
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\TipoAbogado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="TIPO_ABOGADO_ID", referencedColumnName="id")
+     * })
+     */
+    private $tipoAbogado;
+
+
+}

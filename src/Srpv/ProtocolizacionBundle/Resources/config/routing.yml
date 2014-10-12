@@ -1,0 +1,3 @@
+srpv_protocolizacion_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SrpvProtocolizacionBundle:Default:index }

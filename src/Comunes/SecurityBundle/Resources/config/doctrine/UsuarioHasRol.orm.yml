@@ -1,0 +1,46 @@
+Comunes\SecurityBundle\Entity\UsuarioHasRol:
+    type: entity
+    table: USUARIO_HAS_ROL
+    indexes:
+        IDX_791A4141CC0F380A:
+            columns:
+                - ROL_ID
+        IDX_791A4141E8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        fechaAsignacion:
+            type: date
+            nullable: true
+            comment: 'fecha de asignación del perfil'
+            column: FECHA_ASIGNACION
+    manyToOne:
+        rol:
+            targetEntity: Comunes\SecurityBundle\Entity\Rol
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ROL_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

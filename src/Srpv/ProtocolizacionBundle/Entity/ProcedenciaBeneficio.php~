@@ -1,0 +1,47 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ProcedenciaBeneficio
+ *
+ * @ORM\Table(name="PROCEDENCIA_BENEFICIO")
+ * @ORM\Entity
+ */
+class ProcedenciaBeneficio
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="PROCEDENCIA_BENEFICIO_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=false)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_MODIFICACION", type="date", nullable=true)
+     */
+    private $fechaModificacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE", type="string", length=200, nullable=false)
+     */
+    private $nombre;
+
+
+}

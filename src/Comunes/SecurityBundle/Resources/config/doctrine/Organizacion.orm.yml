@@ -1,0 +1,219 @@
+Comunes\SecurityBundle\Entity\Organizacion:
+    type: entity
+    table: ORGANIZACION
+    indexes:
+        IDX_9912454AEB6093A0:
+            columns:
+                - GEO_ZONA_ID
+        IDX_9912454A6F3929D7:
+            columns:
+                - GEO_ESTADO_ID
+        IDX_9912454A7181F310:
+            columns:
+                - GEO_MUNICIPIO_ID
+        IDX_9912454A5D9234E7:
+            columns:
+                - GEO_PARROQUIA_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        calle:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'calle donde se encuentra ubicada la organización'
+            column: CALLE
+        codigoContacto1:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'código de área del teléfono de contacto1'
+            column: CODIGO_CONTACTO1
+        codigoContacto2:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'código de área del teléfono de contacto2'
+            column: CODIGO_CONTACTO2
+        codigoSudeban:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'código emitido por SUDEBAN'
+            column: CODIGO_SUDEBAN
+        codigo1:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'codigo de área del teléfono1'
+            column: CODIGO1
+        codigo2:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'codigo de área del teléfono2'
+            column: CODIGO2
+        codigo3:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'codigo de área del teléfono3'
+            column: CODIGO3
+        emailContacto1:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'correo electrónico de la primera persona contacto'
+            column: EMAIL_CONTACTO1
+        emailContacto2:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'correo electrónico de la segunda persona contacto'
+            column: EMAIL_CONTACTO2
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre de la organización'
+            column: NOMBRE
+        numCasaEdif:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'número de casa o edificio donde se encuentra la organización'
+            column: NUM_CASA_EDIF
+        operadorFinanciero:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: 'indica si es operador financiero'
+            column: OPERADOR_FINANCIERO
+        personaContacto1:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre de la segunda persona contacto'
+            column: PERSONA_CONTACTO1
+        personaContacto2:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre de la segunda persona contacto'
+            column: PERSONA_CONTACTO2
+        presidente:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre del presidente de la organización'
+            column: PRESIDENTE
+        puntoReferencia:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'punto de referencia'
+            column: PUNTO_REFERENCIA
+        sector:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'sector donde se encuentra ubicada la organización'
+            column: SECTOR
+        telefonoContacto1:
+            type: string
+            nullable: true
+            length: 7
+            fixed: false
+            comment: 'número telefónico de la primera persona contacto'
+            column: TELEFONO_CONTACTO1
+        telefonoContacto2:
+            type: string
+            nullable: true
+            length: 7
+            fixed: false
+            comment: 'número telefónico de la primera persona contacto'
+            column: TELEFONO_CONTACTO2
+        telefono1:
+            type: string
+            nullable: true
+            length: 7
+            fixed: false
+            comment: 'número telefónico 1'
+            column: TELEFONO1
+        telefono2:
+            type: string
+            nullable: true
+            length: 7
+            fixed: false
+            comment: 'número telefónico 2'
+            column: TELEFONO2
+        telefono3:
+            type: string
+            nullable: true
+            length: 7
+            fixed: false
+            comment: 'número telefónico 3'
+            column: TELEFONO3
+    manyToOne:
+        geoZona:
+            targetEntity: Comunes\TablasBundle\Entity\GeoZona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_ZONA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoEstado:
+            targetEntity: Comunes\TablasBundle\Entity\GeoEstado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_ESTADO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoMunicipio:
+            targetEntity: Comunes\TablasBundle\Entity\GeoMunicipio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_MUNICIPIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoParroquia:
+            targetEntity: Comunes\TablasBundle\Entity\GeoParroquia
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_PARROQUIA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,65 @@
+Srpv\ProtocolizacionBundle\Entity\TasaInteres:
+    type: entity
+    table: TASA_INTERES
+    indexes:
+        IDX_D16E7134AB9CF394:
+            columns:
+                - FUENTE_FINANCIAMIENTO_ID
+        IDX_D16E7134E8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        fechaActualzacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALZACION
+        fechaCreacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_CREACION
+        nombre:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: NOMBRE
+        tasaInteres:
+            type: decimal
+            nullable: false
+            precision: 4
+            scale: 2
+            comment: ''
+            column: TASA_INTERES
+    manyToOne:
+        fuenteFinanciamiento:
+            targetEntity: FuenteFinanciamiento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                FUENTE_FINANCIAMIENTO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

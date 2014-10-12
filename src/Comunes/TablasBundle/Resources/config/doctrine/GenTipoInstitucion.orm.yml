@@ -1,0 +1,22 @@
+Comunes\TablasBundle\Entity\GenTipoInstitucion:
+    type: entity
+    table: GEN_TIPO_INSTITUCION
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: 'nombre del tipo de institución'
+            column: NOMBRE
+    lifecycleCallbacks: {  }

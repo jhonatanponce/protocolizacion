@@ -1,0 +1,22 @@
+Comunes\TablasBundle\Entity\GenEdoCivil:
+    type: entity
+    table: GEN_EDO_CIVIL
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            comment: 'nombre del estado civil'
+            column: NOMBRE
+    lifecycleCallbacks: {  }

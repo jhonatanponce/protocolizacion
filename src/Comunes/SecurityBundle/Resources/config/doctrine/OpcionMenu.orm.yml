@@ -1,0 +1,61 @@
+Comunes\SecurityBundle\Entity\OpcionMenu:
+    type: entity
+    table: OPCION_MENU
+    indexes:
+        IDX_11680224619CCE83:
+            columns:
+                - SYS_APP_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'representa el url del link del menú incluyendo la lista de parámetros. Este debe estar dentro de la misma aplicación. En caso de ruta fuera del ámnúmero de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre que se mostrará en el menú'
+            column: NOMBRE
+        orden:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'PARA ORDENAR EL MENU'
+            column: ORDEN
+        padreId:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: PADRE_ID
+        rolId:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'el rol que puede acceder a esta opción (asociación con la tabla rol)'
+            column: ROL_ID
+        url:
+            type: string
+            nullable: true
+            length: 500
+            fixed: false
+            comment: 'representa el url del link del menú incluyendo la lista de parámetros. Este debe estar dentro de la misma aplicación. En caso de ruta fuera del ámbito de la aplicación se debe colocar la forma ReWriteRule'
+            column: URL
+    manyToOne:
+        sysApp:
+            targetEntity: Comunes\SecurityBundle\Entity\SysApp
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                SYS_APP_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,38 @@
+Srpv\ProtocolizacionBundle\Entity\FuenteFinanciamiento:
+    type: entity
+    table: FUENTE_FINANCIAMIENTO
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        nombre:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: NOMBRE
+        usuarioId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: USUARIO_ID
+    lifecycleCallbacks: {  }

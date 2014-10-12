@@ -1,0 +1,20 @@
+comunes_security_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ComunesSecurityBundle:Default:index }
+
+_logout:
+    pattern:  /admin/logout/{homepage}/
+    defaults: { _controller: ComunesSecurityBundle:Security:logout }     
+    
+# RUTAS PARA LOGIN /LOGOUT E INDEX  DEL ADMINISTRADOR DEL SISTEMA
+sicc_admin_homepage:
+    pattern:  /admin/
+    defaults: { _controller: ComunesSecurityBundle:Security:indexAdmin }  
+admin_login:
+    pattern:  /admin/login/
+    defaults: { _controller: ComunesSecurityBundle:Security:login }     
+admin_login_check:
+    pattern:  /admin/login_check
+admin_logout:
+    pattern:  /admin/logout/{homepage}/
+    defaults: { _controller: ComunesSecurityBundle:Security:logout }     

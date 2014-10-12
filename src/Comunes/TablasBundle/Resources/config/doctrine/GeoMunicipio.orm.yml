@@ -1,0 +1,60 @@
+Comunes\TablasBundle\Entity\GeoMunicipio:
+    type: entity
+    table: GEO_MUNICIPIO
+    indexes:
+        IDX_36B6DEDC6F3929D7:
+            columns:
+                - GEO_ESTADO_ID
+    uniqueConstraints:
+        indx01_geo_municipio:
+            columns:
+                - ID_SUDEBAN
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        idSudeban:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: id_SUDEBAN
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre del municipio'
+            column: NOMBRE
+        nombreCapital:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: NOMBRE_CAPITAL
+        nombreMunicipio:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: NOMBRE_MUNICIPIO
+    manyToOne:
+        geoEstado:
+            targetEntity: GeoEstado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_ESTADO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

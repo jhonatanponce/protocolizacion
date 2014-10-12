@@ -1,0 +1,22 @@
+Comunes\SecurityBundle\Entity\Departamento:
+    type: entity
+    table: DEPARTAMENTO
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre de la unidad'
+            column: NOMBRE
+    lifecycleCallbacks: {  }

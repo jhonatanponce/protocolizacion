@@ -1,0 +1,87 @@
+{% extends '::inicio.html.twig' %}
+{#
+-----------------------------------
+Nombre del Archivo: login.html.twig
+Ruta del Archivo: /var/www/sisprov/app/Resources/views/
+Version:0.1
+Fecha:0
+21-08-2014
+Autor:GTI Banavih
+Descripcion: Pantalla de Inicio. Usuario y Contraseña
+Observaciones: OK AA
+Historial de Revision:
+        0.1/01-08-2014/:Version Original
+        0.2/21-08-2014/: Se añadieron estilos bootstrap
+-----------------------------------
+#}
+
+{% block body %}
+    <br/>
+    <h2 class="alert alert-dismissable alert-success alert-link text-center">
+        <strong>Sistema de Protocolización de Viviendas</strong>
+    </h2>
+    {# 
+    {% if  '/admin/' in path(app.request.attributes.get('_route')) %}
+
+        {% set login_path = 'admin_login_check' %}
+
+    {% elseif  '/opf/' in path(app.request.attributes.get('_route')) %}    
+
+        {% set login_path = 'opf_login_check' %}
+
+    {% elseif  '/bnvh/' in path(app.request.attributes.get('_route')) %}    
+
+        {% set login_path = 'bnvh_login_check' %}
+
+    {% elseif  '/cddno/' in path(app.request.attributes.get('_route')) %}   
+
+        {% set login_path = 'cddno_login_check' %}    
+
+    {% endif %}
+    #}
+
+    <form action="{{ path('admin_login_check')}}" method="post" class="box form-horizontal" role="form" id="form">
+
+        <div>
+            {% if error.message is defined %}
+                <div class="alert alert-dismissable alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{{error.message}}! </strong> 
+                    Por favor intente de nuevo
+                </div>
+                <br/>
+            {% endif %}
+            {% if ultimo_nombre is defined %} 
+                {% set v_ultimo_nombre = ultimo_nombre %}
+            {% else %}
+                {% set v_ultimo_nombre = NULL %}
+            {% endif %} 
+
+            <div class="well well-lg col-lg11">
+
+                <div class="form-group">
+                    <label for="_usinsajo" class="col-sm-4 control-label">Usuario:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="_usinsajo" name="_usinsajo" value="{{ v_ultimo_nombre  }}" required placeholder="Ingrese su usuario...">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="_psinsajo" class="col-sm-4 control-label">Clave:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <div class="col-sm-4">
+                        <input type="password" class="form-control" id="_psinsajo" name="_psinsajo" required placeholder="Ingrese su clave...">
+                    </div>
+                </div>
+
+                <div class="form-group" style="text-align: center">
+                    <input type="submit" class="btn btn-primary" name="Conectarse" value="Conectar" id="conectarse" rel="tooltip" title="Conectar">
+                    <input type="reset" class="btn btn-default" name="reset" value="Limpiar" id="reset" rel="tooltip" title="Borrar">
+                </div> 
+                    
+            </div>
+                    
+        </div>
+                    
+    </form>
+
+{% endblock %}

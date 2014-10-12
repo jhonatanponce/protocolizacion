@@ -1,0 +1,64 @@
+Comunes\TablasBundle\Entity\GenBanco:
+    type: entity
+    table: GEN_BANCO
+    indexes:
+        IDX_92C3D6937B420DF9:
+            columns:
+                - GEN_TIPO_INSTITUCION_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        bloqueado:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: 'indica si el banco está bloqueado para otorgamiento de créditos o no'
+            column: BLOQUEADO
+        codigoSudeban:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'código emitido por SUDEBAN'
+            column: CODIGO_SUDEBAN
+        correoContacto:
+            type: string
+            nullable: true
+            length: 70
+            fixed: false
+            comment: 'correo del contacto del banco'
+            column: CORREO_CONTACTO
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre del banco'
+            column: NOMBRE
+        operadorFinanciero:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: 'indica si es un operador financiero o no'
+            column: OPERADOR_FINANCIERO
+    manyToOne:
+        genTipoInstitucion:
+            targetEntity: GenTipoInstitucion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_TIPO_INSTITUCION_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

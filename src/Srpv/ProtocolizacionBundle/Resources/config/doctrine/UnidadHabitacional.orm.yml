@@ -1,0 +1,169 @@
+Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional:
+    type: entity
+    table: UNIDAD_HABITACIONAL
+    indexes:
+        IDX_D3ABAFC479F45E9B:
+            columns:
+                - FUENTE_DATOS_ENTRADA_ID
+        IDX_D3ABAFC4A2441D43:
+            columns:
+                - DESARROLLO_ID
+        IDX_D3ABAFC428319DDA:
+            columns:
+                - ESTATUS_UNIDAD_HABITACIONAL_ID
+        IDX_D3ABAFC499CB0E9D:
+            columns:
+                - GEN_TIPO_INMUEBLE_ID
+        IDX_D3ABAFC427D19144:
+            columns:
+                - TIPO_DOCUMENTO_ID
+        IDX_D3ABAFC4E8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        ano:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: ANO
+        asientoRegistral:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: ASIENTO_REGISTRAL
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        fechaRegistro:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_REGISTRO
+        folioReal:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: FOLIO_REAL
+        nombre:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: NOMBRE
+        nroDocumento:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: NRO_DOCUMENTO
+        nroMatricula:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+            column: NRO_MATRICULA
+        nroProtocolo:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: NRO_PROTOCOLO
+        registroPublicoId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: REGISTRO_PUBLICO_ID
+        tomo:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: TOMO
+        totalUnidades:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: TOTAL_UNIDADES
+    manyToOne:
+        fuenteDatosEntrada:
+            targetEntity: FuenteDatosEntrada
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                FUENTE_DATOS_ENTRADA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        desarrollo:
+            targetEntity: Desarrollo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DESARROLLO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        estatusUnidadHabitacional:
+            targetEntity: EstatusUnidadHabitacional
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ESTATUS_UNIDAD_HABITACIONAL_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        genTipoInmueble:
+            targetEntity: Comunes\TablasBundle\Entity\GenTipoInmueble
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_TIPO_INMUEBLE_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipoDocumento:
+            targetEntity: TipoDocumento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TIPO_DOCUMENTO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

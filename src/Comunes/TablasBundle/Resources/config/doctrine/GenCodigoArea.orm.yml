@@ -1,0 +1,22 @@
+Comunes\TablasBundle\Entity\GenCodigoArea:
+    type: entity
+    table: GEN_CODIGO_AREA
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codigo:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'contiene el valor del codigo de área'
+            column: CODIGO
+    lifecycleCallbacks: {  }

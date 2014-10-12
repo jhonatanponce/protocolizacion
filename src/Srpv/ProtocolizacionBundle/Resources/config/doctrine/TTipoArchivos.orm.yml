@@ -1,0 +1,113 @@
+Srpv\ProtocolizacionBundle\Entity\TTipoArchivos:
+    type: entity
+    table: T_TIPO_ARCHIVOS
+    id:
+        tipoArchivo:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            comment: ''
+            id: true
+            column: TIPO_ARCHIVO
+            generator:
+                strategy: SEQUENCE
+    fields:
+        cantColumnas:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: CANT_COLUMNAS
+        delimitador:
+            type: string
+            nullable: true
+            length: 1
+            fixed: false
+            comment: ''
+            default: '~'
+            column: DELIMITADOR
+        dia:
+            type: string
+            nullable: true
+            length: 1
+            fixed: false
+            comment: ''
+            default: N
+            column: DIA
+        entidadDesde:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: ENTIDAD_DESDE
+        entidadSize:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: ENTIDAD_SIZE
+        frecuencia:
+            type: string
+            nullable: true
+            length: 1
+            fixed: false
+            comment: ''
+            default: M
+            column: FRECUENCIA
+        frecuenciaDesde:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: FRECUENCIA_DESDE
+        frecuenciaSize:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: FRECUENCIA_SIZE
+        periodoDesde:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: PERIODO_DESDE
+        periodoSize:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: PERIODO_SIZE
+        poseeTipoRegs:
+            type: string
+            nullable: true
+            length: 1
+            fixed: false
+            comment: ''
+            column: POSEE_TIPO_REGS
+        secuenciaDesde:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: SECUENCIA_DESDE
+        secuenciaSize:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: SECUENCIA_SIZE
+        tamanoNombre:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: TAMANO_NOMBRE
+        tamanoRegistro:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: TAMANO_REGISTRO
+    lifecycleCallbacks: {  }

@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+{#
+-----------------------------------
+Nombre del Archivo: inicio.html.twig
+Ruta del Archivo: /var/www/sisprov/app/Resources/views/
+Version:0.1
+Fecha:0
+21-08-2014
+Autor:GTI Banavih
+Descripcion: Pantalla de Inicio. Usuario y Contraseña
+Observaciones: 
+Historial de Revision:
+	0.1/01-08-2014/:Version Original
+        0.2/21-08-2014/: Se añadieron estilos bootstrap
+-----------------------------------
+#}
+{% block menu %}{% endblock %}
+
+{% block body -%}
+
+    {% block main %}
+        <br/>
+        <h2 class="alert alert-dismissable alert-success alert-link text-center">
+            <strong>Sistema de Protocolización de Viviendas</strong>
+        </h2>
+        <div class="text-center">
+            <img src="{{ asset('img/icono_home.png') }}" alt="Gobierno Bolivariano!"/>
+        </div>
+        
+    {% endblock %}
+{% endblock %}

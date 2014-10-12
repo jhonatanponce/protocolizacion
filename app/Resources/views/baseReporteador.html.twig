@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{#
+-----------------------------------
+Nombre del Archivo: base.html.twig
+Ruta del Archivo: /var/www/sisprov/app/Resources/views/
+Version:0.1
+Fecha:0
+21-08-2014
+Autor:GTI Banavih
+Descripcion: Base de la plantilla. Incluye img de cintillos de encabezado, Menu, Pie de Página y Bloques para funcionalidades del sistema
+Observaciones: OK AA
+Historial de Revision:
+        0.1/01-08-2014/:Version Original
+        0.2/15-08-2014/: Se añadieron estilos bootstrap
+-----------------------------------
+#}
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}.:: SISPROV - Sistema de Protocolización de Viviendas ::. .:: Banavih ::.{% endblock %}</title>
+        
+        {% block stylesheets %}{% endblock %}
+        
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        <!-- ******************************************************************************* -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap -->
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+
+        <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
+        {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+        <!-- ******************************************************************************* -->
+        {#  Incluir jQueryUI para interacciones, widgets y temas  #}
+        {% if salida == 'pdf' %}
+        <style>
+            h2 {
+                color: #170B3B;
+                font-family: times;
+                font-size: 14pt;
+                vertical-align: top;
+            }
+            table { 
+            color: #333;
+            font-size: 10px;
+            font-family: Helvetica, Arial, sans-serif;
+            border-collapse: 
+            collapse; border-spacing: 0; 
+            }
+
+            td, th { 
+            border-bottom: 1px solid transparent; /* No more visible border */
+            border-left: 1px solid #FFFFFF;
+            border-right: 1px solid #FFFFFF;
+            height: 18px; 
+            }
+
+            th {
+            background: #DFDFDF;  /* Darken header a bit */
+            font-weight: bold;
+            }
+
+            td {
+            background: #FAFAFA;
+            text-align: center;
+            }
+
+            /* Cells in even rows (2,4,6...) are one color */ 
+            tr:nth-child(even) td { background: #F1F1F1; }   
+
+            /* Cells in odd rows (1,3,5...) are another (excludes header cells)  */ 
+            tr:nth-child(odd) td { background: #FEFEFE; }  
+
+            tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */            
+        </style>
+        {% endif %}
+
+</head>
+<body>
+    {% block body %}
+
+    {% endblock %}
+    
+    {% block javascripts %}{% endblock %}
+</body>
+</html>    

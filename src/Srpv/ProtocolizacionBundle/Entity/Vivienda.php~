@@ -1,0 +1,192 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Vivienda
+ *
+ * @ORM\Table(name="VIVIENDA", indexes={@ORM\Index(name="IDX_EBCC3792E02DDBB6", columns={"TIPO_VIVIENDA_ID"}), @ORM\Index(name="IDX_EBCC379279F45E9B", columns={"FUENTE_DATOS_ENTRADA_ID"}), @ORM\Index(name="IDX_EBCC3792E8EA1841", columns={"USUARIO_ID"}), @ORM\Index(name="IDX_EBCC379236962553", columns={"UNIDAD_HABITACIONAL_ID"})})
+ * @ORM\Entity
+ */
+class Vivienda
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="VIVIENDA_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="COMEDOR", type="string", length=1, nullable=false)
+     */
+    private $comedor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CONSTRUCCION_MT2", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $construccionMt2;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="COORDENADAS", type="string", length=200, nullable=true)
+     */
+    private $coordenadas;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DESCRIPCION_ESTAC", type="string", length=15, nullable=true)
+     */
+    private $descripcionEstac;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
+     */
+    private $fechaActualizacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=false)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LAVANDERO", type="string", length=1, nullable=false)
+     */
+    private $lavandero;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LINDERO_ESTE", type="string", length=200, nullable=false)
+     */
+    private $linderoEste;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LINDERO_NORTE", type="string", length=200, nullable=false)
+     */
+    private $linderoNorte;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LINDERO_OESTE", type="string", length=200, nullable=false)
+     */
+    private $linderoOeste;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="LINDERO_SUR", type="string", length=200, nullable=false)
+     */
+    private $linderoSur;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NRO_BANOS", type="integer", nullable=false)
+     */
+    private $nroBanos;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NRO_ESTACIONAMIENTOS", type="integer", nullable=false)
+     */
+    private $nroEstacionamientos;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NRO_HABITACIONES", type="integer", nullable=false)
+     */
+    private $nroHabitaciones;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NRO_PISO", type="string", length=10, nullable=false)
+     */
+    private $nroPiso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NRO_VIVIENDA", type="string", length=10, nullable=false)
+     */
+    private $nroVivienda;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PRECIO_VIVIENDA", type="decimal", precision=16, scale=2, nullable=false)
+     */
+    private $precioVivienda;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SALA", type="string", length=1, nullable=false)
+     */
+    private $sala;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\TipoVivienda
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\TipoVivienda")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="TIPO_VIVIENDA_ID", referencedColumnName="id")
+     * })
+     */
+    private $tipoVivienda;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FUENTE_DATOS_ENTRADA_ID", referencedColumnName="id")
+     * })
+     */
+    private $fuenteDatosEntrada;
+
+    /**
+     * @var \Comunes\SecurityBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="USUARIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="UNIDAD_HABITACIONAL_ID", referencedColumnName="id")
+     * })
+     */
+    private $unidadHabitacional;
+
+
+}

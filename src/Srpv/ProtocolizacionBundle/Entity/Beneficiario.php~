@@ -1,0 +1,242 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Beneficiario
+ *
+ * @ORM\Table(name="BENEFICIARIO", indexes={@ORM\Index(name="IDX_7DE2FF076F3929D7", columns={"GEO_ESTADO_ID"}), @ORM\Index(name="IDX_7DE2FF077181F310", columns={"GEO_MUNICIPIO_ID"}), @ORM\Index(name="IDX_7DE2FF075D9234E7", columns={"GEO_PARROQUIA_ID"}), @ORM\Index(name="IDX_7DE2FF07C62AD666", columns={"PERSONA_ID"}), @ORM\Index(name="IDX_7DE2FF07815AE485", columns={"CONDICION_TRABAJO_ID"}), @ORM\Index(name="IDX_7DE2FF074F205C23", columns={"FUENTE_INGRESO_ID"}), @ORM\Index(name="IDX_7DE2FF07AFCF524C", columns={"GEN_CARGO_ID"}), @ORM\Index(name="IDX_7DE2FF07826B5331", columns={"RELACION_TRABAJO_ID"}), @ORM\Index(name="IDX_7DE2FF07E8EA1841", columns={"USUARIO_ID"})})
+ * @ORM\Entity
+ */
+class Beneficiario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="BENEFICIARIO_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="AV_CALL_ESQ_CARR", type="string", length=200, nullable=true)
+     */
+    private $avCallEsqCarr;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="COTIZA_FAOV", type="string", length=1, nullable=false)
+     */
+    private $cotizaFaov;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DIRECCION_ANTERIOR", type="string", length=200, nullable=false)
+     */
+    private $direccionAnterior;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="DIRECCION_EMPRESA", type="string", length=200, nullable=true)
+     */
+    private $direccionEmpresa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTATUS_BENEFICIARIO", type="string", length=1, nullable=false)
+     */
+    private $estatusBeneficiario;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
+     */
+    private $fechaActualizacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=false)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_ULTIMO_CENSO", type="date", nullable=false)
+     */
+    private $fechaUltimoCenso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="INGRESO_DECLARADO", type="decimal", precision=16, scale=2, nullable=false)
+     */
+    private $ingresoDeclarado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="INGRESO_MENSUAL", type="decimal", precision=16, scale=2, nullable=false)
+     */
+    private $ingresoMensual;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="INGRESO_PROMEDIO_FAOV", type="decimal", precision=16, scale=2, nullable=false)
+     */
+    private $ingresoPromedioFaov;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE_EMPRESA", type="string", length=200, nullable=true)
+     */
+    private $nombreEmpresa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PROTOCOLIZADO", type="string", length=1, nullable=false)
+     */
+    private $protocolizado;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="RIF", type="string", length=10, nullable=false)
+     */
+    private $rif;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="SECTOR_TRABAJO_ID", type="integer", nullable=false)
+     */
+    private $sectorTrabajoId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TELEFONO_TRABAJO", type="string", length=7, nullable=true)
+     */
+    private $telefonoTrabajo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="URBAN_BARRIO", type="string", length=200, nullable=true)
+     */
+    private $urbanBarrio;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ZONA", type="string", length=200, nullable=true)
+     */
+    private $zona;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\GeoEstado
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GeoEstado")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GEO_ESTADO_ID", referencedColumnName="id")
+     * })
+     */
+    private $geoEstado;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\GeoMunicipio
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GeoMunicipio")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GEO_MUNICIPIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $geoMunicipio;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\GeoParroquia
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GeoParroquia")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GEO_PARROQUIA_ID", referencedColumnName="id")
+     * })
+     */
+    private $geoParroquia;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\Persona
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\Persona")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="PERSONA_ID", referencedColumnName="id")
+     * })
+     */
+    private $persona;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\CondicionTrabajo
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\CondicionTrabajo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="CONDICION_TRABAJO_ID", referencedColumnName="id")
+     * })
+     */
+    private $condicionTrabajo;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\FuenteIngreso
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\FuenteIngreso")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FUENTE_INGRESO_ID", referencedColumnName="id")
+     * })
+     */
+    private $fuenteIngreso;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\GenCargo
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GenCargo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GEN_CARGO_ID", referencedColumnName="id")
+     * })
+     */
+    private $genCargo;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\RelacionTrabajo
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\RelacionTrabajo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="RELACION_TRABAJO_ID", referencedColumnName="id")
+     * })
+     */
+    private $relacionTrabajo;
+
+    /**
+     * @var \Comunes\SecurityBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="USUARIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+
+}

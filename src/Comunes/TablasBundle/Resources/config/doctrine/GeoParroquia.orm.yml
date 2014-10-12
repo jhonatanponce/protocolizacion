@@ -1,0 +1,66 @@
+Comunes\TablasBundle\Entity\GeoParroquia:
+    type: entity
+    table: GEO_PARROQUIA
+    indexes:
+        IDX_EB893D547181F310:
+            columns:
+                - GEO_MUNICIPIO_ID
+    uniqueConstraints:
+        indx01_geo_parroquia:
+            columns:
+                - ID_SUDEBAN
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codigoMunicipio:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: CODIGO_MUNICIPIO
+        idSudeban:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: id_SUDEBAN
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre de la parroquia'
+            column: NOMBRE
+        nombreCapital:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: NOMBRE_CAPITAL
+        nombreParroquia:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: NOMBRE_PARROQUIA
+    manyToOne:
+        geoMunicipio:
+            targetEntity: GeoMunicipio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_MUNICIPIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

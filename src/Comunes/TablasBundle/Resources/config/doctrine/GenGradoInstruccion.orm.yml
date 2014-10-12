@@ -1,0 +1,48 @@
+Comunes\TablasBundle\Entity\GenGradoInstruccion:
+    type: entity
+    table: GEN_GRADO_INSTRUCCION
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        a:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            comment: 'variable para formulación de riesgo'
+            column: A
+        b:
+            type: decimal
+            nullable: true
+            precision: 5
+            scale: 2
+            comment: 'variable para formulación de riesgo'
+            column: B
+        genNivelRiesgoId:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'identificación del nivel de riesgo (asociación con la tabla gen_nivel_riesgo)'
+            column: GEN_NIVEL_RIESGO_ID
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre del grado de instrucción'
+            column: NOMBRE
+        x:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'variable para formulación de riesgo'
+            column: X
+    lifecycleCallbacks: {  }

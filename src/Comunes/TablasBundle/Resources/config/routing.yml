@@ -1,0 +1,3 @@
+comunes_tablas_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ComunesTablasBundle:Default:index }

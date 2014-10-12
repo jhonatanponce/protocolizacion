@@ -1,0 +1,35 @@
+Comunes\SecurityBundle\Entity\RolMenu:
+    type: entity
+    table: ROL_MENU
+    indexes:
+        IDX_686FB47486B0A49F:
+            columns:
+                - OPCION_MENU_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        rolId:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'el rol que puede acceder a esta opción (asociación con la tabla rol)'
+            column: ROL_ID
+    manyToOne:
+        opcionMenu:
+            targetEntity: Comunes\SecurityBundle\Entity\OpcionMenu
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                OPCION_MENU_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

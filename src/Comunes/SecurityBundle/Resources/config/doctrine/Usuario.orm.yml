@@ -1,0 +1,299 @@
+Comunes\SecurityBundle\Entity\Usuario:
+    type: entity
+    table: USUARIO
+    indexes:
+        IDX_1D204E47E2F136F2:
+            columns:
+                - GEN_BANCO_ID
+        IDX_1D204E476F3929D7:
+            columns:
+                - GEO_ESTADO_ID
+        IDX_1D204E477181F310:
+            columns:
+                - GEO_MUNICIPIO_ID
+        IDX_1D204E475D9234E7:
+            columns:
+                - GEO_PARROQUIA_ID
+        IDX_1D204E47CB1103DD:
+            columns:
+                - ORGANIZACION_ID
+        IDX_1D204E4777AE1CD:
+            columns:
+                - GEN_PREG_CONFIRMACION_ID
+        IDX_1D204E478D640B57:
+            columns:
+                - GEN_PROBLEMA_ID
+        IDX_1D204E4763F89AA7:
+            columns:
+                - SYS_SISTEMA_ID
+        IDX_1D204E47C62AD666:
+            columns:
+                - PERSONA_ID
+        IDX_1D204E47131C2CE:
+            columns:
+                - DEPARTAMENTO_ID
+        IDX_1D204E4799C94272:
+            columns:
+                - GEN_TIPO_USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        apellido:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'apellido del usuario'
+            column: APELLIDO
+        calle:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'calle donde vive el usuario'
+            column: CALLE
+        cambiarClave:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: 'indica si el usuario ha cambiado la clave alguna vez o no'
+            column: CAMBIAR_CLAVE
+        clave:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'clave de acceso'
+            column: CLAVE
+        codigoTelefono:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'código de área del teléfono'
+            column: CODIGO_TELEFONO
+        correo:
+            type: string
+            nullable: true
+            length: 40
+            fixed: false
+            comment: 'correo electrónico'
+            column: CORREO
+        cuentaHabilitada:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: 'indica si el usuario está desactivado o no'
+            column: CUENTA_HABILITADA
+        empresaId:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'identificación de la empresa donde labora el usuario (asociación con la tabla empresa)'
+            column: EMPRESA_ID
+        fechaCaducidad:
+            type: date
+            nullable: true
+            comment: 'fecha de vencimiento de la clave'
+            column: FECHA_CADUCIDAD
+        fechaCreacion:
+            type: date
+            nullable: true
+            comment: 'fecha de creación del usuario dentro del sistema'
+            column: FECHA_CREACION
+        fechaVencimientoEstado:
+            type: date
+            nullable: true
+            comment: 'fecha de vencimiento del estado del usuario (hasta cuando está activo o inactivo)'
+            column: FECHA_VENCIMIENTO_ESTADO
+        genOperadorFinancieroId:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'identificación del operador financiero donde labora el usuario (asociación con la tabla gen_operador_financiero)'
+            column: GEN_OPERADOR_FINANCIERO_ID
+        intentos:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'número de intentos fallidos y seguidos en que el usuario ha intentado ingresar al sistema'
+            column: INTENTOS
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre del usuario'
+            column: NOMBRE
+        numCasaEdif:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'número de casa o edificio'
+            column: NUM_CASA_EDIF
+        observaciones:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: observaciones
+            column: OBSERVACIONES
+        puntoReferencia:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'punto de referencia'
+            column: PUNTO_REFERENCIA
+        respuesta:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'respuesta de la pregunta de desafío'
+            column: RESPUESTA
+        sector:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'sector donde vive el usuario'
+            column: SECTOR
+        sirevihWeb:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: 'indica si es un usuario creado por sirevih_web'
+            column: SIREVIH_WEB
+        telefono:
+            type: string
+            nullable: true
+            length: 7
+            fixed: false
+            comment: 'teléfono del usuario'
+            column: TELEFONO
+        ultimoAcceso:
+            type: date
+            nullable: true
+            comment: 'ultima vez que accesó al sistema'
+            column: ULTIMO_ACCESO
+        usuario:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'login del acceso'
+            column: USUARIO
+    manyToOne:
+        genBanco:
+            targetEntity: Comunes\TablasBundle\Entity\GenBanco
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_BANCO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoEstado:
+            targetEntity: Comunes\TablasBundle\Entity\GeoEstado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_ESTADO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoMunicipio:
+            targetEntity: Comunes\TablasBundle\Entity\GeoMunicipio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_MUNICIPIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoParroquia:
+            targetEntity: Comunes\TablasBundle\Entity\GeoParroquia
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_PARROQUIA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        organizacion:
+            targetEntity: Comunes\SecurityBundle\Entity\Organizacion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ORGANIZACION_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        genPregConfirmacion:
+            targetEntity: Comunes\SecurityBundle\Entity\GenPregConfirmacion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_PREG_CONFIRMACION_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        genProblema:
+            targetEntity: Comunes\SecurityBundle\Entity\GenProblema
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_PROBLEMA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        sysSistema:
+            targetEntity: Comunes\SecurityBundle\Entity\SysSistema
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                SYS_SISTEMA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        persona:
+            targetEntity: Comunes\TablasBundle\Entity\Persona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PERSONA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        departamento:
+            targetEntity: Comunes\SecurityBundle\Entity\Departamento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DEPARTAMENTO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        genTipoUsuario:
+            targetEntity: Comunes\SecurityBundle\Entity\GenTipoUsuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_TIPO_USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

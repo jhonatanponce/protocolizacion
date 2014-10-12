@@ -1,0 +1,82 @@
+Srpv\ProtocolizacionBundle\Entity\RegistroPublico:
+    type: entity
+    table: REGISTRO_PUBLICO
+    indexes:
+        IDX_390792926F3929D7:
+            columns:
+                - GEO_ESTADO_ID
+        IDX_390792927181F310:
+            columns:
+                - GEO_MUNICIPIO_ID
+        IDX_390792925D9234E7:
+            columns:
+                - GEO_PARROQUIA_ID
+        IDX_39079292E8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        nombre:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: NOMBRE
+    manyToOne:
+        geoEstado:
+            targetEntity: Comunes\TablasBundle\Entity\GeoEstado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_ESTADO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoMunicipio:
+            targetEntity: Comunes\TablasBundle\Entity\GeoMunicipio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_MUNICIPIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoParroquia:
+            targetEntity: Comunes\TablasBundle\Entity\GeoParroquia
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_PARROQUIA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

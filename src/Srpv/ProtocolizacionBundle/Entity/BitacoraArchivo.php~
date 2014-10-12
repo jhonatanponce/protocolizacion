@@ -1,0 +1,106 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * BitacoraArchivo
+ *
+ * @ORM\Table(name="BITACORA_ARCHIVO", indexes={@ORM\Index(name="IDX_CA1345E2C1AFFA52", columns={"ID_CONTROL"})})
+ * @ORM\Entity
+ */
+class BitacoraArchivo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="BITACORA_ARCHIVO_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CODIGO_ESTATUS", type="string", length=2, nullable=true)
+     */
+    private $codigoEstatus;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CODIGO_SQLCODE", type="string", length=50, nullable=true)
+     */
+    private $codigoSqlcode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CODIGO_SQLERRM", type="string", length=500, nullable=true)
+     */
+    private $codigoSqlerrm;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CODIGO_SUDEBAN", type="string", length=10, nullable=true)
+     */
+    private $codigoSudeban;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_PROCESO", type="date", nullable=true)
+     */
+    private $fechaProceso;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NOMBRE_ARCHIVO", type="string", length=50, nullable=true)
+     */
+    private $nombreArchivo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NUMERO_CONTRATO", type="string", length=20, nullable=true)
+     */
+    private $numeroContrato;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="OBSERVACIONES", type="text", nullable=true)
+     */
+    private $observaciones;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="PROCEDIMIENTO", type="string", length=250, nullable=true)
+     */
+    private $procedimiento;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TIPO_ARCHIVO", type="string", length=50, nullable=true)
+     */
+    private $tipoArchivo;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\ControlArchivos
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\ControlArchivos")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ID_CONTROL", referencedColumnName="id")
+     * })
+     */
+    private $idControl;
+
+
+}

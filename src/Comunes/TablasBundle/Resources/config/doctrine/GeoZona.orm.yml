@@ -1,0 +1,22 @@
+Comunes\TablasBundle\Entity\GeoZona:
+    type: entity
+    table: GEO_ZONA
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre de la zona'
+            column: NOMBRE
+    lifecycleCallbacks: {  }

@@ -1,0 +1,63 @@
+Comunes\TablasBundle\Entity\GeoEstado:
+    type: entity
+    table: GEO_ESTADO
+    indexes:
+        IDX_49AEFC3EEB6093A0:
+            columns:
+                - GEO_ZONA_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'identificación de la zona a la que número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codigoPais:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            comment: ''
+            column: CODIGO_PAIS
+        codigoRegion:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: CODIGO_REGION
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre del estado'
+            column: NOMBRE
+        nombreCapital:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: NOMBRE_CAPITAL
+        nombreRegion:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: NOMBRE_REGION
+    manyToOne:
+        geoZona:
+            targetEntity: GeoZona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_ZONA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

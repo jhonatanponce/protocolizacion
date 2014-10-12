@@ -1,0 +1,49 @@
+Comunes\SecurityBundle\Entity\SysApp:
+    type: entity
+    table: SYS_APP
+    indexes:
+        IDX_E88534D363F89AA7:
+            columns:
+                - SYS_SISTEMA_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        descripcion:
+            type: string
+            nullable: true
+            length: 255
+            fixed: false
+            comment: 'descripción de la aplicación entendible por el usuario final'
+            column: DESCRIPCION
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'nombre de la aplicación'
+            column: NOMBRE
+        orden:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'PARA ORDENAR LAS APLICACIONES'
+            column: ORDEN
+    manyToOne:
+        sysSistema:
+            targetEntity: Comunes\SecurityBundle\Entity\SysSistema
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                SYS_SISTEMA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

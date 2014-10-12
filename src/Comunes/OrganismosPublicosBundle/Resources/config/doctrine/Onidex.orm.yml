@@ -1,0 +1,71 @@
+Comunes\OrganismosPublicosBundle\Entity\Onidex:
+    type: entity
+    table: ONIDEX
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'identificación del registro en la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nac:
+            type: string
+            nullable: false
+            length: 1
+            fixed: false
+            comment: 'Nacionalidad'
+            column: NAC
+        cedula:
+            type: string
+            nullable: false
+            length: 13
+            fixed: false
+            comment: 'Numero de Cédula'
+            column: CEDULA
+        primerApellido:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: 'Primer Apellido'
+            column: PRIMERAPELLIDO
+        segundoApellido:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: 'Segundo Apellido'
+            column: SEGUNDOAPELLIDO
+        primerNombre:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: 'Primer Nombre'
+            column: PRIMERNOMBRE
+        segundoNombre:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: 'Segundo Nombre'
+            column: SEGUNDONOMBRE
+        estatus:
+            type: integer
+            nullable: true
+            length: 50
+            fixed: false
+            comment: 'Estatus'
+            column: ESTATUS
+        estatus:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            comment: 'Fecha Nacimiento'
+            column: FECHA
+    lifecycleCallbacks: {  }            

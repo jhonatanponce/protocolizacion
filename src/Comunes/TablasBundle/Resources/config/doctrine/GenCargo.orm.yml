@@ -1,0 +1,49 @@
+Comunes\TablasBundle\Entity\GenCargo:
+    type: entity
+    table: GEN_CARGO
+    indexes:
+        IDX_DEF360336C0CDC64:
+            columns:
+                - GEN_NIVEL_RIESGO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        nombre:
+            type: string
+            nullable: true
+            length: 40
+            fixed: false
+            comment: 'nombre del cargo'
+            column: NOMBRE
+        orden:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'variable de análisis de riesgo'
+            column: ORDEN
+        x:
+            type: decimal
+            nullable: true
+            precision: 4
+            scale: 2
+            comment: 'variable de análisis de riesgo'
+            column: X
+    manyToOne:
+        genNivelRiesgo:
+            targetEntity: GenNivelRiesgo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_NIVEL_RIESGO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

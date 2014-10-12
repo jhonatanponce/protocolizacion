@@ -1,0 +1,7 @@
+srpv_admin_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SrpvAdminBundle:Default:index }
+
+srpv_admin_tasafongar:
+    resource: "@SrpvAdminBundle/Resources/config/routing/tasafongar.yml"
+    prefix:   /tasafongar

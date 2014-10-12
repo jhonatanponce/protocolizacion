@@ -1,0 +1,250 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AnalisisCredito
+ *
+ * @ORM\Table(name="ANALISIS_CREDITO", indexes={@ORM\Index(name="IDX_AE7B5B43E8EA1841", columns={"USUARIO_ID"}), @ORM\Index(name="IDX_AE7B5B4327D19144", columns={"TIPO_DOCUMENTO_ID"}), @ORM\Index(name="IDX_AE7B5B439949B9D8", columns={"UNIDAD_FAMILIAR_ID"}), @ORM\Index(name="IDX_AE7B5B4334E98380", columns={"VIVIENDA_ID"}), @ORM\Index(name="IDX_AE7B5B43E2F136F2", columns={"GEN_BANCO_ID"}), @ORM\Index(name="IDX_AE7B5B43F31AD6DD", columns={"TASA_FONGAR_ID"}), @ORM\Index(name="IDX_AE7B5B4377E7882F", columns={"TASA_INTERES_ID"})})
+ * @ORM\Entity
+ */
+class AnalisisCredito
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="ANALISIS_CREDITO_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ALICUOTA_FONDO_GARANTIA", type="decimal", precision=16, scale=2, nullable=true)
+     */
+    private $alicuotaFondoGarantia;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
+     */
+    private $fechaActualizacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=true)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_PROTOCOLIZACION", type="date", nullable=false)
+     */
+    private $fechaProtocolizacion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="FUENTE_DATOS_ENTRADA_ID", type="integer", nullable=false)
+     */
+    private $fuenteDatosEntradaId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="INGRESO_TOTAL_FAMILIAR", type="decimal", precision=16, scale=2, nullable=false)
+     */
+    private $ingresoTotalFamiliar;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MONTO_CREDITO", type="decimal", precision=16, scale=2, nullable=false)
+     */
+    private $montoCredito;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MONTO_CUOTA_FINANCIERA", type="decimal", precision=16, scale=2, nullable=false)
+     */
+    private $montoCuotaFinanciera;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MONTO_CUOTA_F_TOTAL", type="decimal", precision=16, scale=2, nullable=true)
+     */
+    private $montoCuotaFTotal;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MONTO_INICIAL", type="decimal", precision=16, scale=2, nullable=true)
+     */
+    private $montoInicial;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="MONTO_PRIMA_INICIAL_FG", type="decimal", precision=16, scale=2, nullable=false)
+     */
+    private $montoPrimaInicialFg;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="NRO_CUENTA_BANCARIO", type="string", length=20, nullable=true)
+     */
+    private $nroCuentaBancario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NRO_CUOTAS", type="integer", nullable=false)
+     */
+    private $nroCuotas;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="NRO_SERIAL_BANCARIO", type="integer", nullable=false)
+     */
+    private $nroSerialBancario;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PLAZO_CREDITO_ANO", type="integer", nullable=false)
+     */
+    private $plazoCreditoAno;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PLAZO_DIFERIDO", type="integer", nullable=true)
+     */
+    private $plazoDiferido;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="PLAZO_GRACIA", type="integer", nullable=true)
+     */
+    private $plazoGracia;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="STATUS_MIGRACION_ID", type="integer", nullable=false)
+     */
+    private $statusMigracionId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SUB_DIRECTO_HABITACIONAL", type="decimal", precision=16, scale=2, nullable=true)
+     */
+    private $subDirectoHabitacional;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="SUB_VIVIENDA_PERDIDA", type="decimal", precision=16, scale=2, nullable=true)
+     */
+    private $subViviendaPerdida;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="TASA_MORA_ID", type="integer", nullable=true)
+     */
+    private $tasaMoraId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="TIPO_CUENTA", type="string", length=10, nullable=false)
+     */
+    private $tipoCuenta;
+
+    /**
+     * @var \Comunes\SecurityBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="USUARIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\TipoDocumento
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\TipoDocumento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="TIPO_DOCUMENTO_ID", referencedColumnName="id")
+     * })
+     */
+    private $tipoDocumento;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\UnidadFamiliar
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\UnidadFamiliar")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="UNIDAD_FAMILIAR_ID", referencedColumnName="id")
+     * })
+     */
+    private $unidadFamiliar;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\Vivienda
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\Vivienda")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="VIVIENDA_ID", referencedColumnName="id")
+     * })
+     */
+    private $vivienda;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\GenBanco
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GenBanco")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GEN_BANCO_ID", referencedColumnName="id")
+     * })
+     */
+    private $genBanco;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\TasaFongar
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\TasaFongar")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="TASA_FONGAR_ID", referencedColumnName="id")
+     * })
+     */
+    private $tasaFongar;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\TasaInteres
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\TasaInteres")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="TASA_INTERES_ID", referencedColumnName="id")
+     * })
+     */
+    private $tasaInteres;
+
+
+}

@@ -1,0 +1,244 @@
+Srpv\ProtocolizacionBundle\Entity\Beneficiario:
+    type: entity
+    table: BENEFICIARIO
+    indexes:
+        IDX_7DE2FF076F3929D7:
+            columns:
+                - GEO_ESTADO_ID
+        IDX_7DE2FF077181F310:
+            columns:
+                - GEO_MUNICIPIO_ID
+        IDX_7DE2FF075D9234E7:
+            columns:
+                - GEO_PARROQUIA_ID
+        IDX_7DE2FF07C62AD666:
+            columns:
+                - PERSONA_ID
+        IDX_7DE2FF07815AE485:
+            columns:
+                - CONDICION_TRABAJO_ID
+        IDX_7DE2FF074F205C23:
+            columns:
+                - FUENTE_INGRESO_ID
+        IDX_7DE2FF07AFCF524C:
+            columns:
+                - GEN_CARGO_ID
+        IDX_7DE2FF07826B5331:
+            columns:
+                - RELACION_TRABAJO_ID
+        IDX_7DE2FF07E8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        avCallEsqCarr:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: AV_CALL_ESQ_CARR
+        cotizaFaov:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: COTIZA_FAOV
+        direccionAnterior:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+            column: DIRECCION_ANTERIOR
+        direccionEmpresa:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: DIRECCION_EMPRESA
+        estatusBeneficiario:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: "PREADJUDICADO = 0\nADJUDICADO = 1"
+            column: ESTATUS_BENEFICIARIO
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        fechaUltimoCenso:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_ULTIMO_CENSO
+        ingresoDeclarado:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            comment: ''
+            column: INGRESO_DECLARADO
+        ingresoMensual:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            comment: ''
+            column: INGRESO_MENSUAL
+        ingresoPromedioFaov:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            comment: ''
+            column: INGRESO_PROMEDIO_FAOV
+        nombreEmpresa:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: NOMBRE_EMPRESA
+        protocolizado:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: PROTOCOLIZADO
+        rif:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            comment: ''
+            column: RIF
+        sectorTrabajoId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: SECTOR_TRABAJO_ID
+        telefonoTrabajo:
+            type: string
+            nullable: true
+            length: 7
+            fixed: false
+            comment: ''
+            column: TELEFONO_TRABAJO
+        urbanBarrio:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: URBAN_BARRIO
+        zona:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: ZONA
+    manyToOne:
+        geoEstado:
+            targetEntity: Comunes\TablasBundle\Entity\GeoEstado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_ESTADO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoMunicipio:
+            targetEntity: Comunes\TablasBundle\Entity\GeoMunicipio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_MUNICIPIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoParroquia:
+            targetEntity: Comunes\TablasBundle\Entity\GeoParroquia
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_PARROQUIA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        persona:
+            targetEntity: Comunes\TablasBundle\Entity\Persona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PERSONA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        condicionTrabajo:
+            targetEntity: CondicionTrabajo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CONDICION_TRABAJO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fuenteIngreso:
+            targetEntity: FuenteIngreso
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                FUENTE_INGRESO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        genCargo:
+            targetEntity: Comunes\TablasBundle\Entity\GenCargo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_CARGO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        relacionTrabajo:
+            targetEntity: RelacionTrabajo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                RELACION_TRABAJO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

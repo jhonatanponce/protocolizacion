@@ -1,0 +1,114 @@
+<?php
+
+namespace Srpv\ProtocolizacionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ReasignacionVivienda
+ *
+ * @ORM\Table(name="REASIGNACION_VIIVENDA", indexes={@ORM\Index(name="IDX_AFC790DE25702D62", columns={"BENEFICIARIO_ID_ACTUAL"}), @ORM\Index(name="IDX_AFC790DEE419CD15", columns={"BENEFICIARIO_ID_ANTERIOR"}), @ORM\Index(name="IDX_AFC790DE8E33B263", columns={"PERSONA_ID_AUTORIZA"}), @ORM\Index(name="IDX_AFC790DEE8EA1841", columns={"USUARIO_ID"}), @ORM\Index(name="IDX_AFC790DE6FDD3E33", columns={"TIPO_REASIGNACION_ID"}), @ORM\Index(name="IDX_AFC790DE34E98380", columns={"VIVIENDA_ID"})})
+ * @ORM\Entity
+ */
+class ReasignacionVivienda
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="SEQUENCE")
+     * @ORM\SequenceGenerator(sequenceName="REASIGNACION_VIIVENDA_id_seq", allocationSize=1, initialValue=1)
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
+     */
+    private $fechaActualizacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_CREACION", type="date", nullable=false)
+     */
+    private $fechaCreacion;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="FECHA_REASIGNACION", type="date", nullable=false)
+     */
+    private $fechaReasignacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="OBSERVACIONES", type="string", length=200, nullable=true)
+     */
+    private $observaciones;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\Beneficiario
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\Beneficiario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="BENEFICIARIO_ID_ACTUAL", referencedColumnName="id")
+     * })
+     */
+    private $beneficiarioActual;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\Beneficiario
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\Beneficiario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="BENEFICIARIO_ID_ANTERIOR", referencedColumnName="id")
+     * })
+     */
+    private $beneficiarioAnterior;
+
+    /**
+     * @var \Comunes\TablasBundle\Entity\Persona
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\Persona")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="PERSONA_ID_AUTORIZA", referencedColumnName="id")
+     * })
+     */
+    private $personaAutoriza;
+
+    /**
+     * @var \Comunes\SecurityBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="USUARIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\TipoReasignacion
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\TipoReasignacion")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="TIPO_REASIGNACION_ID", referencedColumnName="id")
+     * })
+     */
+    private $tipoReasignacion;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\Vivienda
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\Vivienda")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="VIVIENDA_ID", referencedColumnName="id")
+     * })
+     */
+    private $vivienda;
+
+
+}

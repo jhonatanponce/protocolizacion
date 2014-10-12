@@ -1,0 +1,266 @@
+Comunes\TablasBundle\Entity\Persona:
+    type: entity
+    table: PERSONA
+    indexes:
+        persona_indx1:
+            columns:
+                - NACIONALIDAD
+                - CEDULA
+        IDX_6EA04881710E63A5:
+            columns:
+                - GEN_EDO_CIVIL_ID
+        IDX_6EA04881C767F447:
+            columns:
+                - GEN_SEXO_ID
+        IDX_6EA04881C68F31C:
+            columns:
+                - GEO_PAIS_NAC_ID
+        IDX_6EA04881157C8273:
+            columns:
+                - GEO_ESTADO_NAC_ID
+        IDX_6EA04881A8EBFDF9:
+            columns:
+                - GEO_MUNICIPIO_NAC_ID
+        IDX_6EA04881E55CD74E:
+            columns:
+                - GEN_GRADO_INSTRUCCION_ID
+        IDX_6EA048816CAB95E1:
+            columns:
+                - GEN_OCUPACION_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'número de identificación de la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        cedula:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'número de cédula de identidad'
+            column: CEDULA
+        codigoHab:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'código de área del teléfono de habitación'
+            column: CODIGO_HAB
+        codigoMovil:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'código de area del teléfono movil'
+            column: CODIGO_MOVIL
+        codigo3:
+            type: string
+            nullable: true
+            length: 4
+            fixed: false
+            comment: 'código de área teléfono3'
+            column: CODIGO3
+        correoAlterno:
+            type: string
+            nullable: true
+            length: 60
+            fixed: false
+            comment: 'correo secundario de la persona'
+            column: CORREO_ALTERNO
+        correoPrincipal:
+            type: string
+            nullable: true
+            length: 60
+            fixed: false
+            comment: 'correo electrónico'
+            column: CORREO_PRINCIPAL
+        direccion:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'dirección habitacional de la persona'
+            column: DIRECCION
+        discapacidad:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: 'indica si la persona es discapacitada o no'
+            column: DISCAPACIDAD
+        familiar:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'campo que indica si es una persona con cédula o sin cédula (si es 0 es una persona con cédula, si es diferente de 0 la persona no tiene cédula y el valor en el campo cédula corresponde al número de cédula del jefe de familia)'
+            column: FAMILIAR
+        fechaNacimiento:
+            type: date
+            nullable: true
+            comment: 'fecha de nacimiento'
+            column: FECHA_NACIMIENTO
+        nacionalidad:
+            type: string
+            nullable: true
+            length: 1
+            fixed: false
+            comment: 'indica si la persona es venezolana o no'
+            column: NACIONALIDAD
+        nombreCompleto:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: 'Nombre Completo de la Persona Unificado, se requiere por el SICC'
+            column: NOMBRE_COMPLETO
+        noOnidex:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: 'indica si el registro se encuentra en la tabla onidex'
+            column: NO_ONIDEX
+        observaciones:
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            comment: 'observaciones relevantes'
+            column: OBSERVACIONES
+        pasaporte:
+            type: string
+            nullable: true
+            length: 35
+            fixed: false
+            comment: 'número de pasaporte de la persona'
+            column: PASAPORTE
+        primerApellido:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'primer apellido de la persona'
+            column: PRIMER_APELLIDO
+        primerNombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'primer nombre de la persona'
+            column: PRIMER_NOMBRE
+        segundoApellido:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'segundo apellido de la persona'
+            column: SEGUNDO_APELLIDO
+        segundoNombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: 'segundo nombre de la persona'
+            column: SEGUNDO_NOMBRE
+        sysSistemaId:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: 'Indica el ID del sistema que creo el registro'
+            column: SYS_SISTEMA_ID
+        telefonoHab:
+            type: string
+            nullable: true
+            length: 7
+            fixed: false
+            comment: 'número telefónico de habitación'
+            column: TELEFONO_HAB
+        telefonoMovil:
+            type: string
+            nullable: true
+            length: 7
+            fixed: false
+            comment: 'número telefónico móvil'
+            column: TELEFONO_MOVIL
+        telefono3:
+            type: string
+            nullable: true
+            length: 7
+            fixed: false
+            comment: 'número telefónico 3'
+            column: TELEFONO3
+        ultimoCenso:
+            type: date
+            nullable: true
+            comment: 'fecha del último censo'
+            column: ULTIMO_CENSO
+    manyToOne:
+        genEdoCivil:
+            targetEntity: GenEdoCivil
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_EDO_CIVIL_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        genSexo:
+            targetEntity: GenSexo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_SEXO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoPaisNac:
+            targetEntity: GeoPais
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_PAIS_NAC_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoEstadoNac:
+            targetEntity: GeoEstado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_ESTADO_NAC_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoMunicipioNac:
+            targetEntity: GeoMunicipio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_MUNICIPIO_NAC_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        genGradoInstruccion:
+            targetEntity: GenGradoInstruccion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_GRADO_INSTRUCCION_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        genOcupacion:
+            targetEntity: GenOcupacion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_OCUPACION_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

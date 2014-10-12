@@ -1,0 +1,111 @@
+Srpv\ProtocolizacionBundle\Entity\ReasignacionVivienda:
+    type: entity
+    table: REASIGNACION_VIIVENDA
+    indexes:
+        IDX_AFC790DE25702D62:
+            columns:
+                - BENEFICIARIO_ID_ACTUAL
+        IDX_AFC790DEE419CD15:
+            columns:
+                - BENEFICIARIO_ID_ANTERIOR
+        IDX_AFC790DE8E33B263:
+            columns:
+                - PERSONA_ID_AUTORIZA
+        IDX_AFC790DEE8EA1841:
+            columns:
+                - USUARIO_ID
+        IDX_AFC790DE6FDD3E33:
+            columns:
+                - TIPO_REASIGNACION_ID
+        IDX_AFC790DE34E98380:
+            columns:
+                - VIVIENDA_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        fechaReasignacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_REASIGNACION
+        observaciones:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: OBSERVACIONES
+    manyToOne:
+        beneficiarioActual:
+            targetEntity: Beneficiario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                BENEFICIARIO_ID_ACTUAL:
+                    referencedColumnName: id
+            orphanRemoval: false
+        beneficiarioAnterior:
+            targetEntity: Beneficiario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                BENEFICIARIO_ID_ANTERIOR:
+                    referencedColumnName: id
+            orphanRemoval: false
+        personaAutoriza:
+            targetEntity: Comunes\TablasBundle\Entity\Persona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PERSONA_ID_AUTORIZA:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipoReasignacion:
+            targetEntity: TipoReasignacion
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TIPO_REASIGNACION_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        vivienda:
+            targetEntity: Vivienda
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                VIVIENDA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

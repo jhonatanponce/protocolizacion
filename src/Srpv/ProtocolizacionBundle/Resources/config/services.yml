@@ -1,0 +1,4 @@
+services:
+#    srpv_protocolizacion.example:
+#        class: Srpv\ProtocolizacionBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
