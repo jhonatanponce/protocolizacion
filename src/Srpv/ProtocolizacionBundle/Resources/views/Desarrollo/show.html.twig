@@ -1,0 +1,100 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Desarrollo</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Avcallesqcarr</th>
+                <td>{{ entity.avCallEsqCarr }}</td>
+            </tr>
+            <tr>
+                <th>Coordenadas</th>
+                <td>{{ entity.coordenadas }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ entity.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Estatusdesarrolloid</th>
+                <td>{{ entity.estatusDesarrolloId }}</td>
+            </tr>
+            <tr>
+                <th>Fechaactualizacion</th>
+                <td>{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechacreacion</th>
+                <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechatransferencia</th>
+                <td>{{ entity.fechaTransferencia|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Linderoeste</th>
+                <td>{{ entity.linderoEste }}</td>
+            </tr>
+            <tr>
+                <th>Linderonorte</th>
+                <td>{{ entity.linderoNorte }}</td>
+            </tr>
+            <tr>
+                <th>Linderooeste</th>
+                <td>{{ entity.linderoOeste }}</td>
+            </tr>
+            <tr>
+                <th>Linderosur</th>
+                <td>{{ entity.linderoSur }}</td>
+            </tr>
+            <tr>
+                <th>Loteterrenomt2</th>
+                <td>{{ entity.loteTerrenoMt2 }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Titularidaddelterreno</th>
+                <td>{{ entity.titularidadDelTerreno }}</td>
+            </tr>
+            <tr>
+                <th>Totalviviendas</th>
+                <td>{{ entity.totalViviendas }}</td>
+            </tr>
+            <tr>
+                <th>Totalviviendasprotocolizadas</th>
+                <td>{{ entity.totalViviendasProtocolizadas }}</td>
+            </tr>
+            <tr>
+                <th>Urbanbarrio</th>
+                <td>{{ entity.urbanBarrio }}</td>
+            </tr>
+            <tr>
+                <th>Zona</th>
+                <td>{{ entity.zona }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('protocolizacion_desarrollo') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('protocolizacion_desarrollo_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

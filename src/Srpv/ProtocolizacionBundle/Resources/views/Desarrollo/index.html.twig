@@ -1,0 +1,81 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-list-alt"></span>
+        <h3 class="panel-title" style="display: inline;">{% if title is defined %}{{title}}{% endif %}</h3>
+    </div>
+    
+    <div id="yw0" class="panel-body  table-responsive">
+        
+        <table class="records_list table table-bordered table-striped table-hover" border="1">
+            <thead>
+                <tr class="success">
+                    <th>Id</th>
+                    <th>Avcallesqcarr</th>
+                    <th>Coordenadas</th>
+                    <th>Descripcion</th>
+                    <th>Estatusdesarrolloid</th>
+                    <th>Fechaactualizacion</th>
+                    <th>Fechacreacion</th>
+                    <th>Fechatransferencia</th>
+                    <th>Linderoeste</th>
+                    <th>Linderonorte</th>
+                    <th>Linderooeste</th>
+                    <th>Linderosur</th>
+                    <th>Loteterrenomt2</th>
+                    <th>Nombre</th>
+                    <th>Titularidaddelterreno</th>
+                    <th>Totalviviendas</th>
+                    <th>Totalviviendasprotocolizadas</th>
+                    <th>Urbanbarrio</th>
+                    <th>Zona</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+        {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('protocolizacion_desarrollo_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.avCallEsqCarr }}</td>
+                    <td>{{ entity.coordenadas }}</td>
+                    <td>{{ entity.descripcion }}</td>
+                    <td>{{ entity.estatusDesarrolloId }}</td>
+                    <td>{% if entity.fechaActualizacion %}{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.fechaCreacion %}{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.fechaTransferencia %}{{ entity.fechaTransferencia|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ entity.linderoEste }}</td>
+                    <td>{{ entity.linderoNorte }}</td>
+                    <td>{{ entity.linderoOeste }}</td>
+                    <td>{{ entity.linderoSur }}</td>
+                    <td>{{ entity.loteTerrenoMt2 }}</td>
+                    <td>{{ entity.nombre }}</td>
+                    <td>{{ entity.titularidadDelTerreno }}</td>
+                    <td>{{ entity.totalViviendas }}</td>
+                    <td>{{ entity.totalViviendasProtocolizadas }}</td>
+                    <td>{{ entity.urbanBarrio }}</td>
+                    <td>{{ entity.zona }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('protocolizacion_desarrollo_show', { 'id': entity.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('protocolizacion_desarrollo_edit', { 'id': entity.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div align="right">
+    <a href="{{ path('_welcome') }}" class="btn btn-success" role="button">Inicio</a>
+    <a href="{{ path('protocolizacion_desarrollo_new') }}" class="btn btn-primary">Crear Registro</a>
+</div>
+    {% endblock %}
