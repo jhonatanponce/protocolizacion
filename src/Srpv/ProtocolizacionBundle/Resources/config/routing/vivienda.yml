@@ -1,0 +1,30 @@
+protocolizacion_vivienda:
+    path:     /
+    defaults: { _controller: "SrpvProtocolizacionBundle:Vivienda:index" }
+
+protocolizacion_vivienda_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvProtocolizacionBundle:Vivienda:show" }
+
+protocolizacion_vivienda_new:
+    path:     /new
+    defaults: { _controller: "SrpvProtocolizacionBundle:Vivienda:new" }
+
+protocolizacion_vivienda_create:
+    path:     /create
+    defaults: { _controller: "SrpvProtocolizacionBundle:Vivienda:create" }
+    requirements: { _method: post }
+
+protocolizacion_vivienda_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvProtocolizacionBundle:Vivienda:edit" }
+
+protocolizacion_vivienda_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvProtocolizacionBundle:Vivienda:update" }
+    requirements: { _method: post|put }
+
+protocolizacion_vivienda_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvProtocolizacionBundle:Vivienda:delete" }
+    requirements: { _method: post|delete }

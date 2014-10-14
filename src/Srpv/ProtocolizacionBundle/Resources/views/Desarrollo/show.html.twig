@@ -1,100 +1,116 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Desarrollo</h1>
+    {{ parent() }}
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-record"></span>
+        <h3 class="panel-title" style="display: inline;">Detalle Desarrollo Habitacional</h3>
+    </div>
+    
+    <div id="yw0" class="panel-body table-responsive">
+        
+        <table class="records_list table table-bordered table-striped table-hover" border="1">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>Avcallesqcarr</th>
+                    <td>{{ entity.avCallEsqCarr }}</td>
+                </tr>
+                <tr>
+                    <th>Coordenadas</th>
+                    <td>{{ entity.coordenadas }}</td>
+                </tr>
+                <tr>
+                    <th>Descripcion</th>
+                    <td>{{ entity.descripcion }}</td>
+                </tr>
+                <tr>
+                    <th>Estatusdesarrolloid</th>
+                    <td>{{ entity.estatusDesarrolloId }}</td>
+                </tr>
+                <tr>
+                    <th>Fechaactualizacion</th>
+                    <td>{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Fechacreacion</th>
+                    <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Fechatransferencia</th>
+                    <td>{{ entity.fechaTransferencia|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Linderoeste</th>
+                    <td>{{ entity.linderoEste }}</td>
+                </tr>
+                <tr>
+                    <th>Linderonorte</th>
+                    <td>{{ entity.linderoNorte }}</td>
+                </tr>
+                <tr>
+                    <th>Linderooeste</th>
+                    <td>{{ entity.linderoOeste }}</td>
+                </tr>
+                <tr>
+                    <th>Linderosur</th>
+                    <td>{{ entity.linderoSur }}</td>
+                </tr>
+                <tr>
+                    <th>Loteterrenomt2</th>
+                    <td>{{ entity.loteTerrenoMt2 }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ entity.nombre }}</td>
+                </tr>
+                <tr>
+                    <th>Titularidaddelterreno</th>
+                    <td>{{ entity.titularidadDelTerreno }}</td>
+                </tr>
+                <tr>
+                    <th>Totalviviendas</th>
+                    <td>{{ entity.totalViviendas }}</td>
+                </tr>
+                <tr>
+                    <th>Totalviviendasprotocolizadas</th>
+                    <td>{{ entity.totalViviendasProtocolizadas }}</td>
+                </tr>
+                <tr>
+                    <th>Urbanbarrio</th>
+                    <td>{{ entity.urbanBarrio }}</td>
+                </tr>
+                <tr>
+                    <th>Zona</th>
+                    <td>{{ entity.zona }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        
+        <div class="delete">
+            <div class="row">
+                <div class="col-md-2">
+                        {% if delete_form is defined %}
+                            {{ form(delete_form) }}
+                        {% endif %} 
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ path('protocolizacion_desarrollo_edit', { 'id': entity.id }) }}" class="btn btn-warning">Modificar</a>
+                </div>
+            </div>                
+        </div>
+    </div>
+</div>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Avcallesqcarr</th>
-                <td>{{ entity.avCallEsqCarr }}</td>
-            </tr>
-            <tr>
-                <th>Coordenadas</th>
-                <td>{{ entity.coordenadas }}</td>
-            </tr>
-            <tr>
-                <th>Descripcion</th>
-                <td>{{ entity.descripcion }}</td>
-            </tr>
-            <tr>
-                <th>Estatusdesarrolloid</th>
-                <td>{{ entity.estatusDesarrolloId }}</td>
-            </tr>
-            <tr>
-                <th>Fechaactualizacion</th>
-                <td>{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Fechacreacion</th>
-                <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Fechatransferencia</th>
-                <td>{{ entity.fechaTransferencia|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Linderoeste</th>
-                <td>{{ entity.linderoEste }}</td>
-            </tr>
-            <tr>
-                <th>Linderonorte</th>
-                <td>{{ entity.linderoNorte }}</td>
-            </tr>
-            <tr>
-                <th>Linderooeste</th>
-                <td>{{ entity.linderoOeste }}</td>
-            </tr>
-            <tr>
-                <th>Linderosur</th>
-                <td>{{ entity.linderoSur }}</td>
-            </tr>
-            <tr>
-                <th>Loteterrenomt2</th>
-                <td>{{ entity.loteTerrenoMt2 }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ entity.nombre }}</td>
-            </tr>
-            <tr>
-                <th>Titularidaddelterreno</th>
-                <td>{{ entity.titularidadDelTerreno }}</td>
-            </tr>
-            <tr>
-                <th>Totalviviendas</th>
-                <td>{{ entity.totalViviendas }}</td>
-            </tr>
-            <tr>
-                <th>Totalviviendasprotocolizadas</th>
-                <td>{{ entity.totalViviendasProtocolizadas }}</td>
-            </tr>
-            <tr>
-                <th>Urbanbarrio</th>
-                <td>{{ entity.urbanBarrio }}</td>
-            </tr>
-            <tr>
-                <th>Zona</th>
-                <td>{{ entity.zona }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div align="right">
+    <a href="{{ path('protocolizacion_desarrollo') }}" class="btn btn-success" role="button">Volver</a>
+</div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('protocolizacion_desarrollo') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('protocolizacion_desarrollo_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+<br>            
 {% endblock %}

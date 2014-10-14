@@ -1,3 +1,11 @@
+srpv_protocolizacion_protocolizacion_vivienda:
+    resource: "@SrpvProtocolizacionBundle/Resources/config/routing/vivienda.yml"
+    prefix:   /protocolizacion/vivienda
+
+srpv_protocolizacion_protocolizacion_unidad:
+    resource: "@SrpvProtocolizacionBundle/Resources/config/routing/unidadhabitacional.yml"
+    prefix:   /protocolizacion/unidad
+
 srpv_protocolizacion_protocolizacion_desarrollo:
     resource: "@SrpvProtocolizacionBundle/Resources/config/routing/desarrollo.yml"
     prefix:   /protocolizacion/desarrollo

@@ -1,0 +1,96 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-record"></span>
+        <h3 class="panel-title" style="display: inline;">Detalle Desarrollo Unidad</h3>
+    </div>
+    
+    <div id="yw0" class="panel-body table-responsive">
+        
+        <table class="records_list table table-bordered table-striped table-hover" border="1">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>Ano</th>
+                    <td>{{ entity.ano }}</td>
+                </tr>
+                <tr>
+                    <th>Asientoregistral</th>
+                    <td>{{ entity.asientoRegistral }}</td>
+                </tr>
+                <tr>
+                    <th>Fechaactualizacion</th>
+                    <td>{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Fechacreacion</th>
+                    <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Fecharegistro</th>
+                    <td>{{ entity.fechaRegistro|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Folioreal</th>
+                    <td>{{ entity.folioReal }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ entity.nombre }}</td>
+                </tr>
+                <tr>
+                    <th>Nrodocumento</th>
+                    <td>{{ entity.nroDocumento }}</td>
+                </tr>
+                <tr>
+                    <th>Nromatricula</th>
+                    <td>{{ entity.nroMatricula }}</td>
+                </tr>
+                <tr>
+                    <th>Nroprotocolo</th>
+                    <td>{{ entity.nroProtocolo }}</td>
+                </tr>
+                <tr>
+                    <th>Registropublicoid</th>
+                    <td>{{ entity.registroPublicoId }}</td>
+                </tr>
+                <tr>
+                    <th>Tomo</th>
+                    <td>{{ entity.tomo }}</td>
+                </tr>
+                <tr>
+                    <th>Totalunidades</th>
+                    <td>{{ entity.totalUnidades }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        
+        <div class="delete">
+            <div class="row">
+                <div class="col-md-2">
+                        {% if delete_form is defined %}
+                            {{ form(delete_form) }}
+                        {% endif %} 
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ path('protocolizacion_unidad_edit', { 'id': entity.id }) }}" class="btn btn-warning">Modificar</a>
+                </div>
+            </div>                
+        </div>
+    </div>
+</div>
+
+<div align="right">
+    <a href="{{ path('protocolizacion_unidad') }}" class="btn btn-success" role="button">Volver</a>
+</div>
+
+<br>            
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends '::base.html.twig' %}
+
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-record"></span>
+        <h3 class="panel-title" style="display: inline;">Detalle Vivienda</h3>
+    </div>
+    
+    <div id="yw0" class="panel-body table-responsive">
+        
+        <table class="records_list table table-bordered table-striped table-hover" border="1">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Comedor</th>
+                <td>{{ entity.comedor }}</td>
+            </tr>
+            <tr>
+                <th>Construccionmt2</th>
+                <td>{{ entity.construccionMt2 }}</td>
+            </tr>
+            <tr>
+                <th>Coordenadas</th>
+                <td>{{ entity.coordenadas }}</td>
+            </tr>
+            <tr>
+                <th>Descripcionestac</th>
+                <td>{{ entity.descripcionEstac }}</td>
+            </tr>
+            <tr>
+                <th>Fechaactualizacion</th>
+                <td>{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Fechacreacion</th>
+                <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Lavandero</th>
+                <td>{{ entity.lavandero }}</td>
+            </tr>
+            <tr>
+                <th>Linderoeste</th>
+                <td>{{ entity.linderoEste }}</td>
+            </tr>
+            <tr>
+                <th>Linderonorte</th>
+                <td>{{ entity.linderoNorte }}</td>
+            </tr>
+            <tr>
+                <th>Linderooeste</th>
+                <td>{{ entity.linderoOeste }}</td>
+            </tr>
+            <tr>
+                <th>Linderosur</th>
+                <td>{{ entity.linderoSur }}</td>
+            </tr>
+            <tr>
+                <th>Nrobanos</th>
+                <td>{{ entity.nroBanos }}</td>
+            </tr>
+            <tr>
+                <th>Nroestacionamientos</th>
+                <td>{{ entity.nroEstacionamientos }}</td>
+            </tr>
+            <tr>
+                <th>Nrohabitaciones</th>
+                <td>{{ entity.nroHabitaciones }}</td>
+            </tr>
+            <tr>
+                <th>Nropiso</th>
+                <td>{{ entity.nroPiso }}</td>
+            </tr>
+            <tr>
+                <th>Nrovivienda</th>
+                <td>{{ entity.nroVivienda }}</td>
+            </tr>
+            <tr>
+                <th>Preciovivienda</th>
+                <td>{{ entity.precioVivienda }}</td>
+            </tr>
+            <tr>
+                <th>Sala</th>
+                <td>{{ entity.sala }}</td>
+            </tr>
+        </tbody>
+        </table>
+        <br>
+        
+        <div class="delete">
+            <div class="row">
+                <div class="col-md-2">
+                        {% if delete_form is defined %}
+                            {{ form(delete_form) }}
+                        {% endif %} 
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ path('protocolizacion_vivienda_edit', { 'id': entity.id }) }}" class="btn btn-warning">Modificar</a>
+                </div>
+            </div>                
+        </div>
+    </div>
+</div>
+
+<div align="right">
+    <a href="{{ path('protocolizacion_vivienda') }}" class="btn btn-success" role="button">Volver</a>
+</div>
+
+<br>            
+{% endblock %}
