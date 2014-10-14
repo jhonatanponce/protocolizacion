@@ -15,23 +15,39 @@
             <thead>
                 <tr class="success">
                     <th>Id</th>
-                    <th>Nombre</th>
+                    <th>Ano</th>
+                    <th>Asientoregistral</th>
+                    <th>Fechaactualizacion</th>
+                    <th>Fechacreacion</th>
+                    <th>Fecharegistro</th>
                     <th>Folioreal</th>
-                    <th>Nro Documento</th>
-                    <th>Nro Matricula</th>
+                    <th>Nombre</th>
+                    <th>Nrodocumento</th>
+                    <th>Nromatricula</th>
+                    <th>Nroprotocolo</th>
+                    <th>Registropublicoid</th>
                     <th>Tomo</th>
-                    <th>Acción</th>
+                    <th>Totalunidades</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
         {% for entity in entities %}
                 <tr>
                     <td><a href="{{ path('protocolizacion_unidad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                    <td>{{ entity.nombre }}</td>
+                    <td>{{ entity.ano }}</td>
+                    <td>{{ entity.asientoRegistral }}</td>
+                    <td>{% if entity.fechaActualizacion %}{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.fechaCreacion %}{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.fechaRegistro %}{{ entity.fechaRegistro|date('Y-m-d H:i:s') }}{% endif %}</td>
                     <td>{{ entity.folioReal }}</td>
+                    <td>{{ entity.nombre }}</td>
                     <td>{{ entity.nroDocumento }}</td>
                     <td>{{ entity.nroMatricula }}</td>
+                    <td>{{ entity.nroProtocolo }}</td>
+                    <td>{{ entity.registroPublicoId }}</td>
                     <td>{{ entity.tomo }}</td>
+                    <td>{{ entity.totalUnidades }}</td>
                     <td>
                         <ul>
                             <li>

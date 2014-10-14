@@ -15,21 +15,47 @@
             <thead>
                 <tr class="success">
                     <th>Id</th>
+                    <th>Avcallesqcarr</th>
+                    <th>Coordenadas</th>
+                    <th>Descripcion</th>
+                    <th>Estatusdesarrolloid</th>
+                    <th>Fechaactualizacion</th>
+                    <th>Fechacreacion</th>
+                    <th>Fechatransferencia</th>
+                    <th>Linderoeste</th>
+                    <th>Linderonorte</th>
+                    <th>Linderooeste</th>
+                    <th>Linderosur</th>
+                    <th>Loteterrenomt2</th>
                     <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Estatus Desarrollo</th>
-                    <th>UrbanIzación-Barrio</th>
+                    <th>Titularidaddelterreno</th>
+                    <th>Totalviviendas</th>
+                    <th>Totalviviendasprotocolizadas</th>
+                    <th>Urbanbarrio</th>
                     <th>Zona</th>
-                    <th>Acción</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
         {% for entity in entities %}
                 <tr>
                     <td><a href="{{ path('protocolizacion_desarrollo_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                    <td>{{ entity.nombre }}</td>
+                    <td>{{ entity.avCallEsqCarr }}</td>
+                    <td>{{ entity.coordenadas }}</td>
                     <td>{{ entity.descripcion }}</td>
                     <td>{{ entity.estatusDesarrolloId }}</td>
+                    <td>{% if entity.fechaActualizacion %}{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.fechaCreacion %}{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.fechaTransferencia %}{{ entity.fechaTransferencia|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ entity.linderoEste }}</td>
+                    <td>{{ entity.linderoNorte }}</td>
+                    <td>{{ entity.linderoOeste }}</td>
+                    <td>{{ entity.linderoSur }}</td>
+                    <td>{{ entity.loteTerrenoMt2 }}</td>
+                    <td>{{ entity.nombre }}</td>
+                    <td>{{ entity.titularidadDelTerreno }}</td>
+                    <td>{{ entity.totalViviendas }}</td>
+                    <td>{{ entity.totalViviendasProtocolizadas }}</td>
                     <td>{{ entity.urbanBarrio }}</td>
                     <td>{{ entity.zona }}</td>
                     <td>
