@@ -45,16 +45,20 @@ Historial de Revision:
                 {% block menu %}
                 <br/>
                 <div class="navbar navbar-default">
-                    <div class="navbar-collapse collapse navbar-inverse-collapse">
+                    <div class="navbar-collapse collapse navbar-inverse-collapse dropdown open">
                         <ul class="nav navbar-nav">
                             <li><a href="{{ path('_welcome') }}">Inicio</a></li>
-                            <li class="dropdown">
+                            <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tasas<b class="caret"></b></a>
-                                <ul class="dropdown-menu">
+                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                                     <li><a href="{{ path('tasafongar') }}">Fongar</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Desarrollo Habitacional</li>
                                     <li><a href="{{ path('protocolizacion_desarrollo') }}">Desarrollo Habitacional</a></li>
                                     <li><a href="{{ path('protocolizacion_unidad') }}">Desarrollo Unidad</a></li>
                                     <li><a href="{{ path('protocolizacion_vivienda') }}">Vivienda</a></li>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-header">Desarrollo Habitacional</li>
                                     <li><a href="#">FAOV</a></li>
                                     <li><a href="#">Something else here</a></li>
                                     <li class="divider"></li>
