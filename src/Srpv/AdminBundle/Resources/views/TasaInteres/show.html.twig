@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>TasaInteres</h1>
+
+            <table class="record_properties">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fechaactualzacion</th>
+                        <td>{{ entity.fechaActualzacion|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fechacreacion</th>
+                        <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>{{ entity.nombre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tasainteres</th>
+                        <td>{{ entity.tasaInteres }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+                <ul class="record_actions">
+            <li>
+                <a href="{{ path('tasainteres') }}">
+                    Back to the list
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('tasainteres_edit', { 'id': entity.id }) }}">
+                    Edit
+                </a>
+            </li>
+            <li>{{ form(delete_form) }}</li>
+        </ul>
+{% endblock %}

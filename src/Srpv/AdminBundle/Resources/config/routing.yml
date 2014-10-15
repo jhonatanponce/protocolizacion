@@ -5,3 +5,16 @@ srpv_admin_homepage:
 srpv_admin_tasafongar:
     resource: "@SrpvAdminBundle/Resources/config/routing/tasafongar.yml"
     prefix:   /tasafongar
+    
+srpv_admin_enteejecutor:
+    resource: "@SrpvAdminBundle/Resources/config/routing/enteejecutor.yml"
+    prefix:   /enteejecutor 
+    
+srpv_protocolizacion_fuentefinanciamiento:
+    resource: "@SrpvAdminBundle/Resources/config/routing/fuentefinanciamiento.yml"
+    prefix:   /fuentefinanciamiento    
+    
+srpv_protocolizacion_tasainteres:
+    resource: "@SrpvAdminBundle/Resources/config/routing/tasainteres.yml"
+    prefix:   /tasainteres    
+    
