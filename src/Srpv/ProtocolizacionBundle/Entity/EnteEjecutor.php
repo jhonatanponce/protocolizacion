@@ -67,7 +67,10 @@ class EnteEjecutor
      */
     private $usuario;
 
-
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 
     /**
      * Get id

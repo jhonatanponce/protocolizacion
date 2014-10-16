@@ -50,7 +50,10 @@ class FuenteFinanciamiento
      */
     private $usuarioId;
 
-
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 
     /**
      * Get id

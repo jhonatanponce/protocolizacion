@@ -68,7 +68,10 @@ class GeoEstado
     private $geoZona;
 
 
-
+    public function __toString()
+    {
+        return $this->nombre;
+    }
     /**
      * Get id
      *

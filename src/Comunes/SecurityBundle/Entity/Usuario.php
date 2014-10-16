@@ -293,7 +293,10 @@ class Usuario
      */
     private $genTipoUsuario;
 
-
+    public function __toString()
+    {
+        return $this->nombre.' '.$this->apellido;
+    }
 
     /**
      * Get id

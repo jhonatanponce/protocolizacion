@@ -218,6 +218,10 @@ class Desarrollo
      */
     private $fuenteDatosEntrada;
 
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 
 
     /**
