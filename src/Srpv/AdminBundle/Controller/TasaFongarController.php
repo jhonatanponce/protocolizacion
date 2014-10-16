@@ -25,9 +25,18 @@ class TasaFongarController extends Controller
 
         $entities = $em->getRepository('SrpvProtocolizacionBundle:TasaFongar')->findAll();
 
+        $referer = $this->getRequest()->headers->get('referer');
+        
+        $msg = (substr_count($referer,'delete')) ? 'Registro Eliminado' : NULL;
+        
+        $css_msg = (substr_count($referer,'delete')) ? 'alert-danger' : NULL;
+                
+        
         return $this->render('SrpvAdminBundle:TasaFongar:index.html.twig', array(
             'entities' => $entities,
             'title' => 'Tasa Fongar',
+            'msg' => $msg,
+            'css_msg' => $css_msg,
         ));
     }
     /**
@@ -60,7 +69,15 @@ class TasaFongarController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tasafongar_show', array('id' => $entity->getId())));
+            //return $this->redirect($this->generateUrl('tasafongar_show', array('id' => $entity->getId())));
+            
+            return $this->render('SrpvAdminBundle:TasaFongar:show.html.twig', array(
+                'msg'         => 'Registro Creado',
+                'css_msg'     => 'alert-info',                  
+                'id' => $entity->getId(),
+                'entity' => $entity,
+                'form'   => $form->createView(),
+            ));            
         }
 
         return $this->render('SrpvAdminBundle:TasaFongar:new.html.twig', array(
@@ -235,6 +252,7 @@ class TasaFongarController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('SrpvProtocolizacionBundle:TasaFongar')->find($id);
 
@@ -243,10 +261,12 @@ class TasaFongarController extends Controller
             }
 
             $em->remove($entity);
-            $em->flush();
+            $em->flush();                
+            
         }
 
         return $this->redirect($this->generateUrl('tasafongar'));
+    
     }
 
     /**
@@ -261,7 +281,7 @@ class TasaFongarController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('tasafongar_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Eliminar','attr' => array('class' => 'btn-danger')))
+            ->add('submit', 'button', array('label' => 'Eliminar','attr' => array('class' => 'btn-danger')))
             ->getForm()
         ;
     }

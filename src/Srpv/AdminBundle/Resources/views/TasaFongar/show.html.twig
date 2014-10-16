@@ -48,12 +48,12 @@
             <div class="delete">
                 <div class="row">
                     <div class="col-md-2">
+                        <a href="{{ path('tasafongar_edit', { 'id': entity.id }) }}" class="btn btn-warning">Modificar</a>
+                    </div>                    
+                    <div class="col-md-2">
                         {% if delete_form is defined %}
                             {{ form(delete_form) }}
                         {% endif %} 
-                    </div>
-                    <div class="col-md-2">
-                        <a href="{{ path('tasafongar_edit', { 'id': entity.id }) }}" class="btn btn-warning">Modificar</a>
                     </div>
                 </div>                
             </div>

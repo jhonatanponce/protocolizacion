@@ -10,44 +10,49 @@
         </div>
 
         <div id="yw0" class="panel-body">    
-
-            <table class="records_list table table-bordered table-striped table-hover" border="1">
-                <thead>
-                    <tr class="success">
-                        <th>Id</th>
-                        <th>Estatus</th>
-                        <th>Fecha Actualizacion</th>
-                        <th>Fecha Creación</th>
-                        <th>Observaciones</th>
-                        <th>% Inicial</th>
-                        <th>% Renovacion</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {% for entity in entities %}
-                    <tr>
-                        <td><a href="{{ path('tasafongar_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                        <td>{{ entity.estatus }}</td>
-                        <td>{% if entity.fechaActualizacion %}{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{% if entity.fechaCreacion %}{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
-                        <td>{{ entity.observaciones }}</td>
-                        <td>{{ entity.porcentajeInicial }}</td>
-                        <td>{{ entity.porcentajeRenovacion }}</td>
-                        <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('tasafongar_show', { 'id': entity.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('tasafongar_edit', { 'id': entity.id }) }}">edit</a>
-                            </li>
-                        </ul>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+            {% if entities|length > 0 %}
+                <table class="records_list table table-bordered table-striped table-hover" border="1">
+                    <thead>
+                        <tr class="success">
+                            <th>Id</th>
+                            <th>Estatus</th>
+                            <th>Fecha Actualizacion</th>
+                            <th>Fecha Creación</th>
+                            <th>Observaciones</th>
+                            <th>% Inicial</th>
+                            <th>% Renovacion</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody  id="pagination">{# Permite paginar la tabla #}
+                    {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('tasafongar_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                            <td>{{ entity.estatus }}</td>
+                            <td>{% if entity.fechaActualizacion %}{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{% if entity.fechaCreacion %}{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{{ entity.observaciones }}</td>
+                            <td>{{ entity.porcentajeInicial }}</td>
+                            <td>{{ entity.porcentajeRenovacion }}</td>
+                            <td class="text-center">
+                                <a href="{{ path('tasafongar_show', { 'id': entity.id }) }}" class="glyphicon glyphicon-search"></a>
+                                &nbsp;|&nbsp;
+                                <a href="{{ path('tasafongar_edit', { 'id': entity.id }) }}" class="glyphicon glyphicon-pencil"></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="holder"></div>{# Paginador: control de paginas #}                
+            {% else %}
+                
+                <h2 class="alert alert-dismissable alert-warning alert-link text-center">
+                    
+                    <strong>No Existen Registros</strong>
+                    
+                </h2>
+                
+            {% endif %}
         </div>
     </div>
     <div align="right">
