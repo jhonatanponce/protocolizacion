@@ -57,7 +57,10 @@ class TipoDocumento
      */
     private $observaciones;
 
-
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 
     /**
      * Get id

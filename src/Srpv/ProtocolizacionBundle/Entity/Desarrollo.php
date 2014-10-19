@@ -44,13 +44,6 @@ class Desarrollo
     private $descripcion;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="ESTATUS_DESARROLLO_ID", type="integer", nullable=false)
-     */
-    private $estatusDesarrolloId;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
@@ -301,29 +294,6 @@ class Desarrollo
     public function getDescripcion()
     {
         return $this->descripcion;
-    }
-
-    /**
-     * Set estatusDesarrolloId
-     *
-     * @param integer $estatusDesarrolloId
-     * @return Desarrollo
-     */
-    public function setEstatusDesarrolloId($estatusDesarrolloId)
-    {
-        $this->estatusDesarrolloId = $estatusDesarrolloId;
-
-        return $this;
-    }
-
-    /**
-     * Get estatusDesarrolloId
-     *
-     * @return integer 
-     */
-    public function getEstatusDesarrolloId()
-    {
-        return $this->estatusDesarrolloId;
     }
 
     /**

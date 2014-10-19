@@ -18,7 +18,6 @@ class DesarrolloType extends AbstractType
             ->add('avCallEsqCarr')
             ->add('coordenadas')
             ->add('descripcion')
-            ->add('estatusDesarrolloId')
             ->add('fechaActualizacion')
             ->add('fechaCreacion')
             ->add('fechaTransferencia')

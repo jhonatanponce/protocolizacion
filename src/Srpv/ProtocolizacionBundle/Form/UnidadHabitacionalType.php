@@ -30,7 +30,6 @@ class UnidadHabitacionalType extends AbstractType
             ->add('totalUnidades')
             ->add('fuenteDatosEntrada')
             ->add('desarrollo')
-            ->add('estatusUnidadHabitacional')
             ->add('genTipoInmueble')
             ->add('tipoDocumento')
             ->add('usuario')

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UnidadHabitacional
  *
- * @ORM\Table(name="UNIDAD_HABITACIONAL", indexes={@ORM\Index(name="IDX_D3ABAFC479F45E9B", columns={"FUENTE_DATOS_ENTRADA_ID"}), @ORM\Index(name="IDX_D3ABAFC4A2441D43", columns={"DESARROLLO_ID"}), @ORM\Index(name="IDX_D3ABAFC428319DDA", columns={"ESTATUS_UNIDAD_HABITACIONAL_ID"}), @ORM\Index(name="IDX_D3ABAFC499CB0E9D", columns={"GEN_TIPO_INMUEBLE_ID"}), @ORM\Index(name="IDX_D3ABAFC427D19144", columns={"TIPO_DOCUMENTO_ID"}), @ORM\Index(name="IDX_D3ABAFC4E8EA1841", columns={"USUARIO_ID"})})
+ * @ORM\Table(name="UNIDAD_HABITACIONAL", indexes={@ORM\Index(name="IDX_D3ABAFC479F45E9B", columns={"FUENTE_DATOS_ENTRADA_ID"}), @ORM\Index(name="IDX_D3ABAFC4A2441D43", columns={"DESARROLLO_ID"}), @ORM\Index(name="IDX_D3ABAFC499CB0E9D", columns={"GEN_TIPO_INMUEBLE_ID"}), @ORM\Index(name="IDX_D3ABAFC427D19144", columns={"TIPO_DOCUMENTO_ID"}), @ORM\Index(name="IDX_D3ABAFC4E8EA1841", columns={"USUARIO_ID"})})
  * @ORM\Entity
  */
 class UnidadHabitacional
@@ -133,16 +133,7 @@ class UnidadHabitacional
      */
     private $desarrollo;
 
-    /**
-     * @var \Srpv\ProtocolizacionBundle\Entity\EstatusUnidadHabitacional
-     *
-     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\EstatusUnidadHabitacional")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ESTATUS_UNIDAD_HABITACIONAL_ID", referencedColumnName="id")
-     * })
-     */
-    private $estatusUnidadHabitacional;
-
+    
     /**
      * @var \Comunes\TablasBundle\Entity\GenTipoInmueble
      *
@@ -173,7 +164,10 @@ class UnidadHabitacional
      */
     private $usuario;
 
-
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 
     /**
      * Get id
@@ -528,29 +522,6 @@ class UnidadHabitacional
     public function getDesarrollo()
     {
         return $this->desarrollo;
-    }
-
-    /**
-     * Set estatusUnidadHabitacional
-     *
-     * @param \Srpv\ProtocolizacionBundle\Entity\EstatusUnidadHabitacional $estatusUnidadHabitacional
-     * @return UnidadHabitacional
-     */
-    public function setEstatusUnidadHabitacional(\Srpv\ProtocolizacionBundle\Entity\EstatusUnidadHabitacional $estatusUnidadHabitacional = null)
-    {
-        $this->estatusUnidadHabitacional = $estatusUnidadHabitacional;
-
-        return $this;
-    }
-
-    /**
-     * Get estatusUnidadHabitacional
-     *
-     * @return \Srpv\ProtocolizacionBundle\Entity\EstatusUnidadHabitacional 
-     */
-    public function getEstatusUnidadHabitacional()
-    {
-        return $this->estatusUnidadHabitacional;
     }
 
     /**

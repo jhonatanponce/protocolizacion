@@ -55,12 +55,6 @@ Srpv\ProtocolizacionBundle\Entity\Desarrollo:
             fixed: false
             comment: ''
             column: DESCRIPCION
-        estatusDesarrolloId:
-            type: integer
-            nullable: false
-            unsigned: false
-            comment: ''
-            column: ESTATUS_DESARROLLO_ID
         fechaActualizacion:
             type: date
             nullable: true

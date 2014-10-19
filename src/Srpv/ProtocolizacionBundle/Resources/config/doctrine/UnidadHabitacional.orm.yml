@@ -8,9 +8,6 @@ Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional:
         IDX_D3ABAFC4A2441D43:
             columns:
                 - DESARROLLO_ID
-        IDX_D3ABAFC428319DDA:
-            columns:
-                - ESTATUS_UNIDAD_HABITACIONAL_ID
         IDX_D3ABAFC499CB0E9D:
             columns:
                 - GEN_TIPO_INMUEBLE_ID
@@ -128,15 +125,6 @@ Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional:
             inversedBy: null
             joinColumns:
                 DESARROLLO_ID:
-                    referencedColumnName: id
-            orphanRemoval: false
-        estatusUnidadHabitacional:
-            targetEntity: EstatusUnidadHabitacional
-            cascade: {  }
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                ESTATUS_UNIDAD_HABITACIONAL_ID:
                     referencedColumnName: id
             orphanRemoval: false
         genTipoInmueble:
