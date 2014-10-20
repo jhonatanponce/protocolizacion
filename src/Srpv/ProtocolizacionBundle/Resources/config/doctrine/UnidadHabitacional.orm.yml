@@ -91,7 +91,7 @@ Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional:
             column: NRO_PROTOCOLO
         registroPublicoId:
             type: integer
-            nullable: false
+            nullable: true
             unsigned: false
             comment: ''
             column: REGISTRO_PUBLICO_ID

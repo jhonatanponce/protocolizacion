@@ -95,7 +95,7 @@ class UnidadHabitacional
     /**
      * @var integer
      *
-     * @ORM\Column(name="REGISTRO_PUBLICO_ID", type="integer", nullable=false)
+     * @ORM\Column(name="REGISTRO_PUBLICO_ID", type="integer", nullable=true)
      */
     private $registroPublicoId;
 
