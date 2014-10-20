@@ -1,30 +1,30 @@
-protocolizacion_unidad:
+unidad:
     path:     /
     defaults: { _controller: "SrpvProtocolizacionBundle:UnidadHabitacional:index" }
 
-protocolizacion_unidad_show:
+unidad_show:
     path:     /{id}/show
     defaults: { _controller: "SrpvProtocolizacionBundle:UnidadHabitacional:show" }
 
-protocolizacion_unidad_new:
+unidad_new:
     path:     /new
     defaults: { _controller: "SrpvProtocolizacionBundle:UnidadHabitacional:new" }
 
-protocolizacion_unidad_create:
+unidad_create:
     path:     /create
     defaults: { _controller: "SrpvProtocolizacionBundle:UnidadHabitacional:create" }
     requirements: { _method: post }
 
-protocolizacion_unidad_edit:
+unidad_edit:
     path:     /{id}/edit
     defaults: { _controller: "SrpvProtocolizacionBundle:UnidadHabitacional:edit" }
 
-protocolizacion_unidad_update:
+unidad_update:
     path:     /{id}/update
     defaults: { _controller: "SrpvProtocolizacionBundle:UnidadHabitacional:update" }
     requirements: { _method: post|put }
 
-protocolizacion_unidad_delete:
+unidad_delete:
     path:     /{id}/delete
     defaults: { _controller: "SrpvProtocolizacionBundle:UnidadHabitacional:delete" }
     requirements: { _method: post|delete }

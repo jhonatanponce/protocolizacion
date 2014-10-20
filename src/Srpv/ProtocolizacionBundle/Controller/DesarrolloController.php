@@ -45,7 +45,7 @@ class DesarrolloController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('protocolizacion_desarrollo_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('desarrollo_show', array('id' => $entity->getId())));
         }
 
         return $this->render('SrpvProtocolizacionBundle:Desarrollo:new.html.twig', array(
@@ -64,7 +64,7 @@ class DesarrolloController extends Controller
     private function createCreateForm(Desarrollo $entity)
     {
         $form = $this->createForm(new DesarrolloType(), $entity, array(
-            'action' => $this->generateUrl('protocolizacion_desarrollo_create'),
+            'action' => $this->generateUrl('desarrollo_create'),
             'method' => 'POST',
         ));
 
@@ -144,7 +144,7 @@ class DesarrolloController extends Controller
     private function createEditForm(Desarrollo $entity)
     {
         $form = $this->createForm(new DesarrolloType(), $entity, array(
-            'action' => $this->generateUrl('protocolizacion_desarrollo_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('desarrollo_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -173,7 +173,7 @@ class DesarrolloController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('protocolizacion_desarrollo_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('desarrollo_edit', array('id' => $id)));
         }
 
         return $this->render('SrpvProtocolizacionBundle:Desarrollo:edit.html.twig', array(
@@ -203,7 +203,7 @@ class DesarrolloController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('protocolizacion_desarrollo'));
+        return $this->redirect($this->generateUrl('desarrollo'));
     }
 
     /**
@@ -216,7 +216,7 @@ class DesarrolloController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('protocolizacion_desarrollo_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('desarrollo_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

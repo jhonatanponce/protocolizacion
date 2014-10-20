@@ -45,7 +45,7 @@ class UnidadHabitacionalController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('protocolizacion_unidad_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('unidad_show', array('id' => $entity->getId())));
         }
 
         return $this->render('SrpvProtocolizacionBundle:UnidadHabitacional:new.html.twig', array(
@@ -64,7 +64,7 @@ class UnidadHabitacionalController extends Controller
     private function createCreateForm(UnidadHabitacional $entity)
     {
         $form = $this->createForm(new UnidadHabitacionalType(), $entity, array(
-            'action' => $this->generateUrl('protocolizacion_unidad_create'),
+            'action' => $this->generateUrl('unidad_create'),
             'method' => 'POST',
         ));
 
@@ -144,7 +144,7 @@ class UnidadHabitacionalController extends Controller
     private function createEditForm(UnidadHabitacional $entity)
     {
         $form = $this->createForm(new UnidadHabitacionalType(), $entity, array(
-            'action' => $this->generateUrl('protocolizacion_unidad_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('unidad_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -173,7 +173,7 @@ class UnidadHabitacionalController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('protocolizacion_unidad_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('unidad_edit', array('id' => $id)));
         }
 
         return $this->render('SrpvProtocolizacionBundle:UnidadHabitacional:edit.html.twig', array(
@@ -203,7 +203,7 @@ class UnidadHabitacionalController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('protocolizacion_unidad'));
+        return $this->redirect($this->generateUrl('unidad'));
     }
 
     /**
@@ -216,7 +216,7 @@ class UnidadHabitacionalController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('protocolizacion_unidad_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('unidad_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

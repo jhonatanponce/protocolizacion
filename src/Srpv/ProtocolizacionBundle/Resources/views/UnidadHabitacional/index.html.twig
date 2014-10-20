@@ -1,35 +1,35 @@
 {% extends '::base.html.twig' %}
-    
+
 {% block body -%}
     {{ parent() }}
-    <div class="header-search-sector pull-right">
-        <form class="form-inline">
-            <div class="form-group">
-                <select id="srpv_protocolizacionbundle_desarrollo_geoEstado" name="estado" required="required" class="form-control">
-                    <option disabled="disabled" selected="selected" value="">Seleccione Estado</option>
-                    <option value="1">DISTRITO CAPITAL</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <select id="srpv_protocolizacionbundle_desarrollo_geoEstado" name="nombre_desarrollo" required="required" class="form-control">
-                    <option disabled="disabled" selected="selected" value="">Seleccione Nombre Desarrollo</option>
-                    <option value="1">Test1</option>
-                    <option value="1">Test</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-        </form>
-    </div><!-- search-sector -->
-    <br><br><br>
+<div class="header-search-sector pull-right">
+    <form class="form-inline">
+        <div class="form-group">
+            <select id="srpv_protocolizacionbundle_desarrollo_geoEstado" name="estado" required="required" class="form-control">
+                <option disabled="disabled" selected="selected" value="">Seleccione Estado</option>
+                <option value="1">DISTRITO CAPITAL</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select id="srpv_protocolizacionbundle_desarrollo_geoEstado" name="nombre_desarrollo" required="required" class="form-control">
+                <option disabled="disabled" selected="selected" value="">Seleccione Nombre Desarrollo</option>
+                <option value="1">Test1</option>
+                <option value="1">Test</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+    </form>
+</div><!-- search-sector -->
+<br><br><br>
 <div class="panel panel-default">
     
     <div class="panel-heading">
         <span class="glyphicon glyphicon-list-alt"></span>
         <h3 class="panel-title" style="display: inline;">{% if title is defined %}{{title}}{% endif %}</h3>
     </div>
-        
+    
     <div id="yw0" class="panel-body  table-responsive">
-        
+        {% if entities|length > 0 %} 
         <table class="records_list table table-bordered table-striped table-hover" border="1">
             <thead>
                 <tr class="success">
@@ -45,25 +45,35 @@
             <tbody>
         {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('protocolizacion_unidad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td><a href="{{ path('unidad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                     <td>{{ entity.nombre }}</td>
                     <td>{{ entity.folioReal }}</td>
                     <td>{{ entity.nroDocumento }}</td>
                     <td>{{ entity.nroMatricula }}</td>
                     <td>{{ entity.tomo }}</td>
                     <td class="text-center">
-                        <a href="{{ path('protocolizacion_unidad_show', { 'id': entity.id }) }}" class="glyphicon glyphicon-search"></a>
+                        <a href="{{ path('unidad_show', { 'id': entity.id }) }}" class="glyphicon glyphicon-search"></a>
                         &nbsp;|&nbsp;
-                        <a href="{{ path('protocolizacion_unidad_edit', { 'id': entity.id }) }}" class="glyphicon glyphicon-pencil"></a>
+                        <a href="{{ path('unidad_edit', { 'id': entity.id }) }}" class="glyphicon glyphicon-pencil"></a>
                     </td>
                 </tr>
         {% endfor %}
             </tbody>
         </table>
+        <div class="holder"></div>{# Paginador: control de paginas #}                
+            {% else %}
+        
+        <h2 class="alert alert-dismissable alert-warning alert-link text-center">
+            
+            <strong>No Existen Registros</strong>
+            
+        </h2>
+        
+            {% endif %}
     </div>
 </div>
 <div align="right">
     <a href="{{ path('_welcome') }}" class="btn btn-success" role="button">Inicio</a>
-    <a href="{{ path('protocolizacion_unidad_new') }}" class="btn btn-primary">Crear Registro</a>
+    <a href="{{ path('unidad_new') }}" class="btn btn-primary">Crear Registro</a>
 </div>
     {% endblock %}

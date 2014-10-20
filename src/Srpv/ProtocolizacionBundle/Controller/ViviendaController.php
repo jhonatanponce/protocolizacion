@@ -45,7 +45,7 @@ class ViviendaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('protocolizacion_vivienda_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('vivienda_show', array('id' => $entity->getId())));
         }
 
         return $this->render('SrpvProtocolizacionBundle:Vivienda:new.html.twig', array(
@@ -64,7 +64,7 @@ class ViviendaController extends Controller
     private function createCreateForm(Vivienda $entity)
     {
         $form = $this->createForm(new ViviendaType(), $entity, array(
-            'action' => $this->generateUrl('protocolizacion_vivienda_create'),
+            'action' => $this->generateUrl('vivienda_create'),
             'method' => 'POST',
         ));
 
@@ -144,7 +144,7 @@ class ViviendaController extends Controller
     private function createEditForm(Vivienda $entity)
     {
         $form = $this->createForm(new ViviendaType(), $entity, array(
-            'action' => $this->generateUrl('protocolizacion_vivienda_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('vivienda_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -173,7 +173,7 @@ class ViviendaController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('protocolizacion_vivienda_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('vivienda_edit', array('id' => $id)));
         }
 
         return $this->render('SrpvProtocolizacionBundle:Vivienda:edit.html.twig', array(
@@ -203,7 +203,7 @@ class ViviendaController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('protocolizacion_vivienda'));
+        return $this->redirect($this->generateUrl('vivienda'));
     }
 
     /**
@@ -216,7 +216,7 @@ class ViviendaController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('protocolizacion_vivienda_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('vivienda_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
