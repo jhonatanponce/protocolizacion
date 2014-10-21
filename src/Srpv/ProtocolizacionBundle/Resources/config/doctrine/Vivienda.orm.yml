@@ -70,6 +70,13 @@ Srpv\ProtocolizacionBundle\Entity\Vivienda:
             fixed: true
             comment: ''
             column: LAVANDERO
+        cocina:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: COCINA
         linderoEste:
             type: string
             nullable: false

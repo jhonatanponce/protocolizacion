@@ -10,6 +10,10 @@ srpv_protocolizacion_desarrollo:
     resource: "@SrpvProtocolizacionBundle/Resources/config/routing/desarrollo.yml"
     prefix:   /protocolizacion/desarrollo
 
+srpv_protocolizacion_beneficiario:
+    resource: "@SrpvProtocolizacionBundle/Resources/config/routing/beneficiario.yml"
+    prefix:   /beneficiario
+
 srpv_protocolizacion_homepage:
     path:     /hello/{name}
     defaults: { _controller: SrpvProtocolizacionBundle:Default:index }

@@ -111,4 +111,244 @@ class ReasignacionVivienda
     private $vivienda;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fechaActualizacion
+     *
+     * @param \DateTime $fechaActualizacion
+     * @return ReasignacionVivienda
+     */
+    public function setFechaActualizacion($fechaActualizacion)
+    {
+        $this->fechaActualizacion = $fechaActualizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaActualizacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaActualizacion()
+    {
+        return $this->fechaActualizacion;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return ReasignacionVivienda
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set fechaReasignacion
+     *
+     * @param \DateTime $fechaReasignacion
+     * @return ReasignacionVivienda
+     */
+    public function setFechaReasignacion($fechaReasignacion)
+    {
+        $this->fechaReasignacion = $fechaReasignacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaReasignacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaReasignacion()
+    {
+        return $this->fechaReasignacion;
+    }
+
+    /**
+     * Set observaciones
+     *
+     * @param string $observaciones
+     * @return ReasignacionVivienda
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+
+        return $this;
+    }
+
+    /**
+     * Get observaciones
+     *
+     * @return string 
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    /**
+     * Set beneficiarioActual
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\Beneficiario $beneficiarioActual
+     * @return ReasignacionVivienda
+     */
+    public function setBeneficiarioActual(\Srpv\ProtocolizacionBundle\Entity\Beneficiario $beneficiarioActual = null)
+    {
+        $this->beneficiarioActual = $beneficiarioActual;
+
+        return $this;
+    }
+
+    /**
+     * Get beneficiarioActual
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\Beneficiario 
+     */
+    public function getBeneficiarioActual()
+    {
+        return $this->beneficiarioActual;
+    }
+
+    /**
+     * Set beneficiarioAnterior
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\Beneficiario $beneficiarioAnterior
+     * @return ReasignacionVivienda
+     */
+    public function setBeneficiarioAnterior(\Srpv\ProtocolizacionBundle\Entity\Beneficiario $beneficiarioAnterior = null)
+    {
+        $this->beneficiarioAnterior = $beneficiarioAnterior;
+
+        return $this;
+    }
+
+    /**
+     * Get beneficiarioAnterior
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\Beneficiario 
+     */
+    public function getBeneficiarioAnterior()
+    {
+        return $this->beneficiarioAnterior;
+    }
+
+    /**
+     * Set personaAutoriza
+     *
+     * @param \Comunes\TablasBundle\Entity\Persona $personaAutoriza
+     * @return ReasignacionVivienda
+     */
+    public function setPersonaAutoriza(\Comunes\TablasBundle\Entity\Persona $personaAutoriza = null)
+    {
+        $this->personaAutoriza = $personaAutoriza;
+
+        return $this;
+    }
+
+    /**
+     * Get personaAutoriza
+     *
+     * @return \Comunes\TablasBundle\Entity\Persona 
+     */
+    public function getPersonaAutoriza()
+    {
+        return $this->personaAutoriza;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Comunes\SecurityBundle\Entity\Usuario $usuario
+     * @return ReasignacionVivienda
+     */
+    public function setUsuario(\Comunes\SecurityBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Comunes\SecurityBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set tipoReasignacion
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\TipoReasignacion $tipoReasignacion
+     * @return ReasignacionVivienda
+     */
+    public function setTipoReasignacion(\Srpv\ProtocolizacionBundle\Entity\TipoReasignacion $tipoReasignacion = null)
+    {
+        $this->tipoReasignacion = $tipoReasignacion;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoReasignacion
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\TipoReasignacion 
+     */
+    public function getTipoReasignacion()
+    {
+        return $this->tipoReasignacion;
+    }
+
+    /**
+     * Set vivienda
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\Vivienda $vivienda
+     * @return ReasignacionVivienda
+     */
+    public function setVivienda(\Srpv\ProtocolizacionBundle\Entity\Vivienda $vivienda = null)
+    {
+        $this->vivienda = $vivienda;
+
+        return $this;
+    }
+
+    /**
+     * Get vivienda
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\Vivienda 
+     */
+    public function getVivienda()
+    {
+        return $this->vivienda;
+    }
 }

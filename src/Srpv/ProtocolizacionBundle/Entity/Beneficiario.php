@@ -51,13 +51,6 @@ class Beneficiario
     private $direccionEmpresa;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="ESTATUS_BENEFICIARIO", type="string", length=1, nullable=false)
-     */
-    private $estatusBeneficiario;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
@@ -238,6 +231,16 @@ class Beneficiario
      */
     private $usuario;
 
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\EstatusBeneficiario
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\EstatusBeneficiario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ESTATUS_BENEFICIARIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $estatusBeneficiario;
+
 
 
     /**
@@ -272,7 +275,7 @@ class Beneficiario
     {
         return $this->avCallEsqCarr;
     }
-
+    
     /**
      * Set cotizaFaov
      *
@@ -340,29 +343,6 @@ class Beneficiario
     public function getDireccionEmpresa()
     {
         return $this->direccionEmpresa;
-    }
-
-    /**
-     * Set estatusBeneficiario
-     *
-     * @param string $estatusBeneficiario
-     * @return Beneficiario
-     */
-    public function setEstatusBeneficiario($estatusBeneficiario)
-    {
-        $this->estatusBeneficiario = $estatusBeneficiario;
-
-        return $this;
-    }
-
-    /**
-     * Get estatusBeneficiario
-     *
-     * @return string 
-     */
-    public function getEstatusBeneficiario()
-    {
-        return $this->estatusBeneficiario;
     }
 
     /**
@@ -843,6 +823,7 @@ class Beneficiario
      *
      * @return \Srpv\ProtocolizacionBundle\Entity\RelacionTrabajo 
      */
+    
     public function getRelacionTrabajo()
     {
         return $this->relacionTrabajo;
@@ -869,5 +850,28 @@ class Beneficiario
     public function getUsuario()
     {
         return $this->usuario;
+    }
+
+    /**
+     * Set estatusBeneficiario
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\EstatusBeneficiario $estatusBeneficiario
+     * @return Beneficiario
+     */
+    public function setEstatusBeneficiario(\Srpv\ProtocolizacionBundle\Entity\EstatusBeneficiario $estatusBeneficiario = null)
+    {
+        $this->estatusBeneficiario = $estatusBeneficiario;
+
+        return $this;
+    }
+
+    /**
+     * Get estatusBeneficiario
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\EstatusBeneficiario 
+     */
+    public function getEstatusBeneficiario()
+    {
+        return $this->estatusBeneficiario;
     }
 }

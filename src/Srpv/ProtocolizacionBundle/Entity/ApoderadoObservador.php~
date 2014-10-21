@@ -88,4 +88,198 @@ class ApoderadoObservador
     private $usuario;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set apoderado
+     *
+     * @param string $apoderado
+     * @return ApoderadoObservador
+     */
+    public function setApoderado($apoderado)
+    {
+        $this->apoderado = $apoderado;
+
+        return $this;
+    }
+
+    /**
+     * Get apoderado
+     *
+     * @return string 
+     */
+    public function getApoderado()
+    {
+        return $this->apoderado;
+    }
+
+    /**
+     * Set estatus
+     *
+     * @param string $estatus
+     * @return ApoderadoObservador
+     */
+    public function setEstatus($estatus)
+    {
+        $this->estatus = $estatus;
+
+        return $this;
+    }
+
+    /**
+     * Get estatus
+     *
+     * @return string 
+     */
+    public function getEstatus()
+    {
+        return $this->estatus;
+    }
+
+    /**
+     * Set fechaActualizacion
+     *
+     * @param \DateTime $fechaActualizacion
+     * @return ApoderadoObservador
+     */
+    public function setFechaActualizacion($fechaActualizacion)
+    {
+        $this->fechaActualizacion = $fechaActualizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaActualizacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaActualizacion()
+    {
+        return $this->fechaActualizacion;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return ApoderadoObservador
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set observaciones
+     *
+     * @param string $observaciones
+     * @return ApoderadoObservador
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+
+        return $this;
+    }
+
+    /**
+     * Get observaciones
+     *
+     * @return string 
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    /**
+     * Set persona
+     *
+     * @param \Comunes\TablasBundle\Entity\Persona $persona
+     * @return ApoderadoObservador
+     */
+    public function setPersona(\Comunes\TablasBundle\Entity\Persona $persona = null)
+    {
+        $this->persona = $persona;
+
+        return $this;
+    }
+
+    /**
+     * Get persona
+     *
+     * @return \Comunes\TablasBundle\Entity\Persona 
+     */
+    public function getPersona()
+    {
+        return $this->persona;
+    }
+
+    /**
+     * Set geoEstado
+     *
+     * @param \Comunes\TablasBundle\Entity\GeoEstado $geoEstado
+     * @return ApoderadoObservador
+     */
+    public function setGeoEstado(\Comunes\TablasBundle\Entity\GeoEstado $geoEstado = null)
+    {
+        $this->geoEstado = $geoEstado;
+
+        return $this;
+    }
+
+    /**
+     * Get geoEstado
+     *
+     * @return \Comunes\TablasBundle\Entity\GeoEstado 
+     */
+    public function getGeoEstado()
+    {
+        return $this->geoEstado;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Comunes\SecurityBundle\Entity\Usuario $usuario
+     * @return ApoderadoObservador
+     */
+    public function setUsuario(\Comunes\SecurityBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Comunes\SecurityBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
 }

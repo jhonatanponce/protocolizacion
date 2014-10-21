@@ -103,4 +103,267 @@ class BitacoraArchivo
     private $idControl;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set codigoEstatus
+     *
+     * @param string $codigoEstatus
+     * @return BitacoraArchivo
+     */
+    public function setCodigoEstatus($codigoEstatus)
+    {
+        $this->codigoEstatus = $codigoEstatus;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoEstatus
+     *
+     * @return string 
+     */
+    public function getCodigoEstatus()
+    {
+        return $this->codigoEstatus;
+    }
+
+    /**
+     * Set codigoSqlcode
+     *
+     * @param string $codigoSqlcode
+     * @return BitacoraArchivo
+     */
+    public function setCodigoSqlcode($codigoSqlcode)
+    {
+        $this->codigoSqlcode = $codigoSqlcode;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoSqlcode
+     *
+     * @return string 
+     */
+    public function getCodigoSqlcode()
+    {
+        return $this->codigoSqlcode;
+    }
+
+    /**
+     * Set codigoSqlerrm
+     *
+     * @param string $codigoSqlerrm
+     * @return BitacoraArchivo
+     */
+    public function setCodigoSqlerrm($codigoSqlerrm)
+    {
+        $this->codigoSqlerrm = $codigoSqlerrm;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoSqlerrm
+     *
+     * @return string 
+     */
+    public function getCodigoSqlerrm()
+    {
+        return $this->codigoSqlerrm;
+    }
+
+    /**
+     * Set codigoSudeban
+     *
+     * @param string $codigoSudeban
+     * @return BitacoraArchivo
+     */
+    public function setCodigoSudeban($codigoSudeban)
+    {
+        $this->codigoSudeban = $codigoSudeban;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoSudeban
+     *
+     * @return string 
+     */
+    public function getCodigoSudeban()
+    {
+        return $this->codigoSudeban;
+    }
+
+    /**
+     * Set fechaProceso
+     *
+     * @param \DateTime $fechaProceso
+     * @return BitacoraArchivo
+     */
+    public function setFechaProceso($fechaProceso)
+    {
+        $this->fechaProceso = $fechaProceso;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaProceso
+     *
+     * @return \DateTime 
+     */
+    public function getFechaProceso()
+    {
+        return $this->fechaProceso;
+    }
+
+    /**
+     * Set nombreArchivo
+     *
+     * @param string $nombreArchivo
+     * @return BitacoraArchivo
+     */
+    public function setNombreArchivo($nombreArchivo)
+    {
+        $this->nombreArchivo = $nombreArchivo;
+
+        return $this;
+    }
+
+    /**
+     * Get nombreArchivo
+     *
+     * @return string 
+     */
+    public function getNombreArchivo()
+    {
+        return $this->nombreArchivo;
+    }
+
+    /**
+     * Set numeroContrato
+     *
+     * @param string $numeroContrato
+     * @return BitacoraArchivo
+     */
+    public function setNumeroContrato($numeroContrato)
+    {
+        $this->numeroContrato = $numeroContrato;
+
+        return $this;
+    }
+
+    /**
+     * Get numeroContrato
+     *
+     * @return string 
+     */
+    public function getNumeroContrato()
+    {
+        return $this->numeroContrato;
+    }
+
+    /**
+     * Set observaciones
+     *
+     * @param string $observaciones
+     * @return BitacoraArchivo
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+
+        return $this;
+    }
+
+    /**
+     * Get observaciones
+     *
+     * @return string 
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    /**
+     * Set procedimiento
+     *
+     * @param string $procedimiento
+     * @return BitacoraArchivo
+     */
+    public function setProcedimiento($procedimiento)
+    {
+        $this->procedimiento = $procedimiento;
+
+        return $this;
+    }
+
+    /**
+     * Get procedimiento
+     *
+     * @return string 
+     */
+    public function getProcedimiento()
+    {
+        return $this->procedimiento;
+    }
+
+    /**
+     * Set tipoArchivo
+     *
+     * @param string $tipoArchivo
+     * @return BitacoraArchivo
+     */
+    public function setTipoArchivo($tipoArchivo)
+    {
+        $this->tipoArchivo = $tipoArchivo;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoArchivo
+     *
+     * @return string 
+     */
+    public function getTipoArchivo()
+    {
+        return $this->tipoArchivo;
+    }
+
+    /**
+     * Set idControl
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\ControlArchivos $idControl
+     * @return BitacoraArchivo
+     */
+    public function setIdControl(\Srpv\ProtocolizacionBundle\Entity\ControlArchivos $idControl = null)
+    {
+        $this->idControl = $idControl;
+
+        return $this;
+    }
+
+    /**
+     * Get idControl
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\ControlArchivos 
+     */
+    public function getIdControl()
+    {
+        return $this->idControl;
+    }
 }

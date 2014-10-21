@@ -101,4 +101,221 @@ class GrupoFamiliar
     private $unidadFamiliar;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fechaActualizacion
+     *
+     * @param \DateTime $fechaActualizacion
+     * @return GrupoFamiliar
+     */
+    public function setFechaActualizacion($fechaActualizacion)
+    {
+        $this->fechaActualizacion = $fechaActualizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaActualizacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaActualizacion()
+    {
+        return $this->fechaActualizacion;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return GrupoFamiliar
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set ingresoMensual
+     *
+     * @param string $ingresoMensual
+     * @return GrupoFamiliar
+     */
+    public function setIngresoMensual($ingresoMensual)
+    {
+        $this->ingresoMensual = $ingresoMensual;
+
+        return $this;
+    }
+
+    /**
+     * Get ingresoMensual
+     *
+     * @return string 
+     */
+    public function getIngresoMensual()
+    {
+        return $this->ingresoMensual;
+    }
+
+    /**
+     * Set tipoSujetoAtencion
+     *
+     * @param integer $tipoSujetoAtencion
+     * @return GrupoFamiliar
+     */
+    public function setTipoSujetoAtencion($tipoSujetoAtencion)
+    {
+        $this->tipoSujetoAtencion = $tipoSujetoAtencion;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoSujetoAtencion
+     *
+     * @return integer 
+     */
+    public function getTipoSujetoAtencion()
+    {
+        return $this->tipoSujetoAtencion;
+    }
+
+    /**
+     * Set genParentesco
+     *
+     * @param \Comunes\TablasBundle\Entity\GenParentesco $genParentesco
+     * @return GrupoFamiliar
+     */
+    public function setGenParentesco(\Comunes\TablasBundle\Entity\GenParentesco $genParentesco = null)
+    {
+        $this->genParentesco = $genParentesco;
+
+        return $this;
+    }
+
+    /**
+     * Get genParentesco
+     *
+     * @return \Comunes\TablasBundle\Entity\GenParentesco 
+     */
+    public function getGenParentesco()
+    {
+        return $this->genParentesco;
+    }
+
+    /**
+     * Set fuenteDatosEntrada
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada $fuenteDatosEntrada
+     * @return GrupoFamiliar
+     */
+    public function setFuenteDatosEntrada(\Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada $fuenteDatosEntrada = null)
+    {
+        $this->fuenteDatosEntrada = $fuenteDatosEntrada;
+
+        return $this;
+    }
+
+    /**
+     * Get fuenteDatosEntrada
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada 
+     */
+    public function getFuenteDatosEntrada()
+    {
+        return $this->fuenteDatosEntrada;
+    }
+
+    /**
+     * Set persona
+     *
+     * @param \Comunes\TablasBundle\Entity\Persona $persona
+     * @return GrupoFamiliar
+     */
+    public function setPersona(\Comunes\TablasBundle\Entity\Persona $persona = null)
+    {
+        $this->persona = $persona;
+
+        return $this;
+    }
+
+    /**
+     * Get persona
+     *
+     * @return \Comunes\TablasBundle\Entity\Persona 
+     */
+    public function getPersona()
+    {
+        return $this->persona;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Comunes\SecurityBundle\Entity\Usuario $usuario
+     * @return GrupoFamiliar
+     */
+    public function setUsuario(\Comunes\SecurityBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Comunes\SecurityBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set unidadFamiliar
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\UnidadFamiliar $unidadFamiliar
+     * @return GrupoFamiliar
+     */
+    public function setUnidadFamiliar(\Srpv\ProtocolizacionBundle\Entity\UnidadFamiliar $unidadFamiliar = null)
+    {
+        $this->unidadFamiliar = $unidadFamiliar;
+
+        return $this;
+    }
+
+    /**
+     * Get unidadFamiliar
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\UnidadFamiliar 
+     */
+    public function getUnidadFamiliar()
+    {
+        return $this->unidadFamiliar;
+    }
 }

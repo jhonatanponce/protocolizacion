@@ -247,4 +247,681 @@ class AnalisisCredito
     private $tasaInteres;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set alicuotaFondoGarantia
+     *
+     * @param string $alicuotaFondoGarantia
+     * @return AnalisisCredito
+     */
+    public function setAlicuotaFondoGarantia($alicuotaFondoGarantia)
+    {
+        $this->alicuotaFondoGarantia = $alicuotaFondoGarantia;
+
+        return $this;
+    }
+
+    /**
+     * Get alicuotaFondoGarantia
+     *
+     * @return string 
+     */
+    public function getAlicuotaFondoGarantia()
+    {
+        return $this->alicuotaFondoGarantia;
+    }
+
+    /**
+     * Set fechaActualizacion
+     *
+     * @param \DateTime $fechaActualizacion
+     * @return AnalisisCredito
+     */
+    public function setFechaActualizacion($fechaActualizacion)
+    {
+        $this->fechaActualizacion = $fechaActualizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaActualizacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaActualizacion()
+    {
+        return $this->fechaActualizacion;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return AnalisisCredito
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set fechaProtocolizacion
+     *
+     * @param \DateTime $fechaProtocolizacion
+     * @return AnalisisCredito
+     */
+    public function setFechaProtocolizacion($fechaProtocolizacion)
+    {
+        $this->fechaProtocolizacion = $fechaProtocolizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaProtocolizacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaProtocolizacion()
+    {
+        return $this->fechaProtocolizacion;
+    }
+
+    /**
+     * Set fuenteDatosEntradaId
+     *
+     * @param integer $fuenteDatosEntradaId
+     * @return AnalisisCredito
+     */
+    public function setFuenteDatosEntradaId($fuenteDatosEntradaId)
+    {
+        $this->fuenteDatosEntradaId = $fuenteDatosEntradaId;
+
+        return $this;
+    }
+
+    /**
+     * Get fuenteDatosEntradaId
+     *
+     * @return integer 
+     */
+    public function getFuenteDatosEntradaId()
+    {
+        return $this->fuenteDatosEntradaId;
+    }
+
+    /**
+     * Set ingresoTotalFamiliar
+     *
+     * @param string $ingresoTotalFamiliar
+     * @return AnalisisCredito
+     */
+    public function setIngresoTotalFamiliar($ingresoTotalFamiliar)
+    {
+        $this->ingresoTotalFamiliar = $ingresoTotalFamiliar;
+
+        return $this;
+    }
+
+    /**
+     * Get ingresoTotalFamiliar
+     *
+     * @return string 
+     */
+    public function getIngresoTotalFamiliar()
+    {
+        return $this->ingresoTotalFamiliar;
+    }
+
+    /**
+     * Set montoCredito
+     *
+     * @param string $montoCredito
+     * @return AnalisisCredito
+     */
+    public function setMontoCredito($montoCredito)
+    {
+        $this->montoCredito = $montoCredito;
+
+        return $this;
+    }
+
+    /**
+     * Get montoCredito
+     *
+     * @return string 
+     */
+    public function getMontoCredito()
+    {
+        return $this->montoCredito;
+    }
+
+    /**
+     * Set montoCuotaFinanciera
+     *
+     * @param string $montoCuotaFinanciera
+     * @return AnalisisCredito
+     */
+    public function setMontoCuotaFinanciera($montoCuotaFinanciera)
+    {
+        $this->montoCuotaFinanciera = $montoCuotaFinanciera;
+
+        return $this;
+    }
+
+    /**
+     * Get montoCuotaFinanciera
+     *
+     * @return string 
+     */
+    public function getMontoCuotaFinanciera()
+    {
+        return $this->montoCuotaFinanciera;
+    }
+
+    /**
+     * Set montoCuotaFTotal
+     *
+     * @param string $montoCuotaFTotal
+     * @return AnalisisCredito
+     */
+    public function setMontoCuotaFTotal($montoCuotaFTotal)
+    {
+        $this->montoCuotaFTotal = $montoCuotaFTotal;
+
+        return $this;
+    }
+
+    /**
+     * Get montoCuotaFTotal
+     *
+     * @return string 
+     */
+    public function getMontoCuotaFTotal()
+    {
+        return $this->montoCuotaFTotal;
+    }
+
+    /**
+     * Set montoInicial
+     *
+     * @param string $montoInicial
+     * @return AnalisisCredito
+     */
+    public function setMontoInicial($montoInicial)
+    {
+        $this->montoInicial = $montoInicial;
+
+        return $this;
+    }
+
+    /**
+     * Get montoInicial
+     *
+     * @return string 
+     */
+    public function getMontoInicial()
+    {
+        return $this->montoInicial;
+    }
+
+    /**
+     * Set montoPrimaInicialFg
+     *
+     * @param string $montoPrimaInicialFg
+     * @return AnalisisCredito
+     */
+    public function setMontoPrimaInicialFg($montoPrimaInicialFg)
+    {
+        $this->montoPrimaInicialFg = $montoPrimaInicialFg;
+
+        return $this;
+    }
+
+    /**
+     * Get montoPrimaInicialFg
+     *
+     * @return string 
+     */
+    public function getMontoPrimaInicialFg()
+    {
+        return $this->montoPrimaInicialFg;
+    }
+
+    /**
+     * Set nroCuentaBancario
+     *
+     * @param string $nroCuentaBancario
+     * @return AnalisisCredito
+     */
+    public function setNroCuentaBancario($nroCuentaBancario)
+    {
+        $this->nroCuentaBancario = $nroCuentaBancario;
+
+        return $this;
+    }
+
+    /**
+     * Get nroCuentaBancario
+     *
+     * @return string 
+     */
+    public function getNroCuentaBancario()
+    {
+        return $this->nroCuentaBancario;
+    }
+
+    /**
+     * Set nroCuotas
+     *
+     * @param integer $nroCuotas
+     * @return AnalisisCredito
+     */
+    public function setNroCuotas($nroCuotas)
+    {
+        $this->nroCuotas = $nroCuotas;
+
+        return $this;
+    }
+
+    /**
+     * Get nroCuotas
+     *
+     * @return integer 
+     */
+    public function getNroCuotas()
+    {
+        return $this->nroCuotas;
+    }
+
+    /**
+     * Set nroSerialBancario
+     *
+     * @param integer $nroSerialBancario
+     * @return AnalisisCredito
+     */
+    public function setNroSerialBancario($nroSerialBancario)
+    {
+        $this->nroSerialBancario = $nroSerialBancario;
+
+        return $this;
+    }
+
+    /**
+     * Get nroSerialBancario
+     *
+     * @return integer 
+     */
+    public function getNroSerialBancario()
+    {
+        return $this->nroSerialBancario;
+    }
+
+    /**
+     * Set plazoCreditoAno
+     *
+     * @param integer $plazoCreditoAno
+     * @return AnalisisCredito
+     */
+    public function setPlazoCreditoAno($plazoCreditoAno)
+    {
+        $this->plazoCreditoAno = $plazoCreditoAno;
+
+        return $this;
+    }
+
+    /**
+     * Get plazoCreditoAno
+     *
+     * @return integer 
+     */
+    public function getPlazoCreditoAno()
+    {
+        return $this->plazoCreditoAno;
+    }
+
+    /**
+     * Set plazoDiferido
+     *
+     * @param integer $plazoDiferido
+     * @return AnalisisCredito
+     */
+    public function setPlazoDiferido($plazoDiferido)
+    {
+        $this->plazoDiferido = $plazoDiferido;
+
+        return $this;
+    }
+
+    /**
+     * Get plazoDiferido
+     *
+     * @return integer 
+     */
+    public function getPlazoDiferido()
+    {
+        return $this->plazoDiferido;
+    }
+
+    /**
+     * Set plazoGracia
+     *
+     * @param integer $plazoGracia
+     * @return AnalisisCredito
+     */
+    public function setPlazoGracia($plazoGracia)
+    {
+        $this->plazoGracia = $plazoGracia;
+
+        return $this;
+    }
+
+    /**
+     * Get plazoGracia
+     *
+     * @return integer 
+     */
+    public function getPlazoGracia()
+    {
+        return $this->plazoGracia;
+    }
+
+    /**
+     * Set statusMigracionId
+     *
+     * @param integer $statusMigracionId
+     * @return AnalisisCredito
+     */
+    public function setStatusMigracionId($statusMigracionId)
+    {
+        $this->statusMigracionId = $statusMigracionId;
+
+        return $this;
+    }
+
+    /**
+     * Get statusMigracionId
+     *
+     * @return integer 
+     */
+    public function getStatusMigracionId()
+    {
+        return $this->statusMigracionId;
+    }
+
+    /**
+     * Set subDirectoHabitacional
+     *
+     * @param string $subDirectoHabitacional
+     * @return AnalisisCredito
+     */
+    public function setSubDirectoHabitacional($subDirectoHabitacional)
+    {
+        $this->subDirectoHabitacional = $subDirectoHabitacional;
+
+        return $this;
+    }
+
+    /**
+     * Get subDirectoHabitacional
+     *
+     * @return string 
+     */
+    public function getSubDirectoHabitacional()
+    {
+        return $this->subDirectoHabitacional;
+    }
+
+    /**
+     * Set subViviendaPerdida
+     *
+     * @param string $subViviendaPerdida
+     * @return AnalisisCredito
+     */
+    public function setSubViviendaPerdida($subViviendaPerdida)
+    {
+        $this->subViviendaPerdida = $subViviendaPerdida;
+
+        return $this;
+    }
+
+    /**
+     * Get subViviendaPerdida
+     *
+     * @return string 
+     */
+    public function getSubViviendaPerdida()
+    {
+        return $this->subViviendaPerdida;
+    }
+
+    /**
+     * Set tasaMoraId
+     *
+     * @param integer $tasaMoraId
+     * @return AnalisisCredito
+     */
+    public function setTasaMoraId($tasaMoraId)
+    {
+        $this->tasaMoraId = $tasaMoraId;
+
+        return $this;
+    }
+
+    /**
+     * Get tasaMoraId
+     *
+     * @return integer 
+     */
+    public function getTasaMoraId()
+    {
+        return $this->tasaMoraId;
+    }
+
+    /**
+     * Set tipoCuenta
+     *
+     * @param string $tipoCuenta
+     * @return AnalisisCredito
+     */
+    public function setTipoCuenta($tipoCuenta)
+    {
+        $this->tipoCuenta = $tipoCuenta;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoCuenta
+     *
+     * @return string 
+     */
+    public function getTipoCuenta()
+    {
+        return $this->tipoCuenta;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Comunes\SecurityBundle\Entity\Usuario $usuario
+     * @return AnalisisCredito
+     */
+    public function setUsuario(\Comunes\SecurityBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Comunes\SecurityBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set tipoDocumento
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\TipoDocumento $tipoDocumento
+     * @return AnalisisCredito
+     */
+    public function setTipoDocumento(\Srpv\ProtocolizacionBundle\Entity\TipoDocumento $tipoDocumento = null)
+    {
+        $this->tipoDocumento = $tipoDocumento;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoDocumento
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\TipoDocumento 
+     */
+    public function getTipoDocumento()
+    {
+        return $this->tipoDocumento;
+    }
+
+    /**
+     * Set unidadFamiliar
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\UnidadFamiliar $unidadFamiliar
+     * @return AnalisisCredito
+     */
+    public function setUnidadFamiliar(\Srpv\ProtocolizacionBundle\Entity\UnidadFamiliar $unidadFamiliar = null)
+    {
+        $this->unidadFamiliar = $unidadFamiliar;
+
+        return $this;
+    }
+
+    /**
+     * Get unidadFamiliar
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\UnidadFamiliar 
+     */
+    public function getUnidadFamiliar()
+    {
+        return $this->unidadFamiliar;
+    }
+
+    /**
+     * Set vivienda
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\Vivienda $vivienda
+     * @return AnalisisCredito
+     */
+    public function setVivienda(\Srpv\ProtocolizacionBundle\Entity\Vivienda $vivienda = null)
+    {
+        $this->vivienda = $vivienda;
+
+        return $this;
+    }
+
+    /**
+     * Get vivienda
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\Vivienda 
+     */
+    public function getVivienda()
+    {
+        return $this->vivienda;
+    }
+
+    /**
+     * Set genBanco
+     *
+     * @param \Comunes\TablasBundle\Entity\GenBanco $genBanco
+     * @return AnalisisCredito
+     */
+    public function setGenBanco(\Comunes\TablasBundle\Entity\GenBanco $genBanco = null)
+    {
+        $this->genBanco = $genBanco;
+
+        return $this;
+    }
+
+    /**
+     * Get genBanco
+     *
+     * @return \Comunes\TablasBundle\Entity\GenBanco 
+     */
+    public function getGenBanco()
+    {
+        return $this->genBanco;
+    }
+
+    /**
+     * Set tasaFongar
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\TasaFongar $tasaFongar
+     * @return AnalisisCredito
+     */
+    public function setTasaFongar(\Srpv\ProtocolizacionBundle\Entity\TasaFongar $tasaFongar = null)
+    {
+        $this->tasaFongar = $tasaFongar;
+
+        return $this;
+    }
+
+    /**
+     * Get tasaFongar
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\TasaFongar 
+     */
+    public function getTasaFongar()
+    {
+        return $this->tasaFongar;
+    }
+
+    /**
+     * Set tasaInteres
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\TasaInteres $tasaInteres
+     * @return AnalisisCredito
+     */
+    public function setTasaInteres(\Srpv\ProtocolizacionBundle\Entity\TasaInteres $tasaInteres = null)
+    {
+        $this->tasaInteres = $tasaInteres;
+
+        return $this;
+    }
+
+    /**
+     * Get tasaInteres
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\TasaInteres 
+     */
+    public function getTasaInteres()
+    {
+        return $this->tasaInteres;
+    }
 }

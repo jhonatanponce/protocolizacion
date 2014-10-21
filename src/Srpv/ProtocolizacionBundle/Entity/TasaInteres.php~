@@ -71,4 +71,152 @@ class TasaInteres
     private $usuario;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fechaActualzacion
+     *
+     * @param \DateTime $fechaActualzacion
+     * @return TasaInteres
+     */
+    public function setFechaActualzacion($fechaActualzacion)
+    {
+        $this->fechaActualzacion = $fechaActualzacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaActualzacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaActualzacion()
+    {
+        return $this->fechaActualzacion;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return TasaInteres
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return TasaInteres
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set tasaInteres
+     *
+     * @param string $tasaInteres
+     * @return TasaInteres
+     */
+    public function setTasaInteres($tasaInteres)
+    {
+        $this->tasaInteres = $tasaInteres;
+
+        return $this;
+    }
+
+    /**
+     * Get tasaInteres
+     *
+     * @return string 
+     */
+    public function getTasaInteres()
+    {
+        return $this->tasaInteres;
+    }
+
+    /**
+     * Set fuenteFinanciamiento
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\FuenteFinanciamiento $fuenteFinanciamiento
+     * @return TasaInteres
+     */
+    public function setFuenteFinanciamiento(\Srpv\ProtocolizacionBundle\Entity\FuenteFinanciamiento $fuenteFinanciamiento = null)
+    {
+        $this->fuenteFinanciamiento = $fuenteFinanciamiento;
+
+        return $this;
+    }
+
+    /**
+     * Get fuenteFinanciamiento
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\FuenteFinanciamiento 
+     */
+    public function getFuenteFinanciamiento()
+    {
+        return $this->fuenteFinanciamiento;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Comunes\SecurityBundle\Entity\Usuario $usuario
+     * @return TasaInteres
+     */
+    public function setUsuario(\Comunes\SecurityBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Comunes\SecurityBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
 }

@@ -84,4 +84,175 @@ class RegistroPublico
     private $usuario;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set fechaActualizacion
+     *
+     * @param \DateTime $fechaActualizacion
+     * @return RegistroPublico
+     */
+    public function setFechaActualizacion($fechaActualizacion)
+    {
+        $this->fechaActualizacion = $fechaActualizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaActualizacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaActualizacion()
+    {
+        return $this->fechaActualizacion;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return RegistroPublico
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return RegistroPublico
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set geoEstado
+     *
+     * @param \Comunes\TablasBundle\Entity\GeoEstado $geoEstado
+     * @return RegistroPublico
+     */
+    public function setGeoEstado(\Comunes\TablasBundle\Entity\GeoEstado $geoEstado = null)
+    {
+        $this->geoEstado = $geoEstado;
+
+        return $this;
+    }
+
+    /**
+     * Get geoEstado
+     *
+     * @return \Comunes\TablasBundle\Entity\GeoEstado 
+     */
+    public function getGeoEstado()
+    {
+        return $this->geoEstado;
+    }
+
+    /**
+     * Set geoMunicipio
+     *
+     * @param \Comunes\TablasBundle\Entity\GeoMunicipio $geoMunicipio
+     * @return RegistroPublico
+     */
+    public function setGeoMunicipio(\Comunes\TablasBundle\Entity\GeoMunicipio $geoMunicipio = null)
+    {
+        $this->geoMunicipio = $geoMunicipio;
+
+        return $this;
+    }
+
+    /**
+     * Get geoMunicipio
+     *
+     * @return \Comunes\TablasBundle\Entity\GeoMunicipio 
+     */
+    public function getGeoMunicipio()
+    {
+        return $this->geoMunicipio;
+    }
+
+    /**
+     * Set geoParroquia
+     *
+     * @param \Comunes\TablasBundle\Entity\GeoParroquia $geoParroquia
+     * @return RegistroPublico
+     */
+    public function setGeoParroquia(\Comunes\TablasBundle\Entity\GeoParroquia $geoParroquia = null)
+    {
+        $this->geoParroquia = $geoParroquia;
+
+        return $this;
+    }
+
+    /**
+     * Get geoParroquia
+     *
+     * @return \Comunes\TablasBundle\Entity\GeoParroquia 
+     */
+    public function getGeoParroquia()
+    {
+        return $this->geoParroquia;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Comunes\SecurityBundle\Entity\Usuario $usuario
+     * @return RegistroPublico
+     */
+    public function setUsuario(\Comunes\SecurityBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Comunes\SecurityBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
 }

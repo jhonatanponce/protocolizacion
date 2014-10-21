@@ -44,13 +44,6 @@ class Desarrollo
     private $descripcion;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="ESTATUS_DESARROLLO_ID", type="integer", nullable=false)
-     */
-    private $estatusDesarrolloId;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
@@ -218,5 +211,571 @@ class Desarrollo
      */
     private $fuenteDatosEntrada;
 
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set avCallEsqCarr
+     *
+     * @param string $avCallEsqCarr
+     * @return Desarrollo
+     */
+    public function setAvCallEsqCarr($avCallEsqCarr)
+    {
+        $this->avCallEsqCarr = $avCallEsqCarr;
+
+        return $this;
+    }
+
+    /**
+     * Get avCallEsqCarr
+     *
+     * @return string 
+     */
+    public function getAvCallEsqCarr()
+    {
+        return $this->avCallEsqCarr;
+    }
+
+    /**
+     * Set coordenadas
+     *
+     * @param string $coordenadas
+     * @return Desarrollo
+     */
+    public function setCoordenadas($coordenadas)
+    {
+        $this->coordenadas = $coordenadas;
+
+        return $this;
+    }
+
+    /**
+     * Get coordenadas
+     *
+     * @return string 
+     */
+    public function getCoordenadas()
+    {
+        return $this->coordenadas;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     * @return Desarrollo
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string 
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set fechaActualizacion
+     *
+     * @param \DateTime $fechaActualizacion
+     * @return Desarrollo
+     */
+    public function setFechaActualizacion($fechaActualizacion)
+    {
+        $this->fechaActualizacion = $fechaActualizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaActualizacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaActualizacion()
+    {
+        return $this->fechaActualizacion;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return Desarrollo
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set fechaTransferencia
+     *
+     * @param \DateTime $fechaTransferencia
+     * @return Desarrollo
+     */
+    public function setFechaTransferencia($fechaTransferencia)
+    {
+        $this->fechaTransferencia = $fechaTransferencia;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaTransferencia
+     *
+     * @return \DateTime 
+     */
+    public function getFechaTransferencia()
+    {
+        return $this->fechaTransferencia;
+    }
+
+    /**
+     * Set linderoEste
+     *
+     * @param string $linderoEste
+     * @return Desarrollo
+     */
+    public function setLinderoEste($linderoEste)
+    {
+        $this->linderoEste = $linderoEste;
+
+        return $this;
+    }
+
+    /**
+     * Get linderoEste
+     *
+     * @return string 
+     */
+    public function getLinderoEste()
+    {
+        return $this->linderoEste;
+    }
+
+    /**
+     * Set linderoNorte
+     *
+     * @param string $linderoNorte
+     * @return Desarrollo
+     */
+    public function setLinderoNorte($linderoNorte)
+    {
+        $this->linderoNorte = $linderoNorte;
+
+        return $this;
+    }
+
+    /**
+     * Get linderoNorte
+     *
+     * @return string 
+     */
+    public function getLinderoNorte()
+    {
+        return $this->linderoNorte;
+    }
+
+    /**
+     * Set linderoOeste
+     *
+     * @param string $linderoOeste
+     * @return Desarrollo
+     */
+    public function setLinderoOeste($linderoOeste)
+    {
+        $this->linderoOeste = $linderoOeste;
+
+        return $this;
+    }
+
+    /**
+     * Get linderoOeste
+     *
+     * @return string 
+     */
+    public function getLinderoOeste()
+    {
+        return $this->linderoOeste;
+    }
+
+    /**
+     * Set linderoSur
+     *
+     * @param string $linderoSur
+     * @return Desarrollo
+     */
+    public function setLinderoSur($linderoSur)
+    {
+        $this->linderoSur = $linderoSur;
+
+        return $this;
+    }
+
+    /**
+     * Get linderoSur
+     *
+     * @return string 
+     */
+    public function getLinderoSur()
+    {
+        return $this->linderoSur;
+    }
+
+    /**
+     * Set loteTerrenoMt2
+     *
+     * @param string $loteTerrenoMt2
+     * @return Desarrollo
+     */
+    public function setLoteTerrenoMt2($loteTerrenoMt2)
+    {
+        $this->loteTerrenoMt2 = $loteTerrenoMt2;
+
+        return $this;
+    }
+
+    /**
+     * Get loteTerrenoMt2
+     *
+     * @return string 
+     */
+    public function getLoteTerrenoMt2()
+    {
+        return $this->loteTerrenoMt2;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Desarrollo
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set titularidadDelTerreno
+     *
+     * @param string $titularidadDelTerreno
+     * @return Desarrollo
+     */
+    public function setTitularidadDelTerreno($titularidadDelTerreno)
+    {
+        $this->titularidadDelTerreno = $titularidadDelTerreno;
+
+        return $this;
+    }
+
+    /**
+     * Get titularidadDelTerreno
+     *
+     * @return string 
+     */
+    public function getTitularidadDelTerreno()
+    {
+        return $this->titularidadDelTerreno;
+    }
+
+    /**
+     * Set totalViviendas
+     *
+     * @param integer $totalViviendas
+     * @return Desarrollo
+     */
+    public function setTotalViviendas($totalViviendas)
+    {
+        $this->totalViviendas = $totalViviendas;
+
+        return $this;
+    }
+
+    /**
+     * Get totalViviendas
+     *
+     * @return integer 
+     */
+    public function getTotalViviendas()
+    {
+        return $this->totalViviendas;
+    }
+
+    /**
+     * Set totalViviendasProtocolizadas
+     *
+     * @param integer $totalViviendasProtocolizadas
+     * @return Desarrollo
+     */
+    public function setTotalViviendasProtocolizadas($totalViviendasProtocolizadas)
+    {
+        $this->totalViviendasProtocolizadas = $totalViviendasProtocolizadas;
+
+        return $this;
+    }
+
+    /**
+     * Get totalViviendasProtocolizadas
+     *
+     * @return integer 
+     */
+    public function getTotalViviendasProtocolizadas()
+    {
+        return $this->totalViviendasProtocolizadas;
+    }
+
+    /**
+     * Set urbanBarrio
+     *
+     * @param string $urbanBarrio
+     * @return Desarrollo
+     */
+    public function setUrbanBarrio($urbanBarrio)
+    {
+        $this->urbanBarrio = $urbanBarrio;
+
+        return $this;
+    }
+
+    /**
+     * Get urbanBarrio
+     *
+     * @return string 
+     */
+    public function getUrbanBarrio()
+    {
+        return $this->urbanBarrio;
+    }
+
+    /**
+     * Set zona
+     *
+     * @param string $zona
+     * @return Desarrollo
+     */
+    public function setZona($zona)
+    {
+        $this->zona = $zona;
+
+        return $this;
+    }
+
+    /**
+     * Get zona
+     *
+     * @return string 
+     */
+    public function getZona()
+    {
+        return $this->zona;
+    }
+
+    /**
+     * Set fuenteFinanciamiento
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\FuenteFinanciamiento $fuenteFinanciamiento
+     * @return Desarrollo
+     */
+    public function setFuenteFinanciamiento(\Srpv\ProtocolizacionBundle\Entity\FuenteFinanciamiento $fuenteFinanciamiento = null)
+    {
+        $this->fuenteFinanciamiento = $fuenteFinanciamiento;
+
+        return $this;
+    }
+
+    /**
+     * Get fuenteFinanciamiento
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\FuenteFinanciamiento 
+     */
+    public function getFuenteFinanciamiento()
+    {
+        return $this->fuenteFinanciamiento;
+    }
+
+    /**
+     * Set geoEstado
+     *
+     * @param \Comunes\TablasBundle\Entity\GeoEstado $geoEstado
+     * @return Desarrollo
+     */
+    public function setGeoEstado(\Comunes\TablasBundle\Entity\GeoEstado $geoEstado = null)
+    {
+        $this->geoEstado = $geoEstado;
+
+        return $this;
+    }
+
+    /**
+     * Get geoEstado
+     *
+     * @return \Comunes\TablasBundle\Entity\GeoEstado 
+     */
+    public function getGeoEstado()
+    {
+        return $this->geoEstado;
+    }
+
+    /**
+     * Set geoMunicipio
+     *
+     * @param \Comunes\TablasBundle\Entity\GeoMunicipio $geoMunicipio
+     * @return Desarrollo
+     */
+    public function setGeoMunicipio(\Comunes\TablasBundle\Entity\GeoMunicipio $geoMunicipio = null)
+    {
+        $this->geoMunicipio = $geoMunicipio;
+
+        return $this;
+    }
+
+    /**
+     * Get geoMunicipio
+     *
+     * @return \Comunes\TablasBundle\Entity\GeoMunicipio 
+     */
+    public function getGeoMunicipio()
+    {
+        return $this->geoMunicipio;
+    }
+
+    /**
+     * Set geoParroquia
+     *
+     * @param \Comunes\TablasBundle\Entity\GeoParroquia $geoParroquia
+     * @return Desarrollo
+     */
+    public function setGeoParroquia(\Comunes\TablasBundle\Entity\GeoParroquia $geoParroquia = null)
+    {
+        $this->geoParroquia = $geoParroquia;
+
+        return $this;
+    }
+
+    /**
+     * Get geoParroquia
+     *
+     * @return \Comunes\TablasBundle\Entity\GeoParroquia 
+     */
+    public function getGeoParroquia()
+    {
+        return $this->geoParroquia;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Comunes\SecurityBundle\Entity\Usuario $usuario
+     * @return Desarrollo
+     */
+    public function setUsuario(\Comunes\SecurityBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Comunes\SecurityBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set enteEjecutor
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\EnteEjecutor $enteEjecutor
+     * @return Desarrollo
+     */
+    public function setEnteEjecutor(\Srpv\ProtocolizacionBundle\Entity\EnteEjecutor $enteEjecutor = null)
+    {
+        $this->enteEjecutor = $enteEjecutor;
+
+        return $this;
+    }
+
+    /**
+     * Get enteEjecutor
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\EnteEjecutor 
+     */
+    public function getEnteEjecutor()
+    {
+        return $this->enteEjecutor;
+    }
+
+    /**
+     * Set fuenteDatosEntrada
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada $fuenteDatosEntrada
+     * @return Desarrollo
+     */
+    public function setFuenteDatosEntrada(\Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada $fuenteDatosEntrada = null)
+    {
+        $this->fuenteDatosEntrada = $fuenteDatosEntrada;
+
+        return $this;
+    }
+
+    /**
+     * Get fuenteDatosEntrada
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada 
+     */
+    public function getFuenteDatosEntrada()
+    {
+        return $this->fuenteDatosEntrada;
+    }
 }

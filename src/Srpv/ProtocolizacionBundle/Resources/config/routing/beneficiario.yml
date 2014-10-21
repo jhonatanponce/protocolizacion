@@ -1,0 +1,30 @@
+beneficiario:
+    path:     /
+    defaults: { _controller: "SrpvProtocolizacionBundle:Beneficiario:index" }
+
+beneficiario_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvProtocolizacionBundle:Beneficiario:show" }
+
+beneficiario_new:
+    path:     /new
+    defaults: { _controller: "SrpvProtocolizacionBundle:Beneficiario:new" }
+
+beneficiario_create:
+    path:     /create
+    defaults: { _controller: "SrpvProtocolizacionBundle:Beneficiario:create" }
+    requirements: { _method: post }
+
+beneficiario_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvProtocolizacionBundle:Beneficiario:edit" }
+
+beneficiario_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvProtocolizacionBundle:Beneficiario:update" }
+    requirements: { _method: post|put }
+
+beneficiario_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvProtocolizacionBundle:Beneficiario:delete" }
+    requirements: { _method: post|delete }

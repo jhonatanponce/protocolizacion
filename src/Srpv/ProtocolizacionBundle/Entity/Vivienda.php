@@ -70,6 +70,13 @@ class Vivienda
      * @ORM\Column(name="LAVANDERO", type="string", length=1, nullable=false)
      */
     private $lavandero;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="COCINA", type="string", length=1, nullable=false)
+     */
+    private $cocina;
 
     /**
      * @var string
@@ -359,6 +366,29 @@ class Vivienda
     public function getLavandero()
     {
         return $this->lavandero;
+    }
+
+    /**
+     * Set cocina
+     *
+     * @param string $cocina
+     * @return Vivienda
+     */
+    public function setCocina($cocina)
+    {
+        $this->cocina = $cocina;
+
+        return $this;
+    }
+
+    /**
+     * Get cocina
+     *
+     * @return string 
+     */
+    public function getCocina()
+    {
+        return $this->cocina;
     }
 
     /**

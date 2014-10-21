@@ -105,4 +105,244 @@ class Oficina
     private $usuario;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set estatus
+     *
+     * @param string $estatus
+     * @return Oficina
+     */
+    public function setEstatus($estatus)
+    {
+        $this->estatus = $estatus;
+
+        return $this;
+    }
+
+    /**
+     * Get estatus
+     *
+     * @return string 
+     */
+    public function getEstatus()
+    {
+        return $this->estatus;
+    }
+
+    /**
+     * Set fechaActualizacion
+     *
+     * @param \DateTime $fechaActualizacion
+     * @return Oficina
+     */
+    public function setFechaActualizacion($fechaActualizacion)
+    {
+        $this->fechaActualizacion = $fechaActualizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaActualizacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaActualizacion()
+    {
+        return $this->fechaActualizacion;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return Oficina
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     * @return Oficina
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get nombre
+     *
+     * @return string 
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set observaciones
+     *
+     * @param string $observaciones
+     * @return Oficina
+     */
+    public function setObservaciones($observaciones)
+    {
+        $this->observaciones = $observaciones;
+
+        return $this;
+    }
+
+    /**
+     * Get observaciones
+     *
+     * @return string 
+     */
+    public function getObservaciones()
+    {
+        return $this->observaciones;
+    }
+
+    /**
+     * Set personaIdJefe
+     *
+     * @param integer $personaIdJefe
+     * @return Oficina
+     */
+    public function setPersonaIdJefe($personaIdJefe)
+    {
+        $this->personaIdJefe = $personaIdJefe;
+
+        return $this;
+    }
+
+    /**
+     * Get personaIdJefe
+     *
+     * @return integer 
+     */
+    public function getPersonaIdJefe()
+    {
+        return $this->personaIdJefe;
+    }
+
+    /**
+     * Set geoEstado
+     *
+     * @param \Comunes\TablasBundle\Entity\GeoEstado $geoEstado
+     * @return Oficina
+     */
+    public function setGeoEstado(\Comunes\TablasBundle\Entity\GeoEstado $geoEstado = null)
+    {
+        $this->geoEstado = $geoEstado;
+
+        return $this;
+    }
+
+    /**
+     * Get geoEstado
+     *
+     * @return \Comunes\TablasBundle\Entity\GeoEstado 
+     */
+    public function getGeoEstado()
+    {
+        return $this->geoEstado;
+    }
+
+    /**
+     * Set geoMunicipio
+     *
+     * @param \Comunes\TablasBundle\Entity\GeoMunicipio $geoMunicipio
+     * @return Oficina
+     */
+    public function setGeoMunicipio(\Comunes\TablasBundle\Entity\GeoMunicipio $geoMunicipio = null)
+    {
+        $this->geoMunicipio = $geoMunicipio;
+
+        return $this;
+    }
+
+    /**
+     * Get geoMunicipio
+     *
+     * @return \Comunes\TablasBundle\Entity\GeoMunicipio 
+     */
+    public function getGeoMunicipio()
+    {
+        return $this->geoMunicipio;
+    }
+
+    /**
+     * Set geoParroquia
+     *
+     * @param \Comunes\TablasBundle\Entity\GeoParroquia $geoParroquia
+     * @return Oficina
+     */
+    public function setGeoParroquia(\Comunes\TablasBundle\Entity\GeoParroquia $geoParroquia = null)
+    {
+        $this->geoParroquia = $geoParroquia;
+
+        return $this;
+    }
+
+    /**
+     * Get geoParroquia
+     *
+     * @return \Comunes\TablasBundle\Entity\GeoParroquia 
+     */
+    public function getGeoParroquia()
+    {
+        return $this->geoParroquia;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Comunes\SecurityBundle\Entity\Usuario $usuario
+     * @return Oficina
+     */
+    public function setUsuario(\Comunes\SecurityBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Comunes\SecurityBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
 }

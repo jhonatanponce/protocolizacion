@@ -70,6 +70,13 @@ class Vivienda
      * @ORM\Column(name="LAVANDERO", type="string", length=1, nullable=false)
      */
     private $lavandero;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="COCINA", type="string", length=1, nullable=false)
+     */
+    private $cocina;
 
     /**
      * @var string
@@ -189,4 +196,543 @@ class Vivienda
     private $unidadHabitacional;
 
 
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set comedor
+     *
+     * @param string $comedor
+     * @return Vivienda
+     */
+    public function setComedor($comedor)
+    {
+        $this->comedor = $comedor;
+
+        return $this;
+    }
+
+    /**
+     * Get comedor
+     *
+     * @return string 
+     */
+    public function getComedor()
+    {
+        return $this->comedor;
+    }
+
+    /**
+     * Set construccionMt2
+     *
+     * @param string $construccionMt2
+     * @return Vivienda
+     */
+    public function setConstruccionMt2($construccionMt2)
+    {
+        $this->construccionMt2 = $construccionMt2;
+
+        return $this;
+    }
+
+    /**
+     * Get construccionMt2
+     *
+     * @return string 
+     */
+    public function getConstruccionMt2()
+    {
+        return $this->construccionMt2;
+    }
+
+    /**
+     * Set coordenadas
+     *
+     * @param string $coordenadas
+     * @return Vivienda
+     */
+    public function setCoordenadas($coordenadas)
+    {
+        $this->coordenadas = $coordenadas;
+
+        return $this;
+    }
+
+    /**
+     * Get coordenadas
+     *
+     * @return string 
+     */
+    public function getCoordenadas()
+    {
+        return $this->coordenadas;
+    }
+
+    /**
+     * Set descripcionEstac
+     *
+     * @param string $descripcionEstac
+     * @return Vivienda
+     */
+    public function setDescripcionEstac($descripcionEstac)
+    {
+        $this->descripcionEstac = $descripcionEstac;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcionEstac
+     *
+     * @return string 
+     */
+    public function getDescripcionEstac()
+    {
+        return $this->descripcionEstac;
+    }
+
+    /**
+     * Set fechaActualizacion
+     *
+     * @param \DateTime $fechaActualizacion
+     * @return Vivienda
+     */
+    public function setFechaActualizacion($fechaActualizacion)
+    {
+        $this->fechaActualizacion = $fechaActualizacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaActualizacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaActualizacion()
+    {
+        return $this->fechaActualizacion;
+    }
+
+    /**
+     * Set fechaCreacion
+     *
+     * @param \DateTime $fechaCreacion
+     * @return Vivienda
+     */
+    public function setFechaCreacion($fechaCreacion)
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaCreacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaCreacion()
+    {
+        return $this->fechaCreacion;
+    }
+
+    /**
+     * Set lavandero
+     *
+     * @param string $lavandero
+     * @return Vivienda
+     */
+    public function setLavandero($lavandero)
+    {
+        $this->lavandero = $lavandero;
+
+        return $this;
+    }
+
+    /**
+     * Get lavandero
+     *
+     * @return string 
+     */
+    public function getLavandero()
+    {
+        return $this->lavandero;
+    }
+
+    /**
+     * Set cocina
+     *
+     * @param string $cocina
+     * @return Vivienda
+     */
+    public function setCocina($cocina)
+    {
+        $this->cocina = $cocina;
+
+        return $this;
+    }
+
+    /**
+     * Get cocina
+     *
+     * @return string 
+     */
+    public function getCocina()
+    {
+        return $this->cocina;
+    }
+
+    /**
+     * Set linderoEste
+     *
+     * @param string $linderoEste
+     * @return Vivienda
+     */
+    public function setLinderoEste($linderoEste)
+    {
+        $this->linderoEste = $linderoEste;
+
+        return $this;
+    }
+
+    /**
+     * Get linderoEste
+     *
+     * @return string 
+     */
+    public function getLinderoEste()
+    {
+        return $this->linderoEste;
+    }
+
+    /**
+     * Set linderoNorte
+     *
+     * @param string $linderoNorte
+     * @return Vivienda
+     */
+    public function setLinderoNorte($linderoNorte)
+    {
+        $this->linderoNorte = $linderoNorte;
+
+        return $this;
+    }
+
+    /**
+     * Get linderoNorte
+     *
+     * @return string 
+     */
+    public function getLinderoNorte()
+    {
+        return $this->linderoNorte;
+    }
+
+    /**
+     * Set linderoOeste
+     *
+     * @param string $linderoOeste
+     * @return Vivienda
+     */
+    public function setLinderoOeste($linderoOeste)
+    {
+        $this->linderoOeste = $linderoOeste;
+
+        return $this;
+    }
+
+    /**
+     * Get linderoOeste
+     *
+     * @return string 
+     */
+    public function getLinderoOeste()
+    {
+        return $this->linderoOeste;
+    }
+
+    /**
+     * Set linderoSur
+     *
+     * @param string $linderoSur
+     * @return Vivienda
+     */
+    public function setLinderoSur($linderoSur)
+    {
+        $this->linderoSur = $linderoSur;
+
+        return $this;
+    }
+
+    /**
+     * Get linderoSur
+     *
+     * @return string 
+     */
+    public function getLinderoSur()
+    {
+        return $this->linderoSur;
+    }
+
+    /**
+     * Set nroBanos
+     *
+     * @param integer $nroBanos
+     * @return Vivienda
+     */
+    public function setNroBanos($nroBanos)
+    {
+        $this->nroBanos = $nroBanos;
+
+        return $this;
+    }
+
+    /**
+     * Get nroBanos
+     *
+     * @return integer 
+     */
+    public function getNroBanos()
+    {
+        return $this->nroBanos;
+    }
+
+    /**
+     * Set nroEstacionamientos
+     *
+     * @param integer $nroEstacionamientos
+     * @return Vivienda
+     */
+    public function setNroEstacionamientos($nroEstacionamientos)
+    {
+        $this->nroEstacionamientos = $nroEstacionamientos;
+
+        return $this;
+    }
+
+    /**
+     * Get nroEstacionamientos
+     *
+     * @return integer 
+     */
+    public function getNroEstacionamientos()
+    {
+        return $this->nroEstacionamientos;
+    }
+
+    /**
+     * Set nroHabitaciones
+     *
+     * @param integer $nroHabitaciones
+     * @return Vivienda
+     */
+    public function setNroHabitaciones($nroHabitaciones)
+    {
+        $this->nroHabitaciones = $nroHabitaciones;
+
+        return $this;
+    }
+
+    /**
+     * Get nroHabitaciones
+     *
+     * @return integer 
+     */
+    public function getNroHabitaciones()
+    {
+        return $this->nroHabitaciones;
+    }
+
+    /**
+     * Set nroPiso
+     *
+     * @param string $nroPiso
+     * @return Vivienda
+     */
+    public function setNroPiso($nroPiso)
+    {
+        $this->nroPiso = $nroPiso;
+
+        return $this;
+    }
+
+    /**
+     * Get nroPiso
+     *
+     * @return string 
+     */
+    public function getNroPiso()
+    {
+        return $this->nroPiso;
+    }
+
+    /**
+     * Set nroVivienda
+     *
+     * @param string $nroVivienda
+     * @return Vivienda
+     */
+    public function setNroVivienda($nroVivienda)
+    {
+        $this->nroVivienda = $nroVivienda;
+
+        return $this;
+    }
+
+    /**
+     * Get nroVivienda
+     *
+     * @return string 
+     */
+    public function getNroVivienda()
+    {
+        return $this->nroVivienda;
+    }
+
+    /**
+     * Set precioVivienda
+     *
+     * @param string $precioVivienda
+     * @return Vivienda
+     */
+    public function setPrecioVivienda($precioVivienda)
+    {
+        $this->precioVivienda = $precioVivienda;
+
+        return $this;
+    }
+
+    /**
+     * Get precioVivienda
+     *
+     * @return string 
+     */
+    public function getPrecioVivienda()
+    {
+        return $this->precioVivienda;
+    }
+
+    /**
+     * Set sala
+     *
+     * @param string $sala
+     * @return Vivienda
+     */
+    public function setSala($sala)
+    {
+        $this->sala = $sala;
+
+        return $this;
+    }
+
+    /**
+     * Get sala
+     *
+     * @return string 
+     */
+    public function getSala()
+    {
+        return $this->sala;
+    }
+
+    /**
+     * Set tipoVivienda
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\TipoVivienda $tipoVivienda
+     * @return Vivienda
+     */
+    public function setTipoVivienda(\Srpv\ProtocolizacionBundle\Entity\TipoVivienda $tipoVivienda = null)
+    {
+        $this->tipoVivienda = $tipoVivienda;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoVivienda
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\TipoVivienda 
+     */
+    public function getTipoVivienda()
+    {
+        return $this->tipoVivienda;
+    }
+
+    /**
+     * Set fuenteDatosEntrada
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada $fuenteDatosEntrada
+     * @return Vivienda
+     */
+    public function setFuenteDatosEntrada(\Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada $fuenteDatosEntrada = null)
+    {
+        $this->fuenteDatosEntrada = $fuenteDatosEntrada;
+
+        return $this;
+    }
+
+    /**
+     * Get fuenteDatosEntrada
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\FuenteDatosEntrada 
+     */
+    public function getFuenteDatosEntrada()
+    {
+        return $this->fuenteDatosEntrada;
+    }
+
+    /**
+     * Set usuario
+     *
+     * @param \Comunes\SecurityBundle\Entity\Usuario $usuario
+     * @return Vivienda
+     */
+    public function setUsuario(\Comunes\SecurityBundle\Entity\Usuario $usuario = null)
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * Get usuario
+     *
+     * @return \Comunes\SecurityBundle\Entity\Usuario 
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * Set unidadHabitacional
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional $unidadHabitacional
+     * @return Vivienda
+     */
+    public function setUnidadHabitacional(\Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional $unidadHabitacional = null)
+    {
+        $this->unidadHabitacional = $unidadHabitacional;
+
+        return $this;
+    }
+
+    /**
+     * Get unidadHabitacional
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional 
+     */
+    public function getUnidadHabitacional()
+    {
+        return $this->unidadHabitacional;
+    }
 }

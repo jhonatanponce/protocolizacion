@@ -68,13 +68,6 @@ Srpv\ProtocolizacionBundle\Entity\Beneficiario:
             fixed: false
             comment: ''
             column: DIRECCION_EMPRESA
-        estatusBeneficiario:
-            type: string
-            nullable: false
-            length: 1
-            fixed: true
-            comment: "PREADJUDICADO = 0\nADJUDICADO = 1"
-            column: ESTATUS_BENEFICIARIO
         fechaActualizacion:
             type: date
             nullable: true
@@ -158,7 +151,7 @@ Srpv\ProtocolizacionBundle\Entity\Beneficiario:
             length: 200
             fixed: false
             comment: ''
-            column: ZONA
+            column: ZONA   
     manyToOne:
         geoEstado:
             targetEntity: Comunes\TablasBundle\Entity\GeoEstado
@@ -241,4 +234,13 @@ Srpv\ProtocolizacionBundle\Entity\Beneficiario:
                 USUARIO_ID:
                     referencedColumnName: id
             orphanRemoval: false
+        estatusBeneficiario:
+            targetEntity: EstatusBeneficiario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ESTATUS_BENEFICIARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false    
     lifecycleCallbacks: {  }

@@ -128,4 +128,359 @@ class TTipoArchivos
     private $tamanoRegistro;
 
 
+
+    /**
+     * Get tipoArchivo
+     *
+     * @return string 
+     */
+    public function getTipoArchivo()
+    {
+        return $this->tipoArchivo;
+    }
+
+    /**
+     * Set cantColumnas
+     *
+     * @param integer $cantColumnas
+     * @return TTipoArchivos
+     */
+    public function setCantColumnas($cantColumnas)
+    {
+        $this->cantColumnas = $cantColumnas;
+
+        return $this;
+    }
+
+    /**
+     * Get cantColumnas
+     *
+     * @return integer 
+     */
+    public function getCantColumnas()
+    {
+        return $this->cantColumnas;
+    }
+
+    /**
+     * Set delimitador
+     *
+     * @param string $delimitador
+     * @return TTipoArchivos
+     */
+    public function setDelimitador($delimitador)
+    {
+        $this->delimitador = $delimitador;
+
+        return $this;
+    }
+
+    /**
+     * Get delimitador
+     *
+     * @return string 
+     */
+    public function getDelimitador()
+    {
+        return $this->delimitador;
+    }
+
+    /**
+     * Set dia
+     *
+     * @param string $dia
+     * @return TTipoArchivos
+     */
+    public function setDia($dia)
+    {
+        $this->dia = $dia;
+
+        return $this;
+    }
+
+    /**
+     * Get dia
+     *
+     * @return string 
+     */
+    public function getDia()
+    {
+        return $this->dia;
+    }
+
+    /**
+     * Set entidadDesde
+     *
+     * @param integer $entidadDesde
+     * @return TTipoArchivos
+     */
+    public function setEntidadDesde($entidadDesde)
+    {
+        $this->entidadDesde = $entidadDesde;
+
+        return $this;
+    }
+
+    /**
+     * Get entidadDesde
+     *
+     * @return integer 
+     */
+    public function getEntidadDesde()
+    {
+        return $this->entidadDesde;
+    }
+
+    /**
+     * Set entidadSize
+     *
+     * @param integer $entidadSize
+     * @return TTipoArchivos
+     */
+    public function setEntidadSize($entidadSize)
+    {
+        $this->entidadSize = $entidadSize;
+
+        return $this;
+    }
+
+    /**
+     * Get entidadSize
+     *
+     * @return integer 
+     */
+    public function getEntidadSize()
+    {
+        return $this->entidadSize;
+    }
+
+    /**
+     * Set frecuencia
+     *
+     * @param string $frecuencia
+     * @return TTipoArchivos
+     */
+    public function setFrecuencia($frecuencia)
+    {
+        $this->frecuencia = $frecuencia;
+
+        return $this;
+    }
+
+    /**
+     * Get frecuencia
+     *
+     * @return string 
+     */
+    public function getFrecuencia()
+    {
+        return $this->frecuencia;
+    }
+
+    /**
+     * Set frecuenciaDesde
+     *
+     * @param integer $frecuenciaDesde
+     * @return TTipoArchivos
+     */
+    public function setFrecuenciaDesde($frecuenciaDesde)
+    {
+        $this->frecuenciaDesde = $frecuenciaDesde;
+
+        return $this;
+    }
+
+    /**
+     * Get frecuenciaDesde
+     *
+     * @return integer 
+     */
+    public function getFrecuenciaDesde()
+    {
+        return $this->frecuenciaDesde;
+    }
+
+    /**
+     * Set frecuenciaSize
+     *
+     * @param integer $frecuenciaSize
+     * @return TTipoArchivos
+     */
+    public function setFrecuenciaSize($frecuenciaSize)
+    {
+        $this->frecuenciaSize = $frecuenciaSize;
+
+        return $this;
+    }
+
+    /**
+     * Get frecuenciaSize
+     *
+     * @return integer 
+     */
+    public function getFrecuenciaSize()
+    {
+        return $this->frecuenciaSize;
+    }
+
+    /**
+     * Set periodoDesde
+     *
+     * @param integer $periodoDesde
+     * @return TTipoArchivos
+     */
+    public function setPeriodoDesde($periodoDesde)
+    {
+        $this->periodoDesde = $periodoDesde;
+
+        return $this;
+    }
+
+    /**
+     * Get periodoDesde
+     *
+     * @return integer 
+     */
+    public function getPeriodoDesde()
+    {
+        return $this->periodoDesde;
+    }
+
+    /**
+     * Set periodoSize
+     *
+     * @param integer $periodoSize
+     * @return TTipoArchivos
+     */
+    public function setPeriodoSize($periodoSize)
+    {
+        $this->periodoSize = $periodoSize;
+
+        return $this;
+    }
+
+    /**
+     * Get periodoSize
+     *
+     * @return integer 
+     */
+    public function getPeriodoSize()
+    {
+        return $this->periodoSize;
+    }
+
+    /**
+     * Set poseeTipoRegs
+     *
+     * @param string $poseeTipoRegs
+     * @return TTipoArchivos
+     */
+    public function setPoseeTipoRegs($poseeTipoRegs)
+    {
+        $this->poseeTipoRegs = $poseeTipoRegs;
+
+        return $this;
+    }
+
+    /**
+     * Get poseeTipoRegs
+     *
+     * @return string 
+     */
+    public function getPoseeTipoRegs()
+    {
+        return $this->poseeTipoRegs;
+    }
+
+    /**
+     * Set secuenciaDesde
+     *
+     * @param integer $secuenciaDesde
+     * @return TTipoArchivos
+     */
+    public function setSecuenciaDesde($secuenciaDesde)
+    {
+        $this->secuenciaDesde = $secuenciaDesde;
+
+        return $this;
+    }
+
+    /**
+     * Get secuenciaDesde
+     *
+     * @return integer 
+     */
+    public function getSecuenciaDesde()
+    {
+        return $this->secuenciaDesde;
+    }
+
+    /**
+     * Set secuenciaSize
+     *
+     * @param integer $secuenciaSize
+     * @return TTipoArchivos
+     */
+    public function setSecuenciaSize($secuenciaSize)
+    {
+        $this->secuenciaSize = $secuenciaSize;
+
+        return $this;
+    }
+
+    /**
+     * Get secuenciaSize
+     *
+     * @return integer 
+     */
+    public function getSecuenciaSize()
+    {
+        return $this->secuenciaSize;
+    }
+
+    /**
+     * Set tamanoNombre
+     *
+     * @param integer $tamanoNombre
+     * @return TTipoArchivos
+     */
+    public function setTamanoNombre($tamanoNombre)
+    {
+        $this->tamanoNombre = $tamanoNombre;
+
+        return $this;
+    }
+
+    /**
+     * Get tamanoNombre
+     *
+     * @return integer 
+     */
+    public function getTamanoNombre()
+    {
+        return $this->tamanoNombre;
+    }
+
+    /**
+     * Set tamanoRegistro
+     *
+     * @param integer $tamanoRegistro
+     * @return TTipoArchivos
+     */
+    public function setTamanoRegistro($tamanoRegistro)
+    {
+        $this->tamanoRegistro = $tamanoRegistro;
+
+        return $this;
+    }
+
+    /**
+     * Get tamanoRegistro
+     *
+     * @return integer 
+     */
+    public function getTamanoRegistro()
+    {
+        return $this->tamanoRegistro;
+    }
 }
