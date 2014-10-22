@@ -19,15 +19,97 @@ class ViviendaController extends Controller
      * Lists all Vivienda entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->findAll();
+        // consultando para lista de select del form (manual)
+        // no genero forms de symfony porque no consegui como hacer el inner join con nombres de estados y desarrollos
+        // la manera en que lo estaba generando si por casualidad habiann desarrollos con el mismo nombre explotaria error
+        // con el formulario manual es por id y aunque tengan nombres iguales por id ya es especifico
+        $estados = $em->getRepository('ComunesTablasBundle:GeoEstado')->findAll();
+        $desarrollos = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
+        $unidades = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->findAll();
+        
+        if ($request->isMethod('POST')) {
+            
+            // recibiendo valores de busqueda
+//            $data = $form->getData();
+            $estadoid = $request->get('estadoid');
+            $desarrolloid = $request->get('desarrolloid');
+            $unidadid = $request->get('unidadid');
+                        
+            $logger = $this->get('logger');
+            
+            $logger->error('$estadoid : '.$estadoid);
+            $logger->error('$desarrolloid : '.$desarrolloid);
+            
+            // si viene estado, desarrollo y unidad se hace una consulta por todos los parametros
+            if($estadoid != NULL && $desarrolloid != NULL && $unidadid != NULL){
+                
+                // usando funcion personal creada en elrepositorio Srpv\ProtocolizacionBundle\Entity\ViviendaRepository
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getViviendaPorEstadoDesarrolloUnidad($estadoid,$desarrolloid,$unidadid);
+             
+            // si viene solo estado y desarrollo se consulta por esos parametros
+            }elseif($estadoid != NULL && $desarrolloid != NULL && $unidadid == NULL){
+                
+                // usando funcion personal creada en elrepositorio Srpv\ProtocolizacionBundle\Entity\ViviendaRepository
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getViviendaPorEstadoDesarrollo($estadoid,$desarrolloid);
+             
+            // si viene solo estado y unidad se consulta por esos parametros
+            }elseif($estadoid != NULL && $desarrolloid == NULL && $unidadid != NULL){
+             
+                // usando funcion personal creada en elrepositorio Srpv\ProtocolizacionBundle\Entity\ViviendaRepository
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getViviendaPorEstadoUnidad($estadoid,$unidadid);
+                
+            // si viene solo desarrollo y unidad se consulta por esos parametros
+            }elseif($estadoid == NULL && $desarrolloid != NULL && $unidadid != NULL){
+              
+                // usando funcion personal creada en elrepositorio Srpv\ProtocolizacionBundle\Entity\ViviendaRepository
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getViviendaPorDesarrolloUnidad($desarrolloid,$unidadid);
+                
+            // si viene solo estado se consulta por ese parametro
+            }elseif($estadoid != NULL && $desarrolloid == NULL && $unidadid == NULL){
+              
+                // usando funcion personal creada en elrepositorio Srpv\ProtocolizacionBundle\Entity\ViviendaRepository
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getViviendaPorEstado($estadoid);
+                
+            // si viene solo desarrollo se consulta por ese parametro
+            }elseif($estadoid == NULL && $desarrolloid != NULL && $unidadid == NULL){
+                
+                // usando funcion personal creada en elrepositorio Srpv\ProtocolizacionBundle\Entity\ViviendaRepository
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getViviendaPorDesarrollo($desarrolloid);
+                
+            // si viene solo unidad se consulta por ese parametro
+            }elseif($estadoid == NULL && $desarrolloid == NULL && $unidadid != NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->findBy(array('unidadHabitacional'=>$unidadid));
+                
+            // si se hace submit sin parametros se trae todas las viviendas
+            }elseif($estadoid == NULL && $desarrolloid == NULL && $unidadid == NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->findAll();
+                
+            }
+            
+            return $this->render('SrpvProtocolizacionBundle:Vivienda:index.html.twig', array(
+                'entities' => $entities,
+                'title' => 'Vivienda',
+//                'form' => $form->createView(),
+                'estados' => $estados,
+                'desarrollos' => $desarrollos,
+                'unidades' => $unidades,
+            ));
+
+        }
 
         return $this->render('SrpvProtocolizacionBundle:Vivienda:index.html.twig', array(
             'entities' => $entities,
             'title' => 'Vivienda',
+            'estados' => $estados,
+            'desarrollos' => $desarrollos,
+            'unidades' => $unidades,
         ));
     }
     /**

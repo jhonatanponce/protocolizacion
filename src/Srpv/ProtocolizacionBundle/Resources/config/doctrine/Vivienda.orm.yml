@@ -1,6 +1,7 @@
 Srpv\ProtocolizacionBundle\Entity\Vivienda:
     type: entity
     table: VIVIENDA
+    repositoryClass: Srpv\ProtocolizacionBundle\Entity\ViviendaRepository
     indexes:
         IDX_EBCC3792E02DDBB6:
             columns:
