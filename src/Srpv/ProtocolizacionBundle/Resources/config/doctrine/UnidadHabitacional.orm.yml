@@ -1,6 +1,7 @@
 Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional:
     type: entity
     table: UNIDAD_HABITACIONAL
+    repositoryClass: Srpv\ProtocolizacionBundle\Entity\UnidadHabitacionalRepository
     indexes:
         IDX_D3ABAFC479F45E9B:
             columns:

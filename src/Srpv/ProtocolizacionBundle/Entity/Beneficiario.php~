@@ -32,14 +32,6 @@ class Beneficiario
     /**
      * @var string
      *
-     * @ORM\Column(name="COCINA", type="string", length=1, nullable=false)
-     */
-    private $cocina;
-    
-    
-    /**
-     * @var string
-     *
      * @ORM\Column(name="COTIZA_FAOV", type="string", length=1, nullable=false)
      */
     private $cotizaFaov;

@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UnidadHabitacional
  *
+ * @ORM\Entity(repositoryClass="Srpv\ProtocolizacionBundle\Entity\UnidadHabitacionalRepository")
  * @ORM\Table(name="UNIDAD_HABITACIONAL", indexes={@ORM\Index(name="IDX_D3ABAFC479F45E9B", columns={"FUENTE_DATOS_ENTRADA_ID"}), @ORM\Index(name="IDX_D3ABAFC4A2441D43", columns={"DESARROLLO_ID"}), @ORM\Index(name="IDX_D3ABAFC499CB0E9D", columns={"GEN_TIPO_INMUEBLE_ID"}), @ORM\Index(name="IDX_D3ABAFC427D19144", columns={"TIPO_DOCUMENTO_ID"}), @ORM\Index(name="IDX_D3ABAFC4E8EA1841", columns={"USUARIO_ID"})})
- * @ORM\Entity
  */
 class UnidadHabitacional
 {

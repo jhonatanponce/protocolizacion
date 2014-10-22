@@ -19,15 +19,81 @@ class UnidadHabitacionalController extends Controller
      * Lists all UnidadHabitacional entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->findAll();
+        
+        // consultando para lista de select del form (manual)
+        // no genero forms de symfony porque no consegui como hacer el inner join con nombres de estados y desarrollos
+        // la manera en que lo estaba generando si por casualidad habiann desarrollos con el mismo nombre explotaria error
+        // con el formulario manual es por id y aunque tengan nombres iguales por id ya es especifico
+        $estados = $em->getRepository('ComunesTablasBundle:GeoEstado')->findAll();
+        $desarrollos = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
+        
+//        $search = array('message' => 'Type your message here');
+// 
+//        $form = $this->createFormBuilder($search)
+//            ->add('estadoid', 'entity', array('required' => false, 'class'   => 'ComunesTablasBundle:GeoEstado','property' => 'nombre','empty_value' => 'Seleccione Estado','attr' => array('class' => 'form-control')))
+//            ->add('desarrolloid', 'entity', array('required' => false,'class'   => 'SrpvProtocolizacionBundle:Desarrollo','property'   => 'nombre','empty_value' => 'Seleccione Nombrede Desarrollo','attr' => array('class' => 'form-control')))
+//            // si uso este submit se ve desalineado en el template, por eso use un submit en html 
+//            //->add('submit', 'submit', array('label' => false,'attr' => array('class' => 'glyphicon glyphicon-search')))
+//            ->getForm();
+//        $form->handleRequest($request);
+        
+        if ($request->isMethod('POST')) {
+            
+            // recibiendo valores de busqueda
+//            $data = $form->getData();
+            $estadoid = $request->get('estadoid');
+            $desarrolloid = $request->get('desarrolloid');
+                        
+            $logger = $this->get('logger');
+            
+            $logger->error('$estadoid : '.$estadoid);
+            $logger->error('$desarrolloid : '.$desarrolloid);
+            
+            // si viene estado y desarrollo se hace una consulta por ambos parametros
+            if($estadoid != NULL && $desarrolloid != NULL){
+                
+                // usando funcion personal creada en elrepositorio Srpv\ProtocolizacionBundle\Entity\UnidadHabitacionalRepository
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->getUnidadPorEstadoYDesarrollo($estadoid,$desarrolloid);
+                
+            // si viene solo estado se consulta solo por el parametro estado
+            }elseif($estadoid != NULL && $desarrolloid == NULL){
+                
+                // usando funcion personal creada en elrepositorio Srpv\ProtocolizacionBundle\Entity\UnidadHabitacionalRepository
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->getUnidadPorEstado($estadoid);
+            
+            // si viene solo desarrollo se consulta solo por el parametro desarrollo
+            }elseif($estadoid == NULL && $desarrolloid != NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->findBy(array('desarrollo'=>$desarrolloid));
+            
+            // si no viene ninguno de los parametros se trae todos los registros
+            }elseif($estadoid == NULL && $desarrolloid == NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->findAll();
+                
+            }
+            
+            return $this->render('SrpvProtocolizacionBundle:UnidadHabitacional:index.html.twig', array(
+                'entities' => $entities,
+                'title' => 'Unidad Habitacional',
+//                'form' => $form->createView(),
+                'estados' => $estados,
+                'desarrollos' => $desarrollos,
+            ));
+
+        }
 
         return $this->render('SrpvProtocolizacionBundle:UnidadHabitacional:index.html.twig', array(
             'entities' => $entities,
             'title' => 'Unidad Habitacional',
+//            'form' => $form->createView(),
+            'estados' => $estados,
+            'desarrollos' => $desarrollos,
         ));
     }
     /**
