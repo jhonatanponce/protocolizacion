@@ -22,8 +22,9 @@ class UnidadHabitacionalController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->findAll();
+        
+        // llamando a la funcion para buscar todas la unidades con su desarrolo y geoestado
+        $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->getUnidades();
         
         // consultando para lista de select del form (manual)
         // no genero forms de symfony porque no consegui como hacer el inner join con nombres de estados y desarrollos
@@ -69,12 +70,12 @@ class UnidadHabitacionalController extends Controller
             // si viene solo desarrollo se consulta solo por el parametro desarrollo
             }elseif($estadoid == NULL && $desarrolloid != NULL){
                 
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->findBy(array('desarrollo'=>$desarrolloid));
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->getUnidadPorDesarrollo($desarrolloid);
             
             // si no viene ninguno de los parametros se trae todos los registros
             }elseif($estadoid == NULL && $desarrolloid == NULL){
                 
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->findAll();
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->getUnidades();
                 
             }
             

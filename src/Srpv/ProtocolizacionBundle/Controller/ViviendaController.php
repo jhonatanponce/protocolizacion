@@ -23,7 +23,7 @@ class ViviendaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->findAll();
+        $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getViviendas();
         // consultando para lista de select del form (manual)
         // no genero forms de symfony porque no consegui como hacer el inner join con nombres de estados y desarrollos
         // la manera en que lo estaba generando si por casualidad habiann desarrollos con el mismo nombre explotaria error
@@ -84,12 +84,12 @@ class ViviendaController extends Controller
             // si viene solo unidad se consulta por ese parametro
             }elseif($estadoid == NULL && $desarrolloid == NULL && $unidadid != NULL){
                 
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->findBy(array('unidadHabitacional'=>$unidadid));
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getViviendaPorUnidad($unidadid);
                 
             // si se hace submit sin parametros se trae todas las viviendas
             }elseif($estadoid == NULL && $desarrolloid == NULL && $unidadid == NULL){
                 
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->findAll();
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getViviendas();
                 
             }
             

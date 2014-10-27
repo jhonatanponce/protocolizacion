@@ -42,22 +42,18 @@
         <table class="records_list table table-bordered table-striped table-hover" border="1">
             <thead>
                 <tr class="success">
-                    <th>Id</th>
-                    <th>Nombre</th>
+                    <th>Nombre Desrrollo</th>
                     <th>Descripción</th>
-                    <th>UrbanIzación-Barrio</th>
-                    <th>Zona</th>
+                    <th>Estado</th>
                     <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
         {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('desarrollo_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                    <td>{{ entity.nombre }}</td>
+                    <td><a href="{{ path('desarrollo_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
                     <td>{{ entity.descripcion }}</td>
-                    <td>{{ entity.urbanBarrio }}</td>
-                    <td>{{ entity.zona }}</td>
+                    <td>{{ entity.geoEstado }}</td>
                     <td class="text-center">
                         <a href="{{ path('desarrollo_show', { 'id': entity.id }) }}" class="glyphicon glyphicon-search"></a>
                         &nbsp;|&nbsp;

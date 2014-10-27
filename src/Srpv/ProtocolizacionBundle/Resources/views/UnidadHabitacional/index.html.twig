@@ -45,24 +45,18 @@
         <table class="records_list table table-bordered table-striped table-hover" border="1">
             <thead>
                 <tr class="success">
-                    <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Folioreal</th>
-                    <th>Nro Documento</th>
-                    <th>Nro Matricula</th>
-                    <th>Tomo</th>
+                    <th>Nombre Unidad</th>
+                    <th>Nombre Desarrollo</th>
+                    <th>Estado</th>
                     <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
         {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('unidad_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                    <td>{{ entity.nombre }}</td>
-                    <td>{{ entity.folioReal }}</td>
-                    <td>{{ entity.nroDocumento }}</td>
-                    <td>{{ entity.nroMatricula }}</td>
-                    <td>{{ entity.tomo }}</td>
+                    <td><a href="{{ path('unidad_show', { 'id': entity.id }) }}">{{ entity.unidad }}</a></td>
+                    <td>{{ entity.desarrollo }}</td>
+                    <td>{{ entity.estado }}</td>
                     <td class="text-center">
                         <a href="{{ path('unidad_show', { 'id': entity.id }) }}" class="glyphicon glyphicon-search"></a>
                         &nbsp;|&nbsp;

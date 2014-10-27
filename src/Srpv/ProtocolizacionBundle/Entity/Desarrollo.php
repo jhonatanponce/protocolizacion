@@ -123,6 +123,13 @@ class Desarrollo
     /**
      * @var integer
      *
+     * @ORM\Column(name="TOTAL_UNIDADES", type="integer", nullable=true)
+     */
+    private $totalUnidades;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="TOTAL_VIVIENDAS_PROTOCOLIZADAS", type="integer", nullable=true)
      */
     private $totalViviendasProtocolizadas;
@@ -547,6 +554,29 @@ class Desarrollo
     public function getTotalViviendas()
     {
         return $this->totalViviendas;
+    }
+
+    /**
+     * Set totalUnidades
+     *
+     * @param integer $totalUnidades
+     * @return Desarrollo
+     */
+    public function setTotalUnidades($totalUnidades)
+    {
+        $this->totalUnidades = $totalUnidades;
+
+        return $this;
+    }
+
+    /**
+     * Get totalUnidades
+     *
+     * @return integer 
+     */
+    public function getTotalUnidades()
+    {
+        return $this->totalUnidades;
     }
 
     /**

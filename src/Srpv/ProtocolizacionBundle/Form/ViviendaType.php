@@ -28,7 +28,7 @@ class ViviendaType extends AbstractType
             ->add('linderoSur', 'text', array('attr' => array('required' => false)))
             ->add('coordenadas', 'text', array('attr' => array('required' => false)))
             ->add('precioVivienda', 'integer', array('attr' => array('required' => true)))
-            ->add('descripcionEstac', 'text', array('attr' => array('required' => true)))
+            ->add('descripcionEstac', 'text', array('label' => 'Descripcion estacionamiento','attr' => array('required' => true)))
             ->add('nroEstacionamientos', 'integer', array('attr' => array('required' => true)))
             ->add('nroBanos', 'integer', array('attr' => array('required' => true)))
             ->add('nroHabitaciones', 'integer', array('attr' => array('required' => true)))
