@@ -12,20 +12,20 @@
                 {% endfor %}
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="desarrollo">
             <select id="desarrolloid" name="desarrolloid" class="form-control">
-                <option disabled="disabled" selected="selected" value="">Seleccione Nombre Desarrollo</option>
-                {% for desarrollo in desarrollos %}
+                <option selected="selected" value="">Seleccione Nombre Desarrollo</option>
+                {#{% for desarrollo in desarrollos %}
                 <option value="{{ desarrollo.id }}">{{ desarrollo.nombre }}</option>
-                {% endfor %}
+                {% endfor %}#}
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="unidad">
             <select id="unidadid" name="unidadid" class="form-control">
-                <option disabled="disabled" selected="selected" value="">Seleccione Nombre de Unidad</option>
-                {% for unidad in unidades %}
+                <option selected="selected" value="">Seleccione Nombre de Unidad</option>
+                {#{% for unidad in unidades %}
                 <option value="{{ unidad.id }}">{{ unidad.nombre }}</option>
-                {% endfor %}
+                {% endfor %}#}
             </select>
         </div>
         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
@@ -86,3 +86,35 @@
     <a href="{{ path('vivienda_new') }}" class="btn btn-primary">Crear Registro</a>
 </div>
     {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script>
+    $(document).ready(function(){
+        $('#estadoid').change(function(event){
+            var id = $('#estadoid').find(':selected').val();
+            //descomentar cuando ya se tenga dominio
+            //$('#desarrollo').load('/updateDesarollo/'+id);
+            $('#desarrollo').load('/protocolizacion/web/app.php/updateDesarollo/'+id);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('#desarrolloid').change(function(event){
+            var desarrollo = $('#desarrolloid').find(':selected').val();
+            //descomentar cuando ya se tenga dominio
+            //$('#unidad').load('/updateUnidad/'+id);
+            $('#unidad').load('//web/app.php/updateUnidad/'+desarrollo);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+    // Así accedemos al Valor de la opción seleccionada
+    var valor = $("#desarrolloid").val();
+    alert(valor);
+    // Si seleccionamos la opción "Texto 1"
+    // nos mostrará por pantalla "1"
+});
+</script>
+{% endblock %}

@@ -31,7 +31,6 @@ class DesarrolloController extends Controller
         // generando formulario symfony
         $form = $this->createFormBuilder($search)
             ->add('estadoid', 'entity', array('required' => false, 'class'   => 'ComunesTablasBundle:GeoEstado','property' => 'nombre','empty_value' => 'Seleccione Estado','attr' => array('class' => 'form-control')))
-            ->add('desarrolloid', 'entity', array('required' => false,'class'   => 'SrpvProtocolizacionBundle:Desarrollo','property'   => 'nombre','empty_value' => 'Seleccione Nombrede Desarrollo','attr' => array('class' => 'form-control')))
             // si uso este submit se ve desalineado en el template, por eso use un submit en html 
             //->add('submit', 'submit', array('label' => false,'attr' => array('class' => 'glyphicon glyphicon-search')))
             ->getForm();
@@ -44,25 +43,14 @@ class DesarrolloController extends Controller
             // recibiendo valores de busqueda
             $data = $form->getData();
             $estadoid = $data['estadoid'];
-            $desarrolloid = $data['desarrolloid'];
             
-            // si viene estado y desarrollo se hace una consulta por ambos parametros
-            if($estadoid != NULL && $desarrolloid != NULL){
-                
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findBy(array('geoEstado'=>$estadoid,'id'=>$desarrolloid));
-            
-            // si viene solo estado se consulta solo por el parametro estado
-            }elseif($estadoid != NULL && $desarrolloid == NULL){
+            // si viene estado se hace una consulta por ese parametro
+            if($estadoid != NULL){
                 
                 $entities = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findBy(array('geoEstado'=>$estadoid));
             
             // si viene solo desarrollo se consulta solo por el parametro desarrollo
-            }elseif($estadoid == NULL && $desarrolloid != NULL){
-                
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findBy(array('id'=>$desarrolloid));
-            
-            // si no viene ninguno de los parametros se trae todos los registros
-            }elseif($estadoid == NULL && $desarrolloid == NULL){
+            }elseif($estadoid == NULL){
                 
                 $entities = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
                 

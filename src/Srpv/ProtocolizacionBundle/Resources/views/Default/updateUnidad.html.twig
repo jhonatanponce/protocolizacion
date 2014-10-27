@@ -1,0 +1,6 @@
+<select id="unidadid" name="unidadid" class="form-control">
+    <option value="">AAAAAAAAAAAAAAAA</option>
+    {% for unidad in unidades %}
+    <option value="{{ unidad.id }}">{{ unidad.nombre }}</option>
+    {% endfor %}
+</select>

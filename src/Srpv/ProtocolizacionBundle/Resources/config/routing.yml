@@ -17,3 +17,11 @@ srpv_protocolizacion_beneficiario:
 srpv_protocolizacion_homepage:
     path:     /hello/{name}
     defaults: { _controller: SrpvProtocolizacionBundle:Default:index }
+
+updateDesarrollo:
+    path:     /updateDesarollo/{id}
+    defaults: { _controller: SrpvProtocolizacionBundle:Default:updateDesarrollo }
+
+updateUnidad:
+    path:     /updateUnidad/{id}
+    defaults: { _controller: SrpvProtocolizacionBundle:Default:updateUnidad }

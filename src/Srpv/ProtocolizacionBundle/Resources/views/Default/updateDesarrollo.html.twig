@@ -1,0 +1,6 @@
+<select id="desarrolloid" name="desarrolloid" class="form-control">
+    <option value="">Seleccione Nombre Desarrollo</option>
+    {% for desarrollo in desarrollos %}
+    <option value="{{ desarrollo.id }}">{{ desarrollo.nombre }}</option>
+    {% endfor %}
+</select>

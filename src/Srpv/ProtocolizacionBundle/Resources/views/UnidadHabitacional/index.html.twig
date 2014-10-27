@@ -6,18 +6,15 @@
     <form action="{{ path('unidad') }}" class="form-inline" id="formulario" role="form" method="post">
         <div class="form-group">
             <select id="estadoid" name="estadoid" class="form-control">
-                <option disabled="disabled" selected="selected" value="">Seleccione Estado</option>
+                <option selected="selected" value="">Seleccione Estado</option>
                 {% for estado in estados %}
                 <option value="{{ estado.id }}">{{ estado.nombre }}</option>
                 {% endfor %}
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="desarrollo">
             <select id="desarrolloid" name="desarrolloid" class="form-control">
-                <option disabled="disabled" selected="selected" value="">Seleccione Nombre Desarrollo</option>
-                {% for desarrollo in desarrollos %}
-                <option value="{{ desarrollo.id }}">{{ desarrollo.nombre }}</option>
-                {% endfor %}
+                <option selected="selected" value="">Seleccione Nombre Desarrollo</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
@@ -92,3 +89,16 @@
     <a href="{{ path('unidad_new') }}" class="btn btn-primary">Crear Registro</a>
 </div>
     {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script>
+    $(document).ready(function(){
+        $('#estadoid').change(function(event){
+            var id = $('#estadoid').find(':selected').val();
+            //descomentar cuando ya se tenga dominio
+            //$('#desarrollo').load('/updateDesarollo/'+id);
+            $('#desarrollo').load('/protocolizacion/web/app.php/updateDesarollo/'+id);
+        });
+    });
+</script>
+{% endblock %}

@@ -52,7 +52,45 @@ Historial de Revision:
         <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
         <!-- ******************************************************************************* -->
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        {# DEPENDENCIAS JQUERY #}
+        {#    jQuery (necessary for Bootstraps JavaScript plugins) #}
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        
+        {#   Include all JavaScripts, compiled by Assetic #}
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+        {#   jPage para efectos de paginado  #}
+        {#<link rel="stylesheet" href="{{ asset('bundles/jPages/css/jPages.css') }}">
+        <script src="{{ asset('bundles/jPages/js/jPages.js') }}"></script>#}
+        
+        {#   bootbox code (necesario para los popups div) #}
+        <script src="{{ asset('js/bootbox.min.js') }}"></script>
+        
+        {# LLAMADOS DE SCRIPTS JQUERY #}
+        <script>
+            {# paginador jPages #}
+            {#$(function(){
+                $("div.holder").jPages({
+                  containerID : "pagination",
+                  previous : "←",
+                  next : "→",
+                  perPage :2,
+                  scrollBrowse: true
+                });
+            });      
+            
+            {# Modal confirm #}
+           {# $(document).on("click", ".btn-danger", function(e) {
+                bootbox.confirm("Está seguro de eliminar el registro?", function(result) {
+                    if(result)
+                        $('form[name="form"]').submit();
+                    else
+                        close();
+                }); 
+            });#}
+        </script>
+        {% endblock %}
     </head>
     
     <body>
@@ -148,45 +186,7 @@ Historial de Revision:
                     <h6>Desarrollado por: GTI Banavih</h6></div>
             {% endblock %}
             <!-- Fin Pie de Página -->
-
-        </div>
-
-        {# DEPENDENCIAS JQUERY #}
-        {#    jQuery (necessary for Bootstraps JavaScript plugins) #}
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        
-        {#   Include all JavaScripts, compiled by Assetic #}
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
-
-        {#   jPage para efectos de paginado  #}
-        <link rel="stylesheet" href="{{ asset('bundles/jPages/css/jPages.css') }}">
-        <script src="{{ asset('bundles/jPages/js/jPages.js') }}"></script>
-        
-        {#   bootbox code (necesario para los popups div) #}
-        <script src="{{ asset('js/bootbox.min.js') }}"></script>
-        
-        {# LLAMADOS DE SCRIPTS JQUERY #}
-        <script>
-            {# paginador jPages #}
-            $(function(){
-                $("div.holder").jPages({
-                  containerID : "pagination",
-                  previous : "←",
-                  next : "→",
-                  perPage :2,
-                  scrollBrowse: true
-                });
-            });      
             
-            {# Modal confirm #}
-            $(document).on("click", ".btn-danger", function(e) {
-                bootbox.confirm("Está seguro de eliminar el registro?", function(result) {
-                    if(result)
-                        $('form[name="form"]').submit();
-                    else
-                        close();
-                }); 
-            });
-        </script>
+        </div>  
     </body>
 </html>
