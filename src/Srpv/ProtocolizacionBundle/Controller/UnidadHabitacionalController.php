@@ -111,7 +111,25 @@ class UnidadHabitacionalController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
-
+            
+            // verificando si hay cantidad de unidades en desarrollo
+            $desarrollo = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->find($entity->getDesarrollo());
+            // si hay cantidades se consultas cuantas uidades existen en el desarrollo
+            if($desarrollo->getTotalUnidades() != NULL){
+                $unidades_del_desarrollo = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->findBy(array('desarrollo'=>$desarrollo->getId()));
+                // si la cantidad de unidades existentes es mayor a la establecida se suma uno a totalunidades
+                if(count($unidades_del_desarrollo) > $desarrollo->getTotalUnidades()){
+                    $cantidad = $desarrollo->getTotalUnidades() + 1;
+                    $desarrollo->setTotalUnidades($cantidad);
+                    $em->persist($desarrollo);
+                    $em->flush();
+                }
+            // si cantidad de unidades es null, esta es su primer unidad 
+            }else{
+                $desarrollo->setTotalUnidades(1);
+                $em->persist($desarrollo);
+                $em->flush();
+            }
             return $this->redirect($this->generateUrl('unidad_show', array('id' => $entity->getId())));
         }
 

@@ -125,6 +125,12 @@ Srpv\ProtocolizacionBundle\Entity\Desarrollo:
             unsigned: false
             comment: ''
             column: TOTAL_VIVIENDAS
+        totalUnidades:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: TOTAL_UNIDADES
         totalViviendasProtocolizadas:
             type: integer
             nullable: true

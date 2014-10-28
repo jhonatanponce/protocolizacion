@@ -9,15 +9,30 @@
             <h3 class="panel-title" style="display: inline;"> Modificar Datos</h3>
         </div>
         
+         {{ form_start(edit_form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
         <div id="yw0" class="panel-body">
-            {{ form(edit_form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
-                
-            {% if delete_form is defined %}
-                
-                <br/>
-                {{ form(delete_form) }}
-                
-            {% endif %}
+            {{ form_errors(edit_form) }}
+            <div class="form-group">
+                {{ form_row(edit_form.nombre) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(edit_form.geoEstado) }}
+            </div>
+            <div class="form-group" id="geoMunicipio">
+                {{ form_row(edit_form.geoMunicipio) }}
+            </div>
+            <div class="form-group" id="geoParroquia">
+                {{ form_row(edit_form.geoParroquia) }}
+            </div>
+        </div>
+        {{ form_end(edit_form) }}
+        
+        {% if delete_form is defined %}
+
+            <br/>
+            {{ form(delete_form) }}
+
+        {% endif %}
         </div>
     </div>
     
@@ -25,4 +40,17 @@
         <a href="{{ path('desarrollo') }}" class="btn btn-success" role="button">Volver</a>  
     </div>
     <br>    
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script>
+    $(document).ready(function(){
+        $('#srpv_protocolizacionbundle_desarrollo_geoEstado').change(function(event){
+            var id = $('#srpv_protocolizacionbundle_desarrollo_geoEstado').find(':selected').val();
+            //descomentar cuando ya se tenga dominio
+            //$('#desarrollo').load('/updateDesarollo/'+id);
+            $('#srpv_protocolizacionbundle_desarrollo_geoMunicipio').load('/protocolizacion/web/app.php/updateMunicipio/'+id);
+        });
+    });
+</script>
 {% endblock %}

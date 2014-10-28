@@ -15,13 +15,13 @@ class UnidadHabitacionalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('genTipoInmueble', 'entity', array('class'   => 'ComunesTablasBundle:GenTipoInmueble','property'   => 'nombre','attr' => array('required' => true),'empty_value' => ''))
-            ->add('totalUnidades', 'integer', array('attr' => array('required' => false)))
-            ->add('nombre', 'text', array('attr' => array('required' => true)))
-            ->add('desarrollo', 'entity', array('class'   => 'SrpvProtocolizacionBundle:Desarrollo','property'   => 'nombre','attr' => array('required' => true),'empty_value' => ''))
+            ->add('genTipoInmueble', 'entity', array('class'   => 'ComunesTablasBundle:GenTipoInmueble','property'   => 'nombre','required' => true,'empty_value' => ''))
+            ->add('totalUnidades', 'integer', array('required' => false))
+            ->add('nombre', 'text', array('required' => true))
+            ->add('desarrollo', 'entity', array('class'   => 'SrpvProtocolizacionBundle:Desarrollo','property'   => 'nombre','required' => true,'empty_value' => ''))
             ->add('fechaCreacion')
             ->add('fechaActualizacion')
-            ->add('registroPublicoId', 'integer', array('attr' => array('required' => false)))
+            ->add('registroPublicoId', 'integer', array('required' => false))
             ->add('fechaRegistro')
             ->add('nroDocumento')
             ->add('tomo')

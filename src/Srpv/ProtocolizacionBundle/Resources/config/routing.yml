@@ -25,3 +25,11 @@ updateDesarrollo:
 updateUnidad:
     path:     /updateUnidad/{id}
     defaults: { _controller: SrpvProtocolizacionBundle:Default:updateUnidad }
+
+updateMunicipio:
+    path:     /updateMunicipio/{id}
+    defaults: { _controller: SrpvProtocolizacionBundle:Default:updateMunicipio }
+
+updateParroquia:
+    path:     /updateParroquia/{id}
+    defaults: { _controller: SrpvProtocolizacionBundle:Default:updateParroquia }

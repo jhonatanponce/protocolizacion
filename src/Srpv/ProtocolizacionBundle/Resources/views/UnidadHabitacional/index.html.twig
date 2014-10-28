@@ -54,13 +54,13 @@
             <tbody>
         {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('unidad_show', { 'id': entity.id }) }}">{{ entity.unidad }}</a></td>
-                    <td>{{ entity.desarrollo }}</td>
-                    <td>{{ entity.estado }}</td>
+                    <td><a href="{{ path('unidad_show', { 'id': entity['id'] }) }}">{{ entity['unidad'] }}</a></td>
+                    <td>{{ entity['desarrollo'] }}</td>
+                    <td>{{ entity['estado'] }}</td>
                     <td class="text-center">
-                        <a href="{{ path('unidad_show', { 'id': entity.id }) }}" class="glyphicon glyphicon-search"></a>
+                        <a href="{{ path('unidad_show', { 'id': entity['id'] }) }}" class="glyphicon glyphicon-search"></a>
                         &nbsp;|&nbsp;
-                        <a href="{{ path('unidad_edit', { 'id': entity.id }) }}" class="glyphicon glyphicon-pencil"></a>
+                        <a href="{{ path('unidad_edit', { 'id': entity['id'] }) }}" class="glyphicon glyphicon-pencil"></a>
                     </td>
                 </tr>
         {% endfor %}

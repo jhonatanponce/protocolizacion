@@ -1,0 +1,22 @@
+<div class="form-group">
+    <label class="control-label col-lg-4 required" for="srpv_protocolizacionbundle_desarrollo_avCallEsqCarr">Municipio</label>
+    <div class="col-lg-4">
+        <select id="srpv_protocolizacionbundle_desarrollo_geoMunicipio" name="srpv_protocolizacionbundle_desarrollo[geoMunicipio]" required="required" class="form-control">
+            <option value=""> </option>
+            {% for municipio in municipios %}
+            <option value="{{ municipio.id }}">{{ municipio.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('#srpv_protocolizacionbundle_desarrollo_geoMunicipio').change(function(event){
+            var municipio = $('#srpv_protocolizacionbundle_desarrollo_geoMunicipio').find(':selected').val();
+            //descomentar cuando ya se tenga dominio
+            //$('#unidad').load('/updateUnidad/'+id);
+            $('#geoParroquia').load('/protocolizacion/web/app.php/updateParroquia/'+municipio);
+        });
+    });
+</script>

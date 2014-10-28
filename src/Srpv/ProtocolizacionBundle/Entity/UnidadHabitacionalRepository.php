@@ -16,7 +16,7 @@ class UnidadHabitacionalRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                "SELECT d.nombre AS desarrollo, u.nombre AS unidad, e.nombre AS estado  FROM  SrpvProtocolizacionBundle:Desarrollo d, SrpvProtocolizacionBundle:UnidadHabitacional u, ComunesTablasBundle:GeoEstado e WHERE d.geoEstado = e.id AND u.desarrollo = d.id"
+                "SELECT u.id AS id, d.nombre AS desarrollo, u.nombre AS unidad, e.nombre AS estado  FROM  SrpvProtocolizacionBundle:Desarrollo d, SrpvProtocolizacionBundle:UnidadHabitacional u, ComunesTablasBundle:GeoEstado e WHERE d.geoEstado = e.id AND u.desarrollo = d.id"
             )
             ->getResult();
     }
@@ -25,7 +25,7 @@ class UnidadHabitacionalRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                "SELECT d.nombre AS desarrollo, u.nombre AS unidad, e.nombre AS estado FROM  SrpvProtocolizacionBundle:Desarrollo d, SrpvProtocolizacionBundle:UnidadHabitacional u, ComunesTablasBundle:GeoEstado WHERE d.geoEstado = '$estadoid' AND d.geoEstado = e.id AND d.id = '$desarrolloid' AND u.desarrollo = d.id"
+                "SELECT u.id AS id, d.nombre AS desarrollo, u.nombre AS unidad, e.nombre AS estado FROM  SrpvProtocolizacionBundle:Desarrollo d, SrpvProtocolizacionBundle:UnidadHabitacional u, ComunesTablasBundle:GeoEstado e WHERE d.geoEstado = '$estadoid' AND d.geoEstado = e.id AND d.id = '$desarrolloid' AND u.desarrollo = d.id"
             )
             ->getResult();
     }
@@ -34,7 +34,7 @@ class UnidadHabitacionalRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                "SELECT d.nombre AS desarrollo, u.nombre AS unidad, e.nombre AS estado FROM  SrpvProtocolizacionBundle:Desarrollo d, SrpvProtocolizacionBundle:UnidadHabitacional u, ComunesTablasBundle:GeoEstado WHERE d.geoEstado = '$estadoid' AND d.geoEstado = e.id AND u.desarrollo = d.id"
+                "SELECT u.id AS id, d.nombre AS desarrollo, u.nombre AS unidad, e.nombre AS estado FROM  SrpvProtocolizacionBundle:Desarrollo d, SrpvProtocolizacionBundle:UnidadHabitacional u, ComunesTablasBundle:GeoEstado e WHERE d.geoEstado = '$estadoid' AND d.geoEstado = e.id AND u.desarrollo = d.id"
             )
             ->getResult();
     }
@@ -43,7 +43,7 @@ class UnidadHabitacionalRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                "SELECT d.nombre AS desarrollo, u.nombre AS unidad, e.nombre AS estado FROM  SrpvProtocolizacionBundle:Desarrollo d, SrpvProtocolizacionBundle:UnidadHabitacional u, ComunesTablasBundle:GeoEstado WHERE d.geoEstado = e.id AND d.id = '$desarrolloid' AND u.desarrollo = d.id"
+                "SELECT u.id AS id, d.nombre AS desarrollo, u.nombre AS unidad, e.nombre AS estado FROM  SrpvProtocolizacionBundle:Desarrollo d, SrpvProtocolizacionBundle:UnidadHabitacional u, ComunesTablasBundle:GeoEstado e WHERE d.geoEstado = e.id AND d.id = '$desarrolloid' AND u.desarrollo = d.id"
             )
             ->getResult();
     }

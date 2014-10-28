@@ -47,20 +47,21 @@
                     <th>Tipo Vivienda</th>
                     <th>Nombre Desarrollo</th>
                     <th>Nombre Unidad</th>
+                    <th>Estado</th>
                     <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
         {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('vivienda_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                    <td>{{ entity.nroPiso }}</td>
-                    <td>{{ entity.nroVivienda }}</td>
-                    <td>{{ entity.precioVivienda }}</td>
+                    <td><a href="{{ path('vivienda_show', { 'id': entity['id'] }) }}">{{ entity['vivienda'] }}</a></td>
+                    <td>{{ entity['desarrollo'] }}</td>
+                    <td>{{ entity['unidad'] }}</td>
+                    <td>{{ entity['estado'] }}</td>
                     <td class="text-center">
-                        <a href="{{ path('vivienda_show', { 'id': entity.id }) }}" class="glyphicon glyphicon-search"></a>
+                        <a href="{{ path('vivienda_show', { 'id': entity['id'] }) }}" class="glyphicon glyphicon-search"></a>
                         &nbsp;|&nbsp;
-                        <a href="{{ path('vivienda_edit', { 'id': entity.id }) }}" class="glyphicon glyphicon-pencil"></a>
+                        <a href="{{ path('vivienda_edit', { 'id': entity['id'] }) }}" class="glyphicon glyphicon-pencil"></a>
                     </td>
                 </tr>
         {% endfor %}
@@ -94,24 +95,5 @@
             $('#desarrollo').load('/protocolizacion/web/app.php/updateDesarollo/'+id);
         });
     });
-</script>
-<script>
-    $(document).ready(function(){
-        $('#desarrolloid').change(function(event){
-            var desarrollo = $('#desarrolloid').find(':selected').val();
-            //descomentar cuando ya se tenga dominio
-            //$('#unidad').load('/updateUnidad/'+id);
-            $('#unidad').load('//web/app.php/updateUnidad/'+desarrollo);
-        });
-    });
-</script>
-<script>
-    $(document).ready(function() {
-    // Así accedemos al Valor de la opción seleccionada
-    var valor = $("#desarrolloid").val();
-    alert(valor);
-    // Si seleccionamos la opción "Texto 1"
-    // nos mostrará por pantalla "1"
-});
 </script>
 {% endblock %}

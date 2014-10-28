@@ -4,3 +4,13 @@
     <option value="{{ desarrollo.id }}">{{ desarrollo.nombre }}</option>
     {% endfor %}
 </select>
+<script>
+    $(document).ready(function(){
+        $('#desarrolloid').change(function(event){
+            var desarrollo = $('#desarrolloid').find(':selected').val();
+            //descomentar cuando ya se tenga dominio
+            //$('#unidad').load('/updateUnidad/'+id);
+            $('#unidad').load('/protocolizacion/web/app.php/updateUnidad/'+desarrollo);
+        });
+    });
+</script>

@@ -30,4 +30,24 @@ class DefaultController extends Controller
             'unidades' => $entities,
         ));
     }
+    
+    public function updateMunicipioAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('ComunesTablasBundle:GeoMunicipio')->findBy(array('geoEstado'=>$id));
+        
+        return $this->render('SrpvProtocolizacionBundle:Default:updateMunicipio.html.twig', array(
+            'municipios' => $entities,
+        ));
+    }
+    
+    public function updateParroquiaAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('ComunesTablasBundle:GeoParroquia')->findBy(array('geoMunicipio'=>$id));
+        
+        return $this->render('SrpvProtocolizacionBundle:Default:updateParroquia.html.twig', array(
+            'parroquias' => $entities,
+        ));
+    }
 }
