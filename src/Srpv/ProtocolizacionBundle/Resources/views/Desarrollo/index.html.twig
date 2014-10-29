@@ -42,6 +42,7 @@
         <table class="records_list table table-bordered table-striped table-hover" border="1">
             <thead>
                 <tr class="success">
+                    <th>ID</th>
                     <th>Nombre Desrrollo</th>
                     <th>Descripción</th>
                     <th>Estado</th>
@@ -51,7 +52,8 @@
             <tbody>
         {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('desarrollo_show', { 'id': entity.id }) }}">{{ entity.nombre }}</a></td>
+                    <td><a href="{{ path('desarrollo_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.nombre }}</td>
                     <td>{{ entity.descripcion }}</td>
                     <td>{{ entity.geoEstado }}</td>
                     <td class="text-center">
