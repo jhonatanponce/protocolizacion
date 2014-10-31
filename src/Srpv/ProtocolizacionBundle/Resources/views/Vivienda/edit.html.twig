@@ -9,20 +9,49 @@
             <h3 class="panel-title" style="display: inline;"> Modificar Datos</h3>
         </div>
         
+       {{ form_start(edit_form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
         <div id="yw0" class="panel-body">
-            {{ form(edit_form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
-                
-            {% if delete_form is defined %}
-                
-                <br/>
-                {{ form(delete_form) }}
-                
-            {% endif %}
+            {{ form_errors(edit_form) }}
+            {#<div class="form-group">
+                <label class="control-label col-lg-4 required" for="desarrollo">Desarrollo</label>
+                <div class="col-lg-4">
+                    <select id="desarrolloid" name="desarrolloid" class="form-control" required="required">
+                        <option value=""></option>
+                        {% for desarrollo in desarrollos %}
+                            <option value="{{ desarrollo.id }}">{{ desarrollo.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group" id="unidadHabitacional">
+                {{ form_row(edit_form.unidadHabitacional) }}
+            </div>#}
         </div>
+        {{ form_end(edit_form) }}
+        
+        {% if delete_form is defined %}
+
+            <br/>
+            {{ form(delete_form) }}
+
+        {% endif %}
     </div>
     
     <div align="right">
         <a href="{{ path('vivienda') }}" class="btn btn-success" role="button">Volver</a>  
     </div>
     <br>    
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script>
+    $(document).ready(function(){
+        $('#desarrolloid').change(function(event){
+            var id = $('#desarrolloid').find(':selected').val();
+            //descomentar cuando ya se tenga dominio
+            //$('#unidadHabitacional').load('/updateUnidadVivienda/'+id);
+            $('#unidadHabitacional').load('/protocolizacion/web/app.php/updateUnidadVivienda/'+id);
+        });
+    });
+</script>
 {% endblock %}

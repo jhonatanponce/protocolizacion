@@ -26,6 +26,10 @@ updateUnidad:
     path:     /updateUnidad/{id}
     defaults: { _controller: SrpvProtocolizacionBundle:Default:updateUnidad }
 
+updateUnidadVivienda:
+    path:     /updateUnidadVivienda/{id}
+    defaults: { _controller: SrpvProtocolizacionBundle:Default:updateUnidadVivienda }
+
 updateMunicipio:
     path:     /updateMunicipio/{id}
     defaults: { _controller: SrpvProtocolizacionBundle:Default:updateMunicipio }

@@ -77,11 +77,23 @@ class DesarrolloController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Desarrollo();
+        $user = $this->getUser();
+        $fecha = new \DateTime(date('d-M-y'));
+        
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            // seteando usuario logeado
+            $entity->setUsuario($user);
+            // buscando al objeto fuente datos de entrada
+            $datosEntrada = $em->getRepository('SrpvProtocolizacionBundle:FuenteDatosEntrada')->find(1);
+            //seteando la entrada por defecto
+            $entity->setFuenteDatosEntrada($datosEntrada);
+            //seteando fecha de creacion
+            $entity->setFechaCreacion($fecha);
+            
             $em->persist($entity);
             $em->flush();
 
@@ -199,6 +211,7 @@ class DesarrolloController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
+        $fecha = new \DateTime(date('d-M-y'));
 
         $entity = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->find($id);
 
@@ -211,6 +224,9 @@ class DesarrolloController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            
+            // seteando fecha actualizacion
+            $entity->setFechaActualizacion($fecha);
             $em->flush();
 
             return $this->redirect($this->generateUrl('desarrollo_edit', array('id' => $id)));

@@ -119,13 +119,43 @@ class ViviendaController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Vivienda();
+        $user = $this->getUser();
+        $fecha = new \DateTime(date('d-M-y'));
+        $es = $this->getDoctrine()->getManager();
+        $desarrollos = $es->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
+        
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            // seteando usuario logeado
+            $entity->setUsuario($user);
+            // buscando al objeto fuente datos de entrada
+            $datosEntrada = $em->getRepository('SrpvProtocolizacionBundle:FuenteDatosEntrada')->find(1);
+            //seteando la entrada por defecto
+            $entity->setFuenteDatosEntrada($datosEntrada);
+            //seteando fecha de creacion
+            $entity->setFechaCreacion($fecha);
+            
             $em->persist($entity);
             $em->flush();
+            
+            // verificando si hay cantidad de unidades (viviendas) en unidad
+            $unidad = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->find($entity->getUnidadHabitacional());
+            // si hay cantidades se suma 1 nueva unidad
+            if($unidad->getTotalUnidades() != NULL){
+                
+                    $cantidad = $unidad->getTotalUnidades() + 1;
+                    $unidad->setTotalUnidades($cantidad);
+                    $em->persist($unidad);
+                    $em->flush();
+            // si cantidad de unidades es null, esta es su primer unidad (vivienda)
+            }else{
+                $unidad->setTotalUnidades(1);
+                $em->persist($unidad);
+                $em->flush();
+            }
 
             return $this->redirect($this->generateUrl('vivienda_show', array('id' => $entity->getId())));
         }
@@ -133,6 +163,7 @@ class ViviendaController extends Controller
         return $this->render('SrpvProtocolizacionBundle:Vivienda:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'desarrollos' => $desarrollos,
         ));
     }
 
@@ -162,11 +193,14 @@ class ViviendaController extends Controller
     public function newAction()
     {
         $entity = new Vivienda();
+        $es = $this->getDoctrine()->getManager();
+        $desarrollos = $es->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
         $form   = $this->createCreateForm($entity);
 
         return $this->render('SrpvProtocolizacionBundle:Vivienda:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'desarrollos' => $desarrollos,
         ));
     }
 
@@ -199,6 +233,7 @@ class ViviendaController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
+        $desarrollos = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
 
         $entity = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->find($id);
 
@@ -213,6 +248,7 @@ class ViviendaController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'desarrollos' => $desarrollos,
         ));
     }
 
@@ -241,6 +277,9 @@ class ViviendaController extends Controller
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
+        $fecha = new \DateTime(date('d-M-y'));
+        $es = $this->getDoctrine()->getManager();
+        $desarrollos = $es->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
 
         $entity = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->find($id);
 
@@ -253,6 +292,9 @@ class ViviendaController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            
+            // seteando fecha actualizacion
+            $entity->setFechaActualizacion($fecha);
             $em->flush();
 
             return $this->redirect($this->generateUrl('vivienda_edit', array('id' => $id)));
@@ -262,6 +304,7 @@ class ViviendaController extends Controller
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'desarrollos' => $desarrollos,
         ));
     }
     /**

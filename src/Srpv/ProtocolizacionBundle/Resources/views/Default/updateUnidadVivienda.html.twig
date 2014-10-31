@@ -1,0 +1,11 @@
+<div class="form-group">
+    <label class="control-label col-lg-4 required" for="srpv_protocolizacionbundle_desarrollo_avCallEsqCarr">Municipio</label>
+    <div class="col-lg-4">
+        <select id="srpv_protocolizacionbundle_vivienda_unidadHabitacional" name="srpv_protocolizacionbundle_vivienda[unidadHabitacional]" required="required" class="form-control">
+            <option disabled="disabled" value=""></option>
+            {% for unidad in unidades %}
+            <option value="{{ unidad.id }}">{{ unidad.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>

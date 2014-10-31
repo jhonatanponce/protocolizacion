@@ -18,68 +18,24 @@
                     <td>{{ entity.id }}</td>
                 </tr>
                 <tr>
-                    <th>Av. / Calle / Esq. / Carr.</th>
-                    <td>{{ entity.avCallEsqCarr }}</td>
-                </tr>
-                <tr>
-                    <th>Coordenadas</th>
-                    <td>{{ entity.coordenadas }}</td>
-                </tr>
-                <tr>
-                    <th>Descripcion</th>
-                    <td>{{ entity.descripcion }}</td>
-                </tr>
-                <tr>
-                    <th>Fecha actualizacion</th>
-                    <td>{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}</td>
-                </tr>
-                <tr>
-                    <th>Fecha creación</th>
-                    <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
-                </tr>
-                <tr>
-                    <th>Fecha transferencia</th>
-                    <td>{{ entity.fechaTransferencia|date('Y-m-d H:i:s') }}</td>
-                </tr>
-                <tr>
-                    <th>Lindero este</th>
-                    <td>{{ entity.linderoEste }}</td>
-                </tr>
-                <tr>
-                    <th>Lindero norte</th>
-                    <td>{{ entity.linderoNorte }}</td>
-                </tr>
-                <tr>
-                    <th>Lindero oeste</th>
-                    <td>{{ entity.linderoOeste }}</td>
-                </tr>
-                <tr>
-                    <th>Lindero sur</th>
-                    <td>{{ entity.linderoSur }}</td>
-                </tr>
-                <tr>
-                    <th>Lote terreno mt2</th>
-                    <td>{{ entity.loteTerrenoMt2 }}</td>
-                </tr>
-                <tr>
                     <th>Nombre</th>
                     <td>{{ entity.nombre }}</td>
                 </tr>
                 <tr>
-                    <th>Titularidad del terreno</th>
-                    <td>{{ entity.titularidadDelTerreno }}</td>
+                    <th>Estado</th>
+                    <td>{{ entity.geoEstado }}</td>
                 </tr>
                 <tr>
-                    <th>Total viviendas</th>
-                    <td>{{ entity.totalViviendas }}</td>
+                    <th>Municipio</th>
+                    <td>{{ entity.geoMunicipio }}</td>
                 </tr>
                 <tr>
-                    <th>Total unidades</th>
-                    <td>{{ entity.totalUnidades }}</td>
+                    <th>Parroquia</th>
+                    <td>{{ entity.geoParroquia }}</td>
                 </tr>
                 <tr>
-                    <th>Total viviendas protocolizadas</th>
-                    <td>{{ entity.totalViviendasProtocolizadas }}</td>
+                    <th>Av. / Calle / Esq. / Carr.</th>
+                    <td>{{ entity.avCallEsqCarr }}</td>
                 </tr>
                 <tr>
                     <th>Urban. / Barrio</th>
@@ -88,6 +44,71 @@
                 <tr>
                     <th>Zona</th>
                     <td>{{ entity.zona }}</td>
+                </tr>
+                <tr>
+                    <th>Descripción</th>
+                    <td>{{ entity.descripcion }}</td>
+                </tr>
+                <tr>
+                    <th>Total Unidades</th>
+                    <td>{{ entity.totalUnidades }}</td>
+                </tr>
+                <tr>
+                    <th>Total Viviendas</th>
+                    <td>{{ entity.totalViviendas }}</td>
+                </tr>
+                <tr>
+                    <th>Total Viviendas Protocolizadas</th>
+                    <td>{{ entity.totalViviendasProtocolizadas }}</td>
+                </tr>
+                
+                <tr>
+                    <th>Lindero Este</th>
+                    <td>{{ entity.linderoEste }}</td>
+                </tr>
+                <tr>
+                    <th>Lindero Norte</th>
+                    <td>{{ entity.linderoNorte }}</td>
+                </tr>
+                <tr>
+                    <th>Lindero Oeste</th>
+                    <td>{{ entity.linderoOeste }}</td>
+                </tr>
+                <tr>
+                    <th>Lindero Sur</th>
+                    <td>{{ entity.linderoSur }}</td>
+                </tr>
+                <tr>
+                    <th>Coordenadas</th>
+                    <td>{{ entity.coordenadas }}</td>
+                </tr>
+                <tr>
+                    <th>Lote Terreno Mt2</th>
+                    <td>{{ entity.loteTerrenoMt2 }}</td>
+                </tr>
+                <tr>
+                    <th>Fuente Financiemiento</th>
+                    <td>{{ entity.fuenteFinanciamiento }}</td>
+                </tr>
+                <tr>
+                    <th>Titularidad Del Terreno</th>
+                    <td>{{ entity.titularidadDelTerreno }}</td>
+                </tr>
+                <tr>
+                    <th>Ente Ejecutor</th>
+                    <td>{{ entity.enteEjecutor }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha Creación</th>
+                    <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha Actualización</th>
+                    <td>{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha Transferencia</th>
+                    <td>{{ entity.fechaTransferencia|date('Y-m-d H:i:s') }}</td>
                 </tr>
             </tbody>
         </table>

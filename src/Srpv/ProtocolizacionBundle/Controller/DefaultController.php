@@ -31,6 +31,16 @@ class DefaultController extends Controller
         ));
     }
     
+    public function updateUnidadViviendaAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $entities = $em->getRepository('SrpvProtocolizacionBundle:UnidadHabitacional')->findBy(array('desarrollo'=>$id));
+        
+        return $this->render('SrpvProtocolizacionBundle:Default:updateUnidadVivienda.html.twig', array(
+            'unidades' => $entities,
+        ));
+    }
+    
     public function updateMunicipioAction($id)
     {
         $em = $this->getDoctrine()->getManager();
