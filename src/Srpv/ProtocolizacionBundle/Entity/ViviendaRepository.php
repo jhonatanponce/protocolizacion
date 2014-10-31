@@ -83,4 +83,15 @@ class ViviendaRepository extends EntityRepository
             )
             ->getResult();
     }
+    
+    // funcion para buscar el objeto desarrollo especifico de la vivienda
+    public function getDesarrolloVivienda($id)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                "SELECT d FROM  SrpvProtocolizacionBundle:Desarrollo d, SrpvProtocolizacionBundle:UnidadHabitacional u, SrpvProtocolizacionBundle:Vivienda v WHERE AND u.desarrollo = d.id AND v.unidadHabitacional = u.id AND v.id = '$id'"
+            )
+            ->setMaxResults(1)
+            ->getResult();
+    }
 }

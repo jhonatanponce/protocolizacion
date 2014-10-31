@@ -234,6 +234,8 @@ class ViviendaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $desarrollos = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
+        // buscando el desarrollo especifico de la vivienda
+        $desarrolloVivienda = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getDesarrolloVivienda($id);
 
         $entity = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->find($id);
 
@@ -249,6 +251,7 @@ class ViviendaController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'desarrollos' => $desarrollos,
+            'desarrolloVivienda' => $desarrolloVivienda,
         ));
     }
 
@@ -278,8 +281,8 @@ class ViviendaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $fecha = new \DateTime(date('d-M-y'));
-        $es = $this->getDoctrine()->getManager();
-        $desarrollos = $es->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
+        $desarrollos = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
+        $desarrolloVivienda = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getDesarrolloVivienda($id);
 
         $entity = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->find($id);
 
@@ -305,6 +308,7 @@ class ViviendaController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'desarrollos' => $desarrollos,
+            'desarrolloVivienda' => $desarrolloVivienda,
         ));
     }
     /**
