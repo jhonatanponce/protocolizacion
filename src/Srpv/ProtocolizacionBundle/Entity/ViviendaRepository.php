@@ -89,7 +89,7 @@ class ViviendaRepository extends EntityRepository
     {
         return $this->getEntityManager()
             ->createQuery(
-                "SELECT d FROM  SrpvProtocolizacionBundle:Desarrollo d, SrpvProtocolizacionBundle:UnidadHabitacional u, SrpvProtocolizacionBundle:Vivienda v WHERE AND u.desarrollo = d.id AND v.unidadHabitacional = u.id AND v.id = '$id'"
+                "SELECT d.nombre AS nombre FROM  SrpvProtocolizacionBundle:Desarrollo d, SrpvProtocolizacionBundle:UnidadHabitacional u, SrpvProtocolizacionBundle:Vivienda v WHERE u.desarrollo = d.id AND v.unidadHabitacional = u.id AND v.id = '$id'"
             )
             ->setMaxResults(1)
             ->getResult();

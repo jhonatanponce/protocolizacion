@@ -18,7 +18,7 @@
                     <select id="desarrolloid" name="desarrolloid" class="form-control" required="required">
                         <option value=""></option>
                         {% for desarrollo in desarrollos %}
-                            {% if desarrollo.nombre == desarrolloVivienda.nombre %}
+                            {% if desarrollo.nombre == desarrolloVivienda %}
                             <option value="{{ desarrollo.id }}" selected="selected">{{ desarrollo.nombre }}</option>
                             {% else %}
                                 <option value="{{ desarrollo.id }}">{{ desarrollo.nombre }}</option>

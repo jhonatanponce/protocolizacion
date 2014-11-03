@@ -235,7 +235,10 @@ class ViviendaController extends Controller
         $em = $this->getDoctrine()->getManager();
         $desarrollos = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
         // buscando el desarrollo especifico de la vivienda
-        $desarrolloVivienda = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getDesarrolloVivienda($id);
+        $desarrolloDeLaVivienda = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getDesarrolloVivienda($id);
+        foreach ($desarrolloDeLaVivienda as $value) {
+            $desarrolloVivienda = $value['nombre'];
+        }
 
         $entity = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->find($id);
 
@@ -282,8 +285,11 @@ class ViviendaController extends Controller
         $em = $this->getDoctrine()->getManager();
         $fecha = new \DateTime(date('d-M-y'));
         $desarrollos = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->findAll();
-        $desarrolloVivienda = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getDesarrolloVivienda($id);
-
+        $desarrolloDeLaVivienda = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->getDesarrolloVivienda($id);
+        foreach ($desarrolloDeLaVivienda as $value) {
+            $desarrolloVivienda = $value['nombre'];
+        }
+        
         $entity = $em->getRepository('SrpvProtocolizacionBundle:Vivienda')->find($id);
 
         if (!$entity) {
