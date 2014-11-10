@@ -42,7 +42,7 @@ class UsuarioHasRol
     /**
      * @var \Comunes\SecurityBundle\Entity\Usuario
      *
-     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario")
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario", inversedBy="usuarioRoles")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="USUARIO_ID", referencedColumnName="id")
      * })

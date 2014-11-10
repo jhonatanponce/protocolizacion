@@ -295,5 +295,9 @@ Comunes\SecurityBundle\Entity\Usuario:
             joinColumns:
                 GEN_TIPO_USUARIO_ID:
                     referencedColumnName: id
-            orphanRemoval: false
+            orphanRemoval: false  
+    oneToMany:
+        usuarioRoles:
+          targetEntity: Comunes\SecurityBundle\Entity\UsuarioHasRol
+          mappedBy: usuario            
     lifecycleCallbacks: {  }

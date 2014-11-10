@@ -29,10 +29,21 @@ Srpv\ProtocolizacionBundle\Entity\FuenteFinanciamiento:
             fixed: false
             comment: ''
             column: NOMBRE
-        usuarioId:
-            type: integer
-            nullable: false
-            unsigned: false
+        estatus:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
             comment: ''
-            column: USUARIO_ID
+            column: ESTATUS    
+    manyToOne:
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                usuario_id:
+                    referencedColumnName: id
+            orphanRemoval: false        
     lifecycleCallbacks: {  }

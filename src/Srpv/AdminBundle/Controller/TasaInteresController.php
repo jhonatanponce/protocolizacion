@@ -21,13 +21,26 @@ class TasaInteresController extends Controller
      */
     public function indexAction()
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('SrpvProtocolizacionBundle:TasaInteres')->findAll();
+        
+        $referer = $this->getRequest()->headers->get('referer');
+        
+        $msg = (substr_count($referer,'delete')) ? 'Registro Eliminado' : NULL;
+        
+        $css_msg = (substr_count($referer,'delete')) ? 'alert-danger' : NULL;
+
 
         return $this->render('SrpvAdminBundle:TasaInteres:index.html.twig', array(
             'entities' => $entities,
+            'title' => 'Tasa Interes',
+            'msg' => $msg,
+            'css_msg' => $css_msg,
         ));
+        
+        
     }
     /**
      * Creates a new TasaInteres entity.
@@ -40,11 +53,34 @@ class TasaInteresController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            
+            //             se define las entidades por defecto
+//            $usuario = $this->getDoctrine()->getRepository('ComunesSecurityBundle:Usuario')->find($user = $this->get('security.context')->getToken()->getUser()->getId());
+            
+            $usuario = $this->getDoctrine()->getManager()->getRepository('ComunesSecurityBundle:Usuario')->find(11795);
+            
+            if (!$usuario) {
+                throw $this->createNotFoundException('Unable to find Usuario entity.');
+            }            
+            
+            $fecha = new \DateTime(date('d-M-y')); 
+            
+            $entity->setFechaCreacion($fecha);
+            $entity->setUsuario($usuario);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tasainteres_show', array('id' => $entity->getId())));
+      
+                    
+            return $this->render('SrpvAdminBundle:TasaInteres:show.html.twig', array(
+                'msg'         => 'Registro Creado',
+                'css_msg'     => 'alert-info',                  
+                'id' => $entity->getId(),
+                'entity' => $entity,
+                'form'   => $form->createView(),
+            ));      
         }
 
         return $this->render('SrpvAdminBundle:TasaInteres:new.html.twig', array(
@@ -92,7 +128,9 @@ class TasaInteresController extends Controller
      *
      */
     public function showAction($id)
+            
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('SrpvProtocolizacionBundle:TasaInteres')->find($id);
@@ -170,9 +208,40 @@ class TasaInteresController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            
+                        
+//             se define las entidades por defecto
+//            $usuario = $this->getDoctrine()->getRepository('ComunesSecurityBundle:Usuario')->find($user = $this->get('security.context')->getToken()->getUser()->getId());
+            
+            $usuario = $this->getDoctrine()->getManager()->getRepository('ComunesSecurityBundle:Usuario')->find(11795);
+            
+            if (!$usuario) {
+                throw $this->createNotFoundException('Unable to find Usuario entity.');
+            }            
+            
+            $fecha = new \DateTime(date('d-M-y')); 
+            
+            $entity->setFechaCreacion($fecha);
+            $entity->setUsuario($usuario);
+            
+            if (!$usuario) {
+                throw $this->createNotFoundException('Unable to find Usuario entity.');
+            }            
+
+            $entity->setFechaActualizacion($fecha);
+            $entity->setUsuario($usuario);  
+            
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tasainteres_edit', array('id' => $id)));
+            
+           
+            return $this->render('SrpvAdminBundle:TasaInteres:edit.html.twig', array(
+                'msg'         => 'Registro Actualizado',
+                'css_msg'     => 'alert-success',
+                'entity'      => $entity,
+                'edit_form'   => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            ));
         }
 
         return $this->render('SrpvAdminBundle:TasaInteres:edit.html.twig', array(
@@ -192,7 +261,7 @@ class TasaInteresController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('SrpvAdminBundle:TasaInteres')->find($id);
+            $entity = $em->getRepository('SrpvProtocolizacionBundle:TasaInteres')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find TasaInteres entity.');
@@ -217,8 +286,10 @@ class TasaInteresController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('tasainteres_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'button', array('label' => 'Eliminar','attr' => array('class' => 'btn-danger')))
             ->getForm()
         ;
+        
+        
     }
 }

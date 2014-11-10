@@ -1,17 +1,11 @@
 security:
-    encoders:
-#        #(ciudadanos) Ciudadanos Registrados en BANAVEL
-#        Banavel\SecurityCddnoBundle\Entity\SolicitudUsuarioNat: 
-#            algorithm:   md5
-#            iterations: 1
-#            encode_as_base64: false
-#            
-#        #(opf) Operadores Financieros y BANAVIH en Tablas Comunes    
-#        Comunes\SecurityBundle\Entity\Usuario: 
-#            algorithm:   md5
-#            iterations: 1
-#            encode_as_base64: false
-#            
+    encoders:            
+        #(bnvh) BANAVIH en Tablas Comunes    
+        Comunes\SecurityBundle\Entity\Usuario: 
+            algorithm:   md5
+            iterations: 1
+            encode_as_base64: false
+            
         #(admin) Administrador del Sistema
         Symfony\Component\Security\Core\User\User: 
             algorithm:   md5
@@ -22,16 +16,10 @@ security:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]    
         
-    providers:        
-#        cddno: 
-#            entity: { class: Banavel\SecurityCddnoBundle\Entity\SolicitudUsuarioNat, property: usuario }
-#        opf:
-#            #Nombre del Servicio que llama al Comunes\SecurityBundle\Entity\UsuarioOpfProvider
-#            id: opf_provider        
-#            
-#        bnvh:
-#            #Nombre del Servicio que llama al Comunes\SecurityBundle\Entity\UsuarioBanavihProvider
-#            id: bnvh_provider             
+    providers:                 
+        users:
+            #Nombre del Servicio que llama al Comunes\SecurityBundle\Provider\UsuarioBanavihProvider
+            id: users_provider             
             
         administrador:
             memory:
@@ -42,23 +30,6 @@ security:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
-            
-        ######  CIUDADANO  #######                
-#        login_ciudadano:
-#            pattern:  ^/cddno/login/$
-#            anonymous: ~
-#
-#        ciudadano_secured_area:
-#            provider: cddno
-#            pattern:    ^/cddno
-#            form_login:
-#                check_path: /cddno/login_check
-#                login_path: /cddno/login/
-#                username_parameter: _usinsajo
-#                password_parameter: _psinsajo
-#            logout:
-#                path:   /cddno/logout
-#                target: /
 
         ######  ADMINISTRADOR  #######   
         login_admin:
@@ -77,45 +48,29 @@ security:
                 path:   /admin/logout
                 target: /
 
-#        ######  OPF  #######   
-#        login_opf:
-#            pattern:  ^/opf/login/$
-#            anonymous: ~
-#            
-#        opf_secured_area:
-#            provider: opf
-#            pattern:    ^/opf
-#            form_login:
-#                check_path: /opf/login_check
-#                login_path: /opf/login/
-#                username_parameter: _usinsajo
-#                password_parameter: _psinsajo                
-#            logout:
-#                path:   /opf/logout
-#                target: /
-#        ######  BANAVIH  #######   
-#        bnvh_opf:
-#            pattern:  ^/bnvh/login/$
-#            anonymous: ~
-#            
-#        bnvh_secured_area:
-#            provider: bnvh
-#            pattern:    ^/bnvh
-#            form_login:
-#                check_path: /bnvh/login_check
-#                login_path: /bnvh/login/
-#                username_parameter: _usinsajo
-#                password_parameter: _psinsajo                
-#            logout:
-#                path:   /bnvh/logout
-#                target: /
+        ######  USUARIOS  #######   
+        login_users:
+            pattern:  ^/login/$
+            anonymous: ~
+            
+        users_secured_area:
+            provider: users
+            pattern:    ^/
+            form_login:
+                check_path: /login_check
+                login_path: /login/
+                username_parameter: _usinsajo
+                password_parameter: _psinsajo                
+            logout:
+                path:   /logout
+                target: /
+                # Agregado para evitar que explote cuando se hace logout. 
+                # Es un Bug de PHP < 5.4.11
+                invalidate_session: false                
               
     access_control:
-#        - { path: ^/cddno/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: ^/opf/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: ^/bnvh/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
-#        - { path: ^/cddno, roles: ROLE_CDDNO }  
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
         
     access_decision_manager:
         # strategy can be: affirmative, unanimous or consensus

@@ -15,21 +15,34 @@ Comunes\SecurityBundle\Entity\RolMenu:
             column: id
             generator:
                 strategy: SEQUENCE
-    fields:
-        rolId:
-            type: integer
-            nullable: true
-            unsigned: false
-            comment: 'el rol que puede acceder a esta opción (asociación con la tabla rol)'
-            column: ROL_ID
+#    fields:
+##        rolId:
+##            type: integer
+##            nullable: true
+##            unsigned: false
+##            comment: 'el rol que puede acceder a esta opción (asociación con la tabla rol)'
+##            column: ROL_ID
     manyToOne:
         opcionMenu:
             targetEntity: Comunes\SecurityBundle\Entity\OpcionMenu
             cascade: {  }
             mappedBy: null
-            inversedBy: null
+            inversedBy: rolOpciones
             joinColumns:
                 OPCION_MENU_ID:
                     referencedColumnName: id
             orphanRemoval: false
+        rol:
+            targetEntity: Comunes\SecurityBundle\Entity\Rol
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ROL_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+#    oneToMany:
+#        rolOpciones:
+#            targetEntity: Comunes\SecurityBundle\Entity\RolMenu
+#            mappedBy: opcionMenu                    
     lifecycleCallbacks: {  }

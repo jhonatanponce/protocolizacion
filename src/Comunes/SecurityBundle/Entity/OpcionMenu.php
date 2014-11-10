@@ -39,13 +39,6 @@ class OpcionMenu
     /**
      * @var integer
      *
-     * @ORM\Column(name="PADRE_ID", type="integer", nullable=true)
-     */
-    private $padreId;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="ROL_ID", type="integer", nullable=true)
      */
     private $rolId;
@@ -58,6 +51,13 @@ class OpcionMenu
     private $url;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Comunes\SecurityBundle\Entity\RolMenu", mappedBy="opcionMenu")
+     */
+    private $rolOpciones;
+
+    /**
      * @var \Comunes\SecurityBundle\Entity\SysApp
      *
      * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\SysApp")
@@ -67,6 +67,23 @@ class OpcionMenu
      */
     private $sysApp;
 
+    /**
+     * @var \Comunes\SecurityBundle\Entity\OpcionMenu
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\OpcionMenu")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="PADRE_ID", referencedColumnName="id")
+     * })
+     */
+    private $padreId;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->rolOpciones = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -126,29 +143,6 @@ class OpcionMenu
     }
 
     /**
-     * Set padreId
-     *
-     * @param integer $padreId
-     * @return OpcionMenu
-     */
-    public function setPadreId($padreId)
-    {
-        $this->padreId = $padreId;
-
-        return $this;
-    }
-
-    /**
-     * Get padreId
-     *
-     * @return integer 
-     */
-    public function getPadreId()
-    {
-        return $this->padreId;
-    }
-
-    /**
      * Set rolId
      *
      * @param integer $rolId
@@ -195,6 +189,39 @@ class OpcionMenu
     }
 
     /**
+     * Add rolOpciones
+     *
+     * @param \Comunes\SecurityBundle\Entity\RolMenu $rolOpciones
+     * @return OpcionMenu
+     */
+    public function addRolOpcione(\Comunes\SecurityBundle\Entity\RolMenu $rolOpciones)
+    {
+        $this->rolOpciones[] = $rolOpciones;
+
+        return $this;
+    }
+
+    /**
+     * Remove rolOpciones
+     *
+     * @param \Comunes\SecurityBundle\Entity\RolMenu $rolOpciones
+     */
+    public function removeRolOpcione(\Comunes\SecurityBundle\Entity\RolMenu $rolOpciones)
+    {
+        $this->rolOpciones->removeElement($rolOpciones);
+    }
+
+    /**
+     * Get rolOpciones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getRolOpciones()
+    {
+        return $this->rolOpciones;
+    }
+
+    /**
      * Set sysApp
      *
      * @param \Comunes\SecurityBundle\Entity\SysApp $sysApp
@@ -215,5 +242,28 @@ class OpcionMenu
     public function getSysApp()
     {
         return $this->sysApp;
+    }
+
+    /**
+     * Set padreId
+     *
+     * @param \Comunes\SecurityBundle\Entity\OpcionMenu $padreId
+     * @return OpcionMenu
+     */
+    public function setPadreId(\Comunes\SecurityBundle\Entity\OpcionMenu $padreId = null)
+    {
+        $this->padreId = $padreId;
+
+        return $this;
+    }
+
+    /**
+     * Get padreId
+     *
+     * @return \Comunes\SecurityBundle\Entity\OpcionMenu 
+     */
+    public function getPadreId()
+    {
+        return $this->padreId;
     }
 }

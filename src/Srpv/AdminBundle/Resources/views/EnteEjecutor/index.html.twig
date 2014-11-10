@@ -18,9 +18,8 @@
                         <th>Nombre</th>
                         <th>Observaciones</th>
                         <th>Estatus</th>
-                        <th>Fechaactualizacion</th>
-                        <th>Fechacreacion</th>
-
+                        <th>Fecha Actualización</th>
+                        <th>Fecha Creación</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -30,7 +29,11 @@
                         <td><a href="{{ path('enteejecutor_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                         <td>{{ entity.nombre }}</td>
                         <td>{{ entity.observaciones }}</td>
-                        <td>{{ entity.estatus }}</td>
+                    {% if entity.estatus == 'S' %}
+                        <td>ACTIVA</td>    
+                    {% else %}
+                        <td>INACTIVA</td>    
+                    {% endif %} 
                         <td>{% if entity.fechaActualizacion %}{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{% if entity.fechaCreacion %}{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td class="text-center">

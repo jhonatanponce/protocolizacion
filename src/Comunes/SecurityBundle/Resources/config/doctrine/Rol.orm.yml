@@ -63,5 +63,9 @@ Comunes\SecurityBundle\Entity\Rol:
             joinColumns:
                 SYS_SISTEMA_ID:
                     referencedColumnName: id
-            orphanRemoval: false
+            orphanRemoval: false  
+    oneToMany:
+        usuarioRoles:
+          targetEntity: Comunes\SecurityBundle\Entity\UsuarioHasRol
+          mappedBy: rol               
     lifecycleCallbacks: {  }

@@ -57,7 +57,7 @@ class TipoDocumento
      */
     private $observaciones;
 
-    public function __toString()
+     public function __toString()
     {
         return $this->nombre;
     }

@@ -21,13 +21,21 @@ class TasaInteres
      * @ORM\SequenceGenerator(sequenceName="TASA_INTERES_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTATUS", type="string", length=1, nullable=true)
+     */
+    private $estatus;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="FECHA_ACTUALZACION", type="date", nullable=true)
      */
-    private $fechaActualzacion;
+    
+    private $fechaActualizacion;
 
     /**
      * @var \DateTime
@@ -81,6 +89,29 @@ class TasaInteres
     {
         return $this->id;
     }
+    
+        /**
+     * Set estatus
+     *
+     * @param string $estatus
+     * @return TasaFongar
+     */
+    public function setEstatus($estatus)
+    {
+        $this->estatus = $estatus;
+
+        return $this;
+    }
+
+    /**
+     * Get estatus
+     *
+     * @return string 
+     */
+    public function getEstatus()
+    {
+        return $this->estatus;
+    }
 
     /**
      * Set fechaActualzacion
@@ -88,9 +119,9 @@ class TasaInteres
      * @param \DateTime $fechaActualzacion
      * @return TasaInteres
      */
-    public function setFechaActualzacion($fechaActualzacion)
+    public function setFechaActualizacion($fechaActualzacion)
     {
-        $this->fechaActualzacion = $fechaActualzacion;
+        $this->fechaActualizacion = $fechaActualzacion;
 
         return $this;
     }
@@ -100,9 +131,9 @@ class TasaInteres
      *
      * @return \DateTime 
      */
-    public function getFechaActualzacion()
+    public function getFechaActualizacion()
     {
-        return $this->fechaActualzacion;
+        return $this->fechaActualizacion;
     }
 
     /**

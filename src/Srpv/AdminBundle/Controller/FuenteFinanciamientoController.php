@@ -55,7 +55,7 @@ class FuenteFinanciamientoController extends Controller
             $fecha = new \DateTime(date('d-M-y')); 
             
             $entity->setFechaCreacion($fecha);
-            $entity->setUsuarioId($usuario);
+            $entity->setUsuario($usuario);
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
@@ -208,13 +208,13 @@ class FuenteFinanciamientoController extends Controller
                 throw $this->createNotFoundException('Unable to find Usuario entity.');
             }            
 
-            $entity->setFechaCreacion($fecha);
+            $entity->setFechaActualizacion($fecha);
             $entity->setUsuario($usuario); 
             
             
             $em->flush();
            
-            return $this->render('SrpvAdminBundle:c:edit.html.twig', array(
+            return $this->render('SrpvAdminBundle:FuenteFinanciamiento:edit.html.twig', array(
                 'msg'         => 'Registro Actualizado',
                 'css_msg'     => 'alert-success',
                 'entity'      => $entity,

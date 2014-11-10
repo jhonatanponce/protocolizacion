@@ -45,14 +45,14 @@
         <table class="records_list table table-bordered table-striped table-hover" border="1">
             <thead>
                 <tr class="success">
-                    <th>ID</th>
+                    <th>Id</th>
                     <th>Nombre Unidad</th>
                     <th>Nombre Desarrollo</th>
                     <th>Estado</th>
                     <th>Acción</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="pagination">{# Permite paginar la tabla #}
         {% for entity in entities %}
                 <tr>
                     <td><a href="{{ path('unidad_show', { 'id': entity['id'] }) }}">{{ entity['id'] }}</a></td>
@@ -93,7 +93,7 @@
             var id = $('#estadoid').find(':selected').val();
             //descomentar cuando ya se tenga dominio
             //$('#desarrollo').load('/updateDesarollo/'+id);
-            $('#desarrollo').load('/protocolizacion/web/app.php/updateDesarollo/'+id);
+            $('#desarrollo').load('/web/app.php/updateDesarollo/'+id);
         });
     });
 </script>

@@ -21,14 +21,12 @@ class FuenteFinanciamientoType extends AbstractType
                                    'attr' => array('rows' => '1', 
                                                    'cols' => '100',
                                                    'maxlength' => '100'))) 
-    /*
+    
             ->add('estatus','choice', array('label'  => 'Estatus:',
                                 'choices'   => array('S' => 'ACTIVO',
                                                      'N' => 'INACTIVO'),
                                 'required'  => true,))      
-     * 
-     * 
-     */
+
         ;
     }
     

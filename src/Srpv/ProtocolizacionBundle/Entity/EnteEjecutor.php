@@ -72,6 +72,7 @@ class EnteEjecutor
         return $this->nombre;
     }
 
+
     /**
      * Get id
      *

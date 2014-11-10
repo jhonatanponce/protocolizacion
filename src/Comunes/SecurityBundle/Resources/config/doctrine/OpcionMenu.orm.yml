@@ -29,24 +29,24 @@ Comunes\SecurityBundle\Entity\OpcionMenu:
             unsigned: false
             comment: 'PARA ORDENAR EL MENU'
             column: ORDEN
-        padreId:
-            type: integer
-            nullable: true
-            unsigned: false
-            comment: ''
-            column: PADRE_ID
+#        padreId:
+#            type: integer
+#            nullable: true
+#            unsigned: false
+#            comment: 'Opcion Padre'
+#            column: PADRE_ID
         rolId:
             type: integer
             nullable: true
             unsigned: false
-            comment: 'el rol que puede acceder a esta opción (asociación con la tabla rol)'
+            comment: 'Este campo no se llena, viene del faov y no se usa'
             column: ROL_ID
         url:
             type: string
             nullable: true
             length: 500
             fixed: false
-            comment: 'representa el url del link del menú incluyendo la lista de parámetros. Este debe estar dentro de la misma aplicación. En caso de ruta fuera del ámbito de la aplicación se debe colocar la forma ReWriteRule'
+            comment: 'representa nombre de la ruta para acceder al action del controlador'
             column: URL
     manyToOne:
         sysApp:
@@ -58,4 +58,17 @@ Comunes\SecurityBundle\Entity\OpcionMenu:
                 SYS_APP_ID:
                     referencedColumnName: id
             orphanRemoval: false
+        padreId:
+            targetEntity: Comunes\SecurityBundle\Entity\OpcionMenu
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PADRE_ID:
+                    referencedColumnName: id
+            orphanRemoval: false            
+    oneToMany:
+        rolOpciones:
+            targetEntity: Comunes\SecurityBundle\Entity\RolMenu
+            mappedBy: opcionMenu                    
     lifecycleCallbacks: {  }

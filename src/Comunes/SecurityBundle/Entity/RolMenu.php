@@ -23,21 +23,24 @@ class RolMenu
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="ROL_ID", type="integer", nullable=true)
-     */
-    private $rolId;
-
-    /**
      * @var \Comunes\SecurityBundle\Entity\OpcionMenu
      *
-     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\OpcionMenu")
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\OpcionMenu", inversedBy="rolOpciones")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="OPCION_MENU_ID", referencedColumnName="id")
      * })
      */
     private $opcionMenu;
+
+    /**
+     * @var \Comunes\SecurityBundle\Entity\Rol
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Rol")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ROL_ID", referencedColumnName="id")
+     * })
+     */
+    private $rol;
 
 
 
@@ -49,29 +52,6 @@ class RolMenu
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set rolId
-     *
-     * @param integer $rolId
-     * @return RolMenu
-     */
-    public function setRolId($rolId)
-    {
-        $this->rolId = $rolId;
-
-        return $this;
-    }
-
-    /**
-     * Get rolId
-     *
-     * @return integer 
-     */
-    public function getRolId()
-    {
-        return $this->rolId;
     }
 
     /**
@@ -95,5 +75,28 @@ class RolMenu
     public function getOpcionMenu()
     {
         return $this->opcionMenu;
+    }
+
+    /**
+     * Set rol
+     *
+     * @param \Comunes\SecurityBundle\Entity\Rol $rol
+     * @return RolMenu
+     */
+    public function setRol(\Comunes\SecurityBundle\Entity\Rol $rol = null)
+    {
+        $this->rol = $rol;
+
+        return $this;
+    }
+
+    /**
+     * Get rol
+     *
+     * @return \Comunes\SecurityBundle\Entity\Rol 
+     */
+    public function getRol()
+    {
+        return $this->rol;
     }
 }

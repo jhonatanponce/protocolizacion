@@ -7,12 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Beneficiario
  *
- * @ORM\Table(name="BENEFICIARIO", indexes={@ORM\Index(name="IDX_7DE2FF076F3929D7", columns={"GEO_ESTADO_ID"}), @ORM\Index(name="IDX_7DE2FF077181F310", columns={"GEO_MUNICIPIO_ID"}), @ORM\Index(name="IDX_7DE2FF075D9234E7", columns={"GEO_PARROQUIA_ID"}), @ORM\Index(name="IDX_7DE2FF07C62AD666", columns={"PERSONA_ID"}), @ORM\Index(name="IDX_7DE2FF07815AE485", columns={"CONDICION_TRABAJO_ID"}), @ORM\Index(name="IDX_7DE2FF074F205C23", columns={"FUENTE_INGRESO_ID"}), @ORM\Index(name="IDX_7DE2FF07AFCF524C", columns={"GEN_CARGO_ID"}), @ORM\Index(name="IDX_7DE2FF07826B5331", columns={"RELACION_TRABAJO_ID"}), @ORM\Index(name="IDX_7DE2FF07E8EA1841", columns={"USUARIO_ID"})})
+ * @ORM\Table(name="BENEFICIARIO", indexes={@ORM\Index(name="IDX_7DE2FF071438476C", columns={"ESTATUS_BENEFICIARIO_ID"}), @ORM\Index(name="IDX_7DE2FF076F3929D7", columns={"GEO_ESTADO_ID"}), @ORM\Index(name="IDX_7DE2FF077181F310", columns={"GEO_MUNICIPIO_ID"}), @ORM\Index(name="IDX_7DE2FF075D9234E7", columns={"GEO_PARROQUIA_ID"}), @ORM\Index(name="IDX_7DE2FF07C62AD666", columns={"PERSONA_ID"}), @ORM\Index(name="IDX_7DE2FF07815AE485", columns={"CONDICION_TRABAJO_ID"}), @ORM\Index(name="IDX_7DE2FF074F205C23", columns={"FUENTE_INGRESO_ID"}), @ORM\Index(name="IDX_7DE2FF07AFCF524C", columns={"GEN_CARGO_ID"}), @ORM\Index(name="IDX_7DE2FF07826B5331", columns={"RELACION_TRABAJO_ID"}), @ORM\Index(name="IDX_7DE2FF07E8EA1841", columns={"USUARIO_ID"})})
  * @ORM\Entity
  */
 class Beneficiario
 {
-    /**
+   /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -142,6 +142,16 @@ class Beneficiario
     private $zona;
 
     /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\EstatusBeneficiario
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\EstatusBeneficiario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="ESTATUS_BENEFICIARIO_ID", referencedColumnName="id")
+     * })
+     */
+    private $estatusBeneficiario;
+
+    /**
      * @var \Comunes\TablasBundle\Entity\GeoEstado
      *
      * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GeoEstado")
@@ -230,17 +240,6 @@ class Beneficiario
      * })
      */
     private $usuario;
-
-    /**
-     * @var \Srpv\ProtocolizacionBundle\Entity\EstatusBeneficiario
-     *
-     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\EstatusBeneficiario")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="ESTATUS_BENEFICIARIO_ID", referencedColumnName="id")
-     * })
-     */
-    private $estatusBeneficiario;
-
 
 
     /**

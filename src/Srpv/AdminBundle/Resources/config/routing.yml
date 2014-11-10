@@ -10,11 +10,14 @@ srpv_admin_enteejecutor:
     resource: "@SrpvAdminBundle/Resources/config/routing/enteejecutor.yml"
     prefix:   /enteejecutor 
     
-srpv_protocolizacion_fuentefinanciamiento:
+srpv_admin_fuentefinanciamiento:
     resource: "@SrpvAdminBundle/Resources/config/routing/fuentefinanciamiento.yml"
     prefix:   /fuentefinanciamiento    
     
-srpv_protocolizacion_tasainteres:
+srpv_admin_tasainteres:
     resource: "@SrpvAdminBundle/Resources/config/routing/tasainteres.yml"
-    prefix:   /tasainteres    
+    prefix:   /tasainteres
     
+srpv_admin_gacetas:
+    resource: "@SrpvAdminBundle/Resources/config/routing/gacetaspuntoscta.yml"
+    prefix:   /gacetas   

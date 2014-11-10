@@ -21,6 +21,13 @@ class FuenteFinanciamiento
      * @ORM\SequenceGenerator(sequenceName="FUENTE_FINANCIAMIENTO_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ESTATUS", type="string", length=1, nullable=true)
+     */
+    private $estatus;
 
     /**
      * @var \DateTime
@@ -43,16 +50,38 @@ class FuenteFinanciamiento
      */
     private $nombre;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="USUARIO_ID", type="integer", nullable=false)
-     */
-    private $usuarioId;
 
-    public function __toString()
+    /**
+     * @var \Comunes\SecurityBundle\Entity\Usuario
+     *
+     * @ORM\ManyToOne(targetEntity="Comunes\SecurityBundle\Entity\Usuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+     * })
+     */
+    private $usuario;
+
+        /**
+     * Set estatus
+     *
+     * @param string $estatus
+     * @return TasaFongar
+     */
+    public function setEstatus($estatus)
     {
-        return $this->nombre;
+        $this->estatus = $estatus;
+
+        return $this;
+    }
+
+    /**
+     * Get estatus
+     *
+     * @return string 
+     */
+    public function getEstatus()
+    {
+        return $this->estatus;
     }
 
     /**
@@ -134,26 +163,34 @@ class FuenteFinanciamiento
         return $this->nombre;
     }
 
+
+
     /**
-     * Set usuarioId
+     * Set usuario
      *
-     * @param integer $usuarioId
+     * @param \Comunes\SecurityBundle\Entity\Usuario $usuario
      * @return FuenteFinanciamiento
      */
-    public function setUsuarioId($usuarioId)
+    public function setUsuario(\Comunes\SecurityBundle\Entity\Usuario $usuario = null)
     {
-        $this->usuarioId = $usuarioId;
+        $this->usuario = $usuario;
 
         return $this;
     }
 
     /**
-     * Get usuarioId
+     * Get usuario
      *
-     * @return integer 
+     * @return \Comunes\SecurityBundle\Entity\Usuario 
      */
-    public function getUsuarioId()
+    public function getUsuario()
     {
-        return $this->usuarioId;
+        return $this->usuario;
+    }
+    
+    public function __toString()
+    {
+    
+        return $this->getNombre();
     }
 }

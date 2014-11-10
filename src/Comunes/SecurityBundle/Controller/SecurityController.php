@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\Security\Core\SecurityContext;
 
+
 class SecurityController extends Controller {
     
     public function loginAction(){
@@ -29,11 +30,18 @@ class SecurityController extends Controller {
                       'error' => $error));        
     }
     
-    public function logoutAction($homepage)
+    public function logoutAction()
     {
         $this->get('security.context')->setToken(null);
         $this->get('request')->getSession()->invalidate();
-        return $this->redirect($this->generateUrl($homepage));        
+        return $this->redirect($this->generateUrl('_welcome'));        
+    }    
+    
+    public function logoutAdminAction()
+    {
+        $this->get('security.context')->setToken(null);
+        $this->get('request')->getSession()->invalidate();
+        return $this->redirect($this->generateUrl('admin_logout'));        
     }    
 
     public function indexBnvhAction()

@@ -39,7 +39,7 @@
             <tbody>
         {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('desarrollo_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td><a href="{{ path('protocolizacion_desarrollo_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                     <td>{{ entity.avCallEsqCarr }}</td>
                     <td>{{ entity.coordenadas }}</td>
                     <td>{{ entity.descripcion }}</td>
@@ -61,10 +61,10 @@
                     <td>
                         <ul>
                             <li>
-                                <a href="{{ path('desarrollo_show', { 'id': entity.id }) }}">show</a>
+                                <a href="{{ path('protocolizacion_desarrollo_show', { 'id': entity.id }) }}">show</a>
                             </li>
                             <li>
-                                <a href="{{ path('desarrollo_edit', { 'id': entity.id }) }}">edit</a>
+                                <a href="{{ path('protocolizacion_desarrollo_edit', { 'id': entity.id }) }}">edit</a>
                             </li>
                         </ul>
                     </td>
@@ -76,6 +76,6 @@
 </div>
 <div align="right">
     <a href="{{ path('_welcome') }}" class="btn btn-success" role="button">Inicio</a>
-    <a href="{{ path('desarrollo_new') }}" class="btn btn-primary">Crear Registro</a>
+    <a href="{{ path('protocolizacion_desarrollo_new') }}" class="btn btn-primary">Crear Registro</a>
 </div>
     {% endblock %}

@@ -6,8 +6,12 @@ beneficiario_show:
     path:     /{id}/show
     defaults: { _controller: "SrpvProtocolizacionBundle:Beneficiario:show" }
 
+beneficiario_consulta:
+    path:     /{message}/consulta
+    defaults: { _controller: "SrpvProtocolizacionBundle:Beneficiario:consulta", message:0 }
+
 beneficiario_new:
-    path:     /new
+    path:     /{nacionalidad}/{cedula}/new
     defaults: { _controller: "SrpvProtocolizacionBundle:Beneficiario:new" }
 
 beneficiario_create:

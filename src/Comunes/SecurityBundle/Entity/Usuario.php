@@ -4,13 +4,15 @@ namespace Comunes\SecurityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+
 /**
  * Usuario
  *
  * @ORM\Table(name="USUARIO", indexes={@ORM\Index(name="IDX_1D204E47E2F136F2", columns={"GEN_BANCO_ID"}), @ORM\Index(name="IDX_1D204E476F3929D7", columns={"GEO_ESTADO_ID"}), @ORM\Index(name="IDX_1D204E477181F310", columns={"GEO_MUNICIPIO_ID"}), @ORM\Index(name="IDX_1D204E475D9234E7", columns={"GEO_PARROQUIA_ID"}), @ORM\Index(name="IDX_1D204E47CB1103DD", columns={"ORGANIZACION_ID"}), @ORM\Index(name="IDX_1D204E4777AE1CD", columns={"GEN_PREG_CONFIRMACION_ID"}), @ORM\Index(name="IDX_1D204E478D640B57", columns={"GEN_PROBLEMA_ID"}), @ORM\Index(name="IDX_1D204E4763F89AA7", columns={"SYS_SISTEMA_ID"}), @ORM\Index(name="IDX_1D204E47C62AD666", columns={"PERSONA_ID"}), @ORM\Index(name="IDX_1D204E47131C2CE", columns={"DEPARTAMENTO_ID"}), @ORM\Index(name="IDX_1D204E4799C94272", columns={"GEN_TIPO_USUARIO_ID"})})
  * @ORM\Entity
  */
-class Usuario
+class Usuario implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var integer
@@ -184,6 +186,13 @@ class Usuario
     private $usuario;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Comunes\SecurityBundle\Entity\UsuarioHasRol", mappedBy="usuario")
+     */
+    private $usuarioRoles;
+
+    /**
      * @var \Comunes\TablasBundle\Entity\GenBanco
      *
      * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GenBanco")
@@ -293,10 +302,21 @@ class Usuario
      */
     private $genTipoUsuario;
 
+
     public function __toString()
     {
         return $this->nombre.' '.$this->apellido;
     }
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->usuarioRoles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 
     /**
      * Get id
@@ -838,6 +858,51 @@ class Usuario
     }
 
     /**
+     * Add usuarioRoles
+     *
+     * @param \Comunes\SecurityBundle\Entity\UsuarioHasRol $usuarioRoles
+     * @return Usuario
+     */
+    public function addUsuarioRole(\Comunes\SecurityBundle\Entity\UsuarioHasRol $usuarioRoles)
+    {
+        $this->usuarioRoles[] = $usuarioRoles;
+
+        return $this;
+    }
+
+    /**
+     * Remove usuarioRoles
+     *
+     * @param \Comunes\SecurityBundle\Entity\UsuarioHasRol $usuarioRoles
+     */
+    public function removeUsuarioRole(\Comunes\SecurityBundle\Entity\UsuarioHasRol $usuarioRoles)
+    {
+        $this->usuarioRoles->removeElement($usuarioRoles);
+    }
+
+    /**
+     * Get usuarioRoles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    /*
+    public function getUsuarioRoles()
+    {
+        return $this->usuarioRoles;
+    }
+    */
+    public function getUsuarioRoles() {
+        $roles = array();
+
+        foreach ($this->usuarioRoles as $rol) {
+
+            if ($rol->getRol()->getRole()->getSysApp()->getId() === 18)
+                $roles[] = $rol->getRol()->getRole()->getNombre();
+        }
+
+        return $roles;
+    }
+    /**
      * Set genBanco
      *
      * @param \Comunes\TablasBundle\Entity\GenBanco $genBanco
@@ -1089,4 +1154,83 @@ class Usuario
     {
         return $this->genTipoUsuario;
     }
+    
+    //IMPLEMENTACION DE METODOS DE LAS INTERFACES UserInterfaces y AdvancedUserInterface  
+    
+    /**
+     * Returns the password used to authenticate the user.
+     *
+     * This should be the encoded password. On authentication, a plain-text
+     * password will be salted, encoded, and then compared to this value.
+     *
+     * @return string The password
+     */
+    
+    
+    public function getPassword()
+    {
+        return $this->clave;
+    }
+
+    public function eraseCredentials() {
+        
+    }  
+    
+    public function getRoles() {
+
+        return $this->getUsuarioRoles();
+    }
+    
+    
+    public function getSalt() {
+        
+    }
+
+    public function getUsername() {
+        
+        return $this->usuario;
+        
+    }    
+    
+    public function serialize(){
+        return serialize(array(
+            $this->id,
+            $this->usuario,
+            $this->clave,
+            $this->cuentaHabilitada,
+            $this->genTipoUsuario,
+        ));
+    }    
+    
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->usuario,
+            $this->clave,
+            $this->cuentaHabilitada,
+            $this->genTipoUsuario
+        ) = unserialize($serialized);
+    }    
+
+    
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
+    {
+        return $this->cuentaHabilitada;
+    }     
 }

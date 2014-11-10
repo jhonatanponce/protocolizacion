@@ -14,11 +14,13 @@ Historial de Revision:
         0.2/21-08-2014/: Se añadieron estilos bootstrap
 -----------------------------------
 #}
-{% block menu %}{% endblock %}
-
+{% if app.user.nombre is not defined %}
+    {% block menu %}{% endblock %}
+{% endif %}
 {% block body -%}
 
     {% block main %}
+
         <br/>
         <h2 class="alert alert-dismissable alert-success alert-link text-center">
             <strong>Sistema de Protocolización de Viviendas</strong>

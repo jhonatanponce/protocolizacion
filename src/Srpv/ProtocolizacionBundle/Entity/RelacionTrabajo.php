@@ -51,6 +51,10 @@ class RelacionTrabajo
     private $nombres;
 
 
+    public function __toString()
+    {
+        return $this->nombres;
+    }
 
     /**
      * Get id

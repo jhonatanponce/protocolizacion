@@ -71,8 +71,6 @@ class Onidex
      */
     private $estatus;
 
-
-
     /**
      * Get id
      *

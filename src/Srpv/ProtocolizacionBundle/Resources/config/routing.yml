@@ -37,3 +37,7 @@ updateMunicipio:
 updateParroquia:
     path:     /updateParroquia/{id}
     defaults: { _controller: SrpvProtocolizacionBundle:Default:updateParroquia }
+
+srpv_protocolizacion_carga_beneficiario:
+    resource: "@SrpvProtocolizacionBundle/Resources/config/routing/cargaArchivoBeneficiario.yml"
+    prefix:   /protocolizacion/carga_archivo

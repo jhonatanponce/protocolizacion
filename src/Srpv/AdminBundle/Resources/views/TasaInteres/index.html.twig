@@ -12,14 +12,15 @@
         <div id="yw0" class="panel-body">    
             {% if entities|length > 0 %}
                 <table class="records_list table table-bordered table-striped table-hover" border="1">
-                    <table class="records_list">
                 <thead>
-                    <tr>
+                    <tr class="success">
                         <th>Id</th>
+                        <th>Fuente Financiamiento</th>
                         <th>Nombre</th>
                         <th>% Tasa de Interes</th>
-                        <th>Fecha Actualzacion</th>
-                        <th>Fecha Creacion</th>
+                        <th>Estatus</th>
+                        <th>Fecha Actualización</th>
+                        <th>Fecha Creación</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
@@ -27,15 +28,22 @@
                 {% for entity in entities %}
                     <tr>
                         <td><a href="{{ path('tasainteres_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                        s<td>{{ entity.nombre }}</td>
-                        <td>{{ entity.tasaInteres }}</td>
-                        <td>{% if entity.fechaActualzacion %}{{ entity.fechaActualzacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ entity.fuenteFinanciamiento }}</td>
+                       
+                        <td>{{ entity.nombre }}</td>
+                        <td>{{ entity.tasaInteres }}</td>                      
+                    {% if entity.estatus == 'S' %}
+                        <td>ACTIVA</td>    
+                    {% else %}
+                        <td>INACTIVA</td>    
+                    {% endif %}    
+                        <td>{% if entity.fechaActualizacion %}{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}{% endif %}</td>
                         <td>{% if entity.fechaCreacion %}{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
-                            <td class="text-center">
+                        <td class="text-center">
                                 <a href="{{ path('tasainteres_show', { 'id': entity.id }) }}" class="glyphicon glyphicon-search"></a>
                                 &nbsp;|&nbsp;
                                 <a href="{{ path('tasainteres_edit', { 'id': entity.id }) }}" class="glyphicon glyphicon-pencil"></a>
-                            </td>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

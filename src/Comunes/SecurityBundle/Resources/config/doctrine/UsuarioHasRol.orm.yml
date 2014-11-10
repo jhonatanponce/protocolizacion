@@ -34,11 +34,20 @@ Comunes\SecurityBundle\Entity\UsuarioHasRol:
                 ROL_ID:
                     referencedColumnName: id
             orphanRemoval: false
+#        rol:
+#            targetEntity: Comunes\SecurityBundle\Entity\VwRolOpcion
+#            cascade: {  }
+#            mappedBy: null
+#            inversedBy: usuarioRoles
+#            joinColumns:
+#                ROL_ID:
+#                    referencedColumnName: rol_id
+#            orphanRemoval: false
         usuario:
             targetEntity: Comunes\SecurityBundle\Entity\Usuario
             cascade: {  }
             mappedBy: null
-            inversedBy: null
+            inversedBy: usuarioRoles
             joinColumns:
                 USUARIO_ID:
                     referencedColumnName: id

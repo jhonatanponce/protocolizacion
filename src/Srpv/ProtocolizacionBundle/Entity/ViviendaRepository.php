@@ -83,7 +83,7 @@ class ViviendaRepository extends EntityRepository
             )
             ->getResult();
     }
-    
+
     // funcion para buscar el objeto desarrollo especifico de la vivienda
     public function getDesarrolloVivienda($id)
     {

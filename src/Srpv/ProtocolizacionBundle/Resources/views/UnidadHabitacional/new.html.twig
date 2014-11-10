@@ -1,7 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+    {% block stylesheets %}
+
     {{ parent() }}
+
+      <link type="text/css" href="{{ asset('js/css/smoothness/jquery-ui-1.8.14.custom.css') }}" type="text/css" rel="stylesheet" />
+
+    {% endblock %}
     <div class="panel panel-default">
         
         <div class="panel-heading">
@@ -20,4 +26,23 @@
         <a href="{{ path('unidad') }}" class="btn btn-success" role="button">Volver</a>
     </div>
     <br>         
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+<script>
+  $(document).ready(function(){
+      $("#srpv_protocolizacionbundle_unidadhabitacional_fechaRegistro").datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+        firstDay: 1,
+        minDate: 0,
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+    });
+  });
+</script>
 {% endblock %}

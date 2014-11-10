@@ -156,6 +156,22 @@ class ViviendaController extends Controller
                 $em->persist($unidad);
                 $em->flush();
             }
+            
+            // agregando cantidad de viviendas al desarrollo
+            $desarrollo = $em->getRepository('SrpvProtocolizacionBundle:Desarrollo')->find($unidad->getDesarrollo());
+            // si hay cantidades se suma 1 nueva unidad
+            if($desarrollo->getTotalViviendas() != NULL){
+                
+                    $cantidad = $desarrollo->getTotalUnidades() + 1;
+                    $unidad->setTotalUnidades($cantidad);
+                    $em->persist($desarrollo);
+                    $em->flush();
+            // si cantidad de vivienas es null, esta es su primer vivienda
+            }else{
+                $desarrollo->setTotalViviendas(1);
+                $em->persist($desarrollo);
+                $em->flush();
+            }
 
             return $this->redirect($this->generateUrl('vivienda_show', array('id' => $entity->getId())));
         }
@@ -295,7 +311,7 @@ class ViviendaController extends Controller
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Vivienda entity.');
         }
-
+        
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);

@@ -15,8 +15,8 @@ Historial de Revision:
 -----------------------------------
 #}
 
-{#
-{% if  '/admin/' in path(app.request.attributes.get('_route')) %}
+
+{% if  '/admin/' in app.request.attributes.get('_route') %}
 
     {% set login_path = 'admin_login_check' %}
 
@@ -26,17 +26,17 @@ Historial de Revision:
 
 {% endif %}
 
-{% if  '/admin/' in path(app.request.attributes.get('_route')) %}
+{% if  '/admin/' in app.request.attributes.get('_route') %}
 
-    {% set logout_path = 'admin_logout_check' %}
+    {% set logout_path = 'admin_logout' %}
 
 {% else %}
 
-    {% set logout_path = '_logout_check' %}    
+    {% set logout_path = '_logout' %}    
 
 {% endif %}
 
-#}
+
 <html>
     <head>
         <meta charset="UTF-8" />
@@ -61,35 +61,11 @@ Historial de Revision:
         <script src="{{ asset('js/bootstrap.js') }}"></script>
 
         {#   jPage para efectos de paginado  #}
-        {#<link rel="stylesheet" href="{{ asset('bundles/jPages/css/jPages.css') }}">
-        <script src="{{ asset('bundles/jPages/js/jPages.js') }}"></script>#}
+        <link rel="stylesheet" href="{{ asset('bundles/jPages/css/jPages.css') }}">
+        <script src="{{ asset('bundles/jPages/js/jPages.js') }}"></script>
         
         {#   bootbox code (necesario para los popups div) #}
         <script src="{{ asset('js/bootbox.min.js') }}"></script>
-        
-        {# LLAMADOS DE SCRIPTS JQUERY #}
-        <script>
-            {# paginador jPages #}
-            {#$(function(){
-                $("div.holder").jPages({
-                  containerID : "pagination",
-                  previous : "←",
-                  next : "→",
-                  perPage :2,
-                  scrollBrowse: true
-                });
-            });      
-            
-            {# Modal confirm #}
-           {# $(document).on("click", ".btn-danger", function(e) {
-                bootbox.confirm("Está seguro de eliminar el registro?", function(result) {
-                    if(result)
-                        $('form[name="form"]').submit();
-                    else
-                        close();
-                }); 
-            });#}
-        </script>
         {% endblock %}
     </head>
     
@@ -110,16 +86,13 @@ Historial de Revision:
                         <ul class="nav navbar-nav">
                             <li><a href="{{ path('_welcome') }}">Inicio</a></li>
                             <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tasas<b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador<b class="caret"></b></a>
                                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                    <li><a href="{{ path('tasafongar') }}">Fongar</a></li>
-                                    <li class="dropdown-header">FAOV</li>
-                                    <li><a href="#">FAOV</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li class="divider"></li>
-                                    <li class="dropdown-header">Dropdown header</li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li><a href="#">One more separated link</a></li>
+                                    <li><a href="{{ path('tasafongar') }}">Tasa Fongar</a></li>
+                                    <li><a href="{{ path('tasainteres') }}">Tasa Interes</a></li>
+                                    <li><a href="{{ path('fuentefinanciamiento') }}">Fuente Financiamiento</a></li>
+                                    <li><a href="{{ path('enteejecutor') }}">Ente Ejecutor</a></li>
+                                    <li><a href="{{ path('gacetas') }}">Gacetas/Punto Cuenta</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -136,18 +109,24 @@ Historial de Revision:
                                     <li><a href="{{ path('beneficiario') }}">Crear Beneficiario</a></li>
                                 </ul>
                             </li>
+                            <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Carga de Archivos<b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                    <li><a href="{{ path('carga_beneficiario') }}">Carga Archivos Beneficiarios</a></li>
+                                </ul>
+                            </li>
                         </ul>
                         <!-- Usuario y Salir -->
                         <div class="text-right text-danger:over">
 
                             {% block user %}
                                 <span class="glyphicon glyphicon-off">
-                                   <a href="{#{ path('_logout') }#}" class="text-info">Salir</a>
+                                   <a href="{{ path(logout_path) }}" class="text-info">Salir</a>
                                 </span>
                                 <br>
                                 asdasd
                                 {% if app.user.nombre is defined %}
-                                    <span class="glyphicon glyphicon-user">&nbsp;app.user.nombre</span>
+                                    <span class="glyphicon glyphicon-user">&nbsp;{{app.user.username}}</span>
                                 {% endif %}
 
                             {% endblock %}
@@ -186,7 +165,33 @@ Historial de Revision:
                     <h6>Desarrollado por: GTI Banavih</h6></div>
             {% endblock %}
             <!-- Fin Pie de Página -->
+
+        </div>
+
+        
+        
+        {# LLAMADOS DE SCRIPTS JQUERY #}
+        <script>
+            {# paginador jPages #}
+            $(function(){
+                $("div.holder").jPages({
+                  containerID : "pagination",
+                  previous : "←",
+                  next : "→",
+                  perPage :2,
+                  scrollBrowse: true
+                });
+            });      
             
-        </div>  
+            {# Modal confirm #}
+            $(document).on("click", ".btn-danger", function(e) {
+                bootbox.confirm("Está seguro de eliminar el registro?", function(result) {
+                    if(result)
+                        $('form[name="form"]').submit();
+                    else
+                        close();
+                }); 
+            });
+        </script>
     </body>
 </html>

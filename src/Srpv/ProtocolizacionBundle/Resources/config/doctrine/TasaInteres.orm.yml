@@ -19,11 +19,11 @@ Srpv\ProtocolizacionBundle\Entity\TasaInteres:
             generator:
                 strategy: SEQUENCE
     fields:
-        fechaActualzacion:
+        fechaActualizacion:
             type: date
             nullable: true
             comment: ''
-            column: FECHA_ACTUALZACION
+            column: FECHA_ACTUALIZACION
         fechaCreacion:
             type: date
             nullable: true
@@ -43,6 +43,13 @@ Srpv\ProtocolizacionBundle\Entity\TasaInteres:
             scale: 2
             comment: ''
             column: TASA_INTERES
+        estatus:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: ''
+            column: ESTATUS    
     manyToOne:
         fuenteFinanciamiento:
             targetEntity: FuenteFinanciamiento

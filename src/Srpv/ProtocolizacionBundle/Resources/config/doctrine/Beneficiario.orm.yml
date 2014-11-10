@@ -1,6 +1,7 @@
 Srpv\ProtocolizacionBundle\Entity\Beneficiario:
     type: entity
     table: BENEFICIARIO
+    repositoryClass: Srpv\ProtocolizacionBundle\Entity\BeneficiarioRepository
     indexes:
         IDX_7DE2FF076F3929D7:
             columns:
@@ -125,12 +126,6 @@ Srpv\ProtocolizacionBundle\Entity\Beneficiario:
             fixed: false
             comment: ''
             column: RIF
-        sectorTrabajoId:
-            type: integer
-            nullable: false
-            unsigned: false
-            comment: ''
-            column: SECTOR_TRABAJO_ID
         telefonoTrabajo:
             type: string
             nullable: true

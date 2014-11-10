@@ -23,8 +23,8 @@ class DesarrolloType extends AbstractType
             ->add('urbanBarrio', 'text', array('label' => 'Urban. / Barrio','required' => true))
             ->add('zona', 'text', array('label' => 'Zona','required' => true))
             ->add('descripcion', 'text', array('label' => 'Descripción','required' => true))
-            ->add('totalViviendas', 'integer', array('label' => 'Total Viviendas','required' => false))
-            ->add('totalViviendasProtocolizadas', 'integer', array('label' => 'Total Viviendas Protocolizadas','required' => false))
+            //->add('totalViviendas', 'integer', array('label' => 'Total Viviendas','required' => false))
+            //->add('totalViviendasProtocolizadas', 'integer', array('label' => 'Total Viviendas Protocolizadas','required' => false))
             ->add('linderoEste', 'text', array('label' => 'Lindero Este','required' => false))
             ->add('linderoNorte', 'text', array('label' => 'Lindero Norte','required' => false))
             ->add('linderoOeste', 'text', array('label' => 'Lindero Oste','required' => false))
@@ -33,8 +33,9 @@ class DesarrolloType extends AbstractType
             ->add('loteTerrenoMt2', 'integer', array('label' => 'Lote Terreno Mt2','required' => true))
             ->add('fuenteFinanciamiento', 'entity', array('label' => 'Fuente Financiamiento','class'   => 'SrpvProtocolizacionBundle:FuenteFinanciamiento','property'   => 'nombre','required' => true,'empty_value' => ''))
             ->add('titularidadDelTerreno', 'choice', array('label' => 'Titularidad Del Terreno','choices' => array('S' => 'Si', 'N' => 'No'),'required' => true,'empty_value' => ''))
-            ->add('enteEjecutor', 'entity', array('label' => 'Ente Ejecutor','class'   => 'SrpvProtocolizacionBundle:Ente Ejecutor','property'   => 'nombre','required' => true,'empty_value' => ''))
-            ->add('fechaTransferencia', 'date', array('label' => 'Fecha Transferencia','required' => false))
+            ->add('enteEjecutor', 'entity', array('label' => 'Ente Ejecutor','class'   => 'SrpvProtocolizacionBundle:EnteEjecutor','property'   => 'nombre','required' => true,'empty_value' => ''))
+            ->add('fechaTransferencia','datetime',array('label' => 'Fecha Transferencia','widget' => 'single_text','required' => false));
+            //->add('fechaTransferencia', 'text', array('label' => 'Fecha Transferencia','input'  => 'datetime','widget' => 'choice','empty_value' => array('year' => 'Año', 'month' => 'Mes', 'day' => 'Dia'),'required' => false))
         ;
     }
     

@@ -20,27 +20,7 @@ Historial de Revision:
     <h2 class="alert alert-dismissable alert-success alert-link text-center">
         <strong>Sistema de Protocolización de Viviendas</strong>
     </h2>
-    {# 
-    {% if  '/admin/' in path(app.request.attributes.get('_route')) %}
-
-        {% set login_path = 'admin_login_check' %}
-
-    {% elseif  '/opf/' in path(app.request.attributes.get('_route')) %}    
-
-        {% set login_path = 'opf_login_check' %}
-
-    {% elseif  '/bnvh/' in path(app.request.attributes.get('_route')) %}    
-
-        {% set login_path = 'bnvh_login_check' %}
-
-    {% elseif  '/cddno/' in path(app.request.attributes.get('_route')) %}   
-
-        {% set login_path = 'cddno_login_check' %}    
-
-    {% endif %}
-    #}
-
-    <form action="{{ path('admin_login_check')}}" method="post" class="box form-horizontal" role="form" id="form">
+    <form action="{{ path(login_path)}}" method="post" class="box form-horizontal" role="form" id="form">
 
         <div>
             {% if error.message is defined %}

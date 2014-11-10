@@ -4,13 +4,15 @@ namespace Comunes\SecurityBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Security\Core\Role\RoleInterface;
+
 /**
  * Rol
  *
  * @ORM\Table(name="ROL", indexes={@ORM\Index(name="IDX_98F27DBD99C94272", columns={"GEN_TIPO_USUARIO_ID"}), @ORM\Index(name="IDX_98F27DBD619CCE83", columns={"SYS_APP_ID"}), @ORM\Index(name="IDX_98F27DBD63F89AA7", columns={"SYS_SISTEMA_ID"})})
  * @ORM\Entity
  */
-class Rol
+class Rol implements RoleInterface
 {
     /**
      * @var integer
@@ -35,6 +37,13 @@ class Rol
      * @ORM\Column(name="NOMBRE", type="string", length=40, nullable=true)
      */
     private $nombre;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="Comunes\SecurityBundle\Entity\UsuarioHasRol", mappedBy="rol")
+     */
+    private $usuarioRoles;
 
     /**
      * @var \Comunes\SecurityBundle\Entity\GenTipoUsuario
@@ -66,6 +75,13 @@ class Rol
      */
     private $sysSistema;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->usuarioRoles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -122,6 +138,39 @@ class Rol
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    /**
+     * Add usuarioRoles
+     *
+     * @param \Comunes\SecurityBundle\Entity\UsuarioHasRol $usuarioRoles
+     * @return Rol
+     */
+    public function addUsuarioRole(\Comunes\SecurityBundle\Entity\UsuarioHasRol $usuarioRoles)
+    {
+        $this->usuarioRoles[] = $usuarioRoles;
+
+        return $this;
+    }
+
+    /**
+     * Remove usuarioRoles
+     *
+     * @param \Comunes\SecurityBundle\Entity\UsuarioHasRol $usuarioRoles
+     */
+    public function removeUsuarioRole(\Comunes\SecurityBundle\Entity\UsuarioHasRol $usuarioRoles)
+    {
+        $this->usuarioRoles->removeElement($usuarioRoles);
+    }
+
+    /**
+     * Get usuarioRoles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUsuarioRoles()
+    {
+        return $this->usuarioRoles;
     }
 
     /**
@@ -191,5 +240,9 @@ class Rol
     public function getSysSistema()
     {
         return $this->sysSistema;
+    }
+
+    public function getRole() {
+       return $this; 
     }
 }

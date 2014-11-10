@@ -27,7 +27,11 @@ class TasaInteresType extends AbstractType
                 
             ->add('fuenteFinanciamiento', 'entity', array('class' => 'SrpvProtocolizacionBundle:FuenteFinanciamiento',
                                                     'property' => 'nombre',
-                                                    'required' => true))    
+                                                    'required' => true)) 
+            ->add('estatus','choice', array('label'  => 'Estatus:',
+                                            'choices'   => array('S' => 'ACTIVA',
+                                                                 'N' => 'INACTIVA'),
+                                            'required'  => true,))     
         ;
     }
     

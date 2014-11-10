@@ -1,0 +1,76 @@
+Srpv\ProtocolizacionBundle\Entity\Auditoria:
+    type: entity
+    table: AUDITORIA
+    indexes:
+        IDX_EB89AA72E8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ID
+            generator:
+                strategy: SEQUENCE
+    fields:
+        accion:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            comment: ''
+            column: ACCION
+        columnaAfectada:
+            type: string
+            nullable: false
+            length: 50
+            fixed: false
+            comment: ''
+            column: COLUMNA_AFECTADA
+        fechaCreacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_CREACION
+        ip:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            comment: ''
+            column: IP
+        maquina:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: MAQUINA
+        modulo:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: MODULO
+        valorNuevo:
+            type: string
+            nullable: false
+            length: 300
+            fixed: false
+            comment: ''
+            column: VALOR_NUEVO
+    manyToOne:
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,289 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {% block stylesheets %}
+
+    {{ parent() }}
+
+      <link type="text/css" href="{{ asset('js/css/smoothness/jquery-ui-1.8.14.custom.css') }}" type="text/css" rel="stylesheet" />
+
+    {% endblock %}
+    <div class="panel panel-default">
+        
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            <h3 class="panel-title" style="display: inline;">Agregar Beneficiario</h3>
+        </div>
+        
+        <div id="yw0" class="panel-body">
+            <form id="beneficiario" name="beneficiario" class="form-horizontal" action="{{ path('beneficiario_create') }}" method="post">
+                <input type="hidden" name="param_crear" value="{{param_crear}}" />
+                <input type="hidden" name="objeto_persona_id" value="{{objeto_persona_id}}" />
+                <legend>Datos del Benefiario</legend>
+                <div class="form-group">
+                    <label class="control-label col-lg-2 required">Cédula</label>
+                    <div class="col-lg-4">
+                        <input required type="text" id="cedula" name="cedula" class="form-control" value='{{doc_identidad}}'>
+                    </div>
+                    <label class="control-label col-lg-2 required">Fecha de Nacimiento</label>
+                    <div class="col-lg-4">
+                        <input required type="text" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" value='{{fecha_nacimiento|date('d-m-Y')}}'>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2 required">Primer Nombre</label>
+                    <div class="col-lg-4">
+                        <input required type="text" id="primer_nombre" name="primer_nombre" class="form-control" value='{{objeto_persona.primerNombre}}'>
+                    </div>
+                    <label class="control-label col-lg-2">Segundo Nombre</label>
+                    <div class="col-lg-4">
+                        <input type="text" id="segundo_nombre" name="segundo_nombre" class="form-control" value='{{objeto_persona.segundoNombre}}'>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2 required">Primer Apellido</label>
+                    <div class="col-lg-4">
+                         <input required type="text" id="primer_apellido" name="primer_apellido" class="form-control" value='{{objeto_persona.primerApellido}}'>
+                    </div>
+                    <label class="control-label col-lg-2 required">Segundo Apellido</label>
+                    <div class="col-lg-4">
+                        <input type="text" id="segundo_apellido" name="segundo_apellido" class="form-control" value='{{objeto_persona.segundoApellido}}'>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2">Sexo</label>
+                    <div class="col-lg-4">
+                        <select id="sexoid" name="sexoid" class="form-control">
+                            {% if sexo_id == NULL %}
+                                <option selected="selected" value="">Seleccione El Sexo</option>
+                            {% endif %}
+                            {% for sx in sexo %}
+                                {% if sexo_id == sx.id %}
+                                    <option selected="selected" value="{{ sx.id }}">{{ sx.nombre }}</option>
+                                {% else %}
+                                    <option value="{{ sx.id }}">{{ sx.nombre }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <label class="control-label col-lg-2">Estado Civil</label>
+                    <div class="col-lg-4">
+                        <select id="estado_civil" name="estado_civil" class="form-control">
+                            {% if edo_civil_id == NULL %}
+                                <option selected="selected" value="">Seleccione El Estado Civil</option>
+                            {% endif %}
+                            {% for civil in edo_civil %}
+                                {% if edo_civil_id == civil.id %}
+                                    <option selected="selected" value="{{ civil.id }}">{{ civil.nombre }}</option>
+                                {% else %}
+                                    <option value="{{ civil.id }}">{{ civil.nombre }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2">Grado de Instrucción</label>
+                    <div class="col-lg-4">
+                        <select id="grado" name="grado" class="form-control">
+                            {% if grado_instruccion_id == NULL %}
+                                <option selected="selected" value="">Seleccione El Grado de Instrucción</option>
+                            {% endif %}
+                            {% for instruccion in grado_instruccion %}
+                                {% if grado_instruccion_id == instruccion.id %}
+                                    <option selected="selected" value="{{ instruccion.id }}">{{ instruccion.nombre }}</option>
+                                {% else %}
+                                    <option value="{{ instruccion.id }}">{{ instruccion.nombre }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <label class="control-label col-lg-2">¿Tiene discapacidad?</label>
+                    <div class="col-lg-4">
+                        {% if discapacidad %}
+                            <input type="checkbox" name='discapacidad' value="1" checked="">
+                        {% else %}
+                            <input type="checkbox" name='discapacidad' value="1">
+                        {% endif %}
+                    </div>
+                </div>
+                <legend>Datos de Contacto</legend>
+                <div class="form-group">
+                    <label class="control-label col-lg-2">Teléfono Habitación</label>
+                    <div class="col-lg-4">
+                        <input type="text" id="telefono_habitacion" name="telefono_habitacion" class="form-control" value='{{telefono_habitacion}}'>
+                    </div>
+                    <label class="control-label col-lg-2">Teléfono Movil</label>
+                    <div class="col-lg-4">
+                        <input type="text" id="telefono_movil" name="telefono_movil" class="form-control" value='{{telefono_movil}}'>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2">Teléfono Adicional</label>
+                    <div class="col-lg-4">
+                        <input type="text" id="telefono_adicional" name="telefono_adicional" class="form-control" value='{{telefono_adicional}}'>
+                    </div>
+                    <label class="control-label col-lg-2">Correo</label>
+                    <div class="col-lg-4">
+                        <input type="text" id="correo" name="correo" class="form-control" value='{{correo}}'>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2">Correo Alterno</label>
+                    <div class="col-lg-4">
+                        <input type="text" id="correo_alterno" name="correo_alterno" class="form-control" value='{{correo_alterno}}'>
+                    </div>
+                    <label class="control-label col-lg-2">Dirección</label>
+                    <div class="col-lg-4">
+                        <textarea class="form-control" rows="3" id="direccion" name="direccion">{{direccion}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2" required>Estado</label>
+                    <div class="col-lg-4">
+                    <select id="estado" name="estado" class="form-control">
+                        {% if geo_estado == NULL %}
+                            <option selected="selected" value="">Seleccione El Estado </option>
+                        {% endif %}
+                        {% for estado in estados %}
+                            {% if geo_estado == estado.id %}
+                                <option selected="selected" value="{{ estado.id }}">{{ estado.nombre }}</option>
+                            {% else %}
+                                <option value="{{ estado.id }}">{{ estado.nombre }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    </div>
+                    <label class="control-label col-lg-2" required>Municipio</label>
+                    <div class="col-lg-4">
+                    <select id="municipio" name="municipio" class="form-control">
+                        {% if geo_municipio == NULL %}
+                            <option selected="selected" value="">Seleccione El Municipio </option>
+                        {% endif %}
+                        {% for municipio in municipios %}
+                            {% if geo_municipio == municipio.id %}
+                                <option selected="selected" value="{{ municipio.id }}">{{ municipio.nombre }}</option>
+                            {% else %}
+                                <option value="{{ municipio.id }}">{{ municipio.nombre }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2" required>Parroquia</label>
+                    <div class="col-lg-4">
+                    <select id="estado" name="estado" class="form-control">
+                        {% if geo_parroquia == NULL %}
+                            <option selected="selected" value="">Seleccione La Parroquia </option>
+                        {% endif %}
+                        {% for parroquia in parroquias %}
+                            {% if geo_parroquia == parroquia.id %}
+                                <option selected="selected" value="{{ parroquia.id }}">{{ parroquia.nombre }}</option>
+                            {% else %}
+                                <option value="{{ parroquia.id }}">{{ parroquia.nombre }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    </div>
+                    <label class="control-label col-lg-2" required>Urbanización/Barrio</label>
+                    <div class="col-lg-4">
+                        <input required type="text" id="urban_barrio" name="urban_barrio" class="form-control" value=''>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2" required>Av/Call/Esq/Carr</label>
+                    <div class="col-lg-4">
+                        <input required type="text" id="avenida" name="avenida" class="form-control" value=''>
+                    </div>
+                    <label class="control-label col-lg-2" required>Zona</label>
+                    <div class="col-lg-4">
+                        <input required type="text" id="zona" name="zona" class="form-control" value=''>
+                    </div>
+                </div>
+                <legend>Datos Laborales</legend>
+                <div class="form-group">
+                    <label class="control-label col-lg-2" required>Condición de Trabajo</label>
+                    <div class="col-lg-4">
+                    <select id="condicion_trabajo" name="condicion_trabajo" class="form-control">
+                        <option selected="selected" value="">Seleccione La Condicíón de Trabajo </option>
+                        {% for condicion in condicion_trabajo %}
+                            <option value="{{ condicion.id }}">{{ condicion.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                    <label class="control-label col-lg-2" required>Fuente de Ingreso</label>
+                    <div class="col-lg-4">
+                    <select id="condicion_trabajo" name="condicion_trabajo" class="form-control">
+                        <option selected="selected" value="">Seleccione La Fuente de Ingreso </option>
+                        {% for fuente in fuente_ingreso %}
+                            <option value="{{ fuente.id }}">{{ fuente.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2" required>Sector de Trabajo</label>
+                    <div class="col-lg-4">
+                        <input required type="text" id="sector_trabajo" name="trabajo" class="form-control" value=''>
+                    </div>
+                    <label class="control-label col-lg-2" required>Relación de Trabajo</label>
+                    <div class="col-lg-4">
+                    <select id="relacion_trabajo" name="relacion_trabajo" class="form-control">
+                        <option selected="selected" value="">Seleccione La Relación</option>
+                        {% for relacion in relacion_trabajo %}
+                            <option value="{{ relacion.id }}">{{ relacion.nombres }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2">Nombre de la Empresa</label>
+                    <div class="col-lg-4">
+                        <input type="text" id="nombre_empresa" name="nombre_empresa" class="form-control" value=''>
+                    </div>
+                    <label class="control-label col-lg-2" required>Cargo</label>
+                    <div class="col-lg-4">
+                    <select id="relacion_trabajo" name="relacion_trabajo" class="form-control">
+                        <option selected="selected" value="">Seleccione El Cargo</option>
+                        {% for cargo in cargos %}
+                            <option value="{{ cargo.id }}">{{ cargo.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-2">Dirección Empresa</label>
+                    <div class="col-lg-4">
+                        <textarea class="form-control" rows="3" id="direccion_empresa" name="direccion_empresa"></textarea>
+                    </div>
+                    <label class="control-label col-lg-2" required>Teléfono Trabajo</label>
+                    <div class="col-lg-4">
+                        <input required type="text" id="telefono_trabajo" name="telefono_trabajo" class="form-control" value=''>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-2 col-lg-offset-2">
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+        
+    </div>
+    <div align="right">
+        <a href="{{ path('beneficiario') }}" class="btn btn-success" role="button">Volver</a>
+    </div>
+    <br>         
+{% endblock %}
+{% block javascripts %}
+
+{{ parent() }}
+
+  <script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('js/beneficiario.js') }}"></script>
+  
+{% endblock %}

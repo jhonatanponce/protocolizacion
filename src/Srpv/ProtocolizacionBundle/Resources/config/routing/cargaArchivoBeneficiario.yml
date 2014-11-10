@@ -1,0 +1,3 @@
+carga_beneficiario:
+    path:     /
+    defaults: { _controller: "SrpvProtocolizacionBundle:CargaArchivoBeneficiario:index" }

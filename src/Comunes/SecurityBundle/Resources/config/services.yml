@@ -1,4 +1,12 @@
 services:
-#    comunes_security.example:
-#        class: Comunes\SecurityBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    security.access.blacklist_voter:
+        class:      Comunes\SecurityBundle\Authorization\ControlAccesByRole
+        public:     false
+        tags:
+            - { name: security.voter }
+        
+##########  PROVEEDOR DE USUARIOS PARA  BANAVIH  ###########     
+    users_provider:
+        class:  Comunes\SecurityBundle\Provider\UsuarioBanavihProvider
+        arguments:  
+            entityManager: "@doctrine.orm.entity_manager"
