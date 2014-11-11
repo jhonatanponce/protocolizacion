@@ -176,11 +176,11 @@ class DesarrolloController extends Controller
             throw $this->createNotFoundException('Unable to find Desarrollo entity.');
         }
         // obteniendo la fecha de transferencia
-        $fecha_Transferencia = $entity->getFechaTransferencia();
+        //$fecha_Transferencia = $entity->getFechaTransferencia();
         //formateando la fecha
-        $fechaTransferencia = $fecha_Transferencia->format("dd/mm/yy");
+        //$fechaTransferencia = $fecha_Transferencia->format("d/m/Y");
         //seteando la fechar de transferencia al objeto para el formulario a editar
-        $entity->setFechaTransferencia(new \DateTime($fechaTransferencia));
+        //$entity->setFechaTransferencia(new \DateTime($fechaTransferencia));
         
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);

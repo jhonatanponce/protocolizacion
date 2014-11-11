@@ -90,12 +90,6 @@ Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional:
             fixed: false
             comment: ''
             column: NRO_PROTOCOLO
-        registroPublicoId:
-            type: integer
-            nullable: true
-            unsigned: false
-            comment: ''
-            column: REGISTRO_PUBLICO_ID
         tomo:
             type: string
             nullable: true
@@ -117,6 +111,15 @@ Srpv\ProtocolizacionBundle\Entity\UnidadHabitacional:
             inversedBy: null
             joinColumns:
                 FUENTE_DATOS_ENTRADA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        registroPublicoId:
+            targetEntity: RegistroPublico
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                REGISTRO_PUBLICO_ID:
                     referencedColumnName: id
             orphanRemoval: false
         desarrollo:

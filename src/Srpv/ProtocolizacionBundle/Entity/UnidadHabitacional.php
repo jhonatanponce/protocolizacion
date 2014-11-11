@@ -91,11 +91,14 @@ class UnidadHabitacional
      * @ORM\Column(name="NRO_PROTOCOLO", type="string", length=50, nullable=true)
      */
     private $nroProtocolo;
-
+    
     /**
-     * @var integer
+     * @var \Srpv\ProtocolizacionBundle\Entity\RegistroPublico
      *
-     * @ORM\Column(name="REGISTRO_PUBLICO_ID", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\RegistroPublico")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="REGISTRO_PUBLICO_ID", referencedColumnName="id")
+     * })
      */
     private $registroPublicoId;
 
@@ -408,14 +411,14 @@ class UnidadHabitacional
     {
         return $this->nroProtocolo;
     }
-
+    
     /**
      * Set registroPublicoId
      *
-     * @param integer $registroPublicoId
+     * @param \Srpv\ProtocolizacionBundle\Entity\RegistroPublico $registroPublicoId
      * @return UnidadHabitacional
      */
-    public function setRegistroPublicoId($registroPublicoId)
+    public function setRegistroPublicoId(\Srpv\ProtocolizacionBundle\Entity\RegistroPublico $registroPublicoId = null)
     {
         $this->registroPublicoId = $registroPublicoId;
 
@@ -425,7 +428,7 @@ class UnidadHabitacional
     /**
      * Get registroPublicoId
      *
-     * @return integer 
+     * @return \Srpv\ProtocolizacionBundle\Entity\RegistroPublico 
      */
     public function getRegistroPublicoId()
     {

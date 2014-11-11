@@ -218,11 +218,11 @@ class UnidadHabitacionalController extends Controller
             throw $this->createNotFoundException('Unable to find UnidadHabitacional entity.');
         }
         // obteniendo la fecha de registro
-        $fecha_Registro = $entity->getFechaRegistro();
+        //$fecha_Registro = $entity->getFechaRegistro();
         //formateando la fecha
-        $fechaRegistro = $fecha_Registro->format("dd/mm/yy");
+        //$fechaRegistro = $fecha_Registro->format("dd/mm/yy");
         //seteando la fechar de registro al objeto para el formulario a editar
-        $entity->setFechaRegistro(new \DateTime($fechaRegistro));
+        //$entity->setFechaRegistro(new \DateTime($fechaRegistro));
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);

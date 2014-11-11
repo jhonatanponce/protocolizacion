@@ -34,7 +34,7 @@ class DesarrolloType extends AbstractType
             ->add('fuenteFinanciamiento', 'entity', array('label' => 'Fuente Financiamiento','class'   => 'SrpvProtocolizacionBundle:FuenteFinanciamiento','property'   => 'nombre','required' => true,'empty_value' => ''))
             ->add('titularidadDelTerreno', 'choice', array('label' => 'Titularidad Del Terreno','choices' => array('S' => 'Si', 'N' => 'No'),'required' => true,'empty_value' => ''))
             ->add('enteEjecutor', 'entity', array('label' => 'Ente Ejecutor','class'   => 'SrpvProtocolizacionBundle:EnteEjecutor','property'   => 'nombre','required' => true,'empty_value' => ''))
-            ->add('fechaTransferencia','datetime',array('label' => 'Fecha Transferencia','widget' => 'single_text','required' => false));
+            ->add('fechaTransferencia','datetime',array('label' => 'Fecha Transferencia','widget' => 'single_text','format' => 'dd/MM/yyyy','required' => false));
             //->add('fechaTransferencia', 'text', array('label' => 'Fecha Transferencia','input'  => 'datetime','widget' => 'choice','empty_value' => array('year' => 'Año', 'month' => 'Mes', 'day' => 'Dia'),'required' => false))
         ;
     }
