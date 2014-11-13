@@ -12,7 +12,7 @@
         
         <div class="panel-heading">
             <span class="glyphicon glyphicon-plus-sign"></span>
-            <h3 class="panel-title" style="display: inline;">Agregar Beneficiario</h3>
+            <h3 class="panel-title" style="display: inline;">Agregar Beneficiario{{geo_estado}}</h3>
         </div>
         
         <div id="yw0" class="panel-body">
@@ -135,28 +135,28 @@
                     </div>
                     <label class="control-label col-lg-2">Dirección</label>
                     <div class="col-lg-4">
-                        <textarea class="form-control" rows="3" id="direccion" name="direccion">{{direccion}}</textarea>
+                        <textarea class="form-control" rows="3" id="direccion" name="direccion" required>{{direccion}}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-lg-2" required>Estado</label>
                     <div class="col-lg-4">
-                    <select id="estado" name="estado" class="form-control">
+                    <select id="estadoid" name="estadoid" class="form-control" required="required">
                         {% if geo_estado == NULL %}
                             <option selected="selected" value="">Seleccione El Estado </option>
                         {% endif %}
                         {% for estado in estados %}
+                            <option value="{{ estado.id }}"
                             {% if geo_estado == estado.id %}
-                                <option selected="selected" value="{{ estado.id }}">{{ estado.nombre }}</option>
-                            {% else %}
-                                <option value="{{ estado.id }}">{{ estado.nombre }}</option>
+                                selected="selected"
                             {% endif %}
+                            >{{ estado.nombre }}</option>
                         {% endfor %}
                     </select>
                     </div>
                     <label class="control-label col-lg-2" required>Municipio</label>
-                    <div class="col-lg-4">
-                    <select id="municipio" name="municipio" class="form-control">
+                    <div class="col-lg-4" id="municipio">
+                    <select id="municipioid" name="municipioid" required="required" class="form-control">
                         {% if geo_municipio == NULL %}
                             <option selected="selected" value="">Seleccione El Municipio </option>
                         {% endif %}
@@ -172,8 +172,8 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label col-lg-2" required>Parroquia</label>
-                    <div class="col-lg-4">
-                    <select id="estado" name="estado" class="form-control">
+                    <div class="col-lg-4" id="parroquia">
+                    <select id="parroquiaid" name="parroquiaid" required="required" class="form-control">
                         {% if geo_parroquia == NULL %}
                             <option selected="selected" value="">Seleccione La Parroquia </option>
                         {% endif %}
@@ -275,7 +275,8 @@
     <div align="right">
         <a href="{{ path('beneficiario') }}" class="btn btn-success" role="button">Volver</a>
     </div>
-    <br>         
+    <br>     
+
 {% endblock %}
 {% block javascripts %}
 
@@ -285,5 +286,39 @@
   <script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
   <script type="text/javascript" src="{{ asset('js/beneficiario.js') }}"></script>
+
+  <script>
+    $(document).ready(function(){
+        $('#estadoid').change(function(event){
+
+            var id = $('#estadoid').find(':selected').val();
+
+            var url = "{{ path('actualizarMunicipio', {'id':'id'}) }}";
+
+            url = url.replace("id",id);
+
+            $('#municipio').load(url);
+        });
+    });
+  </script>
+  <script>
+    $(document).ready(function(){
+        $('#municipioid').change(function(event){
+            var id = $('#municipioid').find(':selected').val();
+
+            
+
+            var url = "{{ path('actualizarParroquia', {'id':'id'}) }}";
+
+            
+
+            url = url.replace("id", id);
+            
+            $('#parroquia').load(url);
+        });
+    });
+  </script>
+
+  
   
 {% endblock %}

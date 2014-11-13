@@ -198,15 +198,11 @@ class BeneficiarioController extends Controller
 
             $persona_id = $persona->getid();
 
-            $query = "select faoveel.f_busca_datos_ahorrista($persona_id) from dual";
+            //$query = "select faoveel.f_busca_datos_ahorrista($persona_id) from dual";
 
-            $consulta_faov = $em->getConnection->prepare($query);
+            
 
-            $consulta_faov->execute();
-
-            $consulta_faov->fetchAll();
-
-            echo var_dump($consulta_faov);
+            //echo var_dump($consulta_faov);
 
             $beneficiario = $em->getRepository('SrpvProtocolizacionBundle:Beneficiario')->findOneByPersona($persona->getId());
 
@@ -221,6 +217,7 @@ class BeneficiarioController extends Controller
 
             $consulta1 = $em->createQuery( 'SELECT o FROM ComunesOrganismosPublicosBundle:Onidex o WHERE
                                             o.nac = :nacionalidad AND o.cedula = :cedula' )->setParameters(array('nacionalidad' => $nacionalidad, 'cedula' => $cedula));
+            
             $onidex = $consulta1->getSingleResult();
 
             if(!$onidex){
@@ -310,7 +307,5 @@ class BeneficiarioController extends Controller
         return $this->render('SrpvProtocolizacionBundle:Beneficiario:show.html.twig', array('entity' => $entity,));
 
     }
-
-  
     
 }

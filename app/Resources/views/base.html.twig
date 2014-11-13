@@ -15,24 +15,15 @@ Historial de Revision:
 -----------------------------------
 #}
 
-
-{% if  '/admin/' in app.request.attributes.get('_route') %}
-
-    {% set login_path = 'admin_login_check' %}
-
-{% else %}
-
-    {% set login_path = '_login_check' %}    
-
-{% endif %}
-
-{% if  '/admin/' in app.request.attributes.get('_route') %}
+{% if  'admin_' in app.request.attributes.get('_route') %}
 
     {% set logout_path = 'admin_logout' %}
+    {% set welcome_path = 'sicc_admin_homepage' %}
 
 {% else %}
 
     {% set logout_path = '_logout' %}    
+    {% set welcome_path = '_welcome' %}
 
 {% endif %}
 
@@ -52,21 +43,7 @@ Historial de Revision:
         <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
         {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
         <!-- ******************************************************************************* -->
-        {% block javascripts %}
-        {# DEPENDENCIAS JQUERY #}
-        {#    jQuery (necessary for Bootstraps JavaScript plugins) #}
-        <script src="{{ asset('js/jquery.js') }}"></script>
         
-        {#   Include all JavaScripts, compiled by Assetic #}
-        <script src="{{ asset('js/bootstrap.js') }}"></script>
-
-        {#   jPage para efectos de paginado  #}
-        <link rel="stylesheet" href="{{ asset('bundles/jPages/css/jPages.css') }}">
-        <script src="{{ asset('bundles/jPages/js/jPages.js') }}"></script>
-        
-        {#   bootbox code (necesario para los popups div) #}
-        <script src="{{ asset('js/bootbox.min.js') }}"></script>
-        {% endblock %}
     </head>
     
     <body>
@@ -84,7 +61,7 @@ Historial de Revision:
                 <div class="navbar navbar-default">
                     <div class="navbar-collapse collapse navbar-inverse-collapse dropdown open">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ path('_welcome') }}">Inicio</a></li>
+                            <li><a href="{{ path(welcome_path) }}">Inicio</a></li>
                             <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador<b class="caret"></b></a>
                                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -93,6 +70,16 @@ Historial de Revision:
                                     <li><a href="{{ path('fuentefinanciamiento') }}">Fuente Financiamiento</a></li>
                                     <li><a href="{{ path('enteejecutor') }}">Ente Ejecutor</a></li>
                                     <li><a href="{{ path('gacetas') }}">Gacetas/Punto Cuenta</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Seguridad<b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                    <li><a href="{{ path('usuario') }}">Usuarios</a></li>
+                                    <li><a href="{{ path('rol') }}">Roles</a></li>               
+                                    <li><a href="{{ path('opcionmenu') }}">Opciones</a></li>
+                                    
+                                   
                                 </ul>
                             </li>
                             <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -121,12 +108,15 @@ Historial de Revision:
 
                             {% block user %}
                                 <span class="glyphicon glyphicon-off">
-                                   <a href="{{ path(logout_path) }}" class="text-info">Salir</a>
+                                   <a href="{{ path(logout_path) }}" class="user-info">Salir</a>
                                 </span>
                                 <br>
-                                asdasd
                                 {% if app.user.nombre is defined %}
-                                    <span class="glyphicon glyphicon-user">&nbsp;{{app.user.username}}</span>
+                                    <span class="glyphicon  glyphicon-user">
+                                        <a href="{{ path('usuario_cambiar_clave') }}" class="user-info">
+                                            {{app.user.username}}
+                                        </a>
+                                    </span>
                                 {% endif %}
 
                             {% endblock %}
@@ -167,8 +157,20 @@ Historial de Revision:
             <!-- Fin Pie de Página -->
 
         </div>
-
+            {% block javascripts %}
+        {# DEPENDENCIAS JQUERY #}
+        {#    jQuery (necessary for Bootstraps JavaScript plugins) #}
+        <script src="{{ asset('js/jquery.js') }}"></script>
         
+        {#   Include all JavaScripts, compiled by Assetic #}
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
+
+        {#   jPage para efectos de paginado  #}
+        <link rel="stylesheet" href="{{ asset('bundles/jPages/css/jPages.css') }}">
+        <script src="{{ asset('bundles/jPages/js/jPages.js') }}"></script>
+        
+        {#   bootbox code (necesario para los popups div) #}
+        <script src="{{ asset('js/bootbox.min.js') }}"></script>
         
         {# LLAMADOS DE SCRIPTS JQUERY #}
         <script>
@@ -193,5 +195,6 @@ Historial de Revision:
                 }); 
             });
         </script>
+        {% endblock %}
     </body>
 </html>

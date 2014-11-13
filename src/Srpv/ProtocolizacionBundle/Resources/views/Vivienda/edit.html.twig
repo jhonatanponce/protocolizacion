@@ -48,13 +48,20 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/beneficiario.js') }}"></script>
 <script>
     $(document).ready(function(){
         $('#desarrolloid').change(function(event){
             var id = $('#desarrolloid').find(':selected').val();
-            //descomentar cuando ya se tenga dominio
-            //$('#unidadHabitacional').load('/updateUnidadVivienda/'+id);
-            $('#unidadHabitacional').load('/web/app.php/updateUnidadVivienda/'+id);
+
+            var url = "{{ path('updateUnidadVivienda', {'id':'id'}) }}";
+
+            url = url.replace("id", id);
+            
+            $('#unidadHabitacional').load(url);
         });
     });
 </script>

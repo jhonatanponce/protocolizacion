@@ -8,9 +8,12 @@
     $(document).ready(function(){
         $('#desarrolloid').change(function(event){
             var desarrollo = $('#desarrolloid').find(':selected').val();
-            //descomentar cuando ya se tenga dominio
-            //$('#unidad').load('/updateUnidad/'+id);
-            $('#unidad').load('/web/app.php/updateUnidad/'+desarrollo);
+
+            var url = "{{ path('updateUnidad', {'id':'desarrollo'}) }}";
+
+            url = url.replace("desarrollo", desarrollo);
+            
+            $('#unidad').load(url);
         });
     });
 </script>

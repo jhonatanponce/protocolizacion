@@ -49,19 +49,23 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
+<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/beneficiario.js') }}"></script>
 <script>
     $(document).ready(function(){
         $('#srpv_protocolizacionbundle_desarrollo_geoEstado').change(function(event){
             var id = $('#srpv_protocolizacionbundle_desarrollo_geoEstado').find(':selected').val();
-            //descomentar cuando ya se tenga dominio
-            //$('#desarrollo').load('/updateDesarollo/'+id);
-            $('#srpv_protocolizacionbundle_desarrollo_geoMunicipio').load('/web/app.php/updateMunicipio/'+id);
+
+            var url = "{{ path('updateMunicipio', {'id':'id'}) }}";
+
+            url = url.replace("id", id);
+            
+            $('#geoMunicipio').load(url);
         });
     });
 </script>
-<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
 <script>
   $(document).ready(function(){
       $("#srpv_protocolizacionbundle_desarrollo_fechaTransferencia").datepicker({

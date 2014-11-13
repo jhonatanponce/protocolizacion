@@ -1,0 +1,7 @@
+<select id="parroquiaid "name="parroquiaid" required="required" class="form-control">
+    <option value=""> </option>
+    {% for parroquia in parroquias %}
+	    <option value="{{ parroquia.id }}">{{ parroquia.nombre }}</option>
+    {% endfor %}
+</select>
+    

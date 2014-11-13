@@ -9,14 +9,16 @@
         </select>
     </div>
 </div>
-
 <script>
     $(document).ready(function(){
         $('#srpv_protocolizacionbundle_desarrollo_geoMunicipio').change(function(event){
             var municipio = $('#srpv_protocolizacionbundle_desarrollo_geoMunicipio').find(':selected').val();
-            //descomentar cuando ya se tenga dominio
-            //$('#unidad').load('/updateUnidad/'+id);
-            $('#geoParroquia').load('/web/app.php/updateParroquia/'+municipio);
+
+            var url = "{{ path('updateParroquia', {'id':'municipio'}) }}";
+
+            url = url.replace("municipio", municipio);
+            
+            $('#geoParroquia').load(url);
         });
     });
 </script>
