@@ -6,9 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * AsignacionCenso
- *
+ * 
  * @ORM\Table(name="ASIGNACION_CENSO", indexes={@ORM\Index(name="IDX_B2498A84C62AD666", columns={"PERSONA_ID"}), @ORM\Index(name="IDX_B2498A84E8EA1841", columns={"USUARIO_ID"}), @ORM\Index(name="IDX_B2498A84B9546268", columns={"OFICINA_ID"}), @ORM\Index(name="IDX_B2498A8436962553", columns={"UNIDAD_HABITACIONAL_ID"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Srpv\ProtocolizacionBundle\Entity\AsignacionCensoRepository")
  */
 class AsignacionCenso
 {

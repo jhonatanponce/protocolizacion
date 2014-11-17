@@ -1,6 +1,7 @@
 Srpv\ProtocolizacionBundle\Entity\AsignacionCenso:
     type: entity
     table: ASIGNACION_CENSO
+    repositoryClass: Srpv\ProtocolizacionBundle\Entity\AsignacionCensoRepository
     indexes:
         IDX_B2498A84C62AD666:
             columns:

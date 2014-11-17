@@ -58,9 +58,12 @@ class Oficina
     private $observaciones;
 
     /**
-     * @var integer
+     * @var \Comunes\TablasBundle\Entity\Persona
      *
-     * @ORM\Column(name="PERSONA_ID_JEFE", type="integer", nullable=false)
+     * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\Persona")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="PERSONA_ID_JEFE", referencedColumnName="id")
+     * })
      */
     private $personaIdJefe;
 
@@ -234,10 +237,10 @@ class Oficina
     /**
      * Set personaIdJefe
      *
-     * @param integer $personaIdJefe
+     * @param \Comunes\TablasBundle\Entity\Persona $personaIdJefe
      * @return Oficina
      */
-    public function setPersonaIdJefe($personaIdJefe)
+    public function setPersonaIdJefe(\Comunes\TablasBundle\Entity\Persona $personaIdJefe = null)
     {
         $this->personaIdJefe = $personaIdJefe;
 
@@ -247,7 +250,7 @@ class Oficina
     /**
      * Get personaIdJefe
      *
-     * @return integer 
+     * @return \Comunes\TablasBundle\Entity\Persona 
      */
     public function getPersonaIdJefe()
     {

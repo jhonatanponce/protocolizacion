@@ -1,0 +1,3 @@
+adjudicados:
+    path:     /
+    defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:index" }

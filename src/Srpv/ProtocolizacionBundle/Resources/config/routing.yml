@@ -49,3 +49,7 @@ actualizarParroquia:
 srpv_protocolizacion_carga_beneficiario:
     resource: "@SrpvProtocolizacionBundle/Resources/config/routing/cargaArchivoBeneficiario.yml"
     prefix:   /protocolizacion/carga_archivo
+
+srpv_protocolizacion_adjudicados:
+    resource: "@SrpvProtocolizacionBundle/Resources/config/routing/adjudicados.yml"
+    prefix:   /protocolizacion/adjudicados

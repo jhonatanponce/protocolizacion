@@ -56,13 +56,16 @@ Srpv\ProtocolizacionBundle\Entity\Oficina:
             fixed: false
             comment: ''
             column: OBSERVACIONES
-        personaIdJefe:
-            type: integer
-            nullable: false
-            unsigned: false
-            comment: ''
-            column: PERSONA_ID_JEFE
     manyToOne:
+        personaIdJefe:
+            targetEntity: Comunes\TablasBundle\Entity\Persona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PERSONA_ID_JEFE:
+                    referencedColumnName: id
+            orphanRemoval: false
         geoEstado:
             targetEntity: Comunes\TablasBundle\Entity\GeoEstado
             cascade: {  }

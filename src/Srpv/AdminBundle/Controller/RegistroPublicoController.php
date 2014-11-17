@@ -5,101 +5,101 @@ namespace Srpv\AdminBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Srpv\ProtocolizacionBundle\Entity\GacetasPuntosCta;
-use Srpv\AdminBundle\Form\GacetasPuntosCtaType;
+use Srpv\ProtocolizacionBundle\Entity\RegistroPublico;
+use Srpv\AdminBundle\Form\RegistroPublicoType;
 
 /**
- * GacetasPuntosCta controller.
+ * RegistroPublico controller.
  *
  */
-class GacetasPuntosCtaController extends Controller
+class RegistroPublicoController extends Controller
 {
 
     /**
-     * Lists all GacetasPuntosCta entities.
+     * Lists all RegistroPublico entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('SrpvProtocolizacionBundle:GacetasPuntosCta')->findAll();
+        $entities = $em->getRepository('SrpvProtocolizacionBundle:RegistroPublico')->findAll();
         
-                $referer = $this->getRequest()->headers->get('referer');
+        $referer = $this->getRequest()->headers->get('referer');
         
         $msg = (substr_count($referer,'delete')) ? 'Registro Eliminado' : NULL;
         
         $css_msg = (substr_count($referer,'delete')) ? 'alert-danger' : NULL;
-
-
-        return $this->render('SrpvAdminBundle:GacetasPuntosCta:index.html.twig', array(
+        
+        return $this->render('SrpvAdminBundle:RegistroPublico:index.html.twig', array(
             'entities' => $entities,
-            'title' => 'Gacetas, Puntos de Cuenta',
+            'title' => 'Registro Público',
             'msg' => $msg,
             'css_msg' => $css_msg,
         ));
-        
+
+
     }
     /**
-     * Creates a new GacetasPuntosCta entity.
+     * Creates a new RegistroPublico entity.
      *
      */
     public function createAction(Request $request)
     {
-        
-
-        $entity = new GacetasPuntosCta();
+        $entity = new RegistroPublico();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-
-
-            //  se define las entidades por defecto
-            //  $usuario = $this->getDoctrine()->getRepository('ComunesSecurityBundle:Usuario')->find($user = $this->get('security.context')->getToken()->getUser()->getId());
+            
+            
+            
+            //             se define las entidades por defecto
+//            $usuario = $this->getDoctrine()->getRepository('ComunesSecurityBundle:Usuario')->find($user = $this->get('security.context')->getToken()->getUser()->getId());
             
             $usuario = $this->getDoctrine()->getManager()->getRepository('ComunesSecurityBundle:Usuario')->find(11795);
             
             if (!$usuario) {
                 throw $this->createNotFoundException('Unable to find Usuario entity.');
             }            
-
+            
             $fecha = new \DateTime(date('d-M-y')); 
+            
             $entity->setFechaCreacion($fecha);
-            //$entity->setUsuario($usuario);
+            $entity->setUsuario($usuario);
             
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
-            $em->flush();        
-            
-            
-            return $this->render('SrpvAdminBundle:GacetasPuntosCta:show.html.twig', array(
+            $em->flush();
+
+                                       
+            return $this->render('SrpvAdminBundle:RegistroPublico:show.html.twig', array(
                 'msg'         => 'Registro Creado',
                 'css_msg'     => 'alert-info',                  
                 'id' => $entity->getId(),
                 'entity' => $entity,
-                'form'   => $form->createView(),));
-                   
+                'form'   => $form->createView(),
+            ));     
             
-            }
+        }
 
-        return $this->render('SrpvAdminBundle:GacetasPuntosCta:new.html.twig', array(
+        return $this->render('SrpvAdminBundle:RegistroPublico:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Creates a form to create a GacetasPuntosCta entity.
+     * Creates a form to create a RegistroPublico entity.
      *
-     * @param GacetasPuntosCta $entity The entity
+     * @param RegistroPublico $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(GacetasPuntosCta $entity)
+    private function createCreateForm(RegistroPublico $entity)
     {
-        $form = $this->createForm(new GacetasPuntosCtaType(), $entity, array(
-            'action' => $this->generateUrl('gacetas_create'),
+        $form = $this->createForm(new RegistroPublicoType(), $entity, array(
+            'action' => $this->generateUrl('registropublico_create'),
             'method' => 'POST',
         ));
 
@@ -109,60 +109,60 @@ class GacetasPuntosCtaController extends Controller
     }
 
     /**
-     * Displays a form to create a new GacetasPuntosCta entity.
+     * Displays a form to create a new RegistroPublico entity.
      *
      */
     public function newAction()
     {
-        $entity = new GacetasPuntosCta();
+        $entity = new RegistroPublico();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('SrpvAdminBundle:GacetasPuntosCta:new.html.twig', array(
+        return $this->render('SrpvAdminBundle:RegistroPublico:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a GacetasPuntosCta entity.
+     * Finds and displays a RegistroPublico entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SrpvProtocolizacionBundle:GacetasPuntosCta')->find($id);
+        $entity = $em->getRepository('SrpvProtocolizacionBundle:RegistroPublico')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find GacetasPuntosCta entity.');
+            throw $this->createNotFoundException('Unable to find RegistroPublico entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('SrpvAdminBundle:GacetasPuntosCta:show.html.twig', array(
+        return $this->render('SrpvAdminBundle:RegistroPublico:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-     * Displays a form to edit an existing GacetasPuntosCta entity.
+     * Displays a form to edit an existing RegistroPublico entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SrpvProtocolizacionBundle:GacetasPuntosCta')->find($id);
+        $entity = $em->getRepository('SrpvProtocolizacionBundle:RegistroPublico')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find GacetasPuntosCta entity.');
+            throw $this->createNotFoundException('Unable to find RegistroPublico entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('SrpvAdminBundle:GacetasPuntosCta:edit.html.twig', array(
+        return $this->render('SrpvAdminBundle:RegistroPublico:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -170,16 +170,16 @@ class GacetasPuntosCtaController extends Controller
     }
 
     /**
-    * Creates a form to edit a GacetasPuntosCta entity.
+    * Creates a form to edit a RegistroPublico entity.
     *
-    * @param GacetasPuntosCta $entity The entity
+    * @param RegistroPublico $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(GacetasPuntosCta $entity)
+    private function createEditForm(RegistroPublico $entity)
     {
-        $form = $this->createForm(new GacetasPuntosCtaType(), $entity, array(
-            'action' => $this->generateUrl('gacetas_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new RegistroPublicoType(), $entity, array(
+            'action' => $this->generateUrl('registropublico_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -188,17 +188,17 @@ class GacetasPuntosCtaController extends Controller
         return $form;
     }
     /**
-     * Edits an existing GacetasPuntosCta entity.
+     * Edits an existing RegistroPublico entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('SrpvProtocolizacionBundle:GacetasPuntosCta')->find($id);
+        $entity = $em->getRepository('SrpvProtocolizacionBundle:RegistroPublico')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find GacetasPuntosCta entity.');
+            throw $this->createNotFoundException('Unable to find RegistroPublico entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -216,15 +216,22 @@ class GacetasPuntosCtaController extends Controller
             }            
             
             $fecha = new \DateTime(date('d-M-y')); 
-               
+            
+            $entity->setFechaCreacion($fecha);
+            $entity->setUsuario($usuario);
+            
+            if (!$usuario) {
+                throw $this->createNotFoundException('Unable to find Usuario entity.');
+            }            
 
             $entity->setFechaActualizacion($fecha);
-           // $entity->setUsuario($usuario);             
+            $entity->setUsuario($usuario);  
             
             $em->flush();
+
             
-                       
-            return $this->render('SrpvAdminBundle:GacetasPuntosCta:edit.html.twig', array(
+           
+            return $this->render('SrpvAdminBundle:RegistroPublico:edit.html.twig', array(
                 'msg'         => 'Registro Actualizado',
                 'css_msg'     => 'alert-success',
                 'entity'      => $entity,
@@ -232,17 +239,17 @@ class GacetasPuntosCtaController extends Controller
                 'delete_form' => $deleteForm->createView(),
             ));
 
-            
+           
         }
 
-        return $this->render('SrpvAdminBundle:GacetasPuntosCta:edit.html.twig', array(
+        return $this->render('SrpvAdminBundle:RegistroPublico:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a GacetasPuntosCta entity.
+     * Deletes a RegistroPublico entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -252,21 +259,21 @@ class GacetasPuntosCtaController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('SrpvProtocolizacionBundle:GacetasPuntosCta')->find($id);
+            $entity = $em->getRepository('SrpvProtocolizacionBundle:RegistroPublico')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find GacetasPuntosCta entity.');
+                throw $this->createNotFoundException('Unable to find RegistroPublico entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('gacetas'));
+        return $this->redirect($this->generateUrl('registropublico'));
     }
 
     /**
-     * Creates a form to delete a GacetasPuntosCta entity by id.
+     * Creates a form to delete a RegistroPublico entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -275,7 +282,7 @@ class GacetasPuntosCtaController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('gacetas_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('registropublico_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'button', array('label' => 'Eliminar','attr' => array('class' => 'btn-danger')))
             ->getForm()
