@@ -1,0 +1,241 @@
+Srpv\ProtocolizacionBundle\Entity\AnalisisCredito:
+    type: entity
+    table: ANALISIS_CREDITO
+    indexes:
+        IDX_AE7B5B43E8EA1841:
+            columns:
+                - USUARIO_ID
+        IDX_AE7B5B4327D19144:
+            columns:
+                - TIPO_DOCUMENTO_ID
+        IDX_AE7B5B439949B9D8:
+            columns:
+                - UNIDAD_FAMILIAR_ID
+        IDX_AE7B5B4334E98380:
+            columns:
+                - VIVIENDA_ID
+        IDX_AE7B5B43E2F136F2:
+            columns:
+                - GEN_BANCO_ID
+        IDX_AE7B5B43F31AD6DD:
+            columns:
+                - TASA_FONGAR_ID
+        IDX_AE7B5B4377E7882F:
+            columns:
+                - TASA_INTERES_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        alicuotaFondoGarantia:
+            type: decimal
+            nullable: true
+            precision: 16
+            scale: 2
+            comment: ''
+            column: ALICUOTA_FONDO_GARANTIA
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_CREACION
+        fechaProtocolizacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_PROTOCOLIZACION
+        fuenteDatosEntradaId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: FUENTE_DATOS_ENTRADA_ID
+        ingresoTotalFamiliar:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            comment: ''
+            column: INGRESO_TOTAL_FAMILIAR
+        montoCredito:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            comment: ''
+            column: MONTO_CREDITO
+        montoCuotaFinanciera:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            comment: ''
+            column: MONTO_CUOTA_FINANCIERA
+        montoCuotaFTotal:
+            type: decimal
+            nullable: true
+            precision: 16
+            scale: 2
+            comment: ''
+            column: MONTO_CUOTA_F_TOTAL
+        montoInicial:
+            type: decimal
+            nullable: true
+            precision: 16
+            scale: 2
+            comment: ''
+            column: MONTO_INICIAL
+        montoPrimaInicialFg:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            comment: ''
+            column: MONTO_PRIMA_INICIAL_FG
+        nroCuentaBancario:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            comment: ''
+            column: NRO_CUENTA_BANCARIO
+        nroCuotas:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: NRO_CUOTAS
+        nroSerialBancario:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: NRO_SERIAL_BANCARIO
+        plazoCreditoAno:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: PLAZO_CREDITO_ANO
+        plazoDiferido:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: PLAZO_DIFERIDO
+        plazoGracia:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: PLAZO_GRACIA
+        statusMigracionId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: STATUS_MIGRACION_ID
+        subDirectoHabitacional:
+            type: decimal
+            nullable: true
+            precision: 16
+            scale: 2
+            comment: ''
+            column: SUB_DIRECTO_HABITACIONAL
+        subViviendaPerdida:
+            type: decimal
+            nullable: true
+            precision: 16
+            scale: 2
+            comment: ''
+            column: SUB_VIVIENDA_PERDIDA
+        tasaMoraId:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: TASA_MORA_ID
+        tipoCuenta:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            comment: ''
+            column: TIPO_CUENTA
+    manyToOne:
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tipoDocumento:
+            targetEntity: TipoDocumento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TIPO_DOCUMENTO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        unidadFamiliar:
+            targetEntity: UnidadFamiliar
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                UNIDAD_FAMILIAR_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        vivienda:
+            targetEntity: Vivienda
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                VIVIENDA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        genBanco:
+            targetEntity: Comunes\TablasBundle\Entity\GenBanco
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEN_BANCO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tasaFongar:
+            targetEntity: TasaFongar
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TASA_FONGAR_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        tasaInteres:
+            targetEntity: TasaInteres
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TASA_INTERES_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

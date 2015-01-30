@@ -1,0 +1,31 @@
+gacetas:
+    path:     /
+    defaults: { _controller: "SrpvAdminBundle:GacetasPuntosCta:index" }
+
+gacetas_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvAdminBundle:GacetasPuntosCta:show" }
+
+gacetas_new:
+    path:     /new
+    defaults: { _controller: "SrpvAdminBundle:GacetasPuntosCta:new" }
+
+gacetas_create:
+    path:     /create
+    defaults: { _controller: "SrpvAdminBundle:GacetasPuntosCta:create" }
+    requirements: { _method: post }
+
+gacetas_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvAdminBundle:GacetasPuntosCta:edit" }
+
+gacetas_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvAdminBundle:GacetasPuntosCta:update" }
+    requirements: { _method: post|put }
+
+gacetas_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvAdminBundle:GacetasPuntosCta:delete" }
+    requirements: { _method: post|delete }
+    

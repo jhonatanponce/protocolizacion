@@ -1,0 +1,69 @@
+Srpv\ProtocolizacionBundle\Entity\GacetasPuntosCta:
+    type: entity
+    table: GACETAS_PUNTOS_CTA
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        descripcion:
+            type: string
+            nullable: true
+            length: 300
+            fixed: false
+            comment: ''
+            column: DESCRIPCION
+        estatus:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: ESTATUS
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        fechaPublicacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_PUBLICACION
+        nroDecreto:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: NRO_DECRETO
+        nroGaceta:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: NRO_GACETA
+        nroPtoCta:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: NRO_PTO_CTA
+        observaciones:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: OBSERVACIONES
+    lifecycleCallbacks: {  }

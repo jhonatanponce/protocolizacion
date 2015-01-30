@@ -1,0 +1,107 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+<div class="header-search-sector pull-right">
+    <form action="{{ path('unidad') }}" class="form-inline" id="formulario" role="form" method="post">
+        <div class="form-group">
+            <select id="estadoid" name="estadoid" class="form-control">
+                <option selected="selected" value="">Seleccione Estado</option>
+                {% for estado in estados %}
+                <option value="{{ estado.id }}">{{ estado.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group" id="desarrollo">
+            <select id="desarrolloid" name="desarrolloid" class="form-control">
+                <option selected="selected" value="">Seleccione Nombre Desarrollo</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+    </form>
+</div><!-- search-sector -->
+{#<div class="header-search-sector pull-right">
+    {{ form_start(form, { 'attr': {'class': 'form-inline'} }) }}
+        {{ form_errors(form) }}
+        <div class="form-group">
+            {{ form_widget(form.estadoid) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.desarrolloid) }}
+        </div>
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+    {{ form_end(form) }}
+</div><!-- search-sector -->#}
+<br><br><br>
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-list-alt"></span>
+        <h3 class="panel-title" style="display: inline;">{% if title is defined %}{{title}}{% endif %}</h3>
+    </div>
+    
+    <div id="yw0" class="panel-body  table-responsive">
+        {% if entities|length > 0 %} 
+        <table class="records_list table table-bordered table-striped table-hover" border="1">
+            <thead>
+                <tr class="success">
+                    <th>Id</th>
+                    <th>Nombre Unidad</th>
+                    <th>Nombre Desarrollo</th>
+                    <th>Estado</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="pagination">{# Permite paginar la tabla #}
+        {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('unidad_show', { 'id': entity['id'] }) }}">{{ entity['id'] }}</a></td>
+                    <td>{{ entity['unidad'] }}</td>
+                    <td>{{ entity['desarrollo'] }}</td>
+                    <td>{{ entity['estado'] }}</td>
+                    <td class="text-center">
+                        <a href="{{ path('unidad_show', { 'id': entity['id'] }) }}" class="glyphicon glyphicon-search"></a>
+                        &nbsp;|&nbsp;
+                        <a href="{{ path('unidad_edit', { 'id': entity['id'] }) }}" class="glyphicon glyphicon-pencil"></a>
+                    </td>
+                </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+        <div class="holder"></div>{# Paginador: control de paginas #}                
+            {% else %}
+        
+        <h2 class="alert alert-dismissable alert-warning alert-link text-center">
+            
+            <strong>No Existen Registros</strong>
+            
+        </h2>
+        
+            {% endif %}
+    </div>
+</div>
+<div align="right">
+    <a href="{{ path('_welcome') }}" class="btn btn-success" role="button">Inicio</a>
+    <a href="{{ path('unidad_new') }}" class="btn btn-primary">Crear Registro</a>
+</div>
+    {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/beneficiario.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $('#estadoid').change(function(event){
+            var id = $('#estadoid').find(':selected').val();
+
+            var url = "{{ path('updateDesarrollo', {'id':'id'}) }}";
+
+            url = url.replace("id", id);
+            
+            $('#desarrollo').load(url);
+        });
+    });
+</script>
+{% endblock %}

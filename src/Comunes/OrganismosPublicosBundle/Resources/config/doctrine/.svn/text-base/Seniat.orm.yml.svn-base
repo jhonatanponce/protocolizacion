@@ -1,0 +1,64 @@
+Comunes\OrganismosPublicosBundle\Entity\Seniat:
+    type: entity
+    table: SENIAT
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: 'identificación del registro en la tabla'
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        rif:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: 'Registo de Información Fiscal'
+            column: RIF
+        nombre:
+            type: string
+            nullable: false
+            length: 500
+            fixed: false
+            comment: 'Nombre Empresa / Persona'
+            column: NOMBRE
+        direccion :
+            type: string
+            nullable: true
+            length: 1000
+            fixed: false
+            comment: 'Nombre Empresa / Persona'
+            column: DIRECCION
+        actividadEconomica :
+            type: string
+            nullable: true
+            length: 500
+            fixed: false
+            comment: 'Nombre Empresa / Persona'
+            column: ACTIVIDAD_ECONOMICA
+        telefono :
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            comment: 'Telefono Empresa / Persona'
+            column: TELEFONO
+        correoElectronico :
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            comment: 'Correo Electronico Empresa / Persona'
+            column: CORREO_ELECTRONICO
+        fechaConstitucion :
+            type: date
+            nullable: true
+            fixed: false
+            comment: 'Fecha Constitucion Empresa / Persona'
+            column: FECHA_CONSTITUCION
+
+    lifecycleCallbacks: {  }            

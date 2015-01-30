@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/scm/svn/sisprov/!svn/ver/149/sisprov/src/Comunes/SecurityBundle/Resources/config
+END
+routing.yml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/scm/svn/sisprov/!svn/ver/83/sisprov/src/Comunes/SecurityBundle/Resources/config/routing.yml
+END
+validation.yml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/scm/svn/sisprov/!svn/ver/83/sisprov/src/Comunes/SecurityBundle/Resources/config/validation.yml
+END
+services.yml
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/scm/svn/sisprov/!svn/ver/126/sisprov/src/Comunes/SecurityBundle/Resources/config/services.yml
+END

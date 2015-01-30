@@ -1,0 +1,72 @@
+Srpv\ProtocolizacionBundle\Entity\CondicionesSubsidio:
+    type: entity
+    table: CONDICIONES_SUBSIDIO
+    indexes:
+        IDX_BD95D6ACECBD29C:
+            columns:
+                - TIPO_SUBSIDIO_ID
+        IDX_BD95D6AE8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        estatus:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: ESTATUS
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        porcentajeSubsidio:
+            type: decimal
+            nullable: false
+            precision: 6
+            scale: 2
+            comment: ''
+            column: PORCENTAJE_SUBSIDIO
+        proporcionSalario:
+            type: decimal
+            nullable: false
+            precision: 6
+            scale: 2
+            comment: ''
+            column: PROPORCION_SALARIO
+    manyToOne:
+        tipoSubsidio:
+            targetEntity: TipoSubsidio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TIPO_SUBSIDIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,42 @@
+Comunes\SecurityBundle\Entity\UsuarioCambioClave:
+    type: entity
+    table: USUARIO_CAMBIO_CLAVE
+    indexes:
+        IDX_8B22DDB8E8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: ID
+            generator:
+                strategy: SEQUENCE
+    fields:
+        fecha:
+            type: datetime
+            nullable: false
+            comment: ''
+            default: SYSDATE
+            column: FECHA
+        ip:
+            type: string
+            nullable: false
+            length: 15
+            fixed: false
+            comment: ''
+            column: IP
+    manyToOne:
+        usuario:
+            targetEntity: Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

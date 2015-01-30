@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+    <div class="panel panel-default">
+        
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            <h3 class="panel-title" style="display: inline;">Agregar Opción del Menu</h3>
+        </div>
+        
+        <div id="yw0" class="panel-body">
+
+            <div class="form-group">
+                {{ form(form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
+            </div>
+        </div>
+    </div>
+    <div align="right">
+        <a href="{{ path('opcionmenu') }}" class="btn btn-success" role="button">Volver</a>
+    </div>
+    <br>         
+{% endblock %}

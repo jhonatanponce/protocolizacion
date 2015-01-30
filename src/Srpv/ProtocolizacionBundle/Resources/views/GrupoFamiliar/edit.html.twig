@@ -1,0 +1,210 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {% block stylesheets %}
+
+    {{ parent() }}
+
+      <link type="text/css" href="{{ asset('js/css/smoothness/jquery-ui-1.8.14.custom.css') }}" type="text/css" rel="stylesheet" />
+
+    {% endblock %}
+    <div class="panel panel-default">
+        
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            <h3 class="panel-title" style="display: inline;">Grupo Familiar</h3>
+        </div>
+        {% if mensaje %}
+        <div class="alert alert-dismissable alert-warning">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <h4>
+            {{mensaje}}            
+          </h4>
+        </div>
+        {% endif %}
+        <div id="yw0" class="panel-body">
+            <form id="grupo" name="grupo" class="form-horizontal" action="{{ path('grupofamiliar_update') }}" method="post">
+                <input type="hidden" name="unidad_familiar_id" value="{{unidad_familiar.id}}" />
+                <input type="hidden" name="grupo_familiar_id" value="{{grupo_familiar.id}}" />
+                <input type="hidden" name="persona_id" value="{{persona.id}}" />
+                
+                    <div id="principal_contact_form">
+                        <legend>
+                            Datos del Familiar
+                        </legend>                         
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Cédula</label>
+                            <div class="col-lg-4">
+                                <input type="text" id="cedula" name="cedula" class="form-control" value='{{nacionalidad ~ '-' ~ persona.cedula}}' placeholder='V-XXXXXXXX'>
+                            </div>
+                            <label class="control-label col-lg-2 required">Fecha de Nacimiento</label>
+                            <div class="col-lg-4">
+                                <input required type="text" id="fecha_nacimiento" name="fecha_nacimiento" class="form-control" value='{{persona.fechaNacimiento|date('d-m-Y')}}' placeholder='DD-MM-AAAA'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Nombre</label>
+                            <div class="col-lg-4">
+                                <input required type="text" id="nombre" name="nombre" class="form-control" value='{{persona.primerNombre}}'>
+                            </div>                    
+                            <label class="control-label col-lg-2">Apellido</label>
+                            <div class="col-lg-4">
+                                <input required type="text" id="apellido" name="apellido" class="form-control col-lg-2" value='{{persona.primerApellido}}'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Sexo</label>
+                            <div class="col-lg-4">
+                                <select id="sexoid" name="sexoid" class="form-control">
+                                {% if persona.genSexo == NULL %}
+                                    <option selected="selected" value="">Seleccione El Sexo</option>
+                                {% endif %}
+                                {% for sx in sexo %}
+                                    {% if persona.genSexo.id == sx.id %}
+                                        <option selected="selected" value="{{ sx.id }}">{{ sx.nombre }}</option>
+                                    {% else %}
+                                        <option value="{{ sx.id }}">{{ sx.nombre }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                                </select>
+                            </div>
+                            <label class="control-label col-lg-2">Estado Civil</label>
+                            <div class="col-lg-4">
+                                <select required id="edo_civil" name="edo_civil" class="form-control">
+                                    {% if persona.genEdoCivil == NULL %}
+                                    <option selected="selected" value="">Seleccione El Estado Civil</option>
+                                    {% endif %}
+                                    {% for civil in edo_civil %}
+                                        {% if persona.genEdoCivil.id == civil.id %}
+                                            <option selected="selected" value="{{ civil.id }}">{{ civil.nombre }}</option>
+                                        {% else %}
+                                            <option value="{{ civil.id }}">{{ civil.nombre }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Parantesco</label>
+                            <div class="col-lg-4">
+                                <select required id="parentesco" name="parentesco" class="form-control">
+                                    {% if grupo_familiar.genParentesco == NULL %}
+                                    <option selected="selected" value="">Seleccione El Parentesco</option>
+                                    {% endif %}
+                                    {% for parentesco in gen_parentesco %}
+                                        {% if grupo_familiar.genParentesco.id == parentesco.id %}
+                                        <option selected="selected" value="{{ parentesco.id }}">{{ parentesco.nombre }}</option>
+                                        {% else %}
+                                        <option value="{{ parentesco.id }}">{{ parentesco.nombre }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                               </select>
+                            </div>
+                            <label class="control-label col-lg-2">Tipo Sujeto Atención</label>
+                            <div class="col-lg-4">
+                                <input required type="text" id="tipo" name="tipo" class="form-control" value='{{grupo_familiar.tipoSujetoAtencion}}'>
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Ingreso Mensual</label>
+                            <div class="col-lg-4">
+                                <input type="text" id="ingreso_mensual" name="ingreso_mensual" class="form-control" value='{{grupo_familiar.ingresoMensual}}'>
+                            </div>
+                            <label class="control-label col-lg-2">¿Cotiza Faov?</label>
+                            <div class="col-lg-4">
+                                <select id="cotiza_faov" name="cotiza_faov" class="form-control">
+                                    <option value="0" 
+                                    {% if grupo_familiar.cotizaFaov == 0 %}
+                                        selected="selected"
+                                    {% endif %}>NO</option>
+                                    <option value="1"
+                                    {% if grupo_familiar.cotizaFaov == 1 %}
+                                        selected="selected"
+                                    {% endif %}>SI</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <div class="col-lg-4 col-lg-offset-4">
+                            <button type="submit" class="btn btn-primary">Modificar</button>
+                            <a href="{{ path('unidadfamiliar_show', { 'id': beneficiario.id }) }}" class="btn btn-success" role="button">Volver</a>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+    <br>         
+{% endblock %}
+{% block javascripts %}
+
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+
+  <script>
+  $(document).ready(function() {
+
+    $("#fecha_nacimiento").datepicker({
+        dateFormat: 'dd-mm-yy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '-100:+0',
+        dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+        firstDay: 1,
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+    });
+
+    jQuery.validator.addMethod("letterspace", function(value, element) {
+        return this.optional(element) || /^[a-z ]+$/i.test(value);
+    }, "<p>Sólo letras.</p>");
+
+    $("#grupo").validate({
+        errorPlacement: function(error, element) {
+            error.insertAfter(element);
+        },
+        rules: {
+            'cedula': {
+                required: true
+            },
+            'fecha_nacimiento': {
+                required: true
+            },
+            'primer_nombre': {
+                required: true,
+                letterspace: true
+            },
+            'primer_apellido': {
+                required: true,
+                letterspace: true
+            },
+            'ingreso_mensual': {
+                number: true
+            },
+        },
+        messages: {
+            'cedula': {
+                required: "<p class='requerido'>Requerido.</p>",
+                number: "<p class='requerido'>Solo se aceptan números.</p>"
+            },
+            'fecha_nacimiento': {
+                required: "<p class='requerido'>Requerido.</p>",
+            },
+            'primer_nombre': {
+                required: true,
+            },
+            'primer_apellido': {
+                required: true,
+            },
+            'ingreso_mensual': {
+                number: "<p class='requerido'>Solo se aceptan números.</p>"
+            },
+        }
+    });
+
+  });
+  </script>
+  
+{% endblock %}

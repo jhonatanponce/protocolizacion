@@ -1,0 +1,67 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span>
+            <h3 class="panel-title" style="display: inline;">{% if title is defined %}{{title}}{% endif %}</h3>
+        </div>
+
+        <div id="yw0" class="panel-body">    
+            {% if entities|length > 0 %}
+                <table class="records_list table table-bordered table-striped table-hover" border="1">
+                <thead>
+                    <tr class="success">
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Estatus</th>
+                        <th>Fecha Actualización</th>
+                        <th>Fecha Creación</th>
+                       
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody  id="pagination">{# Permite paginar la tabla #}
+                {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('tiposubsidio_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                        <td>{{ entity.nombre }}</td>
+                        <td>{{ entity.descripcion }}</td>
+                    {% if entity.estatus == 'S' %}
+                        <td>ACTIVA</td>    
+                    {% else %}
+                        <td>INACTIVA</td>    
+                    {% endif %} 
+                        <td>{% if entity.fechaActualizacion %}{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{% if entity.fechaCreacion %}{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td class="text-center">
+                                <a href="{{ path('tiposubsidio_show', { 'id': entity.id }) }}" class="glyphicon glyphicon-search"></a>
+                                &nbsp;|&nbsp;
+                                <a href="{{ path('tiposubsidio_edit', { 'id': entity.id }) }}" class="glyphicon glyphicon-pencil"></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+                <div class="holder"></div>{# Paginador: control de paginas #}                
+            {% else %}
+                
+                <h2 class="alert alert-dismissable alert-warning alert-link text-center">
+                    
+                    <strong>No Existen Registros</strong>
+                    
+                </h2>
+                
+            {% endif %}
+        </div>
+    </div>
+    <div align="right">
+        <a href="{{ path('_welcome') }}" class="btn btn-success" role="button">Inicio</a>
+        <a href="{{ path('tiposubsidio_new') }}" class="btn btn-primary">Crear Registro</a>
+    </div>
+    <br>
+{% endblock %}
+

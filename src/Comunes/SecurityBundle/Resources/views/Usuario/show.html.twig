@@ -1,0 +1,103 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-record"></span>
+            <h3 class="panel-title" style="display: inline;">Detalle de Usuario</h3>
+        </div>
+
+        <div id="yw0" class="panel-body table-responsive">
+
+            <table class="records_list table table-bordered table-striped table-hover" border="1">
+                <tbody>
+                    <tr>
+                        <th>Persona:</th>
+                        <td>{{ entity.nombre }} {{ entity.apellido }}</td>
+                    </tr>                    
+                    <tr>
+                        <th>Dirección:</th>
+                        <td>{{ entity.sector }} {{ entity.calle }} {{ entity.numCasaEdif }}
+                            {% if entity.geoEstado.nombre is defined %} 
+                                {{ entity.geoEstado.nombre }}
+                            {% endif %} 
+                            {% if entity.geoMunicipio.nombre is defined %} 
+                                {{ entity.geoMunicipio.nombre }}
+                            {% endif %} 
+                            {% if entity.geoParroquia.nombre is defined %} 
+                                {{ entity.geoParroquia.nombre }}
+                            {% endif %} 
+                            {{ entity.puntoReferencia }}
+                        </td>
+                    </tr> 
+                    <tr>
+                        <th>Número Telefónico:</th>
+                        <td>{% if entity.getCodigoTelefono is defined %} 
+                                {{ entity.getCodigoTelefono }}-
+                            {% endif %} 
+                            {{ entity.telefono }}
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <th>Correo:</th>
+                        <td>{{ entity.correo }}</td>
+                    </tr>  
+                    <tr>
+                        <th>Usuario:</th>
+                        <td>{{ entity.usuario }}</td>
+                    </tr>                    
+                    <tr>
+                        <th>Usuario Desde:</th>
+                        <td>{{ entity.fechaCreacion|date('d-m-Y') }}</td>
+                    </tr>          
+                    <tr>
+                        <th>Ultimo Acceso</th>
+                        <td>{{ entity.ultimoAcceso|date('d-m-Y H:i:s') }}</td>
+                    </tr>                    
+                    <tr>
+                        <th>Permite Cambiar Clave: </th>
+                        <td>{% if 1 in  entity.cambiarClave %} SI {% else %} NO {% endif %}</td>
+                    </tr>                    
+                    <tr>
+                        <th>Cuenta Habilitada: </th>
+                        <td>{% if 1 in  entity.cuentaHabilitada %} SI {% else %} NO {% endif %}</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha Caducidad Clave:</th>
+                        <td>{{ entity.fechaCaducidad|date('d-m-Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Intentos Bloqueo Clave:</th>
+                        <td>{{ entity.intentos }}</td>
+                    </tr>
+                    <tr>
+                        <th>Observaciones Clave:</th>
+                        <td>{{ entity.observaciones }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+
+            <div class="delete">
+                <div class="row">
+                    <div class="col-md-2">
+                        <a href="{{ path('usuario_edit', { 'id': entity.id }) }}" class="btn btn-warning">Modificar</a>
+                    </div>                    
+                    <div class="col-md-2">
+                        {% if delete_form is defined %}
+                            {{ form(delete_form) }}
+                        {% endif %} 
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+
+    <div align="right">
+        <a href="{{ path('usuario') }}" class="btn btn-success" role="button">Volver</a>
+    </div>
+
+    <br>            
+{% endblock %}

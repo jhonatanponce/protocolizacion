@@ -22,6 +22,11 @@ comunes_tablas:
     resource: "@ComunesTablasBundle/Resources/config/routing.yml"
     prefix:   /
 
+#_welcome:
+#    pattern:  /
+#    defaults: { _controller: FrameworkBundle:Template:template,template:'::inicio.html.twig'}    
+
 _welcome:
     pattern:  /
-    defaults: { _controller: FrameworkBundle:Template:template,template:'::inicio.html.twig'}      
+    defaults: { _controller: ComunesSecurityBundle:Security:indexBnvh }      
+

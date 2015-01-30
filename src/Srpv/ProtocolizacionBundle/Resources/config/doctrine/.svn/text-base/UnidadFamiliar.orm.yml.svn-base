@@ -1,0 +1,107 @@
+Srpv\ProtocolizacionBundle\Entity\UnidadFamiliar:
+    type: entity
+    table: UNIDAD_FAMILIAR
+    indexes:
+        IDX_EDCB8ACA10C4A984:
+            columns:
+                - BENEFICIARIO_ID
+        IDX_EDCB8ACAA615B64A:
+            columns:
+                - CONDICION_UNIDAD_FAMILIAR_ID
+        IDX_EDCB8ACA42E534D7:
+            columns:
+                - PROCEDENCIA_BENEFICIO_ID
+        IDX_EDCB8ACAE8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        cantidadDispacitados:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: CANTIDAD_DISPACITADOS
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        fuenteDatosEntradaId:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: FUENTE_DATOS_ENTRADA_ID
+        ingresoTotalFamiliar:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            comment: ''
+            column: INGRESO_TOTAL_FAMILIAR
+        nombre:
+            type: string
+            nullable: true
+            length: 100
+            fixed: false
+            comment: ''
+            column: NOMBRE
+        totalPersonasCotizando:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: TOTAL_PERSONAS_COTIZANDO
+    manyToOne:
+        beneficiario:
+            targetEntity: Beneficiario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                BENEFICIARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        condicionUnidadFamiliar:
+            targetEntity: CondicionUnidadFamiliar
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                CONDICION_UNIDAD_FAMILIAR_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        procedenciaBeneficio:
+            targetEntity: ProcedenciaBeneficio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PROCEDENCIA_BENEFICIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

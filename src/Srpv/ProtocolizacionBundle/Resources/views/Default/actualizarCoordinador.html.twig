@@ -1,0 +1,7 @@
+<select id="coordinadorid" name="coordinadorid" required="required" class="form-control">
+	<option selected="selected" value="">Seleccione Coordinador</option>
+    {% for coordinador in coordinadores %}
+	    <option value="{{ coordinador.id }}">{{ coordinador.nombreJefe ~ ' ' ~  coordinador.apellidoJefe}}</option>
+    {% endfor %}
+</select>
+    

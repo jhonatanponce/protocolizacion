@@ -16,15 +16,29 @@ class AsignacionCensoRepository extends EntityRepository
     {
 
     	return $this->getEntityManager()
-       				->createQuery('SELECT b.id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, e.nombre as estatus, g.nombre as estado, gm.nombre as municipio, o.nombre as oficina
-                                   FROM SrpvProtocolizacionBundle:Beneficiario b
-                                   JOIN ComunesTablasBundle:Persona p WITH b.persona = p.id
-                                   JOIN SrpvProtocolizacionBundle:EstatusBeneficiario e WITH b.estatusBeneficiario = e.id AND e.id = 2
-                                   JOIN ComunesTablasBundle:GeoEstado g WITH b.geoEstado = g.id
-                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH b.geoMunicipio = gm.id
-                                   LEFT JOIN SrpvProtocolizacionBundle:AsignacionCenso ac WITH ac.persona = b.id
-                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina o WITH ac.oficina = o.id
-                                   ORDER BY b.id ASC')
+       				->createQuery('SELECT ac.id as id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p WITH ac.persona = p.id
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id
+                                   ORDER BY p.id ASC')
+//       				->createQuery('SELECT b.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, e.nombre as estatus, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+//                                   FROM SrpvProtocolizacionBundle:Beneficiario b
+//                                   JOIN ComunesTablasBundle:Persona p WITH b.persona = p.id
+//                                   JOIN SrpvProtocolizacionBundle:EstatusBeneficiario e WITH b.estatusBeneficiario = e.id AND e.id = 2
+//                                   JOIN SrpvProtocolizacionBundle:UnidadFamiliar uf WITH uf.beneficiario = b.id
+//                                   JOIN SrpvProtocolizacionBundle:AnalisisCredito credit WITH credit.unidadFamiliar = uf.id
+//                                   JOIN SrpvProtocolizacionBundle:Vivienda v WITH v.id = credit.vivienda
+//                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = v.unidadHabitacional
+//                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+//                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id
+//                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id
+//                                   LEFT JOIN SrpvProtocolizacionBundle:AsignacionCenso ac WITH ac.persona = p.id
+//                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id
+//                                   ORDER BY b.id ASC')
 //       				->createQuery('SELECT b.id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, e.nombre as estatus, g.nombre as estado, gm.nombre as municipio, o.nombre as oficina, jefe.primerNombre as jefeNombre
 //                                   FROM SrpvProtocolizacionBundle:Beneficiario b
 //                                   JOIN ComunesTablasBundle:Persona p WITH b.persona = p.id
@@ -36,6 +50,103 @@ class AsignacionCensoRepository extends EntityRepository
 //                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina o, SrpvProtocolizacionBundle:Persona jefe WITH o.personaIdJefe = jefe.id
 //                                   ORDER BY b.id ASC')
 
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiarioAdjudicado($nacionalidad,$cedula)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p WITH p.nacionalidad = '$nacionalidad' AND p.cedula = '$cedula'
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id
+                                   WHERE ac.persona = p.id")
+       				->setMaxResults(1)
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosTemporales($nacionalidad,$cedula)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT b.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, d.nombre as desarrollo, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:BeneficiarioTemporal b
+                                   LEFT JOIN ComunesTablasBundle:Persona p WITH b.persona = p.id
+                                   LEFT JOIN SrpvProtocolizacionBundle:Beneficiario ben WITH ben.persona = p.id
+                                   LEFT JOIN SrpvProtocolizacionBundle:UnidadFamiliar uf WITH uf.beneficiario = ben.id
+                                   LEFT JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = b.unidadHabitacional
+                                   LEFT JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   LEFT JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id
+                                   LEFT JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id
+                                   WHERE b.nacionalidad = '$nacionalidad'
+                                   AND b.cedula = '$cedula'")
+                                ->setMaxResults(1)
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosAnalisis($nacionalidad,$cedula)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT b.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, d.nombre as desarrollo, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:Beneficiario b
+                                   JOIN ComunesTablasBundle:Persona p WITH b.persona = p.id
+                                   JOIN SrpvProtocolizacionBundle:UnidadFamiliar uf WITH uf.beneficiario = b.id
+                                   JOIN SrpvProtocolizacionBundle:AnalisisCredito credit WITH credit.unidadFamiliar = uf.id
+                                   JOIN SrpvProtocolizacionBundle:Vivienda v WITH v.id = credit.vivienda
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = v.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id
+                                   WHERE p.nacionalidad = '$nacionalidad'
+                                   AND p.cedula = '$cedula'")
+       				->setMaxResults(1)
+       				->getResult();
+
+
+    }
+    
+    public function getCoordinador($municipio)
+    {
+        if($municipio == NULL){
+            return $this->getEntityManager()
+                    ->createQuery("SELECT p.id as id, p.primerNombre as nombreJefe, p.primerApellido as apellidoJefe
+                       FROM ComunesTablasBundle:Persona p
+                       JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ofic.personaIdJefe = p.id
+                       JOIN ComunesTablasBundle:GeoMunicipio gm WITH ofic.geoMunicipio = gm.id")
+                    ->getResult();    
+        }else{
+            return $this->getEntityManager()
+                    ->createQuery("SELECT p.id as id, p.primerNombre as nombreJefe, p.primerApellido as apellidoJefe
+                       FROM ComunesTablasBundle:Persona p
+                       JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ofic.personaIdJefe = p.id
+                       JOIN ComunesTablasBundle:GeoMunicipio gm WITH ofic.geoMunicipio = gm.id AND gm.id = '$municipio'")
+                    ->getResult();
+        }
+    	
+
+
+    }
+    
+    public function getBuscarJefe($id)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT p.primerNombre as nombreJefe, p.primerApellido as apellidoJefe
+                                   FROM ComunesTablasBundle:Persona p
+                                   JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ofic.personaIdJefe = p.id AND ofic.id = '$id'")
+                                ->setMaxResults(1)
        				->getResult();
 
 

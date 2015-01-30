@@ -1,0 +1,30 @@
+enteejecutor:
+    path:     /
+    defaults: { _controller: "SrpvAdminBundle:EnteEjecutor:index" }
+
+enteejecutor_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvAdminBundle:EnteEjecutor:show" }
+
+enteejecutor_new:
+    path:     /new
+    defaults: { _controller: "SrpvAdminBundle:EnteEjecutor:new" }
+
+enteejecutor_create:
+    path:     /create
+    defaults: { _controller: "SrpvAdminBundle:EnteEjecutor:create" }
+    requirements: { _method: post }
+
+enteejecutor_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvAdminBundle:EnteEjecutor:edit" }
+
+enteejecutor_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvAdminBundle:EnteEjecutor:update" }
+    requirements: { _method: post|put }
+
+enteejecutor_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvAdminBundle:EnteEjecutor:delete" }
+    requirements: { _method: post|delete }

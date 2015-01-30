@@ -1,0 +1,4 @@
+#Comunes\SecurityBundle\Entity\Usuario:
+#    properties:
+#        username:
+#            - NotBlank: ~

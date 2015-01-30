@@ -1,0 +1,8 @@
+ajaxUpdateMunicipio:
+    path:     /ajaxUpdateMunicipio/{id}
+    defaults: { _controller: SrpvAdminBundle:Ajax:ajaxUpdateMunicipio }
+
+ajaxUpdateParroquia:
+    path:     /ajaxUpdateParroquia/{id}
+    defaults: { _controller: SrpvAdminBundle:Ajax:ajaxUpdateParroquia }
+     

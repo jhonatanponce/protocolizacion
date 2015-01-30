@@ -1,0 +1,218 @@
+Srpv\ProtocolizacionBundle\Entity\Desarrollo:
+    type: entity
+    table: DESARROLLO
+    indexes:
+        IDX_DAC6569CAB9CF394:
+            columns:
+                - FUENTE_FINANCIAMIENTO_ID
+        IDX_DAC6569C6F3929D7:
+            columns:
+                - GEO_ESTADO_ID
+        IDX_DAC6569C7181F310:
+            columns:
+                - GEO_MUNICIPIO_ID
+        IDX_DAC6569C5D9234E7:
+            columns:
+                - GEO_PARROQUIA_ID
+        IDX_DAC6569CE8EA1841:
+            columns:
+                - USUARIO_ID
+        IDX_DAC6569C38D19D78:
+            columns:
+                - ENTE_EJECUTOR_ID
+        IDX_DAC6569C79F45E9B:
+            columns:
+                - FUENTE_DATOS_ENTRADA_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        avCallEsqCarr:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: AV_CALL_ESQ_CARR
+        coordenadas:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: COORDENADAS
+        descripcion:
+            type: string
+            nullable: true
+            length: 300
+            fixed: false
+            comment: ''
+            column: DESCRIPCION
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        fechaTransferencia:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_TRANSFERENCIA
+        linderoEste:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: LINDERO_ESTE
+        linderoNorte:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: LINDERO_NORTE
+        linderoOeste:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: LINDERO_OESTE
+        linderoSur:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: LINDERO_SUR
+        loteTerrenoMt2:
+            type: decimal
+            nullable: true
+            precision: 10
+            scale: 2
+            comment: ''
+            column: LOTE_TERRENO_MT2
+        nombre:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+            column: NOMBRE
+        titularidadDelTerreno:
+            type: string
+            nullable: true
+            length: 1
+            fixed: true
+            comment: ''
+            column: TITULARIDAD_DEL_TERRENO
+        totalViviendas:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: TOTAL_VIVIENDAS
+        totalUnidades:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: TOTAL_UNIDADES
+        totalViviendasProtocolizadas:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: TOTAL_VIVIENDAS_PROTOCOLIZADAS
+        urbanBarrio:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: URBAN_BARRIO
+        zona:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: ZONA
+    manyToOne:
+        fuenteFinanciamiento:
+            targetEntity: FuenteFinanciamiento
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                FUENTE_FINANCIAMIENTO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoEstado:
+            targetEntity: Comunes\TablasBundle\Entity\GeoEstado
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_ESTADO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoMunicipio:
+            targetEntity: Comunes\TablasBundle\Entity\GeoMunicipio
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_MUNICIPIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        geoParroquia:
+            targetEntity: Comunes\TablasBundle\Entity\GeoParroquia
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                GEO_PARROQUIA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        enteEjecutor:
+            targetEntity: EnteEjecutor
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ENTE_EJECUTOR_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fuenteDatosEntrada:
+            targetEntity: FuenteDatosEntrada
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                FUENTE_DATOS_ENTRADA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

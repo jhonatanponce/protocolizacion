@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * TasaInteres
  *
- * @ORM\Table(name="TASA_INTERES", indexes={@ORM\Index(name="IDX_D16E7134AB9CF394", columns={"FUENTE_FINANCIAMIENTO_ID"}), @ORM\Index(name="IDX_D16E7134E8EA1841", columns={"USUARIO_ID"})})
+ * @ORM\Table(name="TASA_INTERES", indexes={@ORM\Index(name="IDX_D16E7134AB9CF394", columns={"FUENTE_FINANCIAMIENTO_ID"}), @ORM\Index(name="IDX_D16E713467A51867", columns={"GACETAS_PTOS_CTA_ID"}), @ORM\Index(name="IDX_D16E7134E8EA1841", columns={"USUARIO_ID"})})
  * @ORM\Entity
  */
 class TasaInteres
@@ -21,7 +21,7 @@ class TasaInteres
      * @ORM\SequenceGenerator(sequenceName="TASA_INTERES_id_seq", allocationSize=1, initialValue=1)
      */
     private $id;
-    
+
     /**
      * @var string
      *
@@ -32,9 +32,8 @@ class TasaInteres
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="FECHA_ACTUALZACION", type="date", nullable=true)
+     * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
      */
-    
     private $fechaActualizacion;
 
     /**
@@ -54,6 +53,13 @@ class TasaInteres
     /**
      * @var string
      *
+     * @ORM\Column(name="PROPORCION_SALARIO", type="decimal", precision=6, scale=2, nullable=false)
+     */
+    private $proporcionSalario;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="TASA_INTERES", type="decimal", precision=4, scale=2, nullable=false)
      */
     private $tasaInteres;
@@ -67,6 +73,16 @@ class TasaInteres
      * })
      */
     private $fuenteFinanciamiento;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\GacetasPuntosCta
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\GacetasPuntosCta")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="GACETAS_PTOS_CTA_ID", referencedColumnName="id")
+     * })
+     */
+    private $gacetasPtosCta;
 
     /**
      * @var \Comunes\SecurityBundle\Entity\Usuario
@@ -89,12 +105,12 @@ class TasaInteres
     {
         return $this->id;
     }
-    
-        /**
+
+    /**
      * Set estatus
      *
      * @param string $estatus
-     * @return TasaFongar
+     * @return TasaInteres
      */
     public function setEstatus($estatus)
     {
@@ -114,20 +130,20 @@ class TasaInteres
     }
 
     /**
-     * Set fechaActualzacion
+     * Set fechaActualizacion
      *
-     * @param \DateTime $fechaActualzacion
+     * @param \DateTime $fechaActualizacion
      * @return TasaInteres
      */
-    public function setFechaActualizacion($fechaActualzacion)
+    public function setFechaActualizacion($fechaActualizacion)
     {
-        $this->fechaActualizacion = $fechaActualzacion;
+        $this->fechaActualizacion = $fechaActualizacion;
 
         return $this;
     }
 
     /**
-     * Get fechaActualzacion
+     * Get fechaActualizacion
      *
      * @return \DateTime 
      */
@@ -183,6 +199,29 @@ class TasaInteres
     }
 
     /**
+     * Set proporcionSalario
+     *
+     * @param string $proporcionSalario
+     * @return TasaInteres
+     */
+    public function setProporcionSalario($proporcionSalario)
+    {
+        $this->proporcionSalario = $proporcionSalario;
+
+        return $this;
+    }
+
+    /**
+     * Get proporcionSalario
+     *
+     * @return string 
+     */
+    public function getProporcionSalario()
+    {
+        return $this->proporcionSalario;
+    }
+
+    /**
      * Set tasaInteres
      *
      * @param string $tasaInteres
@@ -226,6 +265,29 @@ class TasaInteres
     public function getFuenteFinanciamiento()
     {
         return $this->fuenteFinanciamiento;
+    }
+
+    /**
+     * Set gacetasPtosCta
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\GacetasPuntosCta $gacetasPtosCta
+     * @return TasaInteres
+     */
+    public function setGacetasPtosCta(\Srpv\ProtocolizacionBundle\Entity\GacetasPuntosCta $gacetasPtosCta = null)
+    {
+        $this->gacetasPtosCta = $gacetasPtosCta;
+
+        return $this;
+    }
+
+    /**
+     * Get gacetasPtosCta
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\GacetasPuntosCta 
+     */
+    public function getGacetasPtosCta()
+    {
+        return $this->gacetasPtosCta;
     }
 
     /**

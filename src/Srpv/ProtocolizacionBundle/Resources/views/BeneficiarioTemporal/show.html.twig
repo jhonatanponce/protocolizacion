@@ -1,0 +1,88 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span>
+            <h3 class="panel-title" style="display: inline;">Consulta Detalle del Archivo</h3>
+        </div>
+
+        <div id="yw0" class="panel-body">    
+            {% if entities|length > 0 %}
+                
+                <table class="records_list table table-bordered table-striped table-hover" border="1">
+                    <tr>
+                        <th> Desarollo Habitacional: </th>
+                        <td>{{ entities[0]['desarrollo'] }}</td>
+                        <th> Unidad Habitacional: </th>
+                        <td>{{ entities[0]['unidad'] }}</td>
+                    </tr>
+                    <tr>
+                        <th>Usuario Carga Archivo: </th>
+                        <td>{{ entities[0]['nombre_u'] }} &nbsp;{{entities[0]['apellido_u'] }}</td>
+                        <th>Fecha de Carga: </th>
+                        <td>{% if entities[0]['fechaCreacion'] %}{{  entities[0]['fechaCreacion']|date('Y-m-d') }}{% endif %}</td>
+                    </tr>
+                    <tr>
+                    
+                        <th>Nombre del Archivo: </th>
+                        <td colspan='3'>{{ entities[0]['nombreArchivo'] }}</td>
+                    </tr>
+            
+                </table>
+                
+                
+                <table class="records_list table table-bordered table-striped table-hover" border="1">
+                    <thead>
+                        <tr class="success">
+                            <th>Id</th>
+                            <th>Cédula</th>
+                            <th>Nombre Completo (SAIME)</th>
+                            <th>Nombre Completo en el archivo</th>
+
+                        </tr>
+                     </thead>
+                    <tbody  id="pagination">{# Permite paginar la tabla #}
+                    {% set i=1 %}
+                    {% for entity in entities %}
+                   
+                        <tr>
+                            <td>{{ i }}</td>                         
+                            <td>
+                                {% if entity['nacionalidad'] == '1' %}
+                                    V-                                
+                                {% else %}
+                                    E-
+                                {% endif %}
+                               
+                                {{ entity['cedula'] }}
+                            
+                            </td>                            
+                            <td>{{ entity['nombre'] }} &nbsp;{{entity['apellido'] }} &nbsp;{{entity['apellido2'] }}</td>
+                            <td>{{ entity['nombreCompleto'] }}</td>                          
+                            
+                        </tr>
+                        {% set i = i + 1 %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="holder"></div>{# Paginador: control de paginas #}                
+            {% else %}
+                
+                <h2 class="alert alert-dismissable alert-warning alert-link text-center">
+                    
+                    <strong>No Existen Registros</strong>
+                    
+                </h2>
+                
+            {% endif %}
+        </div>
+    </div>
+    <div align="right">
+        <a href="{{ path('beneficiariotemporal') }}" class="btn btn-success" role="button">Volver</a>
+        
+    </div>
+    <br>
+{% endblock %}

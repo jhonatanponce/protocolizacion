@@ -1,0 +1,168 @@
+10
+
+dir
+172
+https://192.168.1.240/scm/svn/sisprov/sisprov/web/js/jquery-ui-1.8.19.custom/development-bundle/demos
+https://192.168.1.240/scm/svn/sisprov
+
+
+
+2014-11-04T20:28:42.314000Z
+76
+asegovia
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+717a9234-4901-0010-95a3-a930f25de646
+
+accordion
+dir
+
+addClass
+dir
+
+animate
+dir
+
+autocomplete
+dir
+
+button
+dir
+
+datepicker
+dir
+
+demos.css
+file
+
+
+
+
+2014-11-15T16:35:30.000000Z
+2e2ec04700af4ac5681a956cfe405c47
+2014-11-04T20:28:42.314000Z
+76
+asegovia
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14338
+
+dialog
+dir
+
+draggable
+dir
+
+droppable
+dir
+
+effect
+dir
+
+hide
+dir
+
+images
+dir
+
+index.html
+file
+
+
+
+
+2014-11-15T16:35:30.000000Z
+333012263980387c0a6719e7ce2ce0e6
+2014-11-04T20:28:42.314000Z
+76
+asegovia
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+14617
+
+position
+dir
+
+progressbar
+dir
+
+removeClass
+dir
+
+resizable
+dir
+
+selectable
+dir
+
+show
+dir
+
+slider
+dir
+
+sortable
+dir
+
+switchClass
+dir
+
+tabs
+dir
+
+toggle
+dir
+
+toggleClass
+dir
+

@@ -1,0 +1,97 @@
+Srpv\ProtocolizacionBundle\Entity\BitacoraArchivo:
+    type: entity
+    table: BITACORA_ARCHIVO
+    indexes:
+        IDX_CA1345E2C1AFFA52:
+            columns:
+                - ID_CONTROL
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        codigoEstatus:
+            type: string
+            nullable: true
+            length: 2
+            fixed: false
+            comment: ''
+            column: CODIGO_ESTATUS
+        codigoSqlcode:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: CODIGO_SQLCODE
+        codigoSqlerrm:
+            type: string
+            nullable: true
+            length: 500
+            fixed: false
+            comment: ''
+            column: CODIGO_SQLERRM
+        codigoSudeban:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            comment: ''
+            column: CODIGO_SUDEBAN
+        fechaProceso:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_PROCESO
+        nombreArchivo:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: NOMBRE_ARCHIVO
+        numeroContrato:
+            type: string
+            nullable: true
+            length: 20
+            fixed: false
+            comment: ''
+            column: NUMERO_CONTRATO
+        observaciones:
+            type: text
+            nullable: true
+            length: null
+            fixed: false
+            comment: ''
+            column: OBSERVACIONES
+        procedimiento:
+            type: string
+            nullable: true
+            length: 250
+            fixed: false
+            comment: ''
+            column: PROCEDIMIENTO
+        tipoArchivo:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: TIPO_ARCHIVO
+    manyToOne:
+        idControl:
+            targetEntity: ControlArchivos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                ID_CONTROL:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,87 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Persona list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Cedula</th>
+                <th>Codigohab</th>
+                <th>Codigomovil</th>
+                <th>Codigo3</th>
+                <th>Correoalterno</th>
+                <th>Correoprincipal</th>
+                <th>Direccion</th>
+                <th>Discapacidad</th>
+                <th>Familiar</th>
+                <th>Fechanacimiento</th>
+                <th>Nacionalidad</th>
+                <th>Nombrecompleto</th>
+                <th>Noonidex</th>
+                <th>Observaciones</th>
+                <th>Pasaporte</th>
+                <th>Primerapellido</th>
+                <th>Primernombre</th>
+                <th>Segundoapellido</th>
+                <th>Segundonombre</th>
+                <th>Syssistemaid</th>
+                <th>Telefonohab</th>
+                <th>Telefonomovil</th>
+                <th>Telefono3</th>
+                <th>Ultimocenso</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('persona_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.cedula }}</td>
+                <td>{{ entity.codigoHab }}</td>
+                <td>{{ entity.codigoMovil }}</td>
+                <td>{{ entity.codigo3 }}</td>
+                <td>{{ entity.correoAlterno }}</td>
+                <td>{{ entity.correoPrincipal }}</td>
+                <td>{{ entity.direccion }}</td>
+                <td>{{ entity.discapacidad }}</td>
+                <td>{{ entity.familiar }}</td>
+                <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.nacionalidad }}</td>
+                <td>{{ entity.nombreCompleto }}</td>
+                <td>{{ entity.noOnidex }}</td>
+                <td>{{ entity.observaciones }}</td>
+                <td>{{ entity.pasaporte }}</td>
+                <td>{{ entity.primerApellido }}</td>
+                <td>{{ entity.primerNombre }}</td>
+                <td>{{ entity.segundoApellido }}</td>
+                <td>{{ entity.segundoNombre }}</td>
+                <td>{{ entity.sysSistemaId }}</td>
+                <td>{{ entity.telefonoHab }}</td>
+                <td>{{ entity.telefonoMovil }}</td>
+                <td>{{ entity.telefono3 }}</td>
+                <td>{% if entity.ultimoCenso %}{{ entity.ultimoCenso|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('persona_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('persona_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('persona_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

@@ -1,0 +1,149 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-record"></span>
+        <h3 class="panel-title" style="display: inline;">Detalle del Beneficiario</h3>
+    </div>
+    
+    <div id="yw0" class="panel-body table-responsive">
+        
+        <table class="records_list table table-bordered table-striped table-hover" border="1">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ entity.persona.primerNombre ~ ' ' ~ entity.persona.primerApellido}}</td>
+                </tr>
+                <tr>
+                    <th>Rif</th>
+                    <td>{{ entity.rif }}</td>
+                </tr>
+                <tr>
+                    <th>Condición de Trabajo</th>
+                    <td>{{ entity.condicionTrabajo }}</td>
+                </tr>
+                <tr>
+                    <th>Fuente de Ingreso</th>
+                    <td>{{ entity.fuenteIngreso }}</td>
+                </tr>
+                <tr>
+                    <th>Relación de Trabajo</th>
+                    <td>{{ entity.relacionTrabajo }}</td>
+                </tr>
+                <tr>
+                    <th>Sector de Trabajo</th>
+                    <td>{{ entity.sectorTrabajoId }}</td>
+                </tr>
+                <tr>
+                    <th>Empresa</th>
+                    <td>{{ entity.nombreEmpresa }}</td>
+                </tr>
+                <tr>
+                    <th>Dirección de la Empresa</th>
+                    <td>{{ entity.direccionEmpresa }}</td>
+                </tr>
+                <tr>
+                    <th>Teléfono del Trabajo</th>
+                    <td>{{ entity.telefonoTrabajo }}</td>
+                </tr>
+                <tr>
+                    <th>Cargo</th>
+                    <td>{{ entity.genCargo }}</td>
+                </tr>
+                <tr>
+                    <th>Ingreso Mensual</th>
+                    <td>{{ entity.ingresoMensual }}</td>
+                </tr>
+                <tr>
+                    <th>Ingreso Declarado</th>
+                    <td>{{ entity.ingresoDeclarado }}</td>
+                </tr>
+                
+                <tr>
+                    <th>Ingreso Promedio FAOV</th>
+                    <td>{{ entity.ingresoPromedioFaov }}</td>
+                </tr>
+                <tr>
+                    <th>Cotizaq Faov</th>
+                    <td>{{ entity.cotizaFaov ? 'SI' : 'NO' }}</td>
+                </tr>
+                <tr>
+                    <th>Dirección Anterior</th>
+                    <td>{{ entity.direccionAnterior }}</td>
+                </tr>
+                <tr>
+                    <th>Estado</th>
+                    <td>{{ entity.geoEstado }}</td>
+                </tr>
+                <tr>
+                    <th>Municipio</th>
+                    <td>{{ entity.geoMunicipio }}</td>
+                </tr>
+                <tr>
+                    <th>Parroquia</th>
+                    <td>{{ entity.geoParroquia }}</td>
+                </tr>
+                <tr>
+                    <th>Urbanización/Barrio</th>
+                    <td>{{ entity.urbanBarrio }}</td>
+                </tr>
+                <tr>
+                    <th>Av/Call/Esq/Carr</th>
+                    <td>{{ entity.avCallEsqCarr }}</td>
+                </tr>
+                <tr>
+                    <th>Zona</th>
+                    <td>{{ entity.zona }}</td>
+                </tr>
+                <tr>
+                    <th>Protocolizado</th>
+                    <td>{{ entity.protocolizado ? 'SI' : 'NO' }}</td>
+                </tr>
+                <tr>
+                    <th>Estatus</th>
+                    <td>{{ entity.estatusBeneficiario }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha del Último Censo</th>
+                    <td>{{ entity.fechaUltimoCenso|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha Creación</th>
+                    <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha Actualizacion</th>
+                    <td>{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        
+        <div class="delete">
+            <div class="row">
+                <div class="col-md-2">
+                        {% if delete_form is defined %}
+                            {{ form(delete_form) }}
+                        {% endif %} 
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ path('beneficiario_edit', { 'id': entity.id }) }}" class="btn btn-warning">Modificar</a>
+                </div>
+            </div>                
+        </div>
+    </div>
+</div>
+
+<div align="right">
+    <a href="{{ path('beneficiario') }}" class="btn btn-success" role="button">Volver</a>
+</div>
+
+<br>            
+{% endblock %}

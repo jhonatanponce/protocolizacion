@@ -1,4 +1,4 @@
-<select id="unidadid" name="unidadid" class="form-control">
+<select id="unidadid" name="unidadid" required="required" class="form-control">
     <option value="">Seleccione Nombre de Unidad</option>
     {% for unidad in unidades %}
     <option value="{{ unidad.id }}">{{ unidad.nombre }}</option>

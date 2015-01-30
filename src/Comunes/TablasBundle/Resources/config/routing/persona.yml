@@ -1,0 +1,30 @@
+#persona:
+#    path:     /
+#    defaults: { _controller: "ComunesTablasBundle:Persona:index" }
+#
+#persona_show:
+#    path:     /{id}/show
+#    defaults: { _controller: "ComunesTablasBundle:Persona:show" }
+
+persona_new:
+    path:     /new
+    defaults: { _controller: "ComunesTablasBundle:Persona:new" }
+
+persona_create:
+    path:     /create
+    defaults: { _controller: "ComunesTablasBundle:Persona:create" }
+    requirements: { _method: post }
+
+#persona_edit:
+#    path:     /{id}/edit
+#    defaults: { _controller: "ComunesTablasBundle:Persona:edit" }
+#
+#persona_update:
+#    path:     /{id}/update
+#    defaults: { _controller: "ComunesTablasBundle:Persona:update" }
+#    requirements: { _method: post|put }
+#
+#persona_delete:
+#    path:     /{id}/delete
+#    defaults: { _controller: "ComunesTablasBundle:Persona:delete" }
+#    requirements: { _method: post|delete }

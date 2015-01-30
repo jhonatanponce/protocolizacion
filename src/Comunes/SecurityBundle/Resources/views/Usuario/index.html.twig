@@ -1,0 +1,65 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span>
+            <h3 class="panel-title" style="display: inline;">
+                {% if title is defined %}{{title}}{% endif %}
+            </h3>
+        </div>
+
+        <div id="yw0" class="panel-body">    
+            {% if entities|length > 0 %}
+        <table class="records_list table table-bordered table-striped table-hover" border="1">
+            <thead>
+                <tr class="success">
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Usuario</th>                    
+                    <th>Cuenta Habilitada</th>
+                    <th>Fecha Caducidad</th>
+                    <th>Ultimo Acceso</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="pagination">
+                {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('usuario_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+                    </td>
+                    <td>{{ entity.nombre }}</td>
+                    <td>{{ entity.apellido }}</td>
+                    <td>{{ entity.usuario }}</td>
+                    <td>{{ entity.cuentaHabilitada }}</td>
+                    <td>{% if entity.fechaCaducidad %}{{ entity.fechaCaducidad|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.ultimoAcceso %}{{ entity.ultimoAcceso|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td class="text-center">
+                        <a href="{{ path('usuario_show', { 'id': entity.id }) }}" class="glyphicon glyphicon-search" alt="Ver" title="Ver"></a>&nbsp;|&nbsp;
+                        <a href="{{ path('usuario_habilitar', { 'id': entity.id }) }}" class="glyphicon glyphicon-off" alt="Habilitar / Deshabilitar" title="Habilitar / Deshabilitar"></a>&nbsp;|&nbsp;&nbsp;
+                        <a href="{{ path('usuario_admin_cambiarclave', { 'id': entity.id }) }}" class="glyphicon glyphicon-cog"  alt="Cambiar Clave" title="Cambiar Clave"></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="holder"></div>{# Paginador: control de paginas #}                    
+                {% else %}
+
+                    <h2 class="alert alert-dismissable alert-warning alert-link text-center">
+
+                        <strong>No Existen Registros</strong>
+
+                    </h2>
+
+                {% endif %}
+        </div>
+    </div>
+    <div align="right">
+        <a href="{{ path('sicc_admin_homepage') }}" class="btn btn-success" role="button">Inicio</a>
+        <a href="{{ path('usuario_buscarPersona') }}" class="btn btn-primary">Crear Registro</a>
+    </div>
+    <br>
+{% endblock %}

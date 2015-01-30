@@ -1,0 +1,30 @@
+tiposubsidio:
+    path:     /
+    defaults: { _controller: "SrpvAdminBundle:TipoSubsidio:index" }
+
+tiposubsidio_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvAdminBundle:TipoSubsidio:show" }
+
+tiposubsidio_new:
+    path:     /new
+    defaults: { _controller: "SrpvAdminBundle:TipoSubsidio:new" }
+
+tiposubsidio_create:
+    path:     /create
+    defaults: { _controller: "SrpvAdminBundle:TipoSubsidio:create" }
+    requirements: { _method: post }
+
+tiposubsidio_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvAdminBundle:TipoSubsidio:edit" }
+
+tiposubsidio_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvAdminBundle:TipoSubsidio:update" }
+    requirements: { _method: post|put }
+
+tiposubsidio_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvAdminBundle:TipoSubsidio:delete" }
+    requirements: { _method: post|delete }

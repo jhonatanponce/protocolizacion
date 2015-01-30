@@ -17,7 +17,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
-            new Ob\HighchartsBundle\ObHighchartsBundle(),
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
             new Libreria\ReporteadorBundle\LibreriaReporteadorBundle(),
             new Comunes\TablasBundle\ComunesTablasBundle(),
             new Comunes\OrganismosPublicosBundle\ComunesOrganismosPublicosBundle(),

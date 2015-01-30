@@ -1,6 +1,7 @@
 Comunes\SecurityBundle\Entity\Usuario:
     type: entity
     table: USUARIO
+    repositoryClass: Comunes\SecurityBundle\Repository\SecurityRepository
     indexes:
         IDX_1D204E47E2F136F2:
             columns:
@@ -295,9 +296,20 @@ Comunes\SecurityBundle\Entity\Usuario:
             joinColumns:
                 GEN_TIPO_USUARIO_ID:
                     referencedColumnName: id
-            orphanRemoval: false  
+            orphanRemoval: false   
+#    manyToMany:
+#        roles:
+#            targetEntity: Comunes\SecurityBundle\Entity\Rol
+#            joinTable:
+#                name: usuario_has_rol
+#                joinColumns:
+#                    usuario_id:
+#                        referencedColumnName: id
+#                inverseJoinColumns:
+#                    rol_id:
+#                        referencedColumnName: id  
     oneToMany:
         usuarioRoles:
           targetEntity: Comunes\SecurityBundle\Entity\UsuarioHasRol
-          mappedBy: usuario            
+          mappedBy: usuario                         
     lifecycleCallbacks: {  }

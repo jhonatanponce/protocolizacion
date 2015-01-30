@@ -83,6 +83,10 @@ class RegistroPublico
      */
     private $usuario;
 
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 
 
     /**

@@ -1,0 +1,46 @@
+10
+
+dir
+172
+https://192.168.1.240/scm/svn/sisprov/sisprov/web/js/DataTables-1.9.1/media/unit_testing/tests_onhold
+https://192.168.1.240/scm/svn/sisprov
+
+
+
+2014-11-04T20:28:42.314000Z
+76
+asegovia
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+717a9234-4901-0010-95a3-a930f25de646
+
+1_dom
+dir
+
+2_js
+dir
+
+3_ajax
+dir
+
+4_server-side
+dir
+
+5_ajax_objects
+dir
+
+6_delayed_rendering
+dir
+

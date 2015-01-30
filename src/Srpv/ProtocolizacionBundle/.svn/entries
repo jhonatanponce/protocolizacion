@@ -1,0 +1,80 @@
+10
+
+dir
+172
+https://192.168.1.240/scm/svn/sisprov/sisprov/src/Srpv/ProtocolizacionBundle
+https://192.168.1.240/scm/svn/sisprov
+
+
+
+2014-12-30T03:38:44.676000Z
+172
+jponce
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+717a9234-4901-0010-95a3-a930f25de646
+
+Controller
+dir
+
+DependencyInjection
+dir
+
+Entity
+dir
+
+Form
+dir
+
+Resources
+dir
+
+SrpvProtocolizacionBundle.php
+file
+
+
+
+
+2014-11-09T07:01:27.000000Z
+1cacb6ec45b02131d2b45b1aebc9b5fc
+2014-10-22T14:46:35.091000Z
+2
+dgomes
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+146
+
+Tests
+dir
+

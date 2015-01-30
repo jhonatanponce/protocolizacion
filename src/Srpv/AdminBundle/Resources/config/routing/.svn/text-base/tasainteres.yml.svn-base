@@ -1,0 +1,30 @@
+tasainteres:
+    path:     /
+    defaults: { _controller: "SrpvAdminBundle:TasaInteres:index" }
+
+tasainteres_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvAdminBundle:TasaInteres:show" }
+
+tasainteres_new:
+    path:     /new
+    defaults: { _controller: "SrpvAdminBundle:TasaInteres:new" }
+
+tasainteres_create:
+    path:     /create
+    defaults: { _controller: "SrpvAdminBundle:TasaInteres:create" }
+    requirements: { _method: post }
+
+tasainteres_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvAdminBundle:TasaInteres:edit" }
+
+tasainteres_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvAdminBundle:TasaInteres:update" }
+    requirements: { _method: post|put }
+
+tasainteres_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvAdminBundle:TasaInteres:delete" }
+    requirements: { _method: post|delete }

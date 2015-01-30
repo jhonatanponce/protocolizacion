@@ -1,0 +1,19 @@
+unidadfamiliar:
+    path:     /
+    defaults: { _controller: "SrpvProtocolizacionBundle:UnidadFamiliar:index" }
+
+unidadfamiliar_show:
+    path:     /{id}/{message}/show
+    defaults: { _controller: "SrpvProtocolizacionBundle:UnidadFamiliar:show", message:0}
+
+unidadfamiliar_new:
+    path:     /{id}/new
+    defaults: { _controller: "SrpvProtocolizacionBundle:UnidadFamiliar:new" }
+
+unidadfamiliar_create:
+    path:     /create
+    defaults: { _controller: "SrpvProtocolizacionBundle:UnidadFamiliar:create" }
+
+unidadfamiliar_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvProtocolizacionBundle:UnidadFamiliar:edit" }

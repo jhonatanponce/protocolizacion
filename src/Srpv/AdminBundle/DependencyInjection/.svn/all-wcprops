@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Srpv/AdminBundle/DependencyInjection
+END
+Configuration.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Srpv/AdminBundle/DependencyInjection/Configuration.php
+END
+SrpvAdminExtension.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Srpv/AdminBundle/DependencyInjection/SrpvAdminExtension.php
+END

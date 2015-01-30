@@ -15,18 +15,21 @@ Historial de Revision:
 -----------------------------------
 #}
 {% if app.user.nombre is not defined %}
-    {% block menu %}{% endblock %}
+    {% block menu %}{{parent()}}{% endblock %}
 {% endif %}
 {% block body -%}
 
     {% block main %}
 
-        <br/>
-        <h2 class="alert alert-dismissable alert-success alert-link text-center">
-            <strong>Sistema de Protocolización de Viviendas</strong>
-        </h2>
-        <div class="text-center">
+        <div class="text-center">  
+            <div class="page-header">
+              <h2 id="nav"><strong>Sistema de Protocolización de Viviendas</strong></h2>
+            </div>
+            <br/>
             <img src="{{ asset('img/icono_home.png') }}" alt="Gobierno Bolivariano!"/>
+            <br/>
+            <br/>
+            <br/>
         </div>
         
     {% endblock %}

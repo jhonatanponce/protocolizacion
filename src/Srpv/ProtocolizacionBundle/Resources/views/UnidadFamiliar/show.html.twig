@@ -1,0 +1,158 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-record"></span>
+        <h3 class="panel-title" style="display: inline;">Unidad Familiar</h3>
+    </div>
+    {% if message %}
+        <div class="alert alert-dismissable alert-warning">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <h4>
+            {{message}}            
+          </h4>
+        </div>
+    {% endif %}
+    
+    {% if entity %}
+
+        <div id="yw0" class="panel-body table-responsive">
+        
+            <table class="records_list table table-bordered table-striped table-hover" border="1">
+                <tbody>
+                    <tr>
+                        <th>Cédula</th>
+                        <td>{{ doc_identidad }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>{{ entity.beneficiario.persona.primerNombre ~ ' ' ~ entity.beneficiario.persona.primerApellido}}</td>
+                    </tr>
+                    <tr>
+                        <th>Unidad Familiar</th>
+                        <td>{{ entity.nombre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Condición de la Unidad Familiar</th>
+                        <td>{{ entity.condicionUnidadFamiliar }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ingreso Total Familiar</th>
+                        <td>{{ entity.ingresoTotalFamiliar }}</td>
+                    </tr>
+                    <tr>
+                        <th>Procedencia del Beneficio</th>
+                        <td>{{ entity.procedenciaBeneficio }}</td>
+                    </tr>
+                    <tr>
+                        <th>Total Persona Cotizando Faov</th>
+                        <td>{{ entity.totalPersonasCotizando }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cantidad de Discapacitados</th>
+                        <td>{{ entity.cantidadDispacitados }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha Creación</th>
+                        <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha Actualizacion</th>
+                        <td>{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+        </div>
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span>
+            <h3 class="panel-title" style="display: inline;">Grupo Familiar</h3>
+        </div>
+        {% if entity %}
+        <div id="yw0" class="panel-body">
+            <table class="records_list table table-bordered table-striped table-hover" border="1">
+                <thead>
+                    <tr class="success">
+                        <th>Id</th>
+                        <th>Cédula</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Nombre</th>
+                        <th>Sexo</th>
+                        <th>Estado Civil</th>
+                        <th>Parentesco</th>
+                        <th>Tipo Sujeto Atención</th>
+                        <th>Ingreso Mensual</th>
+                        <th>Cotiza Faov</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for grupo in grupo_familiar %}
+                        <tr>
+                            <td>{{grupo.id}}</td>
+                            <td>
+                                {% if grupo.persona.nacionalidad == 1 %}
+                                    {{ 'V' ~ '-' ~ grupo.persona.cedula}}
+                                {% elseif grupo.persona.nacionalidad == 1 %}
+                                    {{ 'E' ~ '-' ~ grupo.persona.cedula}}
+                                {% else %}
+
+                                {% endif %}
+                            </td>
+                            <td>{{grupo.persona.fechaNacimiento|date('Y-m-d H:i:s') }}</td>
+                            <td>{{grupo.persona.primerNombre ~ ' ' ~ grupo.persona.primerApellido}}</td>
+                            <td>{{grupo.persona.genSexo.nombre}}</td>
+                            <td>{{grupo.persona.genEdoCivil.nombre}}</td>
+                            <td>{{grupo.genParentesco.nombre}}</td>
+                            <td>{{grupo.tipoSujetoAtencion}}</td>
+                            <td>{{grupo.ingresoMensual}}</td>
+                            <td>
+                                {% if grupo.cotizaFaov == 1 %}
+                                    Si
+                                {% else %}
+                                    No
+                                {% endif %}
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ path('grupofamiliar_edit', { 'id': grupo.id }) }}" class="glyphicon glyphicon-pencil"></a>
+                                &nbsp;|&nbsp;
+                                <a href="{{ path('grupofamiliar_delete', { 'id': grupo.id }) }}" class="glyphicon glyphicon-trash"></a>
+                            </td>
+                        </tr>   
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+            <div class="alert alert-dismissable alert-warning">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <h4>
+                NO SE HA CARGADO LA UNIDAD FAMILIAR        
+                </h4>
+            </div>
+        {% endif%}
+    {% else %}
+        <div class="alert alert-dismissable alert-warning">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <h4>
+            NO SE HA CARGADO LA UNIDAD FAMILIAR        
+          </h4>
+        </div>
+    {% endif%}
+</div>
+
+<div align="right">
+    <a href="{{ path('beneficiario') }}" class="btn btn-success" role="button">Volver</a>
+    {% if entity %}
+        <a href="{{ path('unidadfamiliar_new', { 'id': beneficiario_id, 'param_editar': 'editar' }) }}" class="btn btn-warning">Modificar Unidad</a>
+        <a href="{{ path('grupofamiliar_new', { 'id': entity.id}) }}" class="btn btn-primary">Crear Grupo Familiar</a>
+    {% else %}
+        <a href="{{ path('unidadfamiliar_new', { 'id': beneficiario_id }) }}" class="btn btn-primary">Crear Registro</a>
+    {% endif %}
+</div>
+
+<br>            
+{% endblock %}

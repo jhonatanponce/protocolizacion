@@ -1,3 +1,7 @@
+comunes_tablas_persona:
+    resource: "@ComunesTablasBundle/Resources/config/routing/persona.yml"
+    prefix:   /admin/persona
+
 comunes_tablas_homepage:
     path:     /hello/{name}
     defaults: { _controller: ComunesTablasBundle:Default:index }

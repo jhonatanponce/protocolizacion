@@ -43,6 +43,15 @@ Comunes\SecurityBundle\Entity\UsuarioHasRol:
 #                ROL_ID:
 #                    referencedColumnName: rol_id
 #            orphanRemoval: false
+#        usuario:
+#            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+#            cascade: {  }
+#            mappedBy: null
+#            inversedBy: null
+#            joinColumns:
+#                USUARIO_ID:
+#                    referencedColumnName: id
+#            orphanRemoval: false
         usuario:
             targetEntity: Comunes\SecurityBundle\Entity\Usuario
             cascade: {  }
@@ -51,5 +60,5 @@ Comunes\SecurityBundle\Entity\UsuarioHasRol:
             joinColumns:
                 USUARIO_ID:
                     referencedColumnName: id
-            orphanRemoval: false
+            orphanRemoval: false            
     lifecycleCallbacks: {  }

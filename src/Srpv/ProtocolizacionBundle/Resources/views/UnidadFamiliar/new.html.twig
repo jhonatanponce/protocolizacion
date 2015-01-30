@@ -1,0 +1,138 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {% block stylesheets %}
+
+    {{ parent() }}
+
+      <link type="text/css" href="{{ asset('js/css/smoothness/jquery-ui-1.8.14.custom.css') }}" type="text/css" rel="stylesheet" />
+
+    {% endblock %}
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+          <span class="glyphicon glyphicon-record"></span>
+          <h3 class="panel-title" style="display: inline;">Datos del Beneficiario</h3>
+        </div>
+        <div id="yw0" class="panel-body table-responsive">
+          <table class="records_list table table-bordered table-striped table-hover" border="1">
+            <tr>
+                <th>Cédula</th>
+                    <td>{{ doc_identidad }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                <td>{{ persona.primerNombre ~ ' ' ~ persona.primerApellido}}</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            <h3 class="panel-title" style="display: inline;">Unidad Familiar</h3>
+        </div>
+        <div id="yw0" class="panel-body">
+            <form id="unidad" name="unidad" class="form-horizontal" action="{{ path('unidadfamiliar_create') }}" method="post">
+              <input type="hidden" name="beneficiario_id" value="{{beneficiario.id}}" />
+              <input type="hidden" name="param_editar" value="{{param_editar}}" />
+              <legend>Datos de la Unidad Familiar</legend>
+                <div class="form-group">
+                   <label class="control-label col-lg-2">Nombre</label>
+                   <div class="col-lg-4">
+                    <input required type="text" id="nombre" name="nombre" class="form-control" value='{{nombre}}'>
+                   </div>
+                </div>
+                <div class="form-group">
+                   <label class="control-label col-lg-2">Condición Unidad Familiar</label>
+                    <div class="col-lg-4">
+                        <select id="condicion_unidad" name="condicion_unidad" class="form-control">
+                            {% if condicion_unidad_id == NULL %}
+                                <option selected="selected" value="">Seleccione La Condición de la Unidad Familiar</option>
+                            {% endif %}
+                            {% for condicion in condicion_unidad %}
+                                {% if condicion_unidad_id == condicion.nombre %}
+                                    <option selected="selected" value="{{ condicion.id }}">{{ condicion.nombre }}</option>
+                                {% else %}
+                                    <option value="{{ condicion.id }}">{{ condicion.nombre }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <label class="control-label col-lg-2">Procedencia Beneficio</label>
+                    <div class="col-lg-4">
+                        <select id="procedencia_beneficio" name="procedencia_beneficio" class="form-control">
+                            {% if procedencia_beneficio_id == NULL %}
+                                <option selected="selected" value="">Seleccione La Procedencia del Beneficio</option>
+                            {% endif %}
+                            {% for procedencia in procedencia_beneficio %}
+                                {% if procedencia_beneficio_id == procedencia.nombre %}
+                                    <option selected="selected" value="{{ procedencia.id }}">{{ procedencia.nombre }}</option>
+                                {% else %}
+                                    <option value="{{ procedencia.id }}">{{ procedencia.nombre }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-4 col-lg-offset-4">
+                        {% if param_editar == NULL %}
+                          <button type="submit" class="btn btn-primary">Crear</button>
+                          <a href="{{ path('beneficiario') }}" class="btn btn-success" role="button">Volver</a>
+                        {% else %}
+                          <button type="submit" class="btn btn-primary">Modificar</button>
+                          <a href="{{ path('unidadfamiliar_show', { 'id': beneficiario.id } ) }}" class="btn btn-success" role="button">Volver</a>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>         
+{% endblock %}
+{% block javascripts %}
+
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/beneficiario.js') }}"></script>
+  
+  <script>
+  $(document).ready(function() {
+
+    $("#unidad").validate({
+        errorPlacement: function(error, element) {
+            error.insertAfter(element);
+        },
+        rules: {
+            'nombre': {
+                required: true
+            },
+            'condicion_unidad': {
+                required: true
+            },
+            'procedencia_beneficio': {
+                required: true
+            }
+
+        },
+        messages: {
+            'nombre': {
+                required: "<p class='requerido'>Requerido.</p>",
+            },
+            'condicion_unidad': {
+                required: "<p class='requerido'>Requerido.</p>",
+            },
+            'procedencia_beneficio': {
+                required: "<p class='requerido'>Requerido.</p>",
+            }
+        }
+    });
+
+  });
+  </script>
+
+  
+{% endblock %}

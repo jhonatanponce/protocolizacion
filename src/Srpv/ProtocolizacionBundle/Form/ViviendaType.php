@@ -15,8 +15,8 @@ class ViviendaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('unidadHabitacional', 'entity', array('label' => 'Unidad Habitacional','class' => 'SrpvProtocolizacionBundle:UnidadHabitacional','property'   => 'nombre','required' => true,'empty_value' => ''))
-            ->add('tipoVivienda', 'entity', array('label' => 'Tipo Vivienda','class' => 'SrpvProtocolizacionBundle:TipoVivienda','property'   => 'nombre','required' => true,'empty_value' => ''))
+            ->add('unidadHabitacional', 'entity', array('label' => 'Unidad Habitacional','class' => 'SrpvProtocolizacionBundle:UnidadHabitacional','property'   => 'nombre','required' => true,'empty_value' => 'Seleccione Nombre De Unidad'))
+            ->add('tipoVivienda', 'entity', array('label' => 'Tipo Vivienda','class' => 'SrpvProtocolizacionBundle:TipoVivienda','property'   => 'nombre','required' => true,'empty_value' => 'Seleccione Tipo de Vivienda'))
             ->add('construccionMt2', 'text', array('label' => 'Construcción Mt2','required' => true))
             ->add('precioVivienda', 'integer', array('label' => 'Precio Vivienda','required' => true))
             ->add('nroPiso', 'text', array('label' => 'Nro. Piso','required' => true))

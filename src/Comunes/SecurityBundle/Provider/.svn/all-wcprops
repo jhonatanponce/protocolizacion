@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/scm/svn/sisprov/!svn/ver/167/sisprov/src/Comunes/SecurityBundle/Provider
+END
+UsuarioBanavihProvider.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/scm/svn/sisprov/!svn/ver/126/sisprov/src/Comunes/SecurityBundle/Provider/UsuarioBanavihProvider.php
+END
+LoginAuthenticator.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/scm/svn/sisprov/!svn/ver/133/sisprov/src/Comunes/SecurityBundle/Provider/LoginAuthenticator.php
+END
+AuthenticationListener.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/scm/svn/sisprov/!svn/ver/167/sisprov/src/Comunes/SecurityBundle/Provider/AuthenticationListener.php
+END

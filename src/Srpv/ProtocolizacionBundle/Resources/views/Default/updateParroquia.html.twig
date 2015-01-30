@@ -2,7 +2,7 @@
     <label class="control-label col-lg-4 required" for="srpv_protocolizacionbundle_desarrollo_avCallEsqCarr">Parroquia</label>
     <div class="col-lg-4">
         <select id="srpv_protocolizacionbundle_desarrollo_geoParroquia" name="srpv_protocolizacionbundle_desarrollo[geoParroquia]" required="required" class="form-control">
-            <option value=""> </option>
+            <option value="">Seleccione Parroquia</option>
             {% for parroquia in parroquias %}
             <option value="{{ parroquia.id }}">{{ parroquia.nombre }}</option>
             {% endfor %}

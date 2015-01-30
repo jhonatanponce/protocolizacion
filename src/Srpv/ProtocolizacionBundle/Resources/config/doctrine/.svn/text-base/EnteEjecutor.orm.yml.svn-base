@@ -1,0 +1,60 @@
+Srpv\ProtocolizacionBundle\Entity\EnteEjecutor:
+    type: entity
+    table: ENTE_EJECUTOR
+    indexes:
+        IDX_CFB9A927E8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        estatus:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: ESTATUS
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        nombre:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+            column: NOMBRE
+        observaciones:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: OBSERVACIONES
+    manyToOne:
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

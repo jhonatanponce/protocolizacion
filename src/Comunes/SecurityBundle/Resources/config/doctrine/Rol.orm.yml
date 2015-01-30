@@ -1,6 +1,7 @@
 Comunes\SecurityBundle\Entity\Rol:
     type: entity
     table: ROL
+    repositoryClass: Comunes\SecurityBundle\Repository\SecurityRepository    
     indexes:
         IDX_98F27DBD99C94272:
             columns:
@@ -64,8 +65,16 @@ Comunes\SecurityBundle\Entity\Rol:
                 SYS_SISTEMA_ID:
                     referencedColumnName: id
             orphanRemoval: false  
-    oneToMany:
-        usuarioRoles:
-          targetEntity: Comunes\SecurityBundle\Entity\UsuarioHasRol
-          mappedBy: rol               
+#    manyToMany:
+#        opciones:
+#            targetEntity: OpcionMenu
+#            cascade: {  }
+#            joinTable:
+#                name: ROL_MENU
+#                joinColumns:
+#                    rol_id:
+#                        referencedColumnName: id
+#                inverseJoinColumns:
+#                    opcion_menu_id:
+#                        referencedColumnName: id                                  
     lifecycleCallbacks: {  }

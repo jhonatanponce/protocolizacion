@@ -1,0 +1,30 @@
+desarrollo:
+    path:     /
+    defaults: { _controller: "SrpvProtocolizacionBundle:Desarrollo:index" }
+
+desarrollo_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvProtocolizacionBundle:Desarrollo:show" }
+
+desarrollo_new:
+    path:     /new
+    defaults: { _controller: "SrpvProtocolizacionBundle:Desarrollo:new" }
+
+desarrollo_create:
+    path:     /create
+    defaults: { _controller: "SrpvProtocolizacionBundle:Desarrollo:create" }
+    requirements: { _method: post }
+
+desarrollo_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvProtocolizacionBundle:Desarrollo:edit" }
+
+desarrollo_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvProtocolizacionBundle:Desarrollo:update" }
+    requirements: { _method: post|put }
+
+desarrollo_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvProtocolizacionBundle:Desarrollo:delete" }
+    requirements: { _method: post|delete }

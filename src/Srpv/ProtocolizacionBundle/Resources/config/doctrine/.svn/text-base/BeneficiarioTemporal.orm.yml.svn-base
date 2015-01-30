@@ -1,0 +1,108 @@
+Srpv\ProtocolizacionBundle\Entity\BeneficiarioTemporal:
+    type: entity
+    table: BENEFICIARIO_TEMPORAL
+    indexes:
+        IDX_5C86E8D6A2441D43:
+            columns:
+                - DESARROLLO_ID
+        IDX_5C86E8D636962553:
+            columns:
+                - UNIDAD_HABITACIONAL_ID
+        IDX_5C86E8D6C62AD666:
+            columns:
+                - PERSONA_ID
+        IDX_5C86E8D6E8EA1841:
+            columns:
+                - USUARIO_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        cedula:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: CEDULA
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        idControl:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: ID_CONTROL
+        nacionalidad:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: NACIONALIDAD
+        nombreArchivo:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: NOMBRE_ARCHIVO
+        nombreCompleto:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+            column: NOMBRE_COMPLETO
+    manyToOne:
+        desarrollo:
+            targetEntity: Desarrollo
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                DESARROLLO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        unidadHabitacional:
+            targetEntity: UnidadHabitacional
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                UNIDAD_HABITACIONAL_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        persona:
+            targetEntity: Comunes\TablasBundle\Entity\Persona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PERSONA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

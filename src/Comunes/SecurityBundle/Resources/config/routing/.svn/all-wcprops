@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/scm/svn/sisprov/!svn/ver/149/sisprov/src/Comunes/SecurityBundle/Resources/config/routing
+END
+usuario.yml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/scm/svn/sisprov/!svn/ver/149/sisprov/src/Comunes/SecurityBundle/Resources/config/routing/usuario.yml
+END
+admin.yml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/scm/svn/sisprov/!svn/ver/83/sisprov/src/Comunes/SecurityBundle/Resources/config/routing/admin.yml
+END
+rol.yml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/scm/svn/sisprov/!svn/ver/83/sisprov/src/Comunes/SecurityBundle/Resources/config/routing/rol.yml
+END
+opcionmenu.yml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/scm/svn/sisprov/!svn/ver/83/sisprov/src/Comunes/SecurityBundle/Resources/config/routing/opcionmenu.yml
+END

@@ -1,0 +1,191 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {% block stylesheets %}
+        
+        {{ parent() }}
+        
+        <link type="text/css" href="{{ asset('js/css/smoothness/jquery-ui-1.8.14.custom.css') }}" type="text/css" rel="stylesheet" />
+        
+    {% endblock %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span>
+            <h3 class="panel-title" style="display: inline;">{% if title is defined %}{{title}}{% endif %}</h3>
+        </div>
+        <div id="yw0" class="panel-body">
+            {% if entities|length > 0 %} 
+                {{ form_start(form, { 'attr': {'id': 'formulario'}, 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }} 
+                {{ form_errors(form) }}
+                <input type="hidden" name="params" value="{{ params }}">
+                <div class="form-group">
+                    <label class="control-label col-lg-4 required" for="form_oficina">Persona</label>
+                    <div class="col-lg-4">
+                        <input type="text" name="persona" disabled="disabled" class="form-control" value="{{ persona.primerNombre ~ ' ' ~ persona.primerApellido}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-4 required" for="form_oficina">Unidad Habitacional</label>
+                    <div class="col-lg-4">
+                        <input type="text" name="unidad" disabled="disabled" class="form-control" value="{{ unidad.nombre }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-4 required" for="form_oficina">Censado</label>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.censado) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-4 required" for="form_oficina">Estatus</label>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.estatus) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-lg-4 required" for="form_oficina">Observaciones</label>
+                    <div class="col-lg-4">
+                        {{ form_widget(form.observaciones) }}
+                    </div>
+                </div>
+                {% if params == 'new' %}     
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 required" for="form_oficina" aria-required="true">Oficina</label>
+                        <div class="col-lg-4">
+                            <select id="oficina" name="oficina" required="required" class="form-control">
+                                <option selected="selected" value="">Seleccione Oficina</option>
+                                {% for of in oficina %}
+                                    <option value="{{ of.id }}">{{ of.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                {% elseif params == 'edit' %}
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 required" for="form_oficina" aria-required="true">Oficina</label>
+                        <div class="col-lg-4">
+                            <input type="text" name="oficina" disabled="disabled" class="form-control" value="{{ oficina.nombre }}">
+                        </div>
+                    </div>
+                {% endif %}
+                {% if params == 'new' %}     
+                    <div align="center">
+                        <button type="submit" class="btn btn-primary">Asignar</button>
+                    </div>
+                {% elseif params == 'edit' %}
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 required" for="form_oficina" aria-required="true">Marque para reasignar</label>
+                        <div class="col-lg-4">
+                                <input type="checkbox" class="opcionasignacion" name="opcionasignacion" value="1">
+                        </div>
+                    </div>
+                    <div id="formulario_reasignacion" style="display: none">
+                        <div class="form-group">
+                            <label class="control-label col-lg-4 required" for="form_oficina" aria-required="true">Seleccione Estado</label>
+                            <div class="col-lg-4">
+                                <select id="reasignacion_estadoid" name="reasignacion_estadoid" class="form-control">
+                                    <option selected="selected" value="">Seleccione Estado</option>
+                                    {% for estado in allestados %}
+                                        <option value="{{ estado.id }}">{{ estado.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-4 required" for="form_oficina" aria-required="true">Seleccione Municipio</label>
+                            <div class="col-lg-4">
+                                <select id="reasignacion_municipioid" name="reasignacion_municipioid" class="form-control">
+                                    <option selected="selected" value="">Seleccione Municipio</option>
+                                    {% for municipio in allmunicipios %}
+                                        <option value="{{ municipio.id }}">{{ municipio.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-4 required" for="form_oficina" aria-required="true">Seleccione Parroquia</label>
+                            <div class="col-lg-4">
+                                <select id="reasignacion_parroquiaid" name="reasignacion_parroquiaid" class="form-control">
+                                    <option selected="selected" value="">Seleccione Parroquia</option>
+                                    {% for parroquia in allparroquias %}
+                                        <option value="{{ parroquia.id }}">{{ parroquia.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-4 required" for="form_oficina" aria-required="true">Seleccione Oficina</label>
+                            <div class="col-lg-4">
+                                <select id="reasignacion_oficinaid" name="reasignacion_oficinaid" class="form-control" required="required">
+                                    <option selected="selected" value="">Seleccione Oficina</option>
+                                    {% for oficina in alloficinas %}
+                                        <option value="{{ oficina.id }}">{{ oficina.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        {#<br><br>
+                        <p><strong>Seleccione Coordinador</strong></p>
+                        <div class="form-group" id="coordinador">
+                            <select id="reasignacion_coordinadorid" name="reasignacion_coordinadorid" class="form-control" required="required">
+                                <option selected="selected" value="">Seleccione Coordinador</option>
+                                {% for municipio in allmunicipios %}
+                                    <option value="{{ municipio.id }}">{{ municipio.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>#}
+                        <div align="center">
+                            <button type="submit" class="btn btn-primary">Resignar</button>
+                        </div>
+                    </div>
+                {% endif %}
+                {{ form_end(form) }}
+            {% else %}
+                <h2 class="alert alert-dismissable alert-warning alert-link text-center">
+                    
+                    <strong>No Existen Registros</strong>
+                    
+                </h2>
+            {% endif %}
+        </div>
+    </div>
+    <div align="right">
+        <a href="{{ path('adjudicados') }}" class="btn btn-success" role="button">Volver</a>
+    </div>
+    <br>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.validate.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/validacionesGenerales.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $(".JqueryDate").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                firstDay: 1,
+                minDate: 0,
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('input.opcionasignacion').click(function(event){
+
+                var id = $('input.opcionasignacion:checked').val();
+
+                if (id == 1){
+                    $('#formulario_reasignacion').show();
+                }
+                else{
+                    $('#formulario_reasignacion').hide();
+                }
+            });
+        });
+    </script>
+{% endblock %}

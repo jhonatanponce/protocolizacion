@@ -1,4 +1,5 @@
 <?php
+
 namespace Comunes\SecurityBundle\Provider;
 
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
@@ -53,8 +54,6 @@ class UsuarioBanavihProvider extends \Comunes\SecurityBundle\Entity\Usuario impl
     public function loadUserByUsername($username)
     {
         
-        $username = ucfirst($username);
-        
         $q = $this->em->getRepository('ComunesSecurityBundle:Usuario')
             ->createQueryBuilder('u')
             ->select('u')
@@ -63,17 +62,12 @@ class UsuarioBanavihProvider extends \Comunes\SecurityBundle\Entity\Usuario impl
             ->where('u.usuario = :username AND 
                      u.sysSistema = :sysSistema AND 
                      u.genTipoUsuario = :genTipoUsuario ')
-            ->setParameter('username', $username)
+            ->setParameter('username', ucfirst($username))
             ->setParameter('sysSistema', $this->sysSistema)
             ->setParameter('genTipoUsuario', $this->tipoUsuario)
-            //->setParameter('sysApp', $this->sysApp)
             ->getQuery();
-//AND 
-//                     r.sysApp = :sysApp
         try {
-            // The Query::getSingleResult() method throws an exception
-            // if there is no record matching the criteria.
-            
+
             $user = $q->execute();
             if(!$user)
                 throw new UsernameNotFoundException;
@@ -87,7 +81,7 @@ class UsuarioBanavihProvider extends \Comunes\SecurityBundle\Entity\Usuario impl
             
             throw new UsernameNotFoundException($message, 0, $e);
         }
-
+        
         return array_shift($user);
     }
 

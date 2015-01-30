@@ -1,0 +1,27 @@
+adjudicados:
+    path:     /
+    defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:index" }
+
+asignacionAdjudicados:
+    path:     /asignacion
+    defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:asignacionAdjudicados" }
+
+asignacionDetalle:
+    path:     /asignacionDetalle/{id}
+    defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:asignacionAdjudicados" }
+
+asignacionMasivaAdjudicados:
+    path:     /asignacionMasiva
+    defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:asignacionMasivaAdjudicados" }
+
+formToRedirectIndividual:
+    path:     /formToRedirectIndividual
+    defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:formToRedirectIndividual" }
+
+formToRedirectMasivo:
+    path:     /formToRedirectMasivo
+    defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:formToRedirectMasivo" }
+
+reasignacionMasivaAdjudicados:
+    path:     /reasignacionMasiva
+    defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:reasignacionMasivaAdjudicados" }

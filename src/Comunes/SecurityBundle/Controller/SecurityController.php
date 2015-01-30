@@ -8,26 +8,42 @@ use Symfony\Component\Security\Core\SecurityContext;
 
 
 class SecurityController extends Controller {
-    
-    public function loginAction(){
+
+    public function loginAction($error = null){
         
         $request = $this->getRequest();
         
+        $routeName = $request->get('_route');        
+
+        $action = $routeName == '_login' ? '_login_check' : 'admin_login_check';
+        
         $session = $request->getSession();
         
-        if($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)){
-            
-            $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);            
-            
-        }else{
-            
-            $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
-            
+        if(!$error){
+        
+            if($request->attributes->has(SecurityContext::AUTHENTICATION_ERROR)){
+
+                $error = $request->attributes->get(SecurityContext::AUTHENTICATION_ERROR);            
+
+
+            }else{
+
+                $error = $session->get(SecurityContext::AUTHENTICATION_ERROR);
+
+            }  
         }
         
+        $form = $this->createForm(new \Comunes\SecurityBundle\Form\LoginType(), null, array(
+            'action' => $this->generateUrl($action),
+            'method' => 'POST',
+            'attr' => array('autocomplete' => 'off')
+        ));  
+        
         return $this->render('ComunesSecurityBundle:Security:login.html.twig', 
-                array('ultimo_nombre' => $session->get(SecurityContext::LAST_USERNAME),
-                      'error' => $error));        
+                             array('ultimo_nombre' => $session->get(SecurityContext::LAST_USERNAME),
+                                   'error' => $error,
+                                   'form' => $form->createView()));        
+
     }
     
     public function logoutAction()
@@ -41,7 +57,7 @@ class SecurityController extends Controller {
     {
         $this->get('security.context')->setToken(null);
         $this->get('request')->getSession()->invalidate();
-        return $this->redirect($this->generateUrl('admin_logout'));        
+        return $this->redirect($this->generateUrl('sicc_admin_homepage'));        
     }    
 
     public function indexBnvhAction()
@@ -50,30 +66,67 @@ class SecurityController extends Controller {
         $session = $this->getRequest()->getSession();
         
         $token = $this->container->get('security.context')->getToken();
-        
-        $opf = $this->getDoctrine()->getRepository('ComunesTablasBundle:GenBanco')
-                               ->findOneBy(array('id' => $token->getUser()->getGenOperadorFinancieroId()));        
-        
-        
+  
+      
         //Se definen las opciones a las cuales tiene acceso el usuario
         
-        $roles = array();
+        $opcionesMenu = array();
+        $rolesMenu = array();
         
-        foreach($token->getRoles() as $role)
+        foreach($token->getRoles() as $role){
+        
+
+            $roles = $this->getDoctrine()->getRepository('ComunesSecurityBundle:Rol')->findBy(array('nombre' => $role->getRole()));
             
-            array_push($roles, $role->getRole());
-        
-        $security = $this->getDoctrine()->getRepository('ComunesSecurityBundle:VwRolOpcion');
-        
-        $opciones = $security->findOpcionesByRoles($roles);
+            foreach($roles as $rol){
+                
+                array_push($rolesMenu, $rol); 
+                
+                $rolMenu = $this->getDoctrine()->getRepository('ComunesSecurityBundle:RolMenu')->findBy(array('rol' => $rol));
+
+                foreach($rolMenu as $rolmenu){
+                
+                    array_push($opcionesMenu, $rolmenu); 
+                    
+                }
+ 
+            }
+            
+        }
         
         // set and get session attributes
-        $session->set('opciones', $opciones);
+        $session->set('opcionesMenu', $opcionesMenu);
         
-        // 
-        $session->set('opf', $opf->getNombre());
+        $session->set('rolesMenu', $rolesMenu);
         
-        return $this->render('ComunesSecurityBundle:Security:indexBnvh.html.twig');        
+        
+        //Fin de se definen las opciones a las cuales tiene acceso el usuario
+
+        $username = $token->getUsername();
+        
+        $user = $this->getDoctrine()
+                     ->getRepository('ComunesSecurityBundle:Usuario')
+                     ->findBy(array('usuario'=> $username));
+
+        $usuario = $user[0];        
+        
+
+        $fechaCaducidad = $usuario->getFechaCaducidad();
+
+        $hoy = new \DateTime(date('d-M-y'));
+
+        $interval = $hoy->diff($fechaCaducidad);
+
+        $diasVigencia = (int) $interval->format('%R%a');
+        
+
+        if($diasVigencia <=5){
+
+            $session->set('dias_caduca', $diasVigencia);                
+
+        }         
+
+        return $this->render('ComunesSecurityBundle:Security:inicio.html.twig');        
     
 
     }    
@@ -83,43 +136,13 @@ class SecurityController extends Controller {
 
         return $this->render('ComunesSecurityBundle:Security:indexAdmin.html.twig');
     }    
-    
-    public function indexOpfAction()
-    {              
-        
-        $session = $this->getRequest()->getSession();
-        
-        $token = $this->container->get('security.context')->getToken();
-        
-        $opf = $this->getDoctrine()->getRepository('ComunesTablasBundle:GenBanco')
-                               ->findOneBy(array('id' => $token->getUser()->getGenOperadorFinancieroId()));        
-        
-        
-        //Se definen las opciones a las cuales tiene acceso el usuario
-        
-        $roles = array();
-        
-        foreach($token->getRoles() as $role)
-            
-            array_push($roles, $role->getRole());
-        
-        $security = $this->getDoctrine()->getRepository('ComunesSecurityBundle:VwRolOpcion');
-        
-        $opciones = $security->findOpcionesByRoles($roles);
-        
-        // set and get session attributes
-        $session->set('opciones', $opciones);
-        
-        // 
-        $session->set('opf', $opf->getNombre());
-        
-        return $this->render('ComunesSecurityBundle:Security:indexOpf.html.twig');
-    }    
+  
     
     public function loginCheckAction()
     {
 
     }
+        
 }
 
 ?>

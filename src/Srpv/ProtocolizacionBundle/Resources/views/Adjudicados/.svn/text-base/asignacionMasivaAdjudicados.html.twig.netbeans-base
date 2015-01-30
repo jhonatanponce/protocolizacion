@@ -1,0 +1,98 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+    {% block stylesheets %}
+
+    {{ parent() }}
+
+      <link type="text/css" href="{{ asset('js/css/smoothness/jquery-ui-1.8.14.custom.css') }}" type="text/css" rel="stylesheet" />
+
+    {% endblock %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span>
+            <h3 class="panel-title" style="display: inline;">{% if title is defined %}{{title}}{% endif %}</h3>
+        </div>
+        <div id="yw0" class="panel-body">
+            
+                {% if entities|length > 0 %} 
+                    
+                    {{ form(form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }} 
+                    
+                {% else %}
+                <h2 class="alert alert-dismissable alert-warning alert-link text-center">
+                    
+                    <strong>No Existen Registros</strong>
+                    
+                </h2>
+                {% endif %}
+        </div>
+        {% if entities|length > 0 %} 
+        <div class="form-group" id="municipio">
+            <label>Seleccione Oficina</label>
+            <select id="municipioid" name="municipioid" class="form-control" required="required">
+                <option selected="selected" value="">Seleccione Estado</option>
+                {% for oficina in alloficina %}
+                <option value="{{ oficina.id }}">{{ oficina.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group" id="municipio">
+            <label>Seleccione Oficina</label>
+            <select id="municipioid" name="municipioid" class="form-control" required="required">
+                <option selected="selected" value="">Seleccione Municipio</option>
+                {% for oficina in alloficina %}
+                <option value="{{ oficina.id }}">{{ oficina.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group" id="municipio">
+            <label>Seleccione Oficina</label>
+            <select id="municipioid" name="municipioid" class="form-control" required="required">
+                <option selected="selected" value="">Seleccione Oficina</option>
+                {% for oficina in alloficina %}
+                <option value="{{ oficina.id }}">{{ oficina.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group" id="coordinador">
+            <label>Seleccione Coordinador</label>
+            <select id="coordinadorid" name="coordinadorid" class="form-control" required="required">
+                <option selected="selected" value="">Seleccione Coordinador</option>
+                {% for jefe in alljefes %}
+                <option value="{{ jefe.id }}">{{ jefe.nombreJefe ~ ' ' ~  jefe.apellidoJefe}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endif %}
+        </div>
+    </div>
+    <div align="center">
+        <a href="{{ path('adjudicados') }}" class="btn btn-success" role="button">Regresar</a>
+        {% if entities|length > 0 %}
+        <button type="submit" class="btn btn-primary">Asignar</button>
+        {% endif %}
+    </div>
+    <br>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/beneficiario.js') }}"></script>
+<script>
+  $(document).ready(function(){
+      $(".JqueryDate").datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+        firstDay: 1,
+        minDate: 0,
+        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+    });
+  });
+</script>
+{% endblock %}

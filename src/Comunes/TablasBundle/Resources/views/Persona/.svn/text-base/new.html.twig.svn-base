@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+
+    {#   libreria js necesarios para el sisprov #}
+    <script src="{{ asset('js/sisprov.js') }}"></script>
+    
+    <script language="javascript" type="text/javascript">
+        
+        {#BUSCAR SI UNA PERSONA EXISTE EN ONIDEX #}
+        $(document).ready(function() {
+
+            $("#persona_cedula").validarOnidex($(this).val(),$("#persona_nacionalidad").val(),"{{ path('ajax_validar_onidex')}}")
+
+        });
+
+    </script>
+{% endblock %}
+{% block body -%}
+    {{ parent() }}
+    <div class="panel panel-default">
+        
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            <h3 class="panel-title" style="display: inline;">Crear Persona</h3>
+        </div>
+        
+        <div id="yw0" class="panel-body">
+
+            <div class="form-group">
+                {{ form(form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
+            </div>
+        </div>
+    </div>
+    <div align="right">
+        <a href="{{ path('usuario_buscarPersona') }}" class="btn btn-success" role="button">Volver</a>
+    </div>
+    <br>         
+{% endblock %}

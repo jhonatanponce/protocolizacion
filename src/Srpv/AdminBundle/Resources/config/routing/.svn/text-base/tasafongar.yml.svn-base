@@ -1,0 +1,30 @@
+tasafongar:
+    path:     /
+    defaults: { _controller: "SrpvAdminBundle:TasaFongar:index" }
+
+tasafongar_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvAdminBundle:TasaFongar:show" }
+
+tasafongar_new:
+    path:     /new
+    defaults: { _controller: "SrpvAdminBundle:TasaFongar:new" }
+
+tasafongar_create:
+    path:     /create
+    defaults: { _controller: "SrpvAdminBundle:TasaFongar:create" }
+    requirements: { _method: post }
+
+tasafongar_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvAdminBundle:TasaFongar:edit" }
+
+tasafongar_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvAdminBundle:TasaFongar:update" }
+    requirements: { _method: post|put }
+
+tasafongar_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvAdminBundle:TasaFongar:delete" }
+    requirements: { _method: post|delete }

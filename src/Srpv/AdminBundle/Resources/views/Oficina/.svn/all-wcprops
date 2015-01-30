@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/scm/svn/sisprov/!svn/ver/159/sisprov/src/Srpv/AdminBundle/Resources/views/Oficina
+END
+edit.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/scm/svn/sisprov/!svn/ver/158/sisprov/src/Srpv/AdminBundle/Resources/views/Oficina/edit.html.twig
+END
+show.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/scm/svn/sisprov/!svn/ver/158/sisprov/src/Srpv/AdminBundle/Resources/views/Oficina/show.html.twig
+END
+new.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/scm/svn/sisprov/!svn/ver/159/sisprov/src/Srpv/AdminBundle/Resources/views/Oficina/new.html.twig
+END
+index.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/scm/svn/sisprov/!svn/ver/158/sisprov/src/Srpv/AdminBundle/Resources/views/Oficina/index.html.twig
+END
+buscarPersona.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/scm/svn/sisprov/!svn/ver/158/sisprov/src/Srpv/AdminBundle/Resources/views/Oficina/buscarPersona.html.twig
+END

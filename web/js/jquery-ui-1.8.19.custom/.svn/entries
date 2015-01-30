@@ -1,0 +1,71 @@
+10
+
+dir
+172
+https://192.168.1.240/scm/svn/sisprov/sisprov/web/js/jquery-ui-1.8.19.custom
+https://192.168.1.240/scm/svn/sisprov
+
+
+
+2014-11-04T20:28:42.314000Z
+76
+asegovia
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+717a9234-4901-0010-95a3-a930f25de646
+
+css
+dir
+
+development-bundle
+dir
+
+index.html
+file
+
+
+
+
+2014-11-15T16:35:40.000000Z
+897960e954f88b2c9ad01694bb63a36f
+2014-11-04T20:28:42.314000Z
+76
+asegovia
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+32523
+
+js
+dir
+

@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+
+    {#   libreria js necesarios para el sisprov #}
+    <script src="{{ asset('js/sisprov.js') }}"></script>
+{% endblock %}
+{% block body -%}
+    {% if  'admin_' in app.request.attributes.get('_route') %}
+
+        {% set form_path = 'usuario_admin_cambiarclave' %}
+
+    {% else %}
+
+        {% set form_path = 'usuario_cambiar_clave' %}    
+
+    {% endif %}
+
+    {{ parent() }}    
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-record"></span>
+            <h3 class="panel-title" style="display: inline;">Cambiar Clave</h3>
+        </div>
+     
+        <div id="yw0" class="panel-body table-responsive">
+            
+            {% if form is defined %}
+            
+                <form action="{{path(form_path, { 'id': app.request.get('id')})}}" method="post" {{ form_enctype(form) }} name="login">            
+
+                    {{ form_widget(form) }}
+                    {#
+                    <input type="button" value="Cambiar" class="btn btn-primary" onclick="javascript:encriptar(document.getElementById('login_newPassword_first'),document.getElementById('login_newPassword_second'))"/>   
+                    #}
+                    <input type="submit" value="Cambiar" class="btn btn-primary" />   
+                   
+                    <input type="reset" value="Limpiar" class="btn btn-default"/>    
+
+                </form>
+
+            {% endif %}               
+        </div>
+    </div>  
+            
+    <div align="right">
+        {#% if app.session.get('dias_caduca') != 0 %#}
+            <a href="{{ path(welcome_path) }}" class="btn btn-success" role="button">Volver</a>
+        {#% else %}
+            <a href="{{path('usuario_cambiar_clave', { 'id': app.request.get('id')})}}" class="btn btn-success" role="button">{{dias_caduca}} Volver</a>}
+        {% endif %#}
+    </div>
+    <br>    
+{% endblock %}

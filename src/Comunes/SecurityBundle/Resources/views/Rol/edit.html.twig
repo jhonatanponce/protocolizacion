@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+
+    {#   libreria js necesarios para el sisprov #}
+    <script language="JavaScript" type="text/javascript" src="{{ asset('js/sisprov.js') }}"></script>
+    
+    <script language="javascript" type="text/javascript">
+        
+        {#BUSCAR LOS ROLES DE UN USUARIO #}
+        $(document).ready(function() {
+
+            $("#rol_nombre").getOpcionesRol({{ app.request.get('id')}},"{{ path('ajax_rol_opcion')}}");
+
+        });
+
+    </script>
+{% endblock %}
+{% block body -%}
+     {{ parent() }}
+     <div class="panel panel-default">
+    
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-edit"></span>
+            <h3 class="panel-title" style="display: inline;"> Modificar Datos</h3>
+        </div>
+        
+        <div id="yw0" class="panel-body">
+            {{ form(edit_form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
+                
+            {% if delete_form is defined %}
+                
+                <br/>
+                {{ form(delete_form) }}
+                
+            {% endif %}
+                
+        </div>
+    </div>
+    
+    <div align="right">
+        <a href="{{ path('rol') }}" class="btn btn-success" role="button">Volver</a>  
+    </div>
+    <br>    
+{% endblock %}

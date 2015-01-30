@@ -1,5 +1,5 @@
 <select id="municipioid" name="municipioid" required="required" class="form-control">
-    <option selected="selected" value="">Seleccione El Municipio Remoto </option>
+    <option selected="selected" value="">Seleccione El Municipio</option>
     {% for municipio in municipios %}
         <option value="{{ municipio.id }}">{{ municipio.nombre }}</option>
     {% endfor %}
@@ -14,6 +14,19 @@
             url = url.replace("municipio", municipio);
             
             $('#parroquia').load(url);
+        });
+    });
+</script>
+<script>
+    $(document).ready(function(){
+        $('#municipioid').change(function(event){
+            var municipio = $('#municipioid').find(':selected').val();
+
+            var url = "{{ path('actualizarCoordinador', {'id':'municipio'}) }}";
+
+            url = url.replace("municipio", municipio);
+            
+            $('#coordinador').load(url);
         });
     });
 </script>

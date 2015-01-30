@@ -1,0 +1,30 @@
+abogados:
+    path:     /
+    defaults: { _controller: "SrpvAdminBundle:Abogados:index" }
+
+abogados_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvAdminBundle:Abogados:show" }
+
+abogados_new:
+    path:     /new
+    defaults: { _controller: "SrpvAdminBundle:Abogados:new" }
+
+abogados_create:
+    path:     /create
+    defaults: { _controller: "SrpvAdminBundle:Abogados:create" }
+    requirements: { _method: post }
+
+abogados_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvAdminBundle:Abogados:edit" }
+
+abogados_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvAdminBundle:Abogados:update" }
+    requirements: { _method: post|put }
+
+abogados_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvAdminBundle:Abogados:delete" }
+    requirements: { _method: post|delete }

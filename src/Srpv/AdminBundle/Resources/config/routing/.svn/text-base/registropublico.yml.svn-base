@@ -1,0 +1,30 @@
+registropublico:
+    path:     /
+    defaults: { _controller: "SrpvAdminBundle:RegistroPublico:index" }
+
+registropublico_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvAdminBundle:RegistroPublico:show" }
+
+registropublico_new:
+    path:     /new
+    defaults: { _controller: "SrpvAdminBundle:RegistroPublico:new" }
+
+registropublico_create:
+    path:     /create
+    defaults: { _controller: "SrpvAdminBundle:RegistroPublico:create" }
+    requirements: { _method: post }
+
+registropublico_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvAdminBundle:RegistroPublico:edit" }
+
+registropublico_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvAdminBundle:RegistroPublico:update" }
+    requirements: { _method: post|put }
+
+registropublico_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvAdminBundle:RegistroPublico:delete" }
+    requirements: { _method: post|delete }

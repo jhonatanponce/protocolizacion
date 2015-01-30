@@ -1,25 +1,25 @@
 {% extends '::base.html.twig' %}
-
-{% block body -%}
-     {{ parent() }}
-     <div class="panel panel-default">
     
+{% block body -%}
+    {{ parent() }}
+        <div class="panel panel-default">
+         
         <div class="panel-heading">
             <span class="glyphicon glyphicon-edit"></span>
             <h3 class="panel-title" style="display: inline;"> Modificar Datos</h3>
         </div>
-        
-       {{ form_start(edit_form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
+            
+        {{ form_start(edit_form, { 'attr': {'id': 'formulario'}, 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
         <div id="yw0" class="panel-body">
             {{ form_errors(edit_form) }}
             <div class="form-group">
                 <label class="control-label col-lg-4 required" for="desarrollo">Desarrollo</label>
                 <div class="col-lg-4">
                     <select id="desarrolloid" name="desarrolloid" class="form-control" required="required">
-                        <option value=""></option>
+                        <option value="">Seleccione Nombre Desarrollo</option>
                         {% for desarrollo in desarrollos %}
                             {% if desarrollo.nombre == desarrolloVivienda %}
-                            <option value="{{ desarrollo.id }}" selected="selected">{{ desarrollo.nombre }}</option>
+                                <option value="{{ desarrollo.id }}" selected="selected">{{ desarrollo.nombre }}</option>
                             {% else %}
                                 <option value="{{ desarrollo.id }}">{{ desarrollo.nombre }}</option>
                             {% endif %}
@@ -32,15 +32,15 @@
             </div>
         </div>
         {{ form_end(edit_form) }}
-        
+            
         {% if delete_form is defined %}
-
+            
             <br/>
             {{ form(delete_form) }}
-
+                
         {% endif %}
     </div>
-    
+        
     <div align="right">
         <a href="{{ path('vivienda') }}" class="btn btn-success" role="button">Volver</a>  
     </div>
@@ -48,21 +48,21 @@
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
-<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/beneficiario.js') }}"></script>
-<script>
-    $(document).ready(function(){
-        $('#desarrolloid').change(function(event){
-            var id = $('#desarrolloid').find(':selected').val();
-
-            var url = "{{ path('updateUnidadVivienda', {'id':'id'}) }}";
-
-            url = url.replace("id", id);
-            
-            $('#unidadHabitacional').load(url);
+    <script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.validate.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/validacionesGenerales.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('#desarrolloid').change(function(event){
+                var id = $('#desarrolloid').find(':selected').val();
+                
+                var url = "{{ path('updateUnidadVivienda', {'id':'params'}) }}";
+                
+                url = url.replace("params", id);
+                
+                $('#unidadHabitacional').load(url);
+            });
         });
-    });
-</script>
+    </script>
 {% endblock %}

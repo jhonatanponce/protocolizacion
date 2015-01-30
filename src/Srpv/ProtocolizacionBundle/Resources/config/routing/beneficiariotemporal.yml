@@ -1,0 +1,30 @@
+beneficiariotemporal:
+    path:     /
+    defaults: { _controller: "SrpvProtocolizacionBundle:BeneficiarioTemporal:index" }
+
+beneficiariotemporal_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvProtocolizacionBundle:BeneficiarioTemporal:show" }
+
+beneficiariotemporal_new:
+    path:     /new
+    defaults: { _controller: "SrpvProtocolizacionBundle:BeneficiarioTemporal:new" }
+
+beneficiariotemporal_create:
+    path:     /create
+    defaults: { _controller: "SrpvProtocolizacionBundle:BeneficiarioTemporal:create" }
+    requirements: { _method: post }
+
+beneficiariotemporal_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvProtocolizacionBundle:BeneficiarioTemporal:edit" }
+
+beneficiariotemporal_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvProtocolizacionBundle:BeneficiarioTemporal:update" }
+    requirements: { _method: post|put }
+
+beneficiariotemporal_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvProtocolizacionBundle:BeneficiarioTemporal:delete" }
+    requirements: { _method: post|delete }

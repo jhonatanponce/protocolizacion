@@ -15,10 +15,10 @@ class UnidadHabitacionalType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('desarrollo', 'entity', array('label' => 'Desarrollo','class'   => 'SrpvProtocolizacionBundle:Desarrollo','property'   => 'nombre','required' => true,'empty_value' => ''))
+            ->add('desarrollo', 'entity', array('label' => 'Desarrollo','class'   => 'SrpvProtocolizacionBundle:Desarrollo','property'   => 'nombre','required' => true,'empty_value' => 'Seleccione Desarrollo'))
             ->add('nombre', 'text', array('label' => 'Nombre','required' => true))
-            ->add('genTipoInmueble', 'entity', array('label' => 'Tipo Inmueble','class' => 'ComunesTablasBundle:GenTipoInmueble','property'   => 'nombre','required' => true,'empty_value' => ''))
-            ->add('registroPublicoId', 'entity', array('label' => 'Registro Público','class'   => 'SrpvProtocolizacionBundle:RegistroPublico','property'   => 'nombre','required' => false,'empty_value' => ''))
+            ->add('genTipoInmueble', 'entity', array('label' => 'Tipo Inmueble','class' => 'ComunesTablasBundle:GenTipoInmueble','property'   => 'nombre','required' => true,'empty_value' => 'Seleccione Tipo de Inmueble'))
+            ->add('registroPublicoId', 'entity', array('label' => 'Registro Público','class'   => 'SrpvProtocolizacionBundle:RegistroPublico','property'   => 'nombre','required' => false,'empty_value' => 'Seleccione Registro Público'))
             //->add('registroPublicoId', 'number', array('label' => 'Registro Público','required' => false))
             ->add('fechaRegistro','datetime',array('label' => 'Fecha Registro','widget' => 'single_text','format' => 'dd/MM/yyyy','required' => false))
             //->add('fechaRegistro', 'date', array('label' => 'Fecha Registro','input'  => 'datetime','widget' => 'choice','empty_value' => array('year' => 'Año', 'month' => 'Mes', 'day' => 'Dia'),'required' => false))
@@ -29,7 +29,7 @@ class UnidadHabitacionalType extends AbstractType
             ->add('asientoRegistral', 'number', array('label' => 'Asiento Registral','required' => false))
             ->add('folioReal', 'number', array('label' => 'Folio Real','required' => false))
             ->add('nroMatricula', 'text', array('label' => 'Nro. Matrícula','required' => false))
-            ->add('tipoDocumento', 'entity', array('label' => 'Tipo Documento','class'   => 'SrpvProtocolizacionBundle:TipoDocumento','property'   => 'nombre','required' => false,'empty_value' => ''))
+            ->add('tipoDocumento', 'entity', array('label' => 'Tipo Documento','class'   => 'SrpvProtocolizacionBundle:TipoDocumento','property'   => 'nombre','required' => false,'empty_value' => 'Seleccione Tipo Documento'))
         ;
     }
     

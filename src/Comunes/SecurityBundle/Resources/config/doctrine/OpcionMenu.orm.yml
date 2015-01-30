@@ -1,6 +1,7 @@
 Comunes\SecurityBundle\Entity\OpcionMenu:
     type: entity
     table: OPCION_MENU
+    repositoryClass: Comunes\SecurityBundle\Repository\SecurityRepository    
     indexes:
         IDX_11680224619CCE83:
             columns:
@@ -67,8 +68,8 @@ Comunes\SecurityBundle\Entity\OpcionMenu:
                 PADRE_ID:
                     referencedColumnName: id
             orphanRemoval: false            
-    oneToMany:
-        rolOpciones:
-            targetEntity: Comunes\SecurityBundle\Entity\RolMenu
-            mappedBy: opcionMenu                    
+#    oneToMany:
+#        rolOpciones:
+#            targetEntity: Comunes\SecurityBundle\Entity\RolMenu
+#            mappedBy: opcionMenu   
     lifecycleCallbacks: {  }

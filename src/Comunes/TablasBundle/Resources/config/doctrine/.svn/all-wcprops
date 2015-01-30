@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/scm/svn/sisprov/!svn/ver/83/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine
+END
+GeoMunicipio.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GeoMunicipio.orm.yml
+END
+GenNivelRiesgo.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GenNivelRiesgo.orm.yml
+END
+GenTipoInstitucion.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GenTipoInstitucion.orm.yml
+END
+GenOcupacion.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GenOcupacion.orm.yml
+END
+GenTipoInmueble.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GenTipoInmueble.orm.yml
+END
+GeoParroquia.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GeoParroquia.orm.yml
+END
+GenBanco.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GenBanco.orm.yml
+END
+GenCargo.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GenCargo.orm.yml
+END
+GeoPais.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GeoPais.orm.yml
+END
+Persona.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/Persona.orm.yml
+END
+GenGradoInstruccion.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GenGradoInstruccion.orm.yml
+END
+GenEdoCivil.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GenEdoCivil.orm.yml
+END
+GenParentesco.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GenParentesco.orm.yml
+END
+GenCodigoArea.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/scm/svn/sisprov/!svn/ver/83/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GenCodigoArea.orm.yml
+END
+GeoEstado.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GeoEstado.orm.yml
+END
+GeoZona.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GeoZona.orm.yml
+END
+GenSexo.orm.yml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/TablasBundle/Resources/config/doctrine/GenSexo.orm.yml
+END

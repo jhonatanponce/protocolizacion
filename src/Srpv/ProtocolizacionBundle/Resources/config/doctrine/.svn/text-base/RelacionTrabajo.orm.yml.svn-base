@@ -1,0 +1,39 @@
+Srpv\ProtocolizacionBundle\Entity\RelacionTrabajo:
+    type: entity
+    table: RELACION_TRABAJO
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        estatus:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: ESTATUS
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_CREACION
+        nombres:
+            type: string
+            nullable: false
+            length: 100
+            fixed: false
+            comment: ''
+            column: NOMBRES
+    lifecycleCallbacks: {  }

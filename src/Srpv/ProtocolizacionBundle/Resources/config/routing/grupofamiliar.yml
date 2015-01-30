@@ -1,0 +1,23 @@
+grupofamiliar:
+    path:     /
+    defaults: { _controller: "SrpvProtocolizacionBundle:GrupoFamiliar:index" }
+
+grupofamiliar_new:
+    path:     /{id}/{mensaje}/new
+    defaults: { _controller: "SrpvProtocolizacionBundle:GrupoFamiliar:new", mensaje:0 }
+
+grupofamiliar_create:
+    path:     /create
+    defaults: { _controller: "SrpvProtocolizacionBundle:GrupoFamiliar:create" }
+
+grupofamiliar_update:
+    path:     /update
+    defaults: { _controller: "SrpvProtocolizacionBundle:GrupoFamiliar:update" }
+
+grupofamiliar_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvProtocolizacionBundle:GrupoFamiliar:edit" }
+
+grupofamiliar_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvProtocolizacionBundle:GrupoFamiliar:delete" }

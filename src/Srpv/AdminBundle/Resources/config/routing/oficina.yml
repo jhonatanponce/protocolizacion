@@ -1,0 +1,34 @@
+oficina_buscarPersona:
+    path:     /buscarPersona
+    defaults: { _controller: "SrpvAdminBundle:Oficina:buscarPersona" }
+    
+oficina:
+    path:     /
+    defaults: { _controller: "SrpvAdminBundle:Oficina:index" }
+
+oficina_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvAdminBundle:Oficina:show" }
+
+oficina_new:
+    path:     /new
+    defaults: { _controller: "SrpvAdminBundle:Oficina:new" }
+
+oficina_create:
+    path:     /create
+    defaults: { _controller: "SrpvAdminBundle:Oficina:create" }
+    requirements: { _method: post }
+
+oficina_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvAdminBundle:Oficina:edit" }
+
+oficina_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvAdminBundle:Oficina:update" }
+    requirements: { _method: post|put }
+
+oficina_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvAdminBundle:Oficina:delete" }
+    requirements: { _method: post|delete }

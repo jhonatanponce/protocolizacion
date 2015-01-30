@@ -16,9 +16,9 @@ class DesarrolloType extends AbstractType
     {
         $builder
             ->add('nombre', 'text', array('label' => 'Nombre', 'required' => true))
-            ->add('geoEstado', 'entity', array('label' => 'Estado','class'   => 'ComunesTablasBundle:GeoEstado','property'   => 'nombre','required' => true,'empty_value' => ''))
-            ->add('geoMunicipio', 'entity', array('label' => 'Municipio','class'   => 'ComunesTablasBundle:GeoMunicipio','property'   => 'nombre','required' => true,'empty_value' => ''))
-            ->add('geoParroquia', 'entity', array('label' => 'Parroquia','class'   => 'ComunesTablasBundle:GeoParroquia','property'   => 'nombre','required' => true,'empty_value' => ''))
+            ->add('geoEstado', 'entity', array('label' => 'Estado','class'   => 'ComunesTablasBundle:GeoEstado','property'   => 'nombre','required' => true,'empty_value' => 'Seleccione Estado'))
+            ->add('geoMunicipio', 'entity', array('label' => 'Municipio','class'   => 'ComunesTablasBundle:GeoMunicipio','property'   => 'nombre','required' => true,'empty_value' => 'Seleccione Municipio'))
+            ->add('geoParroquia', 'entity', array('label' => 'Parroquia','class'   => 'ComunesTablasBundle:GeoParroquia','property'   => 'nombre','required' => true,'empty_value' => 'Seleccione Parroquia'))
             ->add('avCallEsqCarr', 'text', array('label' => 'Av. / Calle / Esq. / Carr','required' => true))
             ->add('urbanBarrio', 'text', array('label' => 'Urban. / Barrio','required' => true))
             ->add('zona', 'text', array('label' => 'Zona','required' => true))
@@ -31,9 +31,9 @@ class DesarrolloType extends AbstractType
             ->add('linderoSur', 'text', array('label' => 'Lindero Sur','required' => false))
             ->add('coordenadas', 'text', array('label' => 'Coordenadas','required' => false))
             ->add('loteTerrenoMt2', 'integer', array('label' => 'Lote Terreno Mt2','required' => true))
-            ->add('fuenteFinanciamiento', 'entity', array('label' => 'Fuente Financiamiento','class'   => 'SrpvProtocolizacionBundle:FuenteFinanciamiento','property'   => 'nombre','required' => true,'empty_value' => ''))
-            ->add('titularidadDelTerreno', 'choice', array('label' => 'Titularidad Del Terreno','choices' => array('S' => 'Si', 'N' => 'No'),'required' => true,'empty_value' => ''))
-            ->add('enteEjecutor', 'entity', array('label' => 'Ente Ejecutor','class'   => 'SrpvProtocolizacionBundle:EnteEjecutor','property'   => 'nombre','required' => true,'empty_value' => ''))
+            ->add('fuenteFinanciamiento', 'entity', array('label' => 'Fuente Financiamiento','class'   => 'SrpvProtocolizacionBundle:FuenteFinanciamiento','property'   => 'nombre','required' => true,'empty_value' => 'Seleccione Fuente Financiamiento'))
+            ->add('titularidadDelTerreno', 'choice', array('label' => 'Titularidad Del Terreno','choices' => array('S' => 'Si', 'N' => 'No'),'required' => true,'empty_value' => 'Seleccione Titularidad Del Terreno'))
+            ->add('enteEjecutor', 'entity', array('label' => 'Ente Ejecutor','class'   => 'SrpvProtocolizacionBundle:EnteEjecutor','property'   => 'nombre','required' => true,'empty_value' => 'Seleccione Ente Ejecutor'))
             ->add('fechaTransferencia','datetime',array('label' => 'Fecha Transferencia','widget' => 'single_text','format' => 'dd/MM/yyyy','required' => false));
             //->add('fechaTransferencia', 'text', array('label' => 'Fecha Transferencia','input'  => 'datetime','widget' => 'choice','empty_value' => array('year' => 'Año', 'month' => 'Mes', 'day' => 'Dia'),'required' => false))
         ;

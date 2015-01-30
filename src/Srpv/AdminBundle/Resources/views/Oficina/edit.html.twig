@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+     {{ parent() }}
+     <div class="panel panel-default">
+    
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-edit"></span>
+            <h3 class="panel-title" style="display: inline;"> Modificar Datos</h3>
+        </div>
+        {{ form_start(edit_form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
+        <div id="yw0" class="panel-body">
+            {{ form_errors(edit_form) }}
+            <div class="form-group">
+                {{ form_row(edit_form.nombre) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(edit_form.geoEstado) }}
+            </div>
+            <div class="form-group" id="geoMunicipio">
+                {{ form_row(edit_form.geoMunicipio) }}
+            </div>
+            <div class="form-group" id="geoParroquia">
+                {{ form_row(edit_form.geoParroquia) }}
+            </div>
+        </div>
+        <div id="yw0" class="panel-body">
+            {{ form(edit_form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
+                
+            {% if delete_form is defined %}
+                
+                <br/>
+                {{ form(delete_form) }}
+                
+            {% endif %}
+                
+        </div>
+    </div>
+    
+    <div align="right">
+        <a href="{{ path('oficina') }}" class="btn btn-success" role="button">Volver</a>  
+    </div>
+    <br>    
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/beneficiario.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $('#srpv_protocolizacionbundle_oficina_geoEstado').change(function(event){
+            var id = $('#srpv_protocolizacionbundle_oficina_geoEstado').find(':selected').val();
+
+            var url = "{{ path('ajaxUpdateMunicipio', {'id':'id'}) }}";
+
+            url = url.replace("id", id);
+            
+            $('#geoMunicipio').load(url);
+        });
+    });
+</script>
+{% endblock %}

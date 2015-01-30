@@ -1,0 +1,30 @@
+salariosubsidio:
+    path:     /
+    defaults: { _controller: "SrpvAdminBundle:SalarioSubsidio:index" }
+
+salariosubsidio_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvAdminBundle:SalarioSubsidio:show" }
+
+salariosubsidio_new:
+    path:     /new
+    defaults: { _controller: "SrpvAdminBundle:SalarioSubsidio:new" }
+
+salariosubsidio_create:
+    path:     /create
+    defaults: { _controller: "SrpvAdminBundle:SalarioSubsidio:create" }
+    requirements: { _method: post }
+
+salariosubsidio_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvAdminBundle:SalarioSubsidio:edit" }
+
+salariosubsidio_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvAdminBundle:SalarioSubsidio:update" }
+    requirements: { _method: post|put }
+
+salariosubsidio_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvAdminBundle:SalarioSubsidio:delete" }
+    requirements: { _method: post|delete }

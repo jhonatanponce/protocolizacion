@@ -1,0 +1,79 @@
+Srpv\ProtocolizacionBundle\Entity\ControlArchivos:
+    type: entity
+    table: CONTROL_ARCHIVOS
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        cantidadLineas:
+            type: integer
+            nullable: true
+            unsigned: false
+            comment: ''
+            column: CANTIDAD_LINEAS
+        codigoEstatus:
+            type: string
+            nullable: true
+            length: 2
+            fixed: false
+            comment: ''
+            default: N
+            column: CODIGO_ESTATUS
+        codigoSudeban:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            comment: ''
+            column: CODIGO_SUDEBAN
+        correoContacto:
+            type: string
+            nullable: true
+            length: 70
+            fixed: false
+            comment: ''
+            column: CORREO_CONTACTO
+        fechaCreacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_CREACION
+        fechaEjecucion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_EJECUCION
+        nombreArchivo:
+            type: string
+            nullable: true
+            length: 50
+            fixed: false
+            comment: ''
+            column: NOMBRE_ARCHIVO
+        observacion:
+            type: string
+            nullable: true
+            length: 4000
+            fixed: false
+            comment: ''
+            column: OBSERVACION
+        periodo:
+            type: date
+            nullable: true
+            comment: ''
+            column: PERIODO
+        tipoArchivo:
+            type: string
+            nullable: true
+            length: 10
+            fixed: false
+            comment: ''
+            column: TIPO_ARCHIVO
+    lifecycleCallbacks: {  }

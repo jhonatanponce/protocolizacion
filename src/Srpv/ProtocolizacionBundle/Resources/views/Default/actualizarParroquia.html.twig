@@ -1,5 +1,5 @@
 <select id="parroquiaid "name="parroquiaid" required="required" class="form-control">
-    <option value=""> </option>
+	<option selected="selected" value="">Seleccione La Parroquia</option>
     {% for parroquia in parroquias %}
 	    <option value="{{ parroquia.id }}">{{ parroquia.nombre }}</option>
     {% endfor %}

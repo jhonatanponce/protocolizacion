@@ -1,0 +1,41 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}    
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-record"></span>
+            <h3 class="panel-title" style="display: inline;">Crear Usuario</h3>
+        </div>
+     
+        <div id="yw0" class="panel-body table-responsive">
+            
+            {% if form is defined %}
+                <form action="{{path('usuario_buscarPersona')}}" method="post" {{ form_enctype(form) }}>            
+
+                    {{ form_widget(form) }}
+
+                    <input type="submit" value="Buscar" class="btn btn-primary"/>    
+
+                </form>
+            
+            {% else %}        
+            
+                {% if msg is defined %}
+                    <div class="container" align="center">
+                        <a href="{{ path('persona_new', { 'cedula': cedula,'nac': nac }) }}" class="btn btn-warning" role="button">Crear Persona</a>
+                    </div>
+                    <br />
+                {% endif %}            
+
+            {% endif %}               
+        </div>
+    </div>  
+            
+    <div align="right">
+        <a href="{{ path('usuario') }}" class="btn btn-success" role="button">Volver</a>
+    </div>
+
+    <br>    
+{% endblock %}

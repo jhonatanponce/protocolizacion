@@ -1,0 +1,101 @@
+Srpv\ProtocolizacionBundle\Entity\AsignacionCenso:
+    type: entity
+    table: ASIGNACION_CENSO
+    indexes:
+        IDX_B2498A84C62AD666:
+            columns:
+                - PERSONA_ID
+        IDX_B2498A84E8EA1841:
+            columns:
+                - USUARIO_ID
+        IDX_B2498A84B9546268:
+            columns:
+                - OFICINA_ID
+        IDX_B2498A8436962553:
+            columns:
+                - UNIDAD_HABITACIONAL_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        censado:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: CENSADO
+        estatus:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: ESTATUS
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaAsignacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_ASIGNACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        observaciones:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: OBSERVACIONES
+    manyToOne:
+        persona:
+            targetEntity: Comunes\TablasBundle\Entity\Persona
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                PERSONA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        oficina:
+            targetEntity: Oficina
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                OFICINA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        unidadHabitacional:
+            targetEntity: UnidadHabitacional
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                UNIDAD_HABITACIONAL_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

@@ -58,10 +58,12 @@ Historial de Revision:
                 <!-- Menu -->
                 {% block menu %}
                 <br/>
+                {#{% if app.user is not null %}#}
                 <div class="navbar navbar-default">
                     <div class="navbar-collapse collapse navbar-inverse-collapse dropdown open">
                         <ul class="nav navbar-nav">
                             <li><a href="{{ path(welcome_path) }}">Inicio</a></li>
+                            {#{% if 'admin' in app.user.username%}#}
                             <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador<b class="caret"></b></a>
                                 <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -70,6 +72,13 @@ Historial de Revision:
                                     <li><a href="{{ path('fuentefinanciamiento') }}">Fuente Financiamiento</a></li>
                                     <li><a href="{{ path('enteejecutor') }}">Ente Ejecutor</a></li>
                                     <li><a href="{{ path('gacetas') }}">Gacetas/Punto Cuenta</a></li>
+                                    <li><a href="{{ path('registropublico') }}">Registro Público</a></li>
+                                    <li><a href="{{ path('oficina') }}">Oficinas Regionales</a></li>
+                                    <li><a href="{{ path('abogados') }}">Lista de Abogados</a></li>
+                                    <li><a href="{{ path('tiposubsidio') }}">Subsidios</a></li>
+                                    <li><a href="{{ path('salariosubsidio') }}">Salario Mínimo/Subsidio Maximo</a></li>
+                                    <li><a href="{{ path('condicionessubsidio') }}">Condiciones del Subsidio</a></li>
+                                    
                                 </ul>
                             </li>
                             <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
@@ -78,46 +87,53 @@ Historial de Revision:
                                     <li><a href="{{ path('usuario') }}">Usuarios</a></li>
                                     <li><a href="{{ path('rol') }}">Roles</a></li>               
                                     <li><a href="{{ path('opcionmenu') }}">Opciones</a></li>
-                                    
-                                   
                                 </ul>
                             </li>
-                            <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Desarrollo Habitacional<b class="caret"></b></a>
-                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                    <li><a href="{{ path('desarrollo') }}">Desarrollo Habitacional</a></li>
-                                    <li><a href="{{ path('unidad') }}">Desarrollo Unidad</a></li>
-                                    <li><a href="{{ path('vivienda') }}">Vivienda</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Beneficiario<b class="caret"></b></a>
-                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                    <li><a href="{{ path('beneficiario') }}">Crear Beneficiario</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Carga de Archivos<b class="caret"></b></a>
-                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
-                                    <li><a href="{{ path('carga_beneficiario') }}">Carga Archivos Beneficiarios</a></li>
-                                </ul>
-                            </li>
+                            {#{% else %}#}
+                            
+                                {% if app.session.get('rolesMenu') is defined %}
+                                    {% for rol in app.session.get('rolesMenu') %}
+                                        <li class="dropdown multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{rol.descripcion}}<b class="caret"></b></a>
+                                            {% if app.session.get('rolesMenu') is defined %}
+                                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                                    {% for opcion in app.session.get('opcionesMenu') %}
+                                                        {% if opcion.rol.Id() == rol.id %}
+                                                            <li>
+                                                                <a href="{{path(opcion.opcionMenu.url)}}">
+                                                                    {{opcion.opcionMenu.nombre}}
+                                                                </a>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul> 
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %} 
+                                {% endif %}                            
+                            {#{% endif %}#}
                         </ul>
                         <!-- Usuario y Salir -->
                         <div class="text-right text-danger:over">
 
                             {% block user %}
                                 <span class="glyphicon glyphicon-off">
-                                   <a href="{{ path(logout_path) }}" class="user-info">Salir</a>
+                                    <a href="{{ path(logout_path) }}" class="selected"><span  id="textUser">Salir</span></a>
                                 </span>
                                 <br>
-                                {% if app.user.nombre is defined %}
+
+                                    {#{% if 'admin' in app.user.username %}
+                                        {% set cc = 'sicc_admin_homepage' %}
+                                    {% else %}
+                                        {% set cc = 'usuario_cambiar_clave' %}
+                                    {% endif %}#}
+                                
                                     <span class="glyphicon  glyphicon-user">
-                                        <a href="{{ path('usuario_cambiar_clave') }}" class="user-info">
-                                            {{app.user.username}}
+                                        <a href="#{#{{ path(cc) }}#}" class="selected">
+                                            {#{{app.user.username}}#}
                                         </a>
-                                    </span>
-                                {% endif %}
+                                    </span>        
+
 
                             {% endblock %}
 
@@ -125,7 +141,7 @@ Historial de Revision:
                         <!-- Fin Usuario y Salir -->                            
                     </div>
                 </div>
-
+                {#{% endif %}#}
                 {% endblock %}
                 <!-- Fin Menu -->   
              </div>  
@@ -180,13 +196,18 @@ Historial de Revision:
                   containerID : "pagination",
                   previous : "←",
                   next : "→",
-                  perPage :2,
+                  perPage :20,
                   scrollBrowse: true
                 });
             });      
             
-            {# Modal confirm #}
+            {# Modal confirm para eliminar registros #}
             $(document).on("click", ".btn-danger", function(e) {
+                
+                bootbox.setDefaults({
+                    locale: "es",
+                });     
+                
                 bootbox.confirm("Está seguro de eliminar el registro?", function(result) {
                     if(result)
                         $('form[name="form"]').submit();
@@ -194,6 +215,32 @@ Historial de Revision:
                         close();
                 }); 
             });
+           
+            {# Le indica al usuario que tiene 5 días o menos para cambiar su clave #}
+     
+            {% if app.user is not null and 'admin' not in app.user.username %}
+            
+                {% if app.session.get('dias_caduca') is defined and 'usuario_cambiar_clave' not in app.request.attributes.get('_route')%}
+                    
+                    bootbox.setDefaults({
+                        closeButton: false,
+                    });
+                    
+                    bootbox.confirm("Su clave vencerá en {{app.session.get('dias_caduca')}} días. \n\
+                                     Recuerde que debe cambiarla", function(result) {
+                        if(result)
+                            window.location.href = "{{path('usuario_cambiar_clave', { 'id': app.user.id})}}";
+                        else
+                            if({{app.session.get('dias_caduca')}} == 0)
+                                window.location.href = "{{path('usuario_cambiar_clave', { 'id': app.user.id})}}";
+                            else
+                                close();
+                    });
+                    
+                {% endif %}          
+                
+            {% endif %}            
+
         </script>
         {% endblock %}
     </body>

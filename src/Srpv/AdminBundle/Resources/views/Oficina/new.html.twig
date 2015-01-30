@@ -1,0 +1,75 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+    <div class="panel panel-default">
+        
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            <h3 class="panel-title" style="display: inline;">Agregar Oficina Regional</h3>
+        </div>
+        {{ form_start(form, { 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
+        <div id="yw0" class="panel-body">
+            {{ form_errors(form) }}
+                
+            <div class="form-group">
+                <p class="text-danger"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Persona Responsable de la Oficina Regional: 
+                </p>
+            </div>
+                        
+            <div class="form-group">    
+                {{ form_row(form.nombre_persona) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.apellido_persona) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.nombre) }}
+            
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.observaciones) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.geoEstado) }}
+            </div>
+            <div class="form-group" id="geoMunicipio">
+                {{ form_row(form.geoMunicipio) }}
+            </div>
+            <div class="form-group" id="geoParroquia">
+                {{ form_row(form.geoParroquia) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.estatus) }}
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+    <div align="right">
+        <a href="{{ path('oficina') }}" class="btn btn-success" role="button">Volver</a>
+    </div>
+    <br>         
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/beneficiario.js') }}"></script>
+<script>
+    $(document).ready(function(){
+        $('#oficina_geoEstado').change(function(event){
+            var id = $('#oficina_geoEstado').find(':selected').val();
+
+            var url = "{{ path('ajaxUpdateMunicipio', {'id':'id'}) }}";
+
+            url = url.replace("id", id);
+            
+            $('#geoMunicipio').load(url);
+        });
+    });
+</script>
+{% endblock %}

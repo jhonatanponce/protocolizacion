@@ -51,6 +51,13 @@ class GrupoFamiliar
     private $tipoSujetoAtencion;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="COTIZA_FAOV", type="string", length=1, nullable=false)
+     */
+    private $cotizaFaov;
+
+    /**
      * @var \Comunes\TablasBundle\Entity\GenParentesco
      *
      * @ORM\ManyToOne(targetEntity="Comunes\TablasBundle\Entity\GenParentesco")
@@ -99,7 +106,6 @@ class GrupoFamiliar
      * })
      */
     private $unidadFamiliar;
-
 
 
     /**
@@ -202,6 +208,29 @@ class GrupoFamiliar
     public function getTipoSujetoAtencion()
     {
         return $this->tipoSujetoAtencion;
+    }
+
+    /**
+     * Set cotizaFaov
+     *
+     * @param string $cotizaFaov
+     * @return GrupoFamiliar
+     */
+    public function setCotizaFaov($cotizaFaov)
+    {
+        $this->cotizaFaov = $cotizaFaov;
+
+        return $this;
+    }
+
+    /**
+     * Get cotizaFaov
+     *
+     * @return string 
+     */
+    public function getCotizaFaov()
+    {
+        return $this->cotizaFaov;
     }
 
     /**

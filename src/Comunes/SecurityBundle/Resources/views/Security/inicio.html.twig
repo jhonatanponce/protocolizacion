@@ -1,4 +1,4 @@
-{% extends '::base.html.twig' %}
+{% extends '::inicio.html.twig' %}
 
 {#
 -----------------------------------
@@ -14,6 +14,7 @@ Historial de Revision:
 #}
 
 {% block main %}
+{{ parent() }}
 {#    <div>
         <div class="panel-body">
             {% if app.session.get('opcionesPadres') is defined %}
@@ -39,7 +40,7 @@ Historial de Revision:
         </div>
     </div>
     #}
-
+    {#
     <div>
         <div class="panel-body">
             <div class="row">
@@ -131,4 +132,5 @@ Historial de Revision:
             </div>
         </div>                   
     </div>
+     #}
 {% endblock %}

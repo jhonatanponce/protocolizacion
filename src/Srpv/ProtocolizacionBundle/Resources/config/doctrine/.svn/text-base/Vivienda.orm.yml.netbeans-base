@@ -1,0 +1,192 @@
+Srpv\ProtocolizacionBundle\Entity\Vivienda:
+    type: entity
+    table: VIVIENDA
+    repositoryClass: Srpv\ProtocolizacionBundle\Entity\ViviendaRepository
+    indexes:
+        IDX_EBCC3792E02DDBB6:
+            columns:
+                - TIPO_VIVIENDA_ID
+        IDX_EBCC379279F45E9B:
+            columns:
+                - FUENTE_DATOS_ENTRADA_ID
+        IDX_EBCC3792E8EA1841:
+            columns:
+                - USUARIO_ID
+        IDX_EBCC379236962553:
+            columns:
+                - UNIDAD_HABITACIONAL_ID
+    id:
+        id:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            id: true
+            column: id
+            generator:
+                strategy: SEQUENCE
+    fields:
+        comedor:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: COMEDOR
+        construccionMt2:
+            type: decimal
+            nullable: false
+            precision: 10
+            scale: 2
+            comment: ''
+            column: CONSTRUCCION_MT2
+        coordenadas:
+            type: string
+            nullable: true
+            length: 200
+            fixed: false
+            comment: ''
+            column: COORDENADAS
+        descripcionEstac:
+            type: string
+            nullable: true
+            length: 15
+            fixed: false
+            comment: ''
+            column: DESCRIPCION_ESTAC
+        fechaActualizacion:
+            type: date
+            nullable: true
+            comment: ''
+            column: FECHA_ACTUALIZACION
+        fechaCreacion:
+            type: date
+            nullable: false
+            comment: ''
+            column: FECHA_CREACION
+        lavandero:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: LAVANDERO
+        cocina:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: COCINA
+        linderoEste:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+            column: LINDERO_ESTE
+        linderoNorte:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+            column: LINDERO_NORTE
+        linderoOeste:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+            column: LINDERO_OESTE
+        linderoSur:
+            type: string
+            nullable: false
+            length: 200
+            fixed: false
+            comment: ''
+            column: LINDERO_SUR
+        nroBanos:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: NRO_BANOS
+        nroEstacionamientos:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: NRO_ESTACIONAMIENTOS
+        nroHabitaciones:
+            type: integer
+            nullable: false
+            unsigned: false
+            comment: ''
+            column: NRO_HABITACIONES
+        nroPiso:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            comment: ''
+            column: NRO_PISO
+        nroVivienda:
+            type: string
+            nullable: false
+            length: 10
+            fixed: false
+            comment: ''
+            column: NRO_VIVIENDA
+        precioVivienda:
+            type: decimal
+            nullable: false
+            precision: 16
+            scale: 2
+            comment: ''
+            column: PRECIO_VIVIENDA
+        sala:
+            type: string
+            nullable: false
+            length: 1
+            fixed: true
+            comment: ''
+            column: SALA
+    manyToOne:
+        tipoVivienda:
+            targetEntity: TipoVivienda
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                TIPO_VIVIENDA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        fuenteDatosEntrada:
+            targetEntity: FuenteDatosEntrada
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                FUENTE_DATOS_ENTRADA_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        usuario:
+            targetEntity: Comunes\SecurityBundle\Entity\Usuario
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                USUARIO_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+        unidadHabitacional:
+            targetEntity: UnidadHabitacional
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                UNIDAD_HABITACIONAL_ID:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

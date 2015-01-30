@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/SecurityBundle/DependencyInjection
+END
+Configuration.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/SecurityBundle/DependencyInjection/Configuration.php
+END
+ComunesSecurityExtension.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/scm/svn/sisprov/!svn/ver/2/sisprov/src/Comunes/SecurityBundle/DependencyInjection/ComunesSecurityExtension.php
+END

@@ -1,0 +1,51 @@
+usuario:
+    path:     /
+    defaults: { _controller: "ComunesSecurityBundle:Usuario:index" }
+
+usuario_show:
+    path:     /{id}/show
+    defaults: { _controller: "ComunesSecurityBundle:Usuario:show" }
+
+usuario_new:
+    path:     /{persona}/new
+    defaults: { _controller: "ComunesSecurityBundle:Usuario:new" }
+
+usuario_create:
+    path:     /create
+    defaults: { _controller: "ComunesSecurityBundle:Usuario:create" }
+    requirements: { _method: post }
+
+usuario_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ComunesSecurityBundle:Usuario:edit" }
+
+usuario_update:
+    path:     /{id}/update
+    defaults: { _controller: "ComunesSecurityBundle:Usuario:update" }
+    requirements: { _method: post|put }
+
+usuario_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ComunesSecurityBundle:Usuario:delete" }
+    requirements: { _method: post|delete }
+
+usuario_buscarPersona:
+    path:     /buscaPersona
+    defaults: { _controller: "ComunesSecurityBundle:Usuario:buscarPersona" }
+
+usuario_admin_cambiarclave:
+    pattern:  /{id}/cambiarclave
+    defaults: { _controller: "ComunesSecurityBundle:Usuario:cambiarClaveAdmin"}   
+
+usuario_habilitar:
+    pattern:  /{id}/habilitar
+    defaults: { _controller: "ComunesSecurityBundle:Usuario:habilitarCuenta"}   
+    
+ajax_usuario_rol:
+    pattern:  /ajax/usuario/rol
+    defaults: { _controller: ComunesSecurityBundle:Default:getRolesUsuario }      
+    
+ajax_rol_opcion:
+    pattern:  /ajax/rol/opcion
+    defaults: { _controller: ComunesSecurityBundle:Default:getOpcionesRol }      
+   

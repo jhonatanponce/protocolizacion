@@ -32,6 +32,13 @@ class Beneficiario
     /**
      * @var string
      *
+     * @ORM\Column(name="CODIGO_TRAB", type="string", length=4, nullable=true)
+     */
+    private $codigoTrab;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="COTIZA_FAOV", type="string", length=1, nullable=false)
      */
     private $cotizaFaov;
@@ -114,13 +121,6 @@ class Beneficiario
     private $rif;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="SECTOR_TRABAJO_ID", type="integer", nullable=false)
-     */
-    private $sectorTrabajoId;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="TELEFONO_TRABAJO", type="string", length=7, nullable=true)
@@ -140,6 +140,16 @@ class Beneficiario
      * @ORM\Column(name="ZONA", type="string", length=200, nullable=true)
      */
     private $zona;
+
+    /**
+     * @var \Srpv\ProtocolizacionBundle\Entity\SectorTrabajo
+     *
+     * @ORM\ManyToOne(targetEntity="Srpv\ProtocolizacionBundle\Entity\SectorTrabajo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="SECTOR_TRABAJO_ID", referencedColumnName="id")
+     * })
+     */
+    private $sectorTrabajo;
 
     /**
      * @var \Srpv\ProtocolizacionBundle\Entity\EstatusBeneficiario
@@ -275,6 +285,30 @@ class Beneficiario
         return $this->avCallEsqCarr;
     }
     
+    /**
+     * Set codigoTrab
+     *
+     * @param string $codigoTrab
+     * @return Beneficiario
+     */
+    public function setCodigoTrab($codigoTrab)
+    {
+        $this->codigoTrab = $codigoTrab;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoTrab
+     *
+     * @return string 
+     */
+    public function getCodigoTrab()
+    {
+        return $this->codigoTrab;
+    }
+
+
     /**
      * Set cotizaFaov
      *
@@ -549,29 +583,6 @@ class Beneficiario
     public function getRif()
     {
         return $this->rif;
-    }
-
-    /**
-     * Set sectorTrabajoId
-     *
-     * @param integer $sectorTrabajoId
-     * @return Beneficiario
-     */
-    public function setSectorTrabajoId($sectorTrabajoId)
-    {
-        $this->sectorTrabajoId = $sectorTrabajoId;
-
-        return $this;
-    }
-
-    /**
-     * Get sectorTrabajoId
-     *
-     * @return integer 
-     */
-    public function getSectorTrabajoId()
-    {
-        return $this->sectorTrabajoId;
     }
 
     /**
@@ -872,5 +883,28 @@ class Beneficiario
     public function getEstatusBeneficiario()
     {
         return $this->estatusBeneficiario;
+    }
+
+    /**
+     * Set sectorTrabajo
+     *
+     * @param \Srpv\ProtocolizacionBundle\Entity\SectorTrabajo $sectorTrabajo
+     * @return Beneficiario
+     */
+    public function setSectorTrabajo(\Srpv\ProtocolizacionBundle\Entity\SectorTrabajo $sectorTrabajo = null)
+    {
+        $this->sectorTrabajo = $sectorTrabajo;
+
+        return $this;
+    }
+
+    /**
+     * Get sectorTrabajo
+     *
+     * @return \Srpv\ProtocolizacionBundle\Entity\SectorTrabajo 
+     */
+    public function getSectorTrabajo()
+    {
+        return $this->sectorTrabajo;
     }
 }

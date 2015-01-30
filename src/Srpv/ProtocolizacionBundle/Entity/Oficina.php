@@ -20,42 +20,42 @@ class Oficina
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="OFICINA_id_seq", allocationSize=1, initialValue=1)
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ESTATUS", type="string", length=1, nullable=false)
      */
-    private $estatus;
+    public $estatus;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="FECHA_ACTUALIZACION", type="date", nullable=true)
      */
-    private $fechaActualizacion;
+    public $fechaActualizacion;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="FECHA_CREACION", type="date", nullable=false)
      */
-    private $fechaCreacion;
+    public $fechaCreacion;
 
     /**
      * @var string
      *
      * @ORM\Column(name="NOMBRE", type="string", length=100, nullable=true)
      */
-    private $nombre;
+    public $nombre;
 
     /**
      * @var string
      *
      * @ORM\Column(name="OBSERVACIONES", type="string", length=200, nullable=true)
      */
-    private $observaciones;
+    public $observaciones;
 
     /**
      * @var \Comunes\TablasBundle\Entity\Persona
@@ -65,7 +65,7 @@ class Oficina
      *   @ORM\JoinColumn(name="PERSONA_ID_JEFE", referencedColumnName="id")
      * })
      */
-    private $personaIdJefe;
+    public $personaIdJefe;
 
     /**
      * @var \Comunes\TablasBundle\Entity\GeoEstado
@@ -75,7 +75,7 @@ class Oficina
      *   @ORM\JoinColumn(name="GEO_ESTADO_ID", referencedColumnName="id")
      * })
      */
-    private $geoEstado;
+    public $geoEstado;
 
     /**
      * @var \Comunes\TablasBundle\Entity\GeoMunicipio
@@ -85,7 +85,7 @@ class Oficina
      *   @ORM\JoinColumn(name="GEO_MUNICIPIO_ID", referencedColumnName="id")
      * })
      */
-    private $geoMunicipio;
+    public $geoMunicipio;
 
     /**
      * @var \Comunes\TablasBundle\Entity\GeoParroquia
@@ -95,7 +95,7 @@ class Oficina
      *   @ORM\JoinColumn(name="GEO_PARROQUIA_ID", referencedColumnName="id")
      * })
      */
-    private $geoParroquia;
+    public $geoParroquia;
 
     /**
      * @var \Comunes\SecurityBundle\Entity\Usuario
@@ -105,9 +105,12 @@ class Oficina
      *   @ORM\JoinColumn(name="USUARIO_ID", referencedColumnName="id")
      * })
      */
-    private $usuario;
+    public $usuario;
 
-
+    public function __toString()
+    {
+        return $this->nombre;
+    }
 
     /**
      * Get id

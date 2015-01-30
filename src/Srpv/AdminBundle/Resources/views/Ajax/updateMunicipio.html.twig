@@ -1,0 +1,24 @@
+<div class="form-group">
+    <label class="control-label col-lg-4 required" for="srpv_protocolizacionbundle_registropublico_geoMunicipio">Municipio:</label>
+    <div class="col-lg-4">
+        <select id="srpv_protocolizacionbundle_registropublico_geoMunicipio" name="srpv_protocolizacionbundle_registropublico[geoMunicipio]" required="required" class="form-control">
+            <option value=""> </option>
+            {% for municipio in municipios %}
+            <option value="{{ municipio.id }}">{{ municipio.nombre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#srpv_protocolizacionbundle_registropublico_geoMunicipio').change(function(event){
+            var municipio = $('#srpv_protocolizacionbundle_registropublico_geoMunicipio').find(':selected').val();
+
+            var url = "{{ path('ajaxUpdateParroquia', {'id':'municipio'}) }}";
+
+            url = url.replace("municipio", municipio);
+            
+            $('#geoParroquia').load(url);
+        });
+    });
+</script>

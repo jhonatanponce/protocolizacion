@@ -1,0 +1,23 @@
+analisiscredito:
+    path:     /
+    defaults: { _controller: "SrpvProtocolizacionBundle:AnalisisCredito:index" }
+
+analisiscredito_new:
+    path:     /{id}/{mensaje}/new
+    defaults: { _controller: "SrpvProtocolizacionBundle:AnalisisCredito:new", mensaje:0 }
+
+analisiscredito_create:
+    path:     /create
+    defaults: { _controller: "SrpvProtocolizacionBundle:AnalisisCredito:create" }
+
+analisiscredito_update:
+    path:     /update
+    defaults: { _controller: "SrpvProtocolizacionBundle:AnalisisCredito:update" }
+
+analisiscredito_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvProtocolizacionBundle:AnalisisCredito:edit" }
+
+analisiscredito_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvProtocolizacionBundle:AnalisisCredito:delete" }

@@ -1,0 +1,104 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {{ parent() }}
+<div class="panel panel-default">
+    
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-record"></span>
+        <h3 class="panel-title" style="display: inline;">Detalle Desarrollo Unidad</h3>
+    </div>
+    
+    <div id="yw0" class="panel-body table-responsive">
+        
+        <table class="records_list table table-bordered table-striped table-hover" border="1">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ entity.id }}</td>
+                </tr>
+                <tr>
+                    <th>Desarrollo</th>
+                    <td>{{ entity.desarrollo }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ entity.nombre }}</td>
+                </tr>
+                <tr>
+                    <th>Tipo Inmueble</th>
+                    <td>{{ entity.genTipoInmueble }}</td>
+                </tr>
+                <tr>
+                    <th>Total Unidades</th>
+                    <td>{{ entity.totalUnidades }}</td>
+                </tr>
+                <tr>
+                    <th>Registro Público</th>
+                    <td>{{ entity.registroPublicoId }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha Registro</th>
+                    <td>{{ entity.fechaRegistro|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Nro. Documento</th>
+                    <td>{{ entity.nroDocumento }}</td>
+                </tr>
+                <tr>
+                    <th>Tomo</th>
+                    <td>{{ entity.tomo }}</td>
+                </tr>
+                <tr>
+                    <th>Año</th>
+                    <td>{{ entity.ano }}</td>
+                </tr>
+                <tr>
+                    <th>Nro. Protocolo</th>
+                    <td>{{ entity.nroProtocolo }}</td>
+                </tr>
+                <tr>
+                    <th>Asiento Registral</th>
+                    <td>{{ entity.asientoRegistral }}</td>
+                </tr>
+                <tr>
+                    <th>Folio Real</th>
+                    <td>{{ entity.folioReal }}</td>
+                </tr>
+                <tr>
+                    <th>Nro. Matrícula</th>
+                    <td>{{ entity.nroMatricula }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha Creación</th>
+                    <td>{{ entity.fechaCreacion|date('Y-m-d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha Actualización</th>
+                    <td>{{ entity.fechaActualizacion|date('Y-m-d H:i:s') }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        
+        <div class="delete">
+            <div class="row">
+                <div class="col-md-2">
+                        {% if delete_form is defined %}
+                            {{ form(delete_form) }}
+                        {% endif %} 
+                </div>
+                <div class="col-md-2">
+                    <a href="{{ path('unidad_edit', { 'id': entity.id }) }}" class="btn btn-warning">Modificar</a>
+                </div>
+            </div>                
+        </div>
+    </div>
+</div>
+
+<div align="right">
+    <a href="{{ path('unidad') }}" class="btn btn-success" role="button">Volver</a>
+</div>
+
+<br>            
+{% endblock %}

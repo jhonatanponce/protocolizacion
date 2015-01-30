@@ -1,0 +1,142 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {% block stylesheets %}
+
+    {{ parent() }}
+
+      <link type="text/css" href="{{ asset('js/css/smoothness/jquery-ui-1.8.14.custom.css') }}" type="text/css" rel="stylesheet" />
+
+    {% endblock %}
+    <div class="panel panel-default">
+        
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+            <h3 class="panel-title" style="display: inline;">Grupo Familiar</h3>
+        </div>
+        {% if mensaje %}
+        <div class="alert alert-dismissable alert-warning">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <h4>
+            {{mensaje}}            
+          </h4>
+        </div>
+        {% endif %}
+        <div id="yw0" class="panel-body">
+            <form id="grupo" name="grupo" class="form-horizontal" action="{{ path('grupofamiliar_create') }}" method="post">
+                <input type="hidden" name="unidad_familiar_id" value="{{unidad_familiar.id}}" />
+                
+                    <div id="principal_contact_form">
+                        <legend>
+                            Datos del Familiar<button type="button" class="btn btn-danger btn-xs pull-right" id="remove_socio_contact"><span class="glyphicon glyphicon-remove"></span></button>
+                        </legend>                         
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Cédula</label>
+                            <div class="col-lg-4">
+                                <input type="text" id="cedula" name="cedula[]" class="form-control" value='' placeholder='V-XXXXXXXX'>
+                            </div>
+                            <label class="control-label col-lg-2 required">Fecha de Nacimiento</label>
+                            <div class="col-lg-4">
+                                <input required type="text" id="fecha_nacimiento" name="fecha_nacimiento[]" class="form-control" value='' placeholder='DD-MM-AAAA'>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Nombre</label>
+                            <div class="col-lg-4">
+                                <input required type="text" id="nombre" name="nombre[]" class="form-control" value=''>
+                            </div>                    
+                            <label class="control-label col-lg-2">Apellido</label>
+                            <div class="col-lg-4">
+                                <input required type="text" id="apellido" name="apellido[]" class="form-control col-lg-2" value=''>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Sexo</label>
+                            <div class="col-lg-4">
+                                <select required id="sexoid" name="sexoid[]" class="form-control">
+                                    <option selected="selected" value="">Seleccione El Sexo</option>
+                                    {% for sx in sexo %}
+                                        <option value="{{ sx.id }}">{{ sx.nombre }}</option>
+                                    {% endfor %}
+                               </select>
+                            </div>
+                            <label class="control-label col-lg-2">Estado Civil</label>
+                            <div class="col-lg-4">
+                                <select required id="edo_civil" name="edo_civil[]" class="form-control">
+                                    <option selected="selected" value="">Seleccione El Estado Civil</option>
+                                    {% for civil in edo_civil %}
+                                        <option value="{{ civil.id }}">{{ civil.nombre }}</option>
+                                    {% endfor %}
+                               </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Parantesco</label>
+                            <div class="col-lg-4">
+                                <select required id="parentesco" name="parentesco[]" class="form-control">
+                                    <option selected="selected" value="">Seleccione El Parentesco</option>
+                                    {% for parentesco in gen_parentesco %}
+                                        <option value="{{ parentesco.id }}">{{ parentesco.nombre }}</option>
+                                    {% endfor %}
+                               </select>
+                            </div>
+                            <label class="control-label col-lg-2">Tipo Sujeto Atención</label>
+                            <div class="col-lg-4">
+                                <input required type="text" id="tipo" name="tipo[]" class="form-control" value=''>
+                            </div>  
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Ingreso Mensual</label>
+                            <div class="col-lg-4">
+                                <input type="text" id="ingreso_mensual" name="ingreso_mensual[]" class="form-control" value=''>
+                            </div>
+                            <label class="control-label col-lg-2">¿Cotiza Faov?</label>
+                            <div class="col-lg-4">
+                                <select id="cotiza_faov" name="cotiza_faov[]" class="form-control">
+                                    <option selected="selected" value="0">NO</option>
+                                    <option value="1">SI</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <div class="col-lg-4 col-lg-offset-4">
+                            <button type="submit" class="btn btn-primary">Crear</button>
+                            <a href="{{ path('unidadfamiliar_show', { 'id': beneficiario.id }) }}" class="btn btn-success" role="button">Volver</a>
+                            <button type="button" class="btn btn-warning" id="add_socio_contact"><span class="glyphicon glyphicon-plus"></span> Agregar Familiar</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+    <br>         
+{% endblock %}
+{% block javascripts %}
+
+{{ parent() }}
+<script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-validation-1.9.0/jquery.validate.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+
+  <script>
+    $(document).ready(function(){
+        var principal_contact_form_index=0;
+        $("#add_socio_contact").click(function(){
+            principal_contact_form_index++;
+            
+            $(this).parent().before($("#principal_contact_form").clone().attr("id","principal_contact_form" + principal_contact_form_index));
+            $("#principal_contact_form" + principal_contact_form_index).val('').css("display","inline");
+            $("#principal_contact_form" + principal_contact_form_index + " :input").each(function(){
+                $(this).val('').attr("id",$(this).attr("id") + principal_contact_form_index);
+            });
+            $("#remove_socio_legal" + principal_contact_form_index).show();
+            $("#remove_socio_contact" + principal_contact_form_index).click(function(){
+                $(this).closest("div").remove();
+            });
+        });
+    });
+
+  </script>
+  
+{% endblock %}

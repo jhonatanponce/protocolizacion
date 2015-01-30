@@ -1,0 +1,30 @@
+fuentefinanciamiento:
+    path:     /
+    defaults: { _controller: "SrpvAdminBundle:FuenteFinanciamiento:index" }
+
+fuentefinanciamiento_show:
+    path:     /{id}/show
+    defaults: { _controller: "SrpvAdminBundle:FuenteFinanciamiento:show" }
+
+fuentefinanciamiento_new:
+    path:     /new
+    defaults: { _controller: "SrpvAdminBundle:FuenteFinanciamiento:new" }
+
+fuentefinanciamiento_create:
+    path:     /create
+    defaults: { _controller: "SrpvAdminBundle:FuenteFinanciamiento:create" }
+    requirements: { _method: post }
+
+fuentefinanciamiento_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "SrpvAdminBundle:FuenteFinanciamiento:edit" }
+
+fuentefinanciamiento_update:
+    path:     /{id}/update
+    defaults: { _controller: "SrpvAdminBundle:FuenteFinanciamiento:update" }
+    requirements: { _method: post|put }
+
+fuentefinanciamiento_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "SrpvAdminBundle:FuenteFinanciamiento:delete" }
+    requirements: { _method: post|delete }

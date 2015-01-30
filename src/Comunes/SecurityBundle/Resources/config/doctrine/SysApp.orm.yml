@@ -1,6 +1,7 @@
 Comunes\SecurityBundle\Entity\SysApp:
     type: entity
     table: SYS_APP
+    repositoryClass: Comunes\SecurityBundle\Repository\SecurityRepository     
     indexes:
         IDX_E88534D363F89AA7:
             columns:

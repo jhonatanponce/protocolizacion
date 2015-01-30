@@ -1,0 +1,30 @@
+opcionmenu:
+    path:     /
+    defaults: { _controller: "ComunesSecurityBundle:OpcionMenu:index" }
+
+opcionmenu_show:
+    path:     /{id}/show
+    defaults: { _controller: "ComunesSecurityBundle:OpcionMenu:show" }
+
+opcionmenu_new:
+    path:     /new
+    defaults: { _controller: "ComunesSecurityBundle:OpcionMenu:new" }
+
+opcionmenu_create:
+    path:     /create
+    defaults: { _controller: "ComunesSecurityBundle:OpcionMenu:create" }
+    requirements: { _method: post }
+
+opcionmenu_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ComunesSecurityBundle:OpcionMenu:edit" }
+
+opcionmenu_update:
+    path:     /{id}/update
+    defaults: { _controller: "ComunesSecurityBundle:OpcionMenu:update" }
+    requirements: { _method: post|put }
+
+opcionmenu_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ComunesSecurityBundle:OpcionMenu:delete" }
+    requirements: { _method: post|delete }

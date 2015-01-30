@@ -18,5 +18,5 @@ Comunes\SecurityBundle\Entity\SysSistema:
             length: 100
             fixed: false
             comment: 'nombre del sistema'
-            column: NOMBRE
+            column: nombre
     lifecycleCallbacks: {  }

@@ -1,0 +1,4 @@
+services:
+#    srpv_admin.example:
+#        class: Srpv\AdminBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

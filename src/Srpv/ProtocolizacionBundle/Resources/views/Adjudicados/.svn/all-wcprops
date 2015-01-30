@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/scm/svn/sisprov/!svn/ver/172/sisprov/src/Srpv/ProtocolizacionBundle/Resources/views/Adjudicados
+END
+asignacionMasivaAdjudicados.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/scm/svn/sisprov/!svn/ver/172/sisprov/src/Srpv/ProtocolizacionBundle/Resources/views/Adjudicados/asignacionMasivaAdjudicados.html.twig
+END
+asignacionAdjudicados.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/scm/svn/sisprov/!svn/ver/174/sisprov/src/Srpv/ProtocolizacionBundle/Resources/views/Adjudicados/asignacionAdjudicados.html.twig
+END
+asignacionDetalle.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/scm/svn/sisprov/!svn/ver/174/sisprov/src/Srpv/ProtocolizacionBundle/Resources/views/Adjudicados/asignacionDetalle.html.twig
+END
+index.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/scm/svn/sisprov/!svn/ver/174/sisprov/src/Srpv/ProtocolizacionBundle/Resources/views/Adjudicados/index.html.twig
+END
+reasignacionMasivaAdjudicados.html.twig
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/scm/svn/sisprov/!svn/ver/165/sisprov/src/Srpv/ProtocolizacionBundle/Resources/views/Adjudicados/reasignacionMasivaAdjudicados.html.twig
+END

@@ -1,0 +1,30 @@
+rol:
+    path:     /
+    defaults: { _controller: "ComunesSecurityBundle:Rol:index" }
+
+rol_show:
+    path:     /{id}/show
+    defaults: { _controller: "ComunesSecurityBundle:Rol:show" }
+
+rol_new:
+    path:     /new
+    defaults: { _controller: "ComunesSecurityBundle:Rol:new" }
+
+rol_create:
+    path:     /create
+    defaults: { _controller: "ComunesSecurityBundle:Rol:create" }
+    requirements: { _method: post }
+
+rol_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ComunesSecurityBundle:Rol:edit" }
+
+rol_update:
+    path:     /{id}/update
+    defaults: { _controller: "ComunesSecurityBundle:Rol:update" }
+    requirements: { _method: post|put }
+
+rol_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ComunesSecurityBundle:Rol:delete" }
+    requirements: { _method: post|delete }
