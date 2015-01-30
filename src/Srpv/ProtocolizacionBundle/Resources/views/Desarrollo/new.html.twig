@@ -8,13 +8,12 @@
         <link type="text/css" href="{{ asset('js/css/smoothness/jquery-ui-1.8.14.custom.css') }}" type="text/css" rel="stylesheet" />
           
     {% endblock %}
+    {{ form_start(form, { 'attr': {'id': 'formulario'}, 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
     <div class="panel panel-default">
-        
         <div class="panel-heading">
             <span class="glyphicon glyphicon-plus-sign"></span>
             <h3 class="panel-title" style="display: inline;">Agregar Desarrollo Habitacional</h3>
         </div>
-        {{ form_start(form, { 'attr': {'id': 'formulario'}, 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
         <div id="yw0" class="panel-body">
             {{ form_errors(form) }}
             <div class="form-group">
@@ -29,12 +28,55 @@
             <div class="form-group" id="geoParroquia">
                 {{ form_row(form.geoParroquia) }}
             </div>
+            <div class="form-group" id="avCallEsqCarr">
+                {{ form_row(form.avCallEsqCarr) }}
+            </div>
+            <div class="form-group" id="urbanBarrio">
+                {{ form_row(form.urbanBarrio) }}
+            </div>
+            <div class="form-group" id="zona">
+                {{ form_row(form.zona) }}
+            </div>
+            <div class="form-group" id="descripcion">
+                {{ form_row(form.descripcion) }}
+            </div>
+            <div class="form-group" id="linderoEste">
+                {{ form_row(form.linderoEste) }}
+            </div>
+            <div class="form-group" id="linderoNorte">
+                {{ form_row(form.linderoNorte) }}
+            </div>
+            <div class="form-group" id="linderoOeste">
+                {{ form_row(form.linderoOeste) }}
+            </div>
+            <div class="form-group" id="linderoSur">
+                {{ form_row(form.linderoSur) }}
+            </div>
+            <div class="form-group" id="coordenadas">
+                {{ form_row(form.coordenadas) }}
+            </div>
+            <div class="form-group" id="loteTerrenoMt2">
+                {{ form_row(form.loteTerrenoMt2) }}
+            </div>
+            <div class="form-group" id="fuenteFinanciamiento">
+                {{ form_row(form.fuenteFinanciamiento) }}
+            </div>
+            <div class="form-group" id="titularidadDelTerreno">
+                {{ form_row(form.titularidadDelTerreno) }}
+            </div>
+            <div class="form-group" id="enteEjecutor">
+                {{ form_row(form.enteEjecutor) }}
+            </div>
+            <div class="form-group" id="fechaTransferencia">
+                {{ form_row(form.fechaTransferencia) }}
+            </div>
         </div>
-        {{ form_end(form) }}
     </div>
-    <div align="right">
+    <div align="center">
+        {{ form_widget(form.submit) }}
         <a href="{{ path('desarrollo') }}" class="btn btn-success" role="button">Volver</a>
     </div>
+    {{ form_end(form) }}
     <br>         
 {% endblock %}
 {% block javascripts %}

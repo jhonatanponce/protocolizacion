@@ -8,14 +8,12 @@
         <link type="text/css" href="{{ asset('js/css/smoothness/jquery-ui-1.8.14.custom.css') }}" type="text/css" rel="stylesheet" />
           
     {% endblock %}
+        {{ form_start(edit_form, { 'attr': {'id': 'formulario'}, 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
         <div class="panel panel-default">
-         
         <div class="panel-heading">
             <span class="glyphicon glyphicon-edit"></span>
             <h3 class="panel-title" style="display: inline;"> Modificar Datos</h3>
         </div>
-            
-        {{ form_start(edit_form, { 'attr': {'id': 'formulario'}, 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
         <div id="yw0" class="panel-body">
             {{ form_errors(edit_form) }}
             <div class="form-group">
@@ -30,21 +28,59 @@
             <div class="form-group" id="geoParroquia">
                 {{ form_row(edit_form.geoParroquia) }}
             </div>
+            <div class="form-group" id="avCallEsqCarr">
+                {{ form_row(edit_form.avCallEsqCarr) }}
+            </div>
+            <div class="form-group" id="urbanBarrio">
+                {{ form_row(edit_form.urbanBarrio) }}
+            </div>
+            <div class="form-group" id="zona">
+                {{ form_row(edit_form.zona) }}
+            </div>
+            <div class="form-group" id="descripcion">
+                {{ form_row(edit_form.descripcion) }}
+            </div>
+            <div class="form-group" id="linderoEste">
+                {{ form_row(edit_form.linderoEste) }}
+            </div>
+            <div class="form-group" id="linderoNorte">
+                {{ form_row(edit_form.linderoNorte) }}
+            </div>
+            <div class="form-group" id="linderoOeste">
+                {{ form_row(edit_form.linderoOeste) }}
+            </div>
+            <div class="form-group" id="linderoSur">
+                {{ form_row(edit_form.linderoSur) }}
+            </div>
+            <div class="form-group" id="coordenadas">
+                {{ form_row(edit_form.coordenadas) }}
+            </div>
+            <div class="form-group" id="loteTerrenoMt2">
+                {{ form_row(edit_form.loteTerrenoMt2) }}
+            </div>
+            <div class="form-group" id="fuenteFinanciamiento">
+                {{ form_row(edit_form.fuenteFinanciamiento) }}
+            </div>
+            <div class="form-group" id="titularidadDelTerreno">
+                {{ form_row(edit_form.titularidadDelTerreno) }}
+            </div>
+            <div class="form-group" id="enteEjecutor">
+                {{ form_row(edit_form.enteEjecutor) }}
+            </div>
+            <div class="form-group" id="fechaTransferencia">
+                {{ form_row(edit_form.fechaTransferencia) }}
+            </div>
         </div>
-        {{ form_end(edit_form) }}
-            
-        {% if delete_form is defined %}
-            
-            <br/>
-            {{ form(delete_form) }}
-                
-        {% endif %}
     </div>
 </div>
-        
-<div align="right">
+<div align="center">
+    {{ form_widget(edit_form.submit) }}
+    {% if delete_form is defined %}
+        {{ form(delete_form) }}
+    {% endif %}
     <a href="{{ path('desarrollo') }}" class="btn btn-success" role="button">Volver</a>  
 </div>
+{{ form_end(edit_form) }}
 <br>    
 {% endblock %}
 {% block javascripts %}

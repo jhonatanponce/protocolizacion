@@ -2,48 +2,93 @@
     
 {% block body -%}
     {{ parent() }}
+        {{ form_start(edit_form, { 'attr': {'id': 'formulario'}, 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
         <div class="panel panel-default">
-         
         <div class="panel-heading">
             <span class="glyphicon glyphicon-edit"></span>
             <h3 class="panel-title" style="display: inline;"> Modificar Datos</h3>
         </div>
-            
-        {{ form_start(edit_form, { 'attr': {'id': 'formulario'}, 'style': 'horizontal', 'label_col': 4, 'widget_col':4 }) }}
         <div id="yw0" class="panel-body">
-            {{ form_errors(edit_form) }}
-            <div class="form-group">
-                <label class="control-label col-lg-4 required" for="desarrollo">Desarrollo</label>
-                <div class="col-lg-4">
-                    <select id="desarrolloid" name="desarrolloid" class="form-control" required="required">
-                        <option value="">Seleccione Nombre Desarrollo</option>
-                        {% for desarrollo in desarrollos %}
-                            {% if desarrollo.nombre == desarrolloVivienda %}
-                                <option value="{{ desarrollo.id }}" selected="selected">{{ desarrollo.nombre }}</option>
-                            {% else %}
-                                <option value="{{ desarrollo.id }}">{{ desarrollo.nombre }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                </div>
+            {{ form_errors(form) }}
+            <div class="col-lg-4">
+                <select id="desarrolloid" name="desarrolloid" class="form-control" required="required">
+                    <option value="">Seleccione Nombre Desarrollo</option>
+                    {% for desarrollo in desarrollos %}
+                        {% if desarrollo.nombre == desarrolloVivienda %}
+                            <option value="{{ desarrollo.id }}" selected="selected">{{ desarrollo.nombre }}</option>
+                        {% else %}
+                            <option value="{{ desarrollo.id }}">{{ desarrollo.nombre }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
             </div>
             <div class="form-group" id="unidadHabitacional">
                 {{ form_row(edit_form.unidadHabitacional) }}
             </div>
+            <div class="form-group">
+                {{ form_row(edit_form.tipoVivienda) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(edit_form.construccionMt2) }}
+            </div>
+            <div class="form-group" id="precioVivienda">
+                {{ form_row(edit_form.precioVivienda) }}
+            </div>
+            <div class="form-group" id="nroPiso">
+                {{ form_row(edit_form.nroPiso) }}
+            </div>
+            <div class="form-group" id="nroVivienda">
+                {{ form_row(edit_form.nroVivienda) }}
+            </div>
+            <div class="form-group" id="sala">
+                {{ form_row(edit_form.sala) }}
+            </div>
+            <div class="form-group" id="comedor">
+                {{ form_row(edit_form.comedor) }}
+            </div>
+            <div class="form-group" id="cocina">
+                {{ form_row(edit_form.cocina) }}
+            </div>
+            <div class="form-group" id="lavandero">
+                {{ form_row(edit_form.lavandero) }}
+            </div>
+            <div class="form-group" id="linderoEste">
+                {{ form_row(edit_form.linderoEste) }}
+            </div>
+            <div class="form-group" id="linderoNorte">
+                {{ form_row(edit_form.linderoNorte) }}
+            </div>
+            <div class="form-group" id="linderoOeste">
+                {{ form_row(edit_form.linderoOeste) }}
+            </div>
+            <div class="form-group" id="linderoSur">
+                {{ form_row(edit_form.linderoSur) }}
+            </div>
+            <div class="form-group" id="coordenadas">
+                {{ form_row(edit_form.coordenadas) }}
+            </div>
+            <div class="form-group" id="descripcionEstac">
+                {{ form_row(edit_form.descripcionEstac) }}
+            </div>
+            <div class="form-group" id="nroEstacionamientos">
+                {{ form_row(edit_form.nroEstacionamientos) }}
+            </div>
+            <div class="form-group" id="nroBanos">
+                {{ form_row(edit_form.nroBanos) }}
+            </div>
+            <div class="form-group" id="nroHabitaciones">
+                {{ form_row(edit_form.nroHabitaciones) }}
+            </div>
         </div>
-        {{ form_end(edit_form) }}
-            
+    </div>
+    <div align="center">
+        {{ form_widget(edit_form.submit) }}
         {% if delete_form is defined %}
-            
-            <br/>
             {{ form(delete_form) }}
-                
         {% endif %}
+        <a href="{{ path('vivienda') }}" class="btn btn-success" role="button">Volver</a>
     </div>
-        
-    <div align="right">
-        <a href="{{ path('vivienda') }}" class="btn btn-success" role="button">Volver</a>  
-    </div>
+    {{ form_end(edit_form) }}
     <br>    
 {% endblock %}
 {% block javascripts %}
