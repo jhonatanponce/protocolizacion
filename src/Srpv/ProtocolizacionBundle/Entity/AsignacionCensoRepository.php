@@ -55,6 +55,215 @@ class AsignacionCensoRepository extends EntityRepository
 
     }
     
+    public function getBeneficiariosAdjudicadosByNacionalidadCedulaEstado($nacionalidad,$cedula,$estado)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p WITH p.nacionalidad = '$nacionalidad' AND p.cedula = '$cedula'
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id AND g.id = '$estado'
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id
+                                   ORDER BY p.id ASC")
+
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosAdjudicadosByNacionalidadCedulaEstadoMunicipio($nacionalidad,$cedula,$estado,$municipio)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p WITH p.nacionalidad = '$nacionalidad' AND p.cedula = '$cedula'
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id AND g.id = '$estado'
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id AND gm.id = '$municipio'
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id
+                                   ORDER BY p.id ASC")
+
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosAdjudicadosByNacionalidadCedulaEstadoMunicipioOficina($nacionalidad,$cedula,$estado,$municipio,$oficina)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p WITH p.nacionalidad = '$nacionalidad' AND p.cedula = '$cedula'
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id AND g.id = '$estado'
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id AND gm.id = '$municipio'
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id AND ofic.id = '$oficina'
+                                   ORDER BY p.id ASC")
+
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosAdjudicadosByEstado($estado)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id AND g.id = '$estado'
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id
+                                   ORDER BY p.id ASC")
+
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosAdjudicadosByEstadoMunicipio($estado,$municipio)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id AND g.id = '$estado'
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id AND gm.id = '$municipio'
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id
+                                   ORDER BY p.id ASC")
+
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosAdjudicadosByEstadoMunicipioOficina($estado,$municipio,$oficina)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id AND g.id = '$estado'
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id AND gm.id = '$municipio'
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id AND ofic.id = '$oficina'
+                                   ORDER BY p.id ASC")
+
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosAdjudicadosByMunicipio($municipio)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id AND gm.id = '$municipio'
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id
+                                   ORDER BY p.id ASC")
+
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosAdjudicadosByMunicipioOficina($municipio,$oficina)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id AND gm.id = '$municipio'
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id AND ofic.id = '$oficina'
+                                   ORDER BY p.id ASC")
+
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosAdjudicadosByOficina($oficina)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id AND ofic.id = '$oficina'
+                                   ORDER BY p.id ASC")
+
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosAdjudicadosByNacionalidadCedulaMunicipio($nacionalidad,$cedula,$municipio)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p WITH p.nacionalidad = '$nacionalidad' AND p.cedula = '$cedula'
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id AND gm.id = '$municipio'
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id
+                                   ORDER BY p.id ASC")
+
+       				->getResult();
+
+
+    }
+    
+    public function getBeneficiariosAdjudicadosByNacionalidadCedulaOficina($nacionalidad,$cedula,$oficina)
+    {
+
+    	return $this->getEntityManager()
+       				->createQuery("SELECT ac.id, p.id as persona_id, p.nacionalidad, p.cedula, p.primerNombre as nombre, p.primerApellido as apellido, g.nombre as estado, gm.nombre as municipio, ofic.id as oficina_id, uh.nombre as unidad, uh.id as unidad_id
+                                   FROM SrpvProtocolizacionBundle:AsignacionCenso ac
+                                   JOIN ComunesTablasBundle:Persona p WITH p.nacionalidad = '$nacionalidad' AND p.cedula = '$cedula'
+                                   JOIN SrpvProtocolizacionBundle:UnidadHabitacional uh WITH uh.id = ac.unidadHabitacional
+                                   JOIN SrpvProtocolizacionBundle:Desarrollo d WITH d.id = uh.desarrollo
+                                   JOIN ComunesTablasBundle:GeoEstado g WITH d.geoEstado = g.id
+                                   JOIN ComunesTablasBundle:GeoMunicipio gm WITH d.geoMunicipio = gm.id
+                                   LEFT JOIN SrpvProtocolizacionBundle:Oficina ofic WITH ac.oficina = ofic.id AND ofic.id = '$oficina'
+                                   ORDER BY p.id ASC")
+
+       				->getResult();
+
+
+    }
+    
     public function getBeneficiarioAdjudicado($nacionalidad,$cedula)
     {
 

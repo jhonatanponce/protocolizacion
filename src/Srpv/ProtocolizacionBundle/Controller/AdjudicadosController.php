@@ -31,6 +31,11 @@ class AdjudicadosController extends Controller
             $municipioid = $request->get('municipio');
             $coordinadorid = $request->get('coordinador');
             
+            if($nacionalidad == 1){
+                $nacionalidad = 1; 
+            }else{
+                $nacionalidad = 0;
+            }
             if($estadoid){
                 $estado = $em->getRepository('ComunesTablasBundle:GeoEstado')->find($estadoid);
                 $estado_id = $estado->getId();
@@ -46,43 +51,64 @@ class AdjudicadosController extends Controller
                 $municipio_id = NULL;
             }
             if($coordinadorid){
-                $coordinador = $em->getRepository('ComunesTablasBundle:Persona')->find($coordinadorid);
-                $coordinador_id = $coordinador->getId();
+                $coordinador = $em->getRepository('SrpvProtocolizacionBundle:Oficina')->findOneBy(array('personaIdJefe'=>$coordinadorid));
+                $oficina_id = $coordinador->getId();
             }
             else{
-                $coordinador_id = NULL;
+                $oficina_id = NULL;
             }
            
-            if($nacionalidad != NULL && $cedula != NULL && $estado_id == NULL && $municipio_id == NULL && $coordinador_id == NULL){
+            if($nacionalidad != NULL && $cedula == NULL && $estado_id == NULL && $municipio_id == NULL && $oficina_id == NULL){
                 
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Beneficiario')->getBeneficiariosByCedula($nacionalidad,$cedula);
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicados();
             }
-            if($nacionalidad == NULL && $cedula == NULL && $estado_id != NULL && $municipio_id == NULL && $coordinador_id == NULL){
-                 
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Beneficiario')->getBeneficiariosByEstado($estado_id);
+            if($nacionalidad != NULL && $cedula != NULL && $estado_id == NULL && $municipio_id == NULL && $oficina_id == NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiarioAdjudicado($nacionalidad,$cedula);
             }
-            if($nacionalidad == NULL && $cedula == NULL && $estado_id == NULL && $municipio_id != NULL && $coordinador_id == NULL){
-                 
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Beneficiario')->getBeneficiariosByProcedencia($municipio_id);
+            if($nacionalidad != NULL && $cedula != NULL && $estado_id != NULL && $municipio_id == NULL && $oficina_id == NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicadosByNacionalidadCedulaEstado($nacionalidad,$cedula,$estado_id);
             }
-            if($nacionalidad == NULL && $cedula == NULL && $estado_id == NULL && $municipio_id == NULL && $coordinador_id != NULL){
-                 
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Beneficiario')->getBeneficiariosByEstatus($coordinador_id);
+            if($nacionalidad != NULL && $cedula != NULL && $estado_id != NULL && $municipio_id != NULL && $oficina_id == NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicadosByNacionalidadCedulaEstadoMunicipio($nacionalidad,$cedula,$estado_id,$municipio_id);
             }
-            if($nacionalidad == NULL && $cedula == NULL && $estado_id != NULL && $municipio_id != NULL && $coordinador_id != NULL){
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Beneficiario')->getBeneficiariosByEstadoProcedenciaEstatus($estado_id,$municipio_id,$coordinador_id);
+            if($nacionalidad != NULL && $cedula != NULL && $estado_id != NULL && $municipio_id != NULL && $oficina_id != NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicadosByNacionalidadCedulaEstadoMunicipioOficina($nacionalidad,$cedula,$estado_id,$municipio_id,$oficina_id);
             }
-            if($nacionalidad == NULL && $cedula == NULL && $estado_id != NULL && $municipio_id != NULL && $coordinador_id == NULL){
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Beneficiario')->getBeneficiariosByEstadoProcedencia($estado_id,$municipio_id);
+            if($nacionalidad != NULL && $cedula == NULL && $estado_id != NULL && $municipio_id == NULL && $oficina_id == NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicadosByEstado($estado_id);
             }
-            if($nacionalidad == NULL && $cedula == NULL && $estado_id != NULL && $municipio_id == NULL && $coordinador_id != NULL){
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Beneficiario')->getBeneficiariosByEstadoEstatus($estado_id,$coordinador_id);
+            if($nacionalidad != NULL && $cedula == NULL && $estado_id != NULL && $municipio_id != NULL && $oficina_id == NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicadosByEstadoMunicipio($estado_id,$municipio_id);
             }
-            if($nacionalidad == NULL && $cedula == NULL && $estado_id == NULL && $municipio_id != NULL && $coordinador_id != NULL){
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Beneficiario')->getBeneficiariosByProcedenciaEstatus($municipio_id,$coordinador_id);
+            if($nacionalidad != NULL && $cedula == NULL && $estado_id != NULL && $municipio_id != NULL && $oficina_id != NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicadosByEstadoMunicipioOficina($estado_id,$municipio_id,$oficina_id);
             }
-            if($nacionalidad == NULL && $cedula == NULL && $estado_id == NULL && $municipio_id == NULL && $coordinador_id == NULL){
-                $entities = $em->getRepository('SrpvProtocolizacionBundle:Beneficiario')->getBeneficiarios();
+            if($nacionalidad != NULL && $cedula == NULL && $estado_id == NULL && $municipio_id != NULL && $oficina_id == NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicadosByMunicipio($municipio_id);
+            }
+            if($nacionalidad != NULL && $cedula == NULL && $estado_id == NULL && $municipio_id != NULL && $oficina_id != NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicadosByMunicipioOficina($municipio_id,$oficina_id);
+            }
+            if($nacionalidad != NULL && $cedula == NULL && $estado_id == NULL && $municipio_id == NULL && $oficina_id != NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicadosByOficina($oficina_id);
+            }
+            if($nacionalidad != NULL && $cedula != NULL && $estado_id == NULL && $municipio_id != NULL && $oficina_id == NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicadosByNacionalidadCedulaMunicipio($nacionalidad,$cedula,$municipio_id);
+            }
+            if($nacionalidad != NULL && $cedula != NULL && $estado_id == NULL && $municipio_id == NULL && $oficina_id != NULL){
+                
+                $entities = $em->getRepository('SrpvProtocolizacionBundle:AsignacionCenso')->getBeneficiariosAdjudicadosByNacionalidadCedulaOficina($nacionalidad,$cedula,$oficina_id);
             }
 
         }
