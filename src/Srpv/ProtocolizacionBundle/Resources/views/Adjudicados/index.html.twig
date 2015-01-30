@@ -108,7 +108,7 @@
                                         <div align="right">
                                             <a href="{{ path('_welcome') }}" class="btn btn-success" role="button">Inicio</a>
                                             <a href="#" data-toggle="modal" data-target="#myModalMasivo" class="btn btn-primary">Asignación Masiva</a>
-                                            <a href="#" data-toggle="modal" data-target="#myModalIndividual" class="btn btn-primary">Asignación Individual</a>
+                                            <a href="{{ path('asignacionIndividual') }}" class="btn btn-primary">Asignación Individual</a>
                                         </div>
                                         <div class="modal fade" id="myModalMasivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
@@ -240,7 +240,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="modal fade" id="myModalIndividual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        {#<div class="modal fade" id="myModalIndividual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -266,7 +266,7 @@
                                                     </form>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>#}
                                         <br>
                                         {% endblock %}
                                             {% block javascripts %}

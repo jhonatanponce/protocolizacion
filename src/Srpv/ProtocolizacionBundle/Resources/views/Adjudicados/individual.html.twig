@@ -1,0 +1,73 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    {% block stylesheets %}
+        
+        {{ parent() }}
+        
+        <link type="text/css" href="{{ asset('js/css/smoothness/jquery-ui-1.8.14.custom.css') }}" type="text/css" rel="stylesheet" />
+        
+    {% endblock %}
+    <form name="formulario" method="post" id="formulario" action="{{ path('formToRedirectIndividual') }}" id="formulario" class="form-horizontal" role="form" novalidate="novalidate">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-list-alt"></span>
+            <h3 class="panel-title" style="display: inline;">Buscar Usuario</h3>
+        </div>
+        <div id="yw0" class="panel-body">
+            <div class="form-group">
+                <label for="inputCedula" class="control-label col-lg-4 required">V</label>
+                <div class="col-lg-4">
+                    <input type="checkbox" id="nacionalidad" name="nacionalidad" value="1">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputCedula" class="control-label col-lg-4 required">Cedula</label>
+                <div class="col-lg-4">
+                    <input type="text" id="cedula_asignacion" name="cedula_asignacion" placeholder="Ingrese la cédula" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div align="center">
+        <button type="submit" class="btn btn-primary">Buscar</button>
+        <a href="{{ path('adjudicados') }}" class="btn btn-success" role="button">Volver</a>
+    </div>
+    </form>
+    <br>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/js/jquery-1.7.2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.validate.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-ui-1.8.19.custom/js/jquery-ui-1.8.19.custom.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/validacionesGenerales.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $(".JqueryDate").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                firstDay: 1,
+                minDate: 0,
+                monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('input.opcionasignacion').click(function(event){
+
+                var id = $('input.opcionasignacion:checked').val();
+
+                if (id == 1){
+                    $('#formulario_reasignacion').show();
+                }
+                else{
+                    $('#formulario_reasignacion').hide();
+                }
+            });
+        });
+    </script>
+{% endblock %}

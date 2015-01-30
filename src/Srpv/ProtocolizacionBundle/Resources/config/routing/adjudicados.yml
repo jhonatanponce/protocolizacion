@@ -10,6 +10,14 @@ detalleasignacionAdjudicados:
     path:     /asignacionDetalle/{id}
     defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:detalleasignacionAdjudicados" }
 
+asignacionIndividual:
+    path:     /individual
+    defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:individual" }
+
+asignacionMasival:
+    path:     /masiva
+    defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:masiva" }
+
 asignacionMasivaAdjudicados:
     path:     /asignacionMasiva
     defaults: { _controller: "SrpvProtocolizacionBundle:Adjudicados:asignacionMasivaAdjudicados" }

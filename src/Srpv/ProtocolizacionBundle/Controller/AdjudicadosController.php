@@ -122,6 +122,22 @@ class AdjudicadosController extends Controller
         ));
     }
     
+    public function individualAction(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            
+            $cedula = $request->get('cedula_asignacion');
+            $nacionalidad = $request->get('nacionalidad');
+            return $this->redirect($this->generateUrl('asignacionAdjudicados', array('cedula' => $cedula, 'nacionalidad' => $nacionalidad )));
+        
+            
+        }
+        return $this->render('SrpvProtocolizacionBundle:Adjudicados:individual.html.twig', array(
+            
+        ));
+        
+    }
+    
     public function formToRedirectIndividualAction(Request $request)
     {
         $cedula = $request->get('cedula_asignacion');
