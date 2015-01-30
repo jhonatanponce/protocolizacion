@@ -1,78 +1,122 @@
+#security:
+#    encoders:            
+#        #(bnvh) BANAVIH en Tablas Comunes    
+#        Comunes\SecurityBundle\Entity\Usuario: 
+#            algorithm:   md5
+#            iterations: 1
+#            encode_as_base64: false
+#            
+#        #(admin) Administrador del Sistema
+#        Symfony\Component\Security\Core\User\User: 
+#            algorithm:   md5
+#            iterations: 1
+#            encode_as_base64: false                
+#            
+#    role_hierarchy:
+#        ROLE_ADMIN:       ROLE_USER
+#        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]    
+#        
+#    providers:                 
+#        users:
+#            #Nombre del Servicio que llama al Comunes\SecurityBundle\Provider\UsuarioBanavihProvider
+#            id: users_provider             
+#            
+#        administrador:
+#            memory:
+#                users:
+#                    admin: { password: 25e4ee4e9229397b6b17776bfceaf8e7, roles: [ 'ROLE_ADMIN' ] }         
+#
+#    firewalls:   
+#        dev:
+#            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
+#
+#        ######  ADMINISTRADOR  #######   
+#        login_admin:
+#            pattern:  ^/admin/login/$
+#            anonymous: ~
+#            
+#        admin_secured_area:
+#            provider: administrador
+#            pattern:    ^/admin
+#            simple_form:
+#                authenticator: login_authenticator
+#                check_path: /admin/login_check
+#                login_path: /admin/login/
+#                username_parameter: login[_usinsajo]
+#                password_parameter: login[_psinsajo]        
+##            simple_form:
+##                authenticator: time_authenticator
+##                check_path:    login_check
+##                login_path:    login                
+#            logout:
+#                path:   /admin/logout
+#                target: /
+#
+#        ######  USUARIOS  #######   
+#        login_users:
+#            pattern:  ^/login/$
+#            anonymous: ~
+#            
+#        users_secured_area:
+#            provider: users
+#            pattern:    ^/
+#            simple_form:
+#                authenticator: login_authenticator
+#                check_path: /login_check
+#                login_path: /login/
+#                username_parameter: login[_usinsajo]
+#                password_parameter: login[_psinsajo]
+#            logout:
+#                path:   /logout
+#                target: /
+#                # Agregado para evitar que explote cuando se hace logout. 
+#                # Es un Bug de PHP < 5.4.11
+#                invalidate_session: false                
+#              
+#    access_control:
+#        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
+#        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
+#        
+#    access_decision_manager:
+#        # strategy can be: affirmative, unanimous or consensus
+#        strategy: unanimous
+##        allow_if_all_abstain: true        
 security:
-    encoders:            
-        #(bnvh) BANAVIH en Tablas Comunes    
-        Comunes\SecurityBundle\Entity\Usuario: 
-            algorithm:   md5
-            iterations: 1
-            encode_as_base64: false
-            
-        #(admin) Administrador del Sistema
-        Symfony\Component\Security\Core\User\User: 
-            algorithm:   md5
-            iterations: 1
-            encode_as_base64: false                
-            
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]    
-        
-    providers:                 
-        users:
-            #Nombre del Servicio que llama al Comunes\SecurityBundle\Provider\UsuarioBanavihProvider
-            id: users_provider             
-            
-        administrador:
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        in_memory:
             memory:
                 users:
-                    admin: { password: 25e4ee4e9229397b6b17776bfceaf8e7, roles: [ 'ROLE_ADMIN' ] }         
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
-    firewalls:   
+    firewalls:
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        ######  ADMINISTRADOR  #######   
-        login_admin:
-            pattern:  ^/admin/login/$
-            anonymous: ~
-            
-        admin_secured_area:
-            provider: administrador
-            pattern:    ^/admin
-            form_login:
-                check_path: /admin/login_check
-                login_path: /admin/login/
-                username_parameter: _usinsajo
-                password_parameter: _psinsajo                
-            logout:
-                path:   /admin/logout
-                target: /
+        demo_login:
+            pattern:  ^/demo/secured/login$
+            security: false
 
-        ######  USUARIOS  #######   
-        login_users:
-            pattern:  ^/login/$
-            anonymous: ~
-            
-        users_secured_area:
-            provider: users
-            pattern:    ^/
+        demo_secured_area:
+            pattern:    ^/demo/secured/
             form_login:
-                check_path: /login_check
-                login_path: /login/
-                username_parameter: _usinsajo
-                password_parameter: _psinsajo                
+                check_path: _demo_security_check
+                login_path: _demo_login
             logout:
-                path:   /logout
-                target: /
-                # Agregado para evitar que explote cuando se hace logout. 
-                # Es un Bug de PHP < 5.4.11
-                invalidate_session: false                
-              
+                path:   _demo_logout
+                target: _demo
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
     access_control:
-        - { path: ^/admin/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
-        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
-        
-    access_decision_manager:
-        # strategy can be: affirmative, unanimous or consensus
-        strategy: unanimous
-#        allow_if_all_abstain: true        
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
