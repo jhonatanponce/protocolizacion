@@ -1,0 +1,32 @@
+comunes_security:
+    resource: "@ComunesSecurityBundle/Resources/config/routing.yml"
+    prefix:   /
+
+libreria_reporteador:
+    resource: "@LibreriaReporteadorBundle/Resources/config/routing.yml"
+    prefix:   /
+
+srpv_admin:
+    resource: "@SrpvAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+srpv_protocolizacion:
+    resource: "@SrpvProtocolizacionBundle/Resources/config/routing.yml"
+    prefix:   /
+
+comunes_organismos_publicos:
+    resource: "@ComunesOrganismosPublicosBundle/Resources/config/routing.yml"
+    prefix:   /
+
+comunes_tablas:
+    resource: "@ComunesTablasBundle/Resources/config/routing.yml"
+    prefix:   /
+
+#_welcome:
+#    pattern:  /
+#    defaults: { _controller: FrameworkBundle:Template:template,template:'::inicio.html.twig'}    
+
+_welcome:
+    pattern:  /
+    defaults: { _controller: ComunesSecurityBundle:Security:indexBnvh }      
+
